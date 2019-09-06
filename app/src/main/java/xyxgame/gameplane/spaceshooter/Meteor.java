@@ -49,7 +49,7 @@ public class Meteor {
         mMaxY = screenSizeY - mBitmap.getHeight();
         mMinX = 0;
         mMinY = 0;
-        mHP = 2;
+        mHP = 15;
 
         Random random = new Random();
         mSpeed = random.nextInt(3) + 1;
@@ -74,7 +74,8 @@ public class Meteor {
     }
 
     public void hit(){
-        if (--mHP ==0){
+
+        if (--mHP <=0){
             SCORE += 20;
             METEOR_DESTROYED++;
             destroy();

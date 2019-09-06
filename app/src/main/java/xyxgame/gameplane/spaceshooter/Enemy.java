@@ -40,7 +40,7 @@ public class Enemy {
         mScreenSizeY = screenSizeY;
         mSoundPlayer = soundPlayer;
 
-        mHP = 1;
+        mHP = 5;
 
         mEnemies = new int[]{R.drawable.enemy_red_1, R.drawable.enemy_red_2, R.drawable.enemy_red_3};
         Random random = new Random();
@@ -92,7 +92,7 @@ public class Enemy {
     }
 
     public void hit(){
-        if (--mHP ==0){
+        if (--mHP <=0){
             SCORE += 50;
             ENEMY_DESTROYED++;
             destroy();

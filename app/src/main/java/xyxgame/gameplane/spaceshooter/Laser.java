@@ -30,7 +30,7 @@ public class Laser {
         mIsEnemy = isEnemy;
 
         mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.laser_1);
-        mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() * 3/5, mBitmap.getHeight() * 3/4, false);
+        mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() /2, mBitmap.getHeight() , false);
 
         mX = spaceShipX + spaceShip.getWidth()/2 - mBitmap.getWidth()/2;
         if (mIsEnemy){

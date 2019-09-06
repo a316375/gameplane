@@ -114,7 +114,7 @@ public class GameView extends SurfaceView implements Runnable {
 
         mPlayer.update();
         //玩家开火频率
-        if (mCounter % 50 == 0) {
+        if (mCounter % 60 == 0) {
             mPlayer.fire();//开火
         }
 

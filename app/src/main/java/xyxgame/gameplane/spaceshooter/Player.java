@@ -106,6 +106,10 @@ public class Player {
     //玩家开火
     public void fire(){
         mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX, mY, mBitmap, false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-30, mY, mBitmap, false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+30, mY, mBitmap, false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-60, mY, mBitmap, false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+60, mY, mBitmap, false));
         //mSoundPlayer.playLaser();//这个注释掉，手机发烫严重。太多的线程了
     }
 
