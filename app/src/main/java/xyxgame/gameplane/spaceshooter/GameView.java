@@ -3,6 +3,7 @@ package xyxgame.gameplane.spaceshooter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,6 +16,8 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
+
+import xyxgame.gameplane.R;
 
 import static java.lang.Thread.sleep;
 
@@ -34,6 +37,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private volatile boolean mIsPlaying;
 
+    private BG mBackground;
     private Player mPlayer;
     private ArrayList<Laser> mLasers;
     private ArrayList<Meteor> mMeteors;
@@ -81,10 +85,12 @@ public class GameView extends SurfaceView implements Runnable {
         mSurfaceHolder = getHolder();
 
         reset();
+
     }
 
     void reset() {
         SCORE = 0;
+        mBackground=new BG(getContext(),mScreenSizeX,mScreenSizeY);
         mPlayer = new Player(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer);
         mLasers = new ArrayList<>();
         mMeteors = new ArrayList<>();
@@ -229,6 +235,8 @@ public class GameView extends SurfaceView implements Runnable {
             mCanvas = mSurfaceHolder.lockCanvas();
             mCanvas.drawColor(Color.BLACK);
 
+            mCanvas.drawBitmap(mBackground.getmBitmap(),0,0,mPaint);
+
             //绘制帧率位置
             mPaint.setAntiAlias(true);
             mPaint.setFakeBoldText(true);               // if you like bold
@@ -236,6 +244,7 @@ public class GameView extends SurfaceView implements Runnable {
             mPaint.setColor(Color.WHITE);
             mPaint.setTextSize(30);
             mCanvas.drawText("FPS: " + (int)fps(), mScreenSizeX-200, 50, mPaint);
+
 
 
 
@@ -259,6 +268,7 @@ public class GameView extends SurfaceView implements Runnable {
             mSurfaceHolder.unlockCanvasAndPost(mCanvas);
         }
     }
+
 
     void drawScore() {
         Paint score = new Paint();
@@ -314,7 +324,7 @@ public class GameView extends SurfaceView implements Runnable {
             if (mCounter == 10000) {
                 mCounter = 0;
             }
-            sleep(25);//25为30帧率，15为40帧，10为60帧率
+            sleep(10);//25为30帧率，15为40帧，10为60帧率
             mCounter += 20;
         } catch (InterruptedException e) {
             e.printStackTrace();
