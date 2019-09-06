@@ -80,7 +80,7 @@ public class Meteor {
             METEOR_DESTROYED++;
             destroy();
         }else{
-            mSoundPlayer.playExplode();
+            //mSoundPlayer.playExplode();//太烫了删除
         }
     }
 

@@ -97,7 +97,7 @@ public class Enemy {
             ENEMY_DESTROYED++;
             destroy();
         }else{
-            mSoundPlayer.playExplode();
+            //mSoundPlayer.playExplode();太烫了删除
         }
     }
 
