@@ -9,6 +9,14 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Random;
+
+import xyxgame.gameplane.R;
+
 public class MainActivity extends AppCompatActivity
 //        implements SensorEventListener
 {
@@ -33,6 +41,8 @@ public class MainActivity extends AppCompatActivity
 
         mGameView = new GameView(this, point.x, point.y);
         setContentView(mGameView);
+
+        //http://converttosqlite.com/convert/把txt转换成sqlite的网址
 
         //Sensor Accelerometer digunakan untuk menggerakan player ke kanan dan ke kiri
 //        SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -70,4 +80,11 @@ public class MainActivity extends AppCompatActivity
 //    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
 //    }
+
+
+    //以下是字典功能
+
+
+
 }
+
