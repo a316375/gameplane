@@ -1,4 +1,4 @@
-package xyxgame.gameplane.spaceshooter;
+package xyxgame.gameplane.DB;
 
 public class Words {
     String string;
