@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
 
         //http://converttosqlite.com/convert/把txt转换成sqlite的网址
         //https://inloop.github.io/sqlite-viewer/查看数据库视图
+        //https://www.rebasedata.com/convert-sqlite-to-mysql-online 转换成xlsx
 
         //Sensor Accelerometer digunakan untuk menggerakan player ke kanan dan ke kiri
 //        SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
