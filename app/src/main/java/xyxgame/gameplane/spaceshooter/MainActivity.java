@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(mGameView);
 
         //http://converttosqlite.com/convert/把txt转换成sqlite的网址
+        //https://inloop.github.io/sqlite-viewer/查看数据库视图
 
         //Sensor Accelerometer digunakan untuk menggerakan player ke kanan dan ke kiri
 //        SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
