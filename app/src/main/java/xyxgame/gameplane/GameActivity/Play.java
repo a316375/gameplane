@@ -129,7 +129,7 @@ public class Play {
         mSteerSpeed = Math.abs(speed);
     }
 
-    //静止不动
+    //静止不动//
     public void stay(){
         mIsSteerLeft = false;
         mIsSteerRight = false;

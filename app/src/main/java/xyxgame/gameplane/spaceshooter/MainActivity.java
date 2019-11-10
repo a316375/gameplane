@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity
 
     private GameView mGameView;
     private float mXTemp;
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

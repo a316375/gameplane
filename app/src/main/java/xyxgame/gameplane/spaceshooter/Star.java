@@ -26,7 +26,7 @@ public class Star {
     private int mScreenSizeX;
     private int mScreenSizeY;
     private int[] mStars = new int[]{R.drawable.star_1, R.drawable.star_2, R.drawable.star_3};
-
+//
     public Star(Context context, int screenSizeX, int screenSizeY, boolean randomY){
         mScreenSizeX = screenSizeX;
         mScreenSizeY = screenSizeY;

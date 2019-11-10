@@ -15,7 +15,7 @@ import xyxgame.gameplane.R;
  */
 
 public class Laser {
-
+//
     private Bitmap mBitmap;
     private int mX;
     private int mY;

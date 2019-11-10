@@ -21,7 +21,7 @@ public class HighScoreActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
-
+//
         mBack = findViewById(R.id.back);
         mScore = findViewById(R.id.score);
         mMeteor = findViewById(R.id.meteor);

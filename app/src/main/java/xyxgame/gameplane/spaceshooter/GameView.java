@@ -300,7 +300,7 @@ public class GameView extends SurfaceView implements Runnable {
             meteorDestroyed.setColor(Color.WHITE);
             mCanvas.drawText("Meteor Destroyed : " + mSP.getMeteorDestroyed(), mScreenSizeX / 2, (mScreenSizeY / 2) + 180, meteorDestroyed);
         }
-
+//
     }
 
     //玩家左边移动（距离）

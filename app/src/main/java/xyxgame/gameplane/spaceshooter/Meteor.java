@@ -53,7 +53,7 @@ public class Meteor {
 
         Random random = new Random();
         mSpeed = random.nextInt(3) + 1;
-
+//
         mX = random.nextInt(mMaxX);
         mY = 0 - mBitmap.getHeight();
 

@@ -4,7 +4,7 @@ public class Words {
     String string;
 
     public Words(String string) {
-        this.string = string;
+        this.string = string;//
     }
 
     @Override

@@ -20,7 +20,7 @@ import static xyxgame.gameplane.spaceshooter.GameView.SCORE;
  */
 /**敵人*/
 public class Enemy {
-
+//
     private Bitmap mBitmap;
     private int mX;
     private int mY;

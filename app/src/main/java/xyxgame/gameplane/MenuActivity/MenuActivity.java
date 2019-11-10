@@ -23,7 +23,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
         //Membuat tampilan selalu menyala jika activity aktif
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
+//
         mPlay = findViewById(R.id.play);
         mHighScore = findViewById(R.id.high_score);
         mExit = findViewById(R.id.exit);

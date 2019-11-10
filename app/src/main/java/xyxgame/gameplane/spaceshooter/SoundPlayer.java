@@ -61,7 +61,7 @@ public class SoundPlayer implements Runnable {
             }
         }
     }
-
+//
     public void playCrash(){
         mIsCrashPlaying = true;
     }

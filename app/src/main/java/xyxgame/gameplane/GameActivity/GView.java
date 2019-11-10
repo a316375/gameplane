@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
+//
 public class GView extends SurfaceView implements Runnable{
 
     private   SurfaceHolder mSurfaceHolder;

@@ -34,7 +34,7 @@ public class GameActivity extends Activity {
         //Mendapatkan ukuran layar
         Display display = getWindowManager().getDefaultDisplay();
         Point point = new Point();
-        display.getSize(point);
+        display.getSize(point);//
         Log.d("X and Y size", "X = " + point.x + ", Y = " + point.y);
 
 

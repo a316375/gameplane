@@ -77,7 +77,7 @@ public class Player {
         mCollision.top = mY;
         mCollision.right = mX + mBitmap.getWidth();
         mCollision.bottom = mY + mBitmap.getHeight();
-
+//
         //武器位置更新
         for (Laser l : mLasers) {
             l.update();

@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import xyxgame.gameplane.R;
 
 public class BG {
-    Bitmap mBitmap;
+    Bitmap mBitmap;//
 
 
     public BG(Context context, int screenSizeX, int screenSizeY) {
