@@ -130,7 +130,7 @@ public class GameView extends SurfaceView implements Runnable {
 
             if (Rect.intersects(m.getCollision(), mPlayer.getCollision())) {
                 m.destroy();
-                mIsGameOver = true;
+                mIsGameOver = true;//游戏结束了,碰撞死亡
                 if (SCORE > mSP.getHighScore()) {
                     mNewHighScore = true;
                     mSP.saveHighScore(SCORE, METEOR_DESTROYED, ENEMY_DESTROYED);
@@ -277,6 +277,7 @@ public class GameView extends SurfaceView implements Runnable {
         mCanvas.drawText("Score : " + SCORE, 100, 50, score);
     }
 
+    //游戏结束
     void drawGameOver() {
         Paint gameOver = new Paint();
         gameOver.setTextSize(100);
