@@ -3,7 +3,6 @@ package xyxgame.gameplane.spaceshooter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,8 +15,6 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
-
-import xyxgame.gameplane.R;
 
 import static java.lang.Thread.sleep;
 
@@ -54,12 +51,15 @@ public class GameView extends SurfaceView implements Runnable {
     private volatile boolean mNewHighScore;
 
 
+
+
     //**绘制帧率**//
     LinkedList<Long> times = new LinkedList<Long>(){{
         add(System.nanoTime());
     }};
     private final int MAX_SIZE = 100;
     private final double NANOS = 1000000000.0;
+
     /** Calculates and returns frames per second */
     private double fps() {
         long lastTime = System.nanoTime();
@@ -96,6 +96,7 @@ public class GameView extends SurfaceView implements Runnable {
         mMeteors = new ArrayList<>();
         mEnemies = new ArrayList<>();
         mStars = new ArrayList<>();
+
         for (int i = 0; i < 20; i++) {
             mStars.add(new Star(getContext(), mScreenSizeX, mScreenSizeY, true));
         }
@@ -246,15 +247,18 @@ public class GameView extends SurfaceView implements Runnable {
             mCanvas.drawText("FPS: " + (int)fps(), mScreenSizeX-200, 50, mPaint);
 
 
-
-
             mCanvas.drawBitmap(mPlayer.getBitmap(), mPlayer.getX(), mPlayer.getY(), mPaint);
+
+
+
             for (Star s : mStars) {
                 mCanvas.drawBitmap(s.getBitmap(), s.getX(), s.getY(), mPaint);
             }
             for (Laser l : mPlayer.getLasers()) {
                 mCanvas.drawBitmap(l.getBitmap(), l.getX(), l.getY(), mPaint);
             }
+
+
             for (Meteor m : mMeteors) {
                 mCanvas.drawBitmap(m.getBitmap(), m.getX(), m.getY(), mPaint);
             }
@@ -283,6 +287,7 @@ public class GameView extends SurfaceView implements Runnable {
         gameOver.setTextSize(100);
         gameOver.setTextAlign(Paint.Align.CENTER);
         gameOver.setColor(Color.WHITE);
+        mPlayer.pause();
         mCanvas.drawText("GAME OVER", mScreenSizeX / 2, mScreenSizeY / 2, gameOver);
         Paint highScore = new Paint();
         highScore.setTextSize(50);
@@ -325,7 +330,7 @@ public class GameView extends SurfaceView implements Runnable {
             if (mCounter == 10000) {
                 mCounter = 0;
             }
-            sleep(10);//25为30帧率，15为40帧，10为60帧率
+            sleep(60/100);//25为30帧率，15为40帧，10为60帧率
             mCounter += 20;
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -339,6 +344,7 @@ public class GameView extends SurfaceView implements Runnable {
         try {
             mGameThread.join();
             mSoundPlayer.pause();
+            mPlayer.pause();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -350,6 +356,7 @@ public class GameView extends SurfaceView implements Runnable {
         mSoundPlayer.resume();
         mGameThread = new Thread(this);
         mGameThread.start();
+        mPlayer.start();
     }
 
 

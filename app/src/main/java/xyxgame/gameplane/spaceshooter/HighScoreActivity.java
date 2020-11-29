@@ -2,6 +2,7 @@ package xyxgame.gameplane.spaceshooter;
 
 
 import android.os.Bundle;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +30,9 @@ public class HighScoreActivity extends AppCompatActivity implements View.OnClick
         mNullHighScore = findViewById(R.id.null_high_score);
         mHighScoreContainer = findViewById(R.id.high_score_container);
         mBack.setOnClickListener(this);
+         
+
+
 
         loadHighScore();
     }

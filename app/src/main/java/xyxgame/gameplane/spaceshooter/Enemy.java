@@ -40,12 +40,12 @@ public class Enemy {
         mScreenSizeY = screenSizeY;
         mSoundPlayer = soundPlayer;
 
-        mHP = 5;
+        mHP = 50;
 
-        mEnemies = new int[]{R.drawable.enemy_red_1, R.drawable.enemy_red_2, R.drawable.enemy_red_3};
+        mEnemies = new int[]{R.drawable.abd, R.drawable.abc, R.drawable.aab};
         Random random = new Random();
         mBitmap = BitmapFactory.decodeResource(context.getResources(), mEnemies[random.nextInt(3)]);
-        mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() * 3/5, mBitmap.getHeight() * 3/5, false);
+        mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() * 2/5, mBitmap.getHeight() * 2/5, false);
 
         mSpeed = random.nextInt(3) + 1;
 

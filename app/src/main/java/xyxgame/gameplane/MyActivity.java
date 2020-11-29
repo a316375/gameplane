@@ -7,7 +7,7 @@ import android.os.Bundle;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
 
-public class MainActivity extends Activity {
+public class MyActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -43,6 +43,7 @@ public class Meteor {
         mSoundPlayer = soundPlayer;
 
         mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.meteor_1);
+        mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.aaa);
         mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() * 3/5, mBitmap.getHeight() * 3/5, false);
 
         mMaxX = screenSizeX - mBitmap.getWidth();

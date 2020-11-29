@@ -16,7 +16,7 @@ import xyxgame.gameplane.R;
  * Website      : http://www.andevindo.com
  */
 
-public class Player {
+public class Player extends HuDie{
 
     private Bitmap mBitmap;
 
@@ -36,14 +36,21 @@ public class Player {
     private Context mContext;
     private int mScreenSizeX, mScreenSizeY;
 
+
+
+
+
+
+
     public Player(Context context, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer) {
+        super(context,R.drawable.c2a,8);
         mScreenSizeX = screenSizeX;
         mScreenSizeY = screenSizeY;
         mContext = context;
 
         mSpeed = 1;
-        mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.spaceship_1_blue);
-        mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() * 3/5, mBitmap.getHeight() * 3/5, false);
+         mBitmap = getResult();
+
 
         mMaxX = screenSizeX - mBitmap.getWidth();
         mMaxY = screenSizeY - mBitmap.getHeight();
@@ -139,7 +146,7 @@ public class Player {
     }
 
     public Bitmap getBitmap() {
-        return mBitmap;
+        return getResult();
     }
 
     public int getX() {

@@ -16,7 +16,7 @@
             android:name=".GameActivity.GameActivity"
             android:label="@string/title_activity_game"
             android:theme="@style/NoActionBar"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
