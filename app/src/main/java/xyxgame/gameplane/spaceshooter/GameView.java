@@ -159,7 +159,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
         }
         //障碍物数量产出频率
-        if (mCounter % 500 == 0) {
+        if (mCounter % 1500 == 0) {
             mMeteors.add(new Meteor(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
         }
 
@@ -196,7 +196,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         //敌机数量产出频率
-        if (mCounter % 500 == 0) {
+        if (mCounter % 1000 == 0) {
             mEnemies.add(new Enemy(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
         }
 

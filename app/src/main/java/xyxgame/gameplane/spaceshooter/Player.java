@@ -80,10 +80,10 @@ public class Player extends HuDie{
             }
         }
 
-        mCollision.left = mX;
+        mCollision.left = mX+ mBitmap.getWidth()*2/5;
         mCollision.top = mY;
-        mCollision.right = mX + mBitmap.getWidth();
-        mCollision.bottom = mY + mBitmap.getHeight();
+        mCollision.right = mX + mBitmap.getWidth()- mBitmap.getWidth()*2/5;
+        mCollision.bottom = mY + mBitmap.getHeight()-mBitmap.getHeight()*1/2;
 //
         //武器位置更新
         for (Laser l : mLasers) {
