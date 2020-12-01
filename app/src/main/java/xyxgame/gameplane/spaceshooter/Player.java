@@ -2,7 +2,6 @@ package xyxgame.gameplane.spaceshooter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 
 import java.util.ArrayList;
@@ -35,12 +34,15 @@ public class Player extends HuDie{
     private SoundPlayer mSoundPlayer;
     private Context mContext;
     private int mScreenSizeX, mScreenSizeY;
+    int mLevel =0;
 
+    public void setmLevel(int mLevel) {
+        this.mLevel = mLevel;
+    }
 
-
-
-
-
+    public int getmLevel() {
+        return mLevel;
+    }
 
     public Player(Context context, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer) {
         super(context,R.drawable.c2a,8);
@@ -111,14 +113,23 @@ public class Player extends HuDie{
     }
 
     //玩家开火
-    public void fire(){
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX, mY, mBitmap, false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-30, mY, mBitmap, false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+30, mY, mBitmap, false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-60, mY, mBitmap, false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+60, mY, mBitmap, false));
+    public void fire(int level){
+
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-30, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+30, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-60, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+60, mY, mBitmap, false,0,false));
+        if (level==1) {
+
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-130, mY, mBitmap, false,1,true));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+130, mY, mBitmap, false,1,false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-160, mY, mBitmap, false,1,true));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+160, mY, mBitmap, false,1,false));}
         //mSoundPlayer.playLaser();//这个注释掉，手机发烫严重。太多的线程了
     }
+
+
 
     public Rect getCollision() {
         return mCollision;

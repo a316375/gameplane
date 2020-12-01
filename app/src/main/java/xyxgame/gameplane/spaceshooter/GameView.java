@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
+import xyxgame.gameplane.effects.Ea;
+
 import static java.lang.Thread.sleep;
 
 /**
@@ -50,7 +52,7 @@ public class GameView extends SurfaceView implements Runnable {
     private volatile boolean mIsGameOver;
     private volatile boolean mNewHighScore;
 
-
+    private Ea mEa;
 
 
     //**绘制帧率**//
@@ -92,6 +94,7 @@ public class GameView extends SurfaceView implements Runnable {
         SCORE = 0;
         mBackground=new BG(getContext(),mScreenSizeX,mScreenSizeY);
         mPlayer = new Player(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer);
+        mEa =new Ea(getContext());
         mLasers = new ArrayList<>();
         mMeteors = new ArrayList<>();
         mEnemies = new ArrayList<>();
@@ -121,9 +124,11 @@ public class GameView extends SurfaceView implements Runnable {
 
         mPlayer.update();
         //玩家开火频率
-        if (mCounter % 60 == 0) {
-            mPlayer.fire();//开火
+        if (mCounter % 120 == 0) {
+           mPlayer.fire(mPlayer.getmLevel());//开火
+
         }
+
 
         //数障碍物
         for (Meteor m : mMeteors) {
@@ -229,6 +234,14 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
 
+        if (mEa !=null) {
+            mEa.update();
+            if (mEa.getmY() >= mScreenSizeY) mEa = null;
+            if (mEa !=null&&Rect.intersects(mEa.getmCollision(), mPlayer.getCollision())) {
+                mPlayer.setmLevel(1);
+            }
+        }
+
     }
 
     public void draw() {
@@ -246,8 +259,10 @@ public class GameView extends SurfaceView implements Runnable {
             mPaint.setTextSize(30);
             mCanvas.drawText("FPS: " + (int)fps(), mScreenSizeX-200, 50, mPaint);
 
+            if (mEa !=null) mCanvas.drawBitmap(mEa.getResult(), mEa.getmX(), mEa.getmY(),mPaint);
 
             mCanvas.drawBitmap(mPlayer.getBitmap(), mPlayer.getX(), mPlayer.getY(), mPaint);
+
 
 
 
@@ -327,7 +342,7 @@ public class GameView extends SurfaceView implements Runnable {
     //控制
     public void control() {
         try {
-            if (mCounter == 10000) {
+            if (mCounter == 1000) {
                 mCounter = 0;
             }
             sleep(60/100);//25为30帧率，15为40帧，10为60帧率

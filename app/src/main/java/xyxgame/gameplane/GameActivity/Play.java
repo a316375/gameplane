@@ -99,7 +99,7 @@ public class Play {
 
     //玩家开火
     public void fire(){
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX, mY, mBitmap, false));
+        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX, mY, mBitmap, false,0,false));
 
     }
 
