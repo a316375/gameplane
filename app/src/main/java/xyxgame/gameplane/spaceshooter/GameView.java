@@ -124,7 +124,7 @@ public class GameView extends SurfaceView implements Runnable {
 
         mPlayer.update();
         //玩家开火频率
-        if (mCounter % 120 == 0) {
+        if (mCounter % 7 == 0) {
            mPlayer.fire(mPlayer.getmLevel());//开火
 
         }
@@ -164,7 +164,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
         }
         //障碍物数量产出频率
-        if (mCounter % 1500 == 0) {
+        if (mCounter % 300== 0) {
             mMeteors.add(new Meteor(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
         }
 
@@ -201,7 +201,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         //敌机数量产出频率
-        if (mCounter % 1000 == 0) {
+        if (mCounter % 200 == 0) {
             mEnemies.add(new Enemy(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
         }
 
@@ -225,7 +225,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         // 星星数量产出频率
-        if (mCounter % 850 == 0) {
+        if (mCounter % 300== 0) {
             Random random = new Random();
             for (int i = 0; i < random.nextInt(3) + 1; i++) {
                 mStars.add(new Star(getContext(), mScreenSizeX, mScreenSizeY, false));
@@ -342,11 +342,11 @@ public class GameView extends SurfaceView implements Runnable {
     //控制
     public void control() {
         try {
-            if (mCounter == 1000) {
+            if (mCounter == 601) {
                 mCounter = 0;
             }
             sleep(60/100);//25为30帧率，15为40帧，10为60帧率
-            mCounter += 20;
+            mCounter += 1;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
