@@ -16,12 +16,8 @@ import xyxgame.gameplane.R;
 
 public class HuDie {
 
-    private long fps;
-    private long timeThisFrame;
-    private long lastFrameChangeTime = 0;
-
-    private   Bitmap resource;
-    private   ArrayList<Bitmap> zeros;
+    private final Bitmap resource;
+    private final ArrayList<Bitmap> zeros;
 
     int i=0;
     int times;//每一帧整图出现的次数
@@ -31,25 +27,23 @@ public class HuDie {
         public void run() {
             //TODO: Replace this with your own logic
             //超时需要重新启动超时执行功能
-            handler.postDelayed(this,1000);
+            handler.postDelayed(this,100);
             i++;
             if (i>=times) i=0;
         }
     };
 
     public Bitmap getResult() {
-         start();
+        start();
         return zeros.get(i);
     }
 
 
-    
+
 
 
     public HuDie(Context context,int drawable,int times) {
         this.times=times;
-
-
         resource = BitmapFactory.decodeResource(context.getResources(), drawable);
 
         zeros=new ArrayList<>();
@@ -62,16 +56,11 @@ public class HuDie {
 
     }
 
-
     public void start(){
-
-        //handler.postDelayed(runnable,0);//立即执行
-
-
+        handler.postDelayed(runnable,0);//立即执行
     }
 
     public void pause(){
-
-        //handler.removeCallbacks(runnable);
+        handler.removeCallbacks(runnable);
     }
 }
