@@ -34,7 +34,7 @@ public class HuDie {
     };
 
     public Bitmap getResult() {
-        start();
+        //start();
         return zeros.get(i);
     }
 
@@ -57,10 +57,10 @@ public class HuDie {
     }
 
     public void start(){
-        handler.postDelayed(runnable,0);//立即执行
+      //  handler.postDelayed(runnable,0);//立即执行
     }
 
     public void pause(){
-        handler.removeCallbacks(runnable);
+      //  handler.removeCallbacks(runnable);
     }
 }
