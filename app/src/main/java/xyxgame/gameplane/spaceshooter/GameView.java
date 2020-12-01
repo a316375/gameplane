@@ -164,7 +164,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
         }
         //障碍物数量产出频率
-        if (mCounter % 300== 0) {
+        if (mCounter % 30== 0) {
             mMeteors.add(new Meteor(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
         }
 
@@ -201,7 +201,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         //敌机数量产出频率
-        if (mCounter % 200 == 0) {
+        if (mCounter % 40 == 0) {
             mEnemies.add(new Enemy(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
         }
 
@@ -225,7 +225,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         // 星星数量产出频率
-        if (mCounter % 300== 0) {
+        if (mCounter % 100== 0) {
             Random random = new Random();
             for (int i = 0; i < random.nextInt(3) + 1; i++) {
                 mStars.add(new Star(getContext(), mScreenSizeX, mScreenSizeY, false));
