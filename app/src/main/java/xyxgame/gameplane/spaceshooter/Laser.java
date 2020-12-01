@@ -112,6 +112,8 @@ public class Laser {
             mY = 0 - mBitmap.getHeight();
         }
 
+
+
     }
 
     public Bitmap getBitmap() {

@@ -52,6 +52,8 @@ public class GameView extends SurfaceView implements Runnable {
     private volatile boolean mIsGameOver;
     private volatile boolean mNewHighScore;
 
+
+
     private Ea mEa;
 
 
@@ -100,6 +102,7 @@ public class GameView extends SurfaceView implements Runnable {
         mEnemies = new ArrayList<>();
         mStars = new ArrayList<>();
 
+
         for (int i = 0; i < 20; i++) {
             mStars.add(new Star(getContext(), mScreenSizeX, mScreenSizeY, true));
         }
@@ -110,24 +113,32 @@ public class GameView extends SurfaceView implements Runnable {
     @Override
     public void run() {
         while (mIsPlaying) {
+
+
             if (!mIsGameOver) {
                 update();//刷新数据
                 draw();//绘制界面
                 control();//控制自增
+                clear();//胜利
             }
         }
         Log.d("GameThread", "Run stopped");
     }
 
+
+
     public void update() {
 
 
         mPlayer.update();
+
+        mBackground.update();
+
         //玩家开火频率
         if (mCounter % 7 == 0) {
            mPlayer.fire(mPlayer.getmLevel());//开火
-
         }
+
 
 
         //数障碍物
@@ -147,6 +158,7 @@ public class GameView extends SurfaceView implements Runnable {
                 if (Rect.intersects(m.getCollision(), l.getCollision())) {
                     m.hit();
                     l.destroy();
+
                 }
             }
         }
@@ -155,6 +167,8 @@ public class GameView extends SurfaceView implements Runnable {
         while (deleting) {
             if (mMeteors.size() != 0) {
                 if (mMeteors.get(0).getY() > mScreenSizeY) {
+
+                    mMeteors.get(0).getBitmap().recycle();
                     mMeteors.remove(0);
                 }
             }
@@ -166,6 +180,7 @@ public class GameView extends SurfaceView implements Runnable {
         //障碍物数量产出频率
         if (mCounter % 30== 0) {
             mMeteors.add(new Meteor(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
+
         }
 
         //数敌机
@@ -173,7 +188,7 @@ public class GameView extends SurfaceView implements Runnable {
             e.update();
             if (Rect.intersects(e.getCollision(), mPlayer.getCollision())) {
                 e.destroy();
-                mIsGameOver = true;
+                 mIsGameOver = true;
                 if (SCORE >= mSP.getHighScore()) {
                     mSP.saveHighScore(SCORE, METEOR_DESTROYED, ENEMY_DESTROYED);
                 }
@@ -191,6 +206,7 @@ public class GameView extends SurfaceView implements Runnable {
         while (deleting) {
             if (mEnemies.size() != 0) {
                 if (mEnemies.get(0).getY() > mScreenSizeY) {
+                    mEnemies.get(0).getBitmap().recycle();
                     mEnemies.remove(0);
                 }
             }
@@ -200,8 +216,23 @@ public class GameView extends SurfaceView implements Runnable {
             }
         }
 
+        //消除子弹
+        deleting = true;
+        while (deleting) {
+            if (mPlayer.getLasers().size() != 0) {
+                if (mPlayer.getLasers().get(0).getY() <0) {
+                    mPlayer.getLasers().get(0).getBitmap().recycle();
+                    mPlayer.getLasers().remove(0);
+                }
+            }
+
+            if (mPlayer.getLasers().size() == 0 || mPlayer.getLasers().get(0).getY() >=0) {
+                deleting = false;
+            }
+        }
+
         //敌机数量产出频率
-        if (mCounter % 40 == 0) {
+        if (mCounter % 60 == 0) {
             mEnemies.add(new Enemy(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
         }
 
@@ -215,6 +246,8 @@ public class GameView extends SurfaceView implements Runnable {
         while (deleting) {
             if (mStars.size() != 0) {
                 if (mStars.get(0).getY() > mScreenSizeY) {
+
+                    mStars.get(0).getBitmap().recycle();
                     mStars.remove(0);
                 }
             }
@@ -225,7 +258,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         // 星星数量产出频率
-        if (mCounter % 100== 0) {
+        if (mCounter % 50== 0) {
             Random random = new Random();
             for (int i = 0; i < random.nextInt(3) + 1; i++) {
                 mStars.add(new Star(getContext(), mScreenSizeX, mScreenSizeY, false));
@@ -234,9 +267,10 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
 
+        //特效球
         if (mEa !=null) {
             mEa.update();
-            if (mEa.getmY() >= mScreenSizeY) mEa = null;
+            if (mEa.getmY() >= mScreenSizeY) {mEa = null;};
             if (mEa !=null&&Rect.intersects(mEa.getmCollision(), mPlayer.getCollision())) {
                 mPlayer.setmLevel(1);
             }
@@ -249,7 +283,8 @@ public class GameView extends SurfaceView implements Runnable {
             mCanvas = mSurfaceHolder.lockCanvas();
             mCanvas.drawColor(Color.BLACK);
 
-            mCanvas.drawBitmap(mBackground.getmBitmap(),0,0,mPaint);
+           // mCanvas.drawBitmap(mBackground.getmBitmap(),0,0,mPaint);
+            mBackground.draw(mCanvas,mPaint);
 
             //绘制帧率位置
             mPaint.setAntiAlias(true);
@@ -267,7 +302,7 @@ public class GameView extends SurfaceView implements Runnable {
 
 
             for (Star s : mStars) {
-                mCanvas.drawBitmap(s.getBitmap(), s.getX(), s.getY(), mPaint);
+                  mCanvas.drawBitmap(s.getBitmap(), s.getX(), s.getY(), mPaint);
             }
             for (Laser l : mPlayer.getLasers()) {
                 mCanvas.drawBitmap(l.getBitmap(), l.getX(), l.getY(), mPaint);
@@ -345,11 +380,19 @@ public class GameView extends SurfaceView implements Runnable {
             if (mCounter == 601) {
                 mCounter = 0;
             }
-            sleep(60/100);//25为30帧率，15为40帧，10为60帧率
+            sleep(1);//25为30帧率，15为40帧，10为60帧率
             mCounter += 1;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private void clear() {
+//
+//        if (SCORE>=10000){
+//            mIsGameOver=true;
+//        }
     }
 
     //响应Acitivity暂停

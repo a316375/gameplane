@@ -50,7 +50,7 @@ public class Meteor {
         mMaxY = screenSizeY - mBitmap.getHeight();
         mMinX = 0;
         mMinY = 0;
-        mHP = 15;
+        mHP = 10;
 
         Random random = new Random();
         mSpeed = random.nextInt(3) + 1;
@@ -88,6 +88,7 @@ public class Meteor {
     public void destroy(){
         mY = mScreenSizeY + 1;
         mSoundPlayer.playCrash();
+
     }
 
     public Bitmap getBitmap() {

@@ -38,7 +38,7 @@ public class Star {
 
         mMaxX = screenSizeX - mBitmap.getWidth();
 
-        mSpeed = random.nextInt(1) + 1;
+        mSpeed = random.nextInt(1) + 2;
 
         mX = random.nextInt(mMaxX);
         if (randomY){

@@ -44,6 +44,8 @@ public class Ea  extends HuDie {
         mCollision.top = mY;
         mCollision.right = mX + getResult().getWidth();
         mCollision.bottom = mY + getResult().getHeight();
+
+
     }
 
     public int getmX() {
@@ -52,5 +54,9 @@ public class Ea  extends HuDie {
 
     public int getmY() {
         return mY;
+    }
+
+    public void clear(){
+        if (getResult()==null)  getResult().recycle();
     }
 }

@@ -105,7 +105,9 @@ public class Enemy {
 
     public void destroy(){
         mY = mScreenSizeY + 1;
+
         mSoundPlayer.playCrash();
+
     }
 
     public Bitmap getBitmap() {
