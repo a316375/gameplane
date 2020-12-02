@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 
+import java.util.IllegalFormatCodePointException;
 import java.util.Random;
 
 import xyxgame.gameplane.R;
@@ -37,6 +38,8 @@ public class Meteor {
     private int mHP;
     private SoundPlayer mSoundPlayer;
 
+    private boolean isRight;
+
     public Meteor(Context context, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer){
         mScreenSizeX = screenSizeX;
         mScreenSizeY = screenSizeY;
@@ -55,14 +58,19 @@ public class Meteor {
         Random random = new Random();
         mSpeed = random.nextInt(3) + 1;
 //
-        mX = random.nextInt(mMaxX);
-        mY = 0 - mBitmap.getHeight();
+        mY = random.nextInt(mMaxY-500);
+        mX = 0 ;//- mBitmap.getHeight()
 
         mCollision = new Rect(mX, mY, mX + mBitmap.getWidth(), mY + mBitmap.getHeight());
+        isRight=true;
     }
 
     public void update(){
-        mY += 5 * mSpeed;
+        if (isRight) mX += 5 * mSpeed;
+        else mX-=5*mSpeed;
+        if (mX>=mMaxX){isRight=false;}
+        if (mX<=0){mY=mScreenSizeY+1;}
+
 
         mCollision.left = mX;
         mCollision.top = mY;
@@ -86,8 +94,14 @@ public class Meteor {
     }
 
     public void destroy(){
+        //10/1的概率
+        if ((new Random().nextInt(50)+1)%10==1){
+
         mY = mScreenSizeY + 1;
-        mSoundPlayer.playCrash();
+        mSoundPlayer.playCrash();}
+        else {
+            mHP=10;
+        }
 
     }
 

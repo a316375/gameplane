@@ -47,9 +47,10 @@ public class Laser {
              mBitmap = Bitmap.createScaledBitmap(mBitmap, 15, 150 , false);
 
              }
-        if (level==1)     {mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.laser_1);
+        if (level==1)     {
+            mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.laser_1);
 //        mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() /2, mBitmap.getHeight() , false);
-        mBitmap = Bitmap.createScaledBitmap(mBitmap, 2, 250 , false);
+        mBitmap = Bitmap.createScaledBitmap(mBitmap, 10, 100 , false);
 
         if (left==false){ roatate(mBitmap,5);//右侧
         }else {roatate(mBitmap,-5);//左侧
@@ -80,7 +81,7 @@ public class Laser {
         }else{
              mY -= mBitmap.getHeight() - 20;
              if (mLevel==1){
-
+                 mY -= mBitmap.getHeight() - 10;
              if (mleft==false){//右侧
                  mX+=mBitmap.getWidth()+1;}
              else {//左侧
@@ -110,6 +111,7 @@ public class Laser {
             mY = mScreenSizeY;
         }else{
             mY = 0 - mBitmap.getHeight();
+
         }
 
 

@@ -33,7 +33,7 @@ public class Ea  extends HuDie {
         super(context,R.drawable.ea,13);
         mX = 200;
 
-        mCollision = new Rect(mX, mY, mX + getResult().getWidth(), mY + getResult().getHeight());
+        mCollision = new Rect(mX, mY, mX + getResult(1).getWidth(), mY + getResult(1).getHeight());
 
     }
 
@@ -42,8 +42,8 @@ public class Ea  extends HuDie {
 
         mCollision.left = mX;
         mCollision.top = mY;
-        mCollision.right = mX + getResult().getWidth();
-        mCollision.bottom = mY + getResult().getHeight();
+        mCollision.right = mX + getResult(1).getWidth();
+        mCollision.bottom = mY + getResult(1).getHeight();
 
 
     }
@@ -56,7 +56,5 @@ public class Ea  extends HuDie {
         return mY;
     }
 
-    public void clear(){
-        if (getResult()==null)  getResult().recycle();
-    }
+    
 }

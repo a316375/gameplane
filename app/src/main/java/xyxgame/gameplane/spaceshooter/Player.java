@@ -50,8 +50,8 @@ public class Player extends HuDie{
         mScreenSizeY = screenSizeY;
         mContext = context;
 
-        mSpeed = 1;
-         mBitmap = getResult();
+        mSpeed = 50;
+         mBitmap = getResult(0);
 
 
         mMaxX = screenSizeX - mBitmap.getWidth();
@@ -136,17 +136,17 @@ public class Player extends HuDie{
     }
 
     //玩家右边移动
-    public void steerRight(float speed){
+    public void steerRight(){
         mIsSteerLeft = false;
         mIsSteerRight = true;
-        mSteerSpeed = Math.abs(speed);
+        mSteerSpeed = Math.abs(getSpeed());
     }
 
    //玩家左边移动
-    public void steerLeft(float speed){
+    public void steerLeft(){
         mIsSteerRight = false;
         mIsSteerLeft = true;
-        mSteerSpeed = Math.abs(speed);
+        mSteerSpeed = Math.abs(getSpeed());
     }
 
     //静止不动
@@ -156,9 +156,7 @@ public class Player extends HuDie{
         mSteerSpeed = 0;
     }
 
-    public Bitmap getBitmap() {
-        return getResult();
-    }
+
 
     public int getX() {
         return mX;
@@ -174,12 +172,14 @@ public class Player extends HuDie{
 
 
     public void update(int x, int y) {
+        //确定了坐标
         mX=x;
         mY=y;
         if (mX<mMinX)mX=mMinX;
         if (mY<mMinY)mY=mMinY;
         if (mX>mMaxX)mX=mMaxX;
         if (mY>mMaxY)mY=mMaxY;
+
     }
 
     public int getmMaxX() {

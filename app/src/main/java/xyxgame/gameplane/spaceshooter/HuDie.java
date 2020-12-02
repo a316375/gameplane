@@ -33,9 +33,10 @@ public class HuDie {
         }
     };
 
-    public Bitmap getResult() {
+    public Bitmap getResult( int count) {
         //start();
-        return zeros.get(i);
+
+        return zeros.get((count/5)%times);
     }
 
 

@@ -9,11 +9,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import xyxgame.gameplane.GL.GLActivity;
 import xyxgame.gameplane.R;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mPlay, mHighScore, mExit;
+    private Button mPlay,mPlay2, mHighScore, mExit;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,12 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mPlay = findViewById(R.id.play);
+        mPlay2 = findViewById(R.id.play2);
         mHighScore = findViewById(R.id.high_score);
         mExit = findViewById(R.id.exit);
 
         mPlay.setOnClickListener(this);
+        mPlay2.setOnClickListener(this);
         mHighScore.setOnClickListener(this);
         mExit.setOnClickListener(this);
     }
@@ -40,7 +43,11 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()){
             case R.id.play:
                 startActivity(new Intent(this, MainActivity.class));
-                finish();
+               // finish();
+                break;
+            case R.id.play2:
+                startActivity(new Intent(this, GLActivity.class));
+               // finish();
                 break;
             case R.id.high_score:
                 startActivity(new Intent(this, HighScoreActivity.class));

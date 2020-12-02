@@ -135,7 +135,7 @@ public class GameView extends SurfaceView implements Runnable {
         mBackground.update();
 
         //玩家开火频率
-        if (mCounter % 7 == 0) {
+        if (mCounter % 10 == 0) {
            mPlayer.fire(mPlayer.getmLevel());//开火
         }
 
@@ -146,8 +146,9 @@ public class GameView extends SurfaceView implements Runnable {
             m.update();
 
             if (Rect.intersects(m.getCollision(), mPlayer.getCollision())) {
-                m.destroy();
-                mIsGameOver = true;//游戏结束了,碰撞死亡
+//                m.destroy();
+
+                mIsGameOver = false;//游戏结束了,碰撞死亡
                 if (SCORE > mSP.getHighScore()) {
                     mNewHighScore = true;
                     mSP.saveHighScore(SCORE, METEOR_DESTROYED, ENEMY_DESTROYED);
@@ -158,6 +159,7 @@ public class GameView extends SurfaceView implements Runnable {
                 if (Rect.intersects(m.getCollision(), l.getCollision())) {
                     m.hit();
                     l.destroy();
+
 
                 }
             }
@@ -178,7 +180,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
         }
         //障碍物数量产出频率
-        if (mCounter % 30== 0) {
+        if (mCounter % 50== 0) {
             mMeteors.add(new Meteor(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
 
         }
@@ -188,7 +190,7 @@ public class GameView extends SurfaceView implements Runnable {
             e.update();
             if (Rect.intersects(e.getCollision(), mPlayer.getCollision())) {
                 e.destroy();
-                 mIsGameOver = true;
+                 mIsGameOver = false;
                 if (SCORE >= mSP.getHighScore()) {
                     mSP.saveHighScore(SCORE, METEOR_DESTROYED, ENEMY_DESTROYED);
                 }
@@ -294,9 +296,8 @@ public class GameView extends SurfaceView implements Runnable {
             mPaint.setTextSize(30);
             mCanvas.drawText("FPS: " + (int)fps(), mScreenSizeX-200, 50, mPaint);
 
-            if (mEa !=null) mCanvas.drawBitmap(mEa.getResult(), mEa.getmX(), mEa.getmY(),mPaint);
+            if (mEa !=null) mCanvas.drawBitmap(mEa.getResult(mCounter), mEa.getmX(), mEa.getmY(),mPaint);
 
-            mCanvas.drawBitmap(mPlayer.getBitmap(), mPlayer.getX(), mPlayer.getY(), mPaint);
 
 
 
@@ -319,6 +320,10 @@ public class GameView extends SurfaceView implements Runnable {
             if (mIsGameOver) {
                 drawGameOver();
             }
+
+            //绘制主角
+            if (mPlayer.getResult(mCounter)!=null) mCanvas.drawBitmap(mPlayer.getResult(mCounter), mPlayer.getX(), mPlayer.getY(), mPaint);
+
             mSurfaceHolder.unlockCanvasAndPost(mCanvas);
         }
     }
@@ -360,13 +365,13 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     //玩家左边移动（距离）
-    public void steerLeft(float speed) {
-        mPlayer.steerLeft(speed);
+    public void steerLeft() {
+        mPlayer.steerLeft();
     }
 
     //玩家右边移动（距离）
-    public void steerRight(float speed) {
-        mPlayer.steerRight(speed);
+    public void steerRight() {
+        mPlayer.steerRight();
     }
 
     //静止不动
@@ -446,6 +451,7 @@ public class GameView extends SurfaceView implements Runnable {
                 if (!mIsGameOver) {
                     pointXFix = (int) (pointX + (event.getX() - lastX));
                     pointYFix = (int) (pointY + (event.getY() - lastY));
+
                     mPlayer.update(pointXFix, pointYFix);
 
                 }
