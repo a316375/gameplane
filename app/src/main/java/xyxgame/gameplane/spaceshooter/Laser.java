@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 
+import xyxgame.gameplane.GL.BTMAP;
 import xyxgame.gameplane.R;
 
 /**
@@ -31,8 +32,8 @@ public class Laser {
 
 
 
-    public Laser(Context context, int screenSizeX, int screenSizeY, int spaceShipX,
-                 int spaceShipY, Bitmap spaceShip, boolean isEnemy,int level,boolean left){
+    public Laser(Context context, BTMAP btmap,int screenSizeX, int screenSizeY, int spaceShipX,
+                 int spaceShipY, Bitmap spaceShip, boolean isEnemy, int level, boolean left){
         mScreenSizeX = screenSizeX;
         mScreenSizeY = screenSizeY;
         mIsEnemy = isEnemy;
@@ -43,12 +44,12 @@ public class Laser {
 
 //        mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.laser_1);
         if (level==0)     {
-            mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.my_bullet_purple);
+            mBitmap = btmap.getBitmaps().get(2);
              mBitmap = Bitmap.createScaledBitmap(mBitmap, 15, 150 , false);
 
              }
         if (level==1)     {
-            mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.laser_1);
+            mBitmap =btmap.getBitmaps().get(1);
 //        mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() /2, mBitmap.getHeight() , false);
         mBitmap = Bitmap.createScaledBitmap(mBitmap, 10, 100 , false);
 

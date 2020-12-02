@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
+import xyxgame.gameplane.GL.BTMAP;
 import xyxgame.gameplane.effects.Ea;
 
 import static java.lang.Thread.sleep;
@@ -55,6 +56,7 @@ public class GameView extends SurfaceView implements Runnable {
 
 
     private Ea mEa;
+    private BTMAP btmap;
 
 
     //**绘制帧率**//
@@ -94,9 +96,10 @@ public class GameView extends SurfaceView implements Runnable {
 
     void reset() {
         SCORE = 0;
-        mBackground=new BG(getContext(),mScreenSizeX,mScreenSizeY);
-        mPlayer = new Player(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer);
-        mEa =new Ea(getContext());
+        btmap=new BTMAP(getContext());
+        mBackground=new BG(getContext(),btmap,mScreenSizeX,mScreenSizeY);
+        mPlayer = new Player(getContext(),btmap, mScreenSizeX, mScreenSizeY, mSoundPlayer);
+        mEa =new Ea(getContext(),btmap);
         mLasers = new ArrayList<>();
         mMeteors = new ArrayList<>();
         mEnemies = new ArrayList<>();
@@ -181,7 +184,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
         //障碍物数量产出频率
         if (mCounter % 50== 0) {
-            mMeteors.add(new Meteor(getContext(), mScreenSizeX, mScreenSizeY, mSoundPlayer));
+            mMeteors.add(new Meteor(getContext(),btmap, mScreenSizeX, mScreenSizeY, mSoundPlayer));
 
         }
 

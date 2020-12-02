@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import java.util.IllegalFormatCodePointException;
 import java.util.Random;
 
+import xyxgame.gameplane.GL.BTMAP;
 import xyxgame.gameplane.R;
 
 import static xyxgame.gameplane.spaceshooter.GameView.METEOR_DESTROYED;
@@ -40,13 +41,13 @@ public class Meteor {
 
     private boolean isRight;
 
-    public Meteor(Context context, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer){
+    public Meteor(Context context, BTMAP btmap, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer){
         mScreenSizeX = screenSizeX;
         mScreenSizeY = screenSizeY;
         mSoundPlayer = soundPlayer;
 
        // mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.meteor_1);
-        mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.aaa);
+        mBitmap = btmap.getBitmaps().get(4);
         mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() * 3/5, mBitmap.getHeight() * 3/5, false);
 
         mMaxX = screenSizeX - mBitmap.getWidth();

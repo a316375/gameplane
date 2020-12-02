@@ -29,6 +29,8 @@ public class DrawThread extends Thread {
     private int mCounter;//控制
     private ArrayList<Meteor> meteor;
 
+    private BTMAP btmap;
+
     private void getObjs() {
         //这个对象是gamesurfaceview就已经声明出来的了,并且赋值
       //  shot = gameSurfaceView.getShot();
@@ -36,6 +38,8 @@ public class DrawThread extends Thread {
         play=gameSurfaceView.getmPlay();
         mCounter=gameSurfaceView.getmCounter();
         meteor=gameSurfaceView.getMeteor();
+        btmap=gameSurfaceView.getBtmap();
+
     }
 
     private void upClear() {
@@ -45,8 +49,8 @@ public class DrawThread extends Thread {
         if (mCounter>600)mCounter=0;
 
         //特例：需要先创建对象赋值给集合
-        if (mCounter%10==0&&meteor.size()<30)meteor.add(
-                new Meteor(gameSurfaceView.getContext(),gameSurfaceView.getmScreenSizeX(),gameSurfaceView.getmScreenSizeY(),new SoundPlayer(gameSurfaceView.getContext()))
+        if (mCounter%10==0&&meteor.size()<3)meteor.add(
+                new Meteor(gameSurfaceView.getContext(),btmap,gameSurfaceView.getmScreenSizeX(),gameSurfaceView.getmScreenSizeY(),new SoundPlayer(gameSurfaceView.getContext()))
         );
 
 

@@ -6,6 +6,7 @@ import android.graphics.Rect;
 
 import java.util.ArrayList;
 
+import xyxgame.gameplane.GL.BTMAP;
 import xyxgame.gameplane.R;
 
 /**
@@ -35,6 +36,7 @@ public class Player extends HuDie{
     private Context mContext;
     private int mScreenSizeX, mScreenSizeY;
     int mLevel =0;
+    private BTMAP btmap;
 
     public void setmLevel(int mLevel) {
         this.mLevel = mLevel;
@@ -44,11 +46,12 @@ public class Player extends HuDie{
         return mLevel;
     }
 
-    public Player(Context context, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer) {
-        super(context,R.drawable.c2a,8);
+    public Player(Context context, BTMAP btmap,int screenSizeX, int screenSizeY, SoundPlayer soundPlayer) {
+        super(context,btmap,3,8);
         mScreenSizeX = screenSizeX;
         mScreenSizeY = screenSizeY;
         mContext = context;
+        this.btmap=btmap;
 
         mSpeed = 50;
          mBitmap = getResult(0);
@@ -115,17 +118,17 @@ public class Player extends HuDie{
     //玩家开火
     public void fire(int level){
 
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX, mY, mBitmap, false,0,false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-30, mY, mBitmap, false,0,false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+30, mY, mBitmap, false,0,false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-60, mY, mBitmap, false,0,false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+60, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX-30, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX+30, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX-60, mY, mBitmap, false,0,false));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX+60, mY, mBitmap, false,0,false));
         if (level==1) {
 
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-130, mY, mBitmap, false,1,true));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+130, mY, mBitmap, false,1,false));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX-160, mY, mBitmap, false,1,true));
-        mLasers.add(new Laser(mContext, mScreenSizeX, mScreenSizeY, mX+160, mY, mBitmap, false,1,false));}
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX-130, mY, mBitmap, false,1,true));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX+130, mY, mBitmap, false,1,false));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX-160, mY, mBitmap, false,1,true));
+        mLasers.add(new Laser(mContext,btmap, mScreenSizeX, mScreenSizeY, mX+160, mY, mBitmap, false,1,false));}
         //mSoundPlayer.playLaser();//这个注释掉，手机发烫严重。太多的线程了
     }
 

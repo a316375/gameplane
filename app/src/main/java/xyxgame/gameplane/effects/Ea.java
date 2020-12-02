@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 
+import xyxgame.gameplane.GL.BTMAP;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.spaceshooter.HuDie;
 
@@ -29,8 +30,8 @@ public class Ea  extends HuDie {
 
     private Rect mCollision;
 
-    public Ea(Context context) {
-        super(context,R.drawable.ea,13);
+    public Ea(Context context, BTMAP btmap) {
+        super(context,btmap,5,13);
         mX = 200;
 
         mCollision = new Rect(mX, mY, mX + getResult(1).getWidth(), mY + getResult(1).getHeight());

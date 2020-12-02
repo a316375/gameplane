@@ -21,10 +21,18 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     private void setResource() {
         shotLine=true;
         fps=new FPS();
+        btmap=new BTMAP(mcontext);
         shot = new Shot(mcontext, 100, 200, R.drawable.blue_button01);
-        bg=new BG(mcontext,mScreenSizeX,mScreenSizeY);
-        mPlay=new Player(mcontext,mScreenSizeX,mScreenSizeY,null);
+        bg=new BG(mcontext,btmap,mScreenSizeX,mScreenSizeY);
+        mPlay=new Player(mcontext,btmap,mScreenSizeX,mScreenSizeY,null);
         meteor=new ArrayList<>();
+
+    }
+
+    private BTMAP btmap;
+
+    public BTMAP getBtmap() {
+        return btmap;
     }
 
     public void setShotLine(boolean shotLine) {

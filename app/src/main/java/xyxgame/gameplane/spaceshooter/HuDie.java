@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import java.util.logging.LogRecord;
 
+import xyxgame.gameplane.GL.BTMAP;
 import xyxgame.gameplane.R;
 
 public class HuDie {
@@ -33,9 +34,9 @@ public class HuDie {
 
 
 
-    public HuDie(Context context,int drawable,int times) {
+    public HuDie(Context context, BTMAP btmap, int who, int times) {
         this.times=times;
-        resource = BitmapFactory.decodeResource(context.getResources(), drawable);
+        resource = btmap.getBitmaps().get(who);
 
         zeros=new ArrayList<>();
         for (int i =0; i <times ; i++) {

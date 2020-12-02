@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import xyxgame.gameplane.GL.BTMAP;
 import xyxgame.gameplane.R;
 
 public class BG {
@@ -13,8 +14,8 @@ public class BG {
     private int y1,y2,screenSizeX,screenSizeY;
 
 
-    public BG(Context context,int screenSizeX, int screenSizeY) {
-        this.bitmap  = BitmapFactory.decodeResource(context.getResources(), R.drawable.bg2);
+    public BG(Context context, BTMAP btmap,int screenSizeX, int screenSizeY) {
+        this.bitmap  =btmap.getBitmaps().get(0);
         y2 = y1 -bitmap.getHeight();
         this. screenSizeX=screenSizeX;
         this. screenSizeY=screenSizeY;
