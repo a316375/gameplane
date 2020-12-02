@@ -45,7 +45,7 @@ public class Meteor {
         mScreenSizeY = screenSizeY;
         mSoundPlayer = soundPlayer;
 
-        mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.meteor_1);
+       // mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.meteor_1);
         mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.aaa);
         mBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth() * 3/5, mBitmap.getHeight() * 3/5, false);
 
@@ -94,10 +94,10 @@ public class Meteor {
     }
 
     public void destroy(){
-        //10/1的概率
-        if ((new Random().nextInt(50)+1)%10==1){
+        //50/1的概率
+        if ((new Random().nextInt(10)+1)==1){
 
-        mY = mScreenSizeY + 1;
+        mX =  - getBitmap().getWidth();
         mSoundPlayer.playCrash();}
         else {
             mHP=10;

@@ -19,19 +19,9 @@ public class HuDie {
     private final Bitmap resource;
     private final ArrayList<Bitmap> zeros;
 
-    int i=0;
+
     int times;//每一帧整图出现的次数
-    Handler handler=new  Handler();
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            //TODO: Replace this with your own logic
-            //超时需要重新启动超时执行功能
-            handler.postDelayed(this,100);
-            i++;
-            if (i>=times) i=0;
-        }
-    };
+
 
     public Bitmap getResult( int count) {
         //start();
