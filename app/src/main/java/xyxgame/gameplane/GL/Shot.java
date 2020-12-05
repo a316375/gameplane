@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 
 import xyxgame.gameplane.spaceshooter.Player;
 import xyxgame.gameplane.spaceshooter.SoundPlayer;
@@ -13,6 +14,7 @@ public class Shot   {
 
 
     Context context;
+     Rect rect;
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
@@ -33,8 +35,12 @@ public class Shot   {
         this.screenSizeY = screenSizeY;
         this.soundPlayer = soundPlayer;
         bitmap=btmap.getBitmaps().get(7);//7
+        bitmap=Bitmap.createScaledBitmap(bitmap,200,200,false);
         mX = screenSizeX/2 - bitmap.getWidth()/2;
         mY = screenSizeY - bitmap.getHeight() -200;
+        rect=new Rect(mX,mY,mX+bitmap.getWidth(),mY+bitmap.getHeight());
+
+
 
     }
 
@@ -49,6 +55,8 @@ public class Shot   {
     public void update(int pointXFix, int pointYFix) {
         mX=pointXFix;
         mY=pointYFix;
+        rect.set(mX,mY,mX+bitmap.getWidth(),mY+bitmap.getHeight());
+
     }
 
 

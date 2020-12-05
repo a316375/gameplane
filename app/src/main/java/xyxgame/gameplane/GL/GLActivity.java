@@ -3,6 +3,7 @@ package xyxgame.gameplane.GL;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,8 +25,6 @@ public class GLActivity extends AppCompatActivity {
     }
 
     private void setView() {
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-
         //Membuat tampilan menjadi full screen全屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 

@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -24,12 +26,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.spaceshooter.BG;
@@ -49,14 +56,18 @@ public class DrawThread extends Thread {
 
     private BTMAP btmap;
 
+    private ArrayList<GOLDS> golds;
 
 
 
      private ArrayList<ShotLaser> shotLasers;
 
-     private SpriteManager spriteManager;
-     private BOSS boss;
+    // private BOSS boss;
+    private ArrayList<SpriteManager> sprites;
 
+    private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+    private final Lock r = rwl.readLock();
+    private final Lock w = rwl.writeLock();
 
     private void getObjs() {
         //这个对象是gamesurfaceview就已经声明出来的了,并且赋值
@@ -66,41 +77,116 @@ public class DrawThread extends Thread {
 //        mCounter=gameSurfaceView.getThread().getmCounter();
           mCounter=0;
         btmap=gameSurfaceView.getBtmap();
-        spriteManager=gameSurfaceView.getSpriteManager();
+
         mshot=gameSurfaceView.getMshot();
-        shotLasers=gameSurfaceView.getShotLasers();
-        boss=gameSurfaceView.getBoss();
+        shotLasers=new ArrayList<>();
+
+
+         sprites=new ArrayList<>();
+         golds=new ArrayList<>();
+
+
+
+        final Handler handler=new Handler();
+        final Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+
+
+
+                if (gameSurfaceView.ismIsRun()) {
+                    w.lock();
+                    try {
+                        if (golds.size()<5){
+                            golds.add(new GOLDS(gameSurfaceView.getContext(),btmap,500,0));
+                        }
+
+                        if (shotLasers.size() <20) {
+                            shotLasers.add(new ShotLaser(gameSurfaceView.getContext(), btmap,
+                                    gameSurfaceView.getmScreenSizeX(), gameSurfaceView.getmScreenSizeY(), null, mshot));
+                        }
+                        if (sprites.size() <5) {
+                            sprites.add(new SpriteManager(btmap, 4, new Point(0, 0), new Point(0, 1000)));
+                        }
+
+                    }finally {
+                        w.unlock();
+                    }
+
+
+                }
+                if (gameSurfaceView.ismIsRun())  handler.postDelayed(this,300);
+                }
+
+        };
+        handler.postDelayed(runnable,300);
 
 
 
 
     }
 
-    private void upClear() {
+    private   synchronized void upClear() {
         //判断后清除对象逻辑以释放内存
-      //  if (shot.getX()>gameSurfaceView.getmScreenSizeX()) {shot.bitmap.recycle();}
-//        mCounter.getAndIncrement();
+
+        w.lock();
+        try {
+
+        for (Iterator<ShotLaser> ls = shotLasers.iterator(); ls.hasNext();){
+            while (ls.hasNext()){
+                if (ls.next().getBitmap().isRecycled())
+                    ls.remove();}
+        }
+
+        for (Iterator<SpriteManager> ls = sprites.iterator(); ls.hasNext();){
+            while (ls.hasNext()){
+                if (ls.next().getBitmap().isRecycled())
+                    ls.remove();}
+        }
+
+        for (Iterator<GOLDS> ls = golds.iterator(); ls.hasNext();){
+            while (ls.hasNext()){
+                if (ls.next().bitmap.isRecycled())
+                    ls.remove();}
+        }
+
+        }finally {
+            w.unlock();
+        }
 
 
-
-//        if (mCounter.get()%500==0)
-//        {play.getLasers().add(new Laser(gameSurfaceView.getContext(),btmap,
-//                gameSurfaceView.getmScreenSizeX(), gameSurfaceView.getmScreenSizeY(),
-//                play.getX(), play.getY(), gameSurfaceView.getBtmap().bitmaps.get(4), false,0,false));
-//        }
 
 
     }
 
 
-    private void updraw(Canvas canvas, Paint paint) {
+    private synchronized   void updraw(Canvas canvas, Paint paint) {
+        w.lock();
+        try {
         bg.draw(canvas,paint);
         //把他绘制到画布上
-      //  if (!shot.bitmap.isRecycled()) canvas.drawBitmap(shot.bitmap, shot.x, shot.y, paint);
 
        mshot.draw(canvas,paint);
-       spriteManager.draw(canvas, paint);
-       new Thread(new Runnable() {
+
+
+           for (ShotLaser s : shotLasers) {
+               if (!s.getBitmap().isRecycled() && shotLasers.size() > 0) s.draw(canvas, paint);
+           }
+           for (SpriteManager s : sprites) {
+               if (!s.getBitmap().isRecycled() && sprites.size() > 0) s.draw(canvas, paint);
+           }
+
+           for (GOLDS g : golds) {
+               if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas, paint);
+           }
+
+}finally {
+    w.unlock();
+}
+
+
+
+        new Thread(new Runnable() {
                @Override
                public void run() {
                    if (gameSurfaceView.ismIsRun()) {
@@ -109,11 +195,6 @@ public class DrawThread extends Thread {
                }
            }).start();
 
-
-        for (ShotLaser s:shotLasers ) {
-            s.draw(canvas,paint);
-           }
-        boss.draw(canvas,paint);
 
 
 
@@ -158,11 +239,10 @@ public class DrawThread extends Thread {
             // 不停绘制界面
             while (gameSurfaceView.ismIsRun()) {
 
-                synchronized (this) {
+          upClear();//判断后清除对象逻辑以释放内存
 
-                    upClear();//判断后清除对象逻辑以释放内存
-                    drawUI();//绘制对象
-                }
+          drawUI();//绘制对象
+
 
         }
     }
@@ -176,14 +256,13 @@ public class DrawThread extends Thread {
      */
     public void drawUI() {
 
-        if (holder.getSurface().isValid()&&gameSurfaceView.isDrawOK()) {
+        if (holder.getSurface().isValid()&&gameSurfaceView.isDrawOK()&&!rwl.isWriteLockedByCurrentThread()) {
 
             Canvas canvas = holder.lockCanvas();
 
             try {
                 //join(1);
-                // mCounter.getAndIncrement();
-                 drawCanvas(canvas);
+              drawCanvas(canvas);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -212,8 +291,12 @@ public class DrawThread extends Thread {
 
             canvas.drawText("FPS:"+(int)gameSurfaceView.getFps().fps(), 100, 100, paint);
 
-
-
+//          if (sprites.size()>0) {
+//
+//              for (int i = 0; i < sprites.size(); i++) {
+//                 canvas.drawRect(sprites.get(i).rect, paint);
+//              }
+//          }
 
     }
 

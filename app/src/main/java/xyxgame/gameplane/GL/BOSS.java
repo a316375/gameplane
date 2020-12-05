@@ -1,20 +1,23 @@
 package xyxgame.gameplane.GL;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
 
-public class BOSS extends SpriteManager {
-    public BOSS(BTMAP bitmaps, int who, Point selfxy, Point cirxy) {
-        super(bitmaps, who, selfxy, cirxy);
-        setWidthandHight(500,500);
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
- }
+import xyxgame.gameplane.spaceshooter.Laser;
 
-    @Override
-    public void UPXY() {
+public class BOSS    {
 
-        selfxy.y+=1;
 
-    }
+
 }
+
+
+

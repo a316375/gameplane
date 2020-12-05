@@ -10,6 +10,9 @@ import android.view.SurfaceView;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.spaceshooter.BG;
@@ -20,6 +23,9 @@ import xyxgame.gameplane.spaceshooter.SoundPlayer;
 
 public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
 
+
+
+
     private void setResource() {
         shotLine=true;
         fps=new FPS();
@@ -28,46 +34,27 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         bg=new BG(mcontext,btmap,mScreenSizeX,mScreenSizeY);
 
 
-        spriteManager=new SpriteManager(btmap,4,new Point(100,100),new Point(100,1000));
 
-        shotLasers=new ArrayList<>();
-        for (int i = 0; i <20 ; i++) {
-            shotLasers.add(new ShotLaser(mcontext,btmap,mScreenSizeX,mScreenSizeY,null));
-        }
-
-        boss=new BOSS(btmap,4,new Point(500,100),new Point(500,1000));
 
     }
 
-//    private  void upResource(){
-//       thread= new UPThread(ismIsRun());
-//       thread.start();
-//
+
+
+
+
+
+
+   // private BOSS boss;
+
+//    public BOSS getBoss() {
+//        return boss;
 //    }
 
-//    UPThread thread;
-//
-//    public UPThread getThread() {
-//        return thread;
-//    }
 
-    private BOSS boss;
 
-    public BOSS getBoss() {
-        return boss;
-    }
 
-    private ArrayList<ShotLaser> shotLasers;
 
-    public ArrayList<ShotLaser> getShotLasers() {
-        return shotLasers;
-    }
 
-    public SpriteManager getSpriteManager() {
-        return spriteManager;
-    }
-
-    private SpriteManager spriteManager;
     private BTMAP btmap;
 
     public BTMAP getBtmap() {
