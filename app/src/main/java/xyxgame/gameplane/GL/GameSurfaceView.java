@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -33,6 +34,9 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         mshot = new Shot(mcontext,btmap,mScreenSizeX,mScreenSizeY,null);
         bg=new BG(mcontext,btmap,mScreenSizeX,mScreenSizeY);
 
+        golds=new ArrayList<>();
+        shotLasers=new ArrayList<>();
+        sprites=new ArrayList<>();
 
 
 
@@ -49,11 +53,23 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 //    public BOSS getBoss() {
 //        return boss;
 //    }
+private ArrayList<SpriteManager> sprites;
 
+    public ArrayList<SpriteManager> getSprites() {
+        return sprites;
+    }
 
+    private ArrayList<ShotLaser> shotLasers;
 
+    public ArrayList<ShotLaser> getShotLasers() {
+        return shotLasers;
+    }
 
+    private ArrayList<GOLDS> golds;
 
+    public ArrayList<GOLDS> getGolds() {
+        return golds;
+    }
 
     private BTMAP btmap;
 
@@ -151,10 +167,12 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
 
-        drawThread = new DrawThread(this,holder);
+        if (drawThread==null)
+        {drawThread = new DrawThread(this,holder);}
          mIsRun=true;
          drawOK=true;
         drawThread.start();
+       // Log.v("**surfaceCreated",drawThread.getGolds().size()+"**");
 
     }
 
@@ -165,9 +183,20 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+       // Log.v("**surfaceDestroyed",drawThread.getGolds().size()+"**");
         drawOK=false;
-         mIsRun=false;
+        mIsRun=false;
+        if (drawThread!=null){
+            try {
+                drawThread.join();//消灭线程
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            drawThread=null;
+        }
+
+
         // holder.removeCallback(this);
 
     }

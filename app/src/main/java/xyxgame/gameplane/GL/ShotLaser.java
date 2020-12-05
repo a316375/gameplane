@@ -2,6 +2,7 @@ package xyxgame.gameplane.GL;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -27,8 +28,13 @@ public class ShotLaser extends Shot {
         super(context, btmaps, screenSizeX, screenSizeY, soundPlayer);
         mX=shot.mX+shot.getBitmap().getWidth()/2;
         mY=shot.mY;
+
+
+
+
         bitmap=btmaps.getBitmaps().get(2);
-        bitmap= Bitmap.createScaledBitmap(bitmap,getBitmap().getWidth()/2,getBitmap().getHeight()/2,false);;
+
+        bitmap= Bitmap.createScaledBitmap(bitmap,100,200,false);;
         rect = new Rect(mX,mY,mX+bitmap.getWidth(),mY+bitmap.getHeight());
 
     }
@@ -47,7 +53,7 @@ public class ShotLaser extends Shot {
 
          mY-=20;
         rect.set(mX,mY,mX+bitmap.getWidth(),mY+bitmap.getHeight());
-        if (mY<0)bitmap.recycle();
+        if (mY<0){bitmap.recycle();}
     }
 
 

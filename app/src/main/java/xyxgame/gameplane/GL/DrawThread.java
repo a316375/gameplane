@@ -56,6 +56,8 @@ public class DrawThread extends Thread {
 
     private BTMAP btmap;
 
+
+
     private ArrayList<GOLDS> golds;
 
 
@@ -79,11 +81,11 @@ public class DrawThread extends Thread {
         btmap=gameSurfaceView.getBtmap();
 
         mshot=gameSurfaceView.getMshot();
-        shotLasers=new ArrayList<>();
+        shotLasers=gameSurfaceView.getShotLasers();
 
 
-         sprites=new ArrayList<>();
-         golds=new ArrayList<>();
+         sprites=gameSurfaceView.getSprites();
+         golds=gameSurfaceView.getGolds();
 
 
 
@@ -239,9 +241,12 @@ public class DrawThread extends Thread {
             // 不停绘制界面
             while (gameSurfaceView.ismIsRun()) {
 
-          upClear();//判断后清除对象逻辑以释放内存
 
-          drawUI();//绘制对象
+                    upClear();//判断后清除对象逻辑以释放内存
+
+                    drawUI();//绘制对象
+
+
 
 
         }
@@ -261,7 +266,7 @@ public class DrawThread extends Thread {
             Canvas canvas = holder.lockCanvas();
 
             try {
-                //join(1);
+//                sleep(10);//不应该阻塞主线程
               drawCanvas(canvas);
             } catch (Exception e) {
                 e.printStackTrace();

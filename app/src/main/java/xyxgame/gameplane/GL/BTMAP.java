@@ -22,14 +22,18 @@ public class BTMAP {
     public BTMAP(Context context) {
         this.context = context;
         bitmaps=new ArrayList<>();
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.bg2));//0
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));//1
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.my_bullet_purple));//2
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.c2a));//3
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.aaa));//4
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.ea));//5
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.c1));//6
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceship_1_blue));//7
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        options.inSampleSize=2;
+
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.bg2,options));//0
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1,options));//1
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.my_bullet_purple,options));//2
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.c2a,options));//3
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.aaa,options));//4
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.ea,options));//5
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.c1,options));//6
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceship_1_blue,options));//7
         bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.bg3));
         bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
         bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
