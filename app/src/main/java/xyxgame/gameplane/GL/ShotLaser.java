@@ -27,7 +27,7 @@ public class ShotLaser extends Shot {
 
     public ShotLaser(Context context, BTMAP btmaps, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer, Shot shot) {
         super(context, btmaps, screenSizeX, screenSizeY, soundPlayer);
-        mX=shot.mX+shot.getBitmap().getWidth()/2;
+        mX=shot.mX+shot.getBitmap().getWidth()/2-50;
         mY=shot.mY;
 
 

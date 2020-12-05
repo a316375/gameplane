@@ -103,7 +103,7 @@ public class DrawThread extends Thread {
                             golds.add(new GOLDS(gameSurfaceView.getContext(),btmap,500,0));
                         }
 
-                        if (shotLasers.size() <20) {
+                        if (shotLasers.size() <10) {
                             shotLasers.add(new ShotLaser(gameSurfaceView.getContext(), btmap,
                                     gameSurfaceView.getmScreenSizeX(), gameSurfaceView.getmScreenSizeY(), null, mshot));
                         }
