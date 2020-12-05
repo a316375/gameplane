@@ -3,6 +3,7 @@ package xyxgame.gameplane.GL;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -15,6 +16,7 @@ import xyxgame.gameplane.spaceshooter.BG;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 import xyxgame.gameplane.spaceshooter.Meteor;
 import xyxgame.gameplane.spaceshooter.Player;
+import xyxgame.gameplane.spaceshooter.SoundPlayer;
 
 public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -22,13 +24,50 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         shotLine=true;
         fps=new FPS();
         btmap=new BTMAP(mcontext);
-        shot = new Shot(mcontext, 100, 200, R.drawable.blue_button01);
+        mshot = new Shot(mcontext,btmap,mScreenSizeX,mScreenSizeY,null);
         bg=new BG(mcontext,btmap,mScreenSizeX,mScreenSizeY);
-        mPlay=new Player(mcontext,btmap,mScreenSizeX,mScreenSizeY,null);
-        meteor=new ArrayList<>();
+
+
+        spriteManager=new SpriteManager(btmap,4,new Point(100,100),new Point(100,1000));
+
+        shotLasers=new ArrayList<>();
+        for (int i = 0; i <20 ; i++) {
+            shotLasers.add(new ShotLaser(mcontext,btmap,mScreenSizeX,mScreenSizeY,null));
+        }
+
+        boss=new BOSS(btmap,4,new Point(500,100),new Point(500,1000));
 
     }
 
+//    private  void upResource(){
+//       thread= new UPThread(ismIsRun());
+//       thread.start();
+//
+//    }
+
+//    UPThread thread;
+//
+//    public UPThread getThread() {
+//        return thread;
+//    }
+
+    private BOSS boss;
+
+    public BOSS getBoss() {
+        return boss;
+    }
+
+    private ArrayList<ShotLaser> shotLasers;
+
+    public ArrayList<ShotLaser> getShotLasers() {
+        return shotLasers;
+    }
+
+    public SpriteManager getSpriteManager() {
+        return spriteManager;
+    }
+
+    private SpriteManager spriteManager;
     private BTMAP btmap;
 
     public BTMAP getBtmap() {
@@ -45,23 +84,12 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         return shotLine;
     }
 
-    private ArrayList<Meteor> meteor;
 
-    public ArrayList<Meteor>   getMeteor() {
-        return meteor;
+    public Shot getMshot() {
+        return mshot;
     }
 
-    public Player getmPlay() {
-        return mPlay;
-    }
-
-    public int getmCounter() {
-        return mCounter;
-    }
-
-    private int mCounter = 0;//控制
-
-    private Player mPlay;
+    private Shot mshot;
     private  boolean drawOK;
     private Context mcontext;
 
@@ -77,20 +105,14 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
     private   SurfaceHolder holder;
     private DrawThread drawThread;
-    private   Shot shot;
+
 
     public BG getBg() {
         return bg;
     }
 
     private BG bg;
-    public void setShot(Shot shot) {
-        this.shot = shot;
-    }
 
-    public Shot getShot() {
-        return shot;
-    }
 
     public boolean isDrawOK() {
         return drawOK;
@@ -114,6 +136,7 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         holder = getHolder();
         holder.addCallback(this);
         setResource();//设置加载的类有哪些并提供get方法,必须在此处声明初始化的数据，并且Thread 要从这里拿数据，否则会出错
+       // upResource();//更新资源，刷新怪物出现，设置时间
 
     }
 
@@ -179,8 +202,8 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 } else {
                     lastX = (int) event.getX();//保存手指临时值
                     lastY = (int) event.getY();
-                    pointX = getmPlay().getX();//保存飞机按下时候的原始位置
-                    pointY = getmPlay().getY();
+                    pointX = mshot.getX();//保存飞机按下时候的原始位置
+                    pointY = mshot.getY();
                 }
 
                 break;
@@ -189,7 +212,7 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                     pointXFix = (int) (pointX + (event.getX() - lastX));
                     pointYFix = (int) (pointY + (event.getY() - lastY));
 
-                    getmPlay().update(pointXFix, pointYFix);
+                    mshot.update(pointXFix, pointYFix);
 
                 }
                 break;

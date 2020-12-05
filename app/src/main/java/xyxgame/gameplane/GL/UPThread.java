@@ -1,19 +1,38 @@
 package xyxgame.gameplane.GL;
 
-public class UPThread extends Thread{
-    Shot shot;
-    boolean mIsRun;
+import java.util.concurrent.atomic.AtomicInteger;
 
-    public UPThread(Shot shot, boolean mIsRun) {
-        this.shot = shot;
-        this.mIsRun = mIsRun;
+public class UPThread extends Thread{
+      private AtomicInteger mCounter ;//控制
+
+    private boolean isGame;
+
+    public UPThread(boolean isGame) {
+        this.isGame = isGame;
+        mCounter=new AtomicInteger(0);
     }
 
     @Override
     public void run() {
-        while (true){
-          if (mIsRun)shot.upXY();
+        while (isGame) {
+
+            try {
+                 sleep(600);
+                mCounter.getAndIncrement();
+
+                if (mCounter.get() > 600) mCounter.set(0);
+                System.out.println(this.getName() +"---"+ mCounter);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+            }
         }
 
+
+
+    public AtomicInteger getmCounter() {
+        return this.mCounter;
     }
 }

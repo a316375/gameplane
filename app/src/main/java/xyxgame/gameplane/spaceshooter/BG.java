@@ -16,6 +16,7 @@ public class BG {
 
     public BG(Context context, BTMAP btmap,int screenSizeX, int screenSizeY) {
         this.bitmap  =btmap.getBitmaps().get(0);
+//       bitmap=Bitmap.createScaledBitmap(bitmap,bitmap.getWidth()/2,bitmap.getHeight(),false);
         y2 = y1 -bitmap.getHeight();
         this. screenSizeX=screenSizeX;
         this. screenSizeY=screenSizeY;

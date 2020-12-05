@@ -30,13 +30,20 @@ public class HuDie {
         return zeros.get((count/5)%times);
     }
 
+    public Bitmap getdemo() {
+        //start();
+
+        return btmap.getBitmaps().get(4);
+    }
 
 
 
+    BTMAP btmap;
 
     public HuDie(Context context, BTMAP btmap, int who, int times) {
         this.times=times;
         resource = btmap.getBitmaps().get(who);
+        this.btmap=btmap;
 
         zeros=new ArrayList<>();
         for (int i =0; i <times ; i++) {

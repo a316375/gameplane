@@ -3,44 +3,63 @@ package xyxgame.gameplane.GL;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-public class Shot {
-    int x;
+import xyxgame.gameplane.spaceshooter.Player;
+import xyxgame.gameplane.spaceshooter.SoundPlayer;
 
-    public void setX(int x) {
-        this.x = x;
+public class Shot   {
+
+
+    Context context;
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    int y;
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public Bitmap getBitmap() {
+        return bitmap;
     }
 
     Bitmap bitmap;
 
-    public Shot(Context context,int x, int y, int draw) {
-        this.x = x;
-        this.y = y;
-        bitmap = BitmapFactory.decodeResource(context.getResources(),draw);
+   int mX,mY;
+    BTMAP btmap;int screenSizeX;int screenSizeY;SoundPlayer soundPlayer;
+    public Shot(Context context, BTMAP btmap, int screenSizeX, int screenSizeY, SoundPlayer soundPlayer) {
+        this.context = context;
+        this.btmap = btmap;
+        this.screenSizeX = screenSizeX;
+        this.screenSizeY = screenSizeY;
+        this.soundPlayer = soundPlayer;
+        bitmap=btmap.getBitmaps().get(7);//7
+        mX = screenSizeX/2 - bitmap.getWidth()/2;
+        mY = screenSizeY - bitmap.getHeight() -200;
+
+    }
+
+    public int getY() {
+        return mY;
+    }
+
+    public int getX() {
+        return mX;
+    }
+
+    public void update(int pointXFix, int pointYFix) {
+        mX=pointXFix;
+        mY=pointYFix;
     }
 
 
-    public void upXY(){
-        setX(x+1);
-        setY(y+1);
+
+
+    public void draw(Canvas canvas, Paint paint){
+        if (!bitmap.isRecycled()){
+            canvas.drawBitmap(bitmap,mX,mY,paint);}
     }
 
-    public Bitmap getBitmap(){
-        return bitmap;
-    }
+
 
 }
+

@@ -53,7 +53,7 @@ public class Player extends HuDie{
         mContext = context;
         this.btmap=btmap;
 
-        mSpeed = 50;
+        mSpeed = 1;
          mBitmap = getResult(0);
 
 

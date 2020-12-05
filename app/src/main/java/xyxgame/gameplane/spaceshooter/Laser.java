@@ -72,17 +72,16 @@ public class Laser {
 
     //坐标移动
     public void update(){
-        if (mIsEnemy){
-              mY += mBitmap.getHeight() + 20;
 
-            mCollision.left = mX;
-            mCollision.top = mY;
-            mCollision.right = mX + mBitmap.getWidth();
-            mCollision.bottom = mY + mBitmap.getHeight();
+
+        if (mIsEnemy){
+              mY += mBitmap.getHeight() + 1;
+
+
         }else{
-             mY -= mBitmap.getHeight() - 20;
+             mY -= mBitmap.getHeight();
              if (mLevel==1){
-                 mY -= mBitmap.getHeight() - 10;
+                 mY -= mBitmap.getHeight() - 1;
              if (mleft==false){//右侧
                  mX+=mBitmap.getWidth()+1;}
              else {//左侧
@@ -90,11 +89,11 @@ public class Laser {
 
              }
 
-            mCollision.left = mX;
-            mCollision.top = mY;
-            mCollision.right = mX + mBitmap.getWidth();
-            mCollision.bottom = mY + mBitmap.getHeight();
         }
+        mCollision.left = mX;
+        mCollision.top = mY;
+        mCollision.right = mX + mBitmap.getWidth();
+        mCollision.bottom = mY + mBitmap.getHeight();
 
     }
 

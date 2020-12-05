@@ -146,7 +146,7 @@ public class GameView extends SurfaceView implements Runnable {
 
         //数障碍物
         for (Meteor m : mMeteors) {
-            m.update();
+            m.update(1);
 
             if (Rect.intersects(m.getCollision(), mPlayer.getCollision())) {
 //                m.destroy();
@@ -184,7 +184,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
         //障碍物数量产出频率
         if (mCounter % 50== 0) {
-            mMeteors.add(new Meteor(getContext(),btmap, mScreenSizeX, mScreenSizeY, mSoundPlayer));
+            mMeteors.add(new Meteor(getContext(),btmap, mScreenSizeX, mScreenSizeY, mSoundPlayer,1000));
 
         }
 
