@@ -19,6 +19,7 @@ public class ShotLaser extends Shot {
       Rect rect;
       private Bitmap bitmap;
 
+
     @Override
     public Bitmap getBitmap() {
         return bitmap;
