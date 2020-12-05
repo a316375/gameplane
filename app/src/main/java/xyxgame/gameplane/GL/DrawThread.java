@@ -267,7 +267,8 @@ public class DrawThread extends Thread {
                 e.printStackTrace();
             }
 
-            canvas.save();
+//            canvas.save();
+//            canvas.restore();
            holder.unlockCanvasAndPost(canvas);
 
         }
@@ -284,7 +285,7 @@ public class DrawThread extends Thread {
             paint.setColor(Color.WHITE);
             paint.setTextSize(30);
 
-            canvas.drawColor(Color.BLACK);
+             canvas.drawColor(Color.BLACK);
 
 
             updraw(canvas,paint);

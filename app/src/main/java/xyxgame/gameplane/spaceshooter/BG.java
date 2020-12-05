@@ -31,8 +31,8 @@ public class BG {
     }
 
     public void update(){
-        y1 +=1;
-        y2 +=1;
+        y1 +=2;
+        y2 +=2;
         if(y1>screenSizeY){
             y1 = y2 -bitmap.getHeight();
         }
