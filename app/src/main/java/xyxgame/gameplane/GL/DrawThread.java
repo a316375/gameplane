@@ -49,6 +49,7 @@ public class DrawThread extends Thread {
 
    // private  Shot shot;//你需要声明一个对象
     private BG bg;
+    private ButtonM buttonM;
 
     private volatile int mCounter;//控制
 
@@ -87,6 +88,7 @@ public class DrawThread extends Thread {
          sprites=gameSurfaceView.getSprites();
          golds=gameSurfaceView.getGolds();
 
+         buttonM=new ButtonM(new Point(50,1500),btmap);
 
 
         final Handler handler=new Handler();
@@ -156,31 +158,31 @@ public class DrawThread extends Thread {
             w.unlock();
         }
 
-
-
-
     }
 
 
     private synchronized   void updraw(Canvas canvas, Paint paint) {
         w.lock();
         try {
-        bg.draw(canvas,paint);
+        bg.draw(canvas,new Paint());
         //把他绘制到画布上
 
-       mshot.draw(canvas,paint);
+       mshot.draw(canvas,new Paint());
 
 
            for (ShotLaser s : shotLasers) {
-               if (!s.getBitmap().isRecycled() && shotLasers.size() > 0) s.draw(canvas, paint);
+               if (!s.getBitmap().isRecycled() && shotLasers.size() > 0) s.draw(canvas, new Paint());
            }
            for (SpriteManager s : sprites) {
-               if (!s.getBitmap().isRecycled() && sprites.size() > 0) s.draw(canvas, paint);
+               if (!s.getBitmap().isRecycled() && sprites.size() > 0) s.draw(canvas, new Paint());
            }
 
            for (GOLDS g : golds) {
-               if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas, paint);
+               if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas, new Paint());
            }
+
+            buttonM.draw(canvas,new Paint());
+
 
 }finally {
     w.unlock();
@@ -290,7 +292,7 @@ public class DrawThread extends Thread {
             paint.setColor(Color.WHITE);
             paint.setTextSize(30);
 
-             canvas.drawColor(Color.BLACK);
+            // canvas.drawColor(Color.BLACK);
 
 
             updraw(canvas,paint);
