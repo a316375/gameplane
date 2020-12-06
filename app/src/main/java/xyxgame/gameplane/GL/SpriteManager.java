@@ -80,14 +80,15 @@ public void setWidthandHight(int newwidth,int newheight){
     }
 
 
+
     public void draw(Canvas canvas ) {
 
         UPXY();
         cleanSelf();
 
         if (!bitmap.isRecycled()) {
-            canvas.drawBitmap(bitmap, selfxy.x, selfxy.y, new Paint());
-        }
+              canvas.drawBitmap(bitmap, selfxy.x, selfxy.y, new Paint());
+           }
 
 
 

@@ -31,6 +31,11 @@ public class GLActivity extends AppCompatActivity {
         //Membuat tampilan selalu menyala jika activity aktif
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+//        //硬件加速开启
+//        getWindow().setFlags(
+//                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+//                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+
         //Mendapatkan ukuran layar
         Display display = getWindowManager().getDefaultDisplay();
         Point point = new Point();

@@ -168,8 +168,10 @@ public class DrawThread extends Thread {
         try {
         bg.draw(canvas);
         //把他绘制到画布上
+            buttonM.draw(canvas);
+            boss.draw(canvas);
 
-       mshot.draw(canvas  );
+       mshot.draw(canvas);
 
 
            for (ShotLaser s : shotLasers) {
@@ -183,8 +185,7 @@ public class DrawThread extends Thread {
                if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas);
            }
 
-            buttonM.draw(canvas);
-           boss.draw(canvas);
+
 
 
 }finally {
