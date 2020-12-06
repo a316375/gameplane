@@ -289,7 +289,7 @@ public class GameView extends SurfaceView implements Runnable {
             mCanvas.drawColor(Color.BLACK);
 
            // mCanvas.drawBitmap(mBackground.getmBitmap(),0,0,mPaint);
-            mBackground.draw(mCanvas,mPaint);
+            mBackground.draw(mCanvas);
 
             //绘制帧率位置
             mPaint.setAntiAlias(true);

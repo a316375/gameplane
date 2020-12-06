@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -37,6 +38,9 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         golds=new ArrayList<>();
         shotLasers=new ArrayList<>();
         sprites=new ArrayList<>();
+        buttonM=new ButtonM(new Point(10,1500),btmap);
+        boss=new BOSS(btmap,new Point(500,200));
+
 
 
 
@@ -44,11 +48,12 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
 
 
 
+    private ButtonM buttonM;
 
-
-
-
-   // private BOSS boss;
+    public ButtonM getButtonM() {
+        return buttonM;
+    }
+// private BOSS boss;
 
 //    public BOSS getBoss() {
 //        return boss;
@@ -125,6 +130,12 @@ private ArrayList<SpriteManager> sprites;
         return mIsRun;
     }
 
+
+    public BOSS getBoss() {
+        return boss;
+    }
+
+    private  BOSS boss;
     boolean mIsRun;
     private FPS fps;
 
@@ -220,6 +231,10 @@ private ArrayList<SpriteManager> sprites;
                     lastY = (int) event.getY();
                     pointX = mshot.getX();//保存飞机按下时候的原始位置
                     pointY = mshot.getY();
+
+                    if (buttonM.rect.contains(lastX,lastY))
+                    buttonM.upxy();
+
                 }
 
                 break;

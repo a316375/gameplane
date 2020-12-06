@@ -24,9 +24,9 @@ public class BG {
 
 
 
-    public void draw(Canvas canvas, Paint paint){
-        canvas.drawBitmap(bitmap,0,y1,paint);
-        canvas.drawBitmap(bitmap,0,y2,paint);
+    public void draw(Canvas canvas){
+        canvas.drawBitmap(bitmap,0,y1,new Paint());
+        canvas.drawBitmap(bitmap,0,y2,new Paint());
         update();
     }
 

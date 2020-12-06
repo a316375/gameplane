@@ -9,7 +9,7 @@ import android.graphics.Rect;
 public class ButtonM {
     Bitmap bitmap;
     int mX,mY;
-    Onclick onclick;
+
     ButtonM buttonM;
     Point point;
 
@@ -25,17 +25,20 @@ public class ButtonM {
 
     }
 
-    public void draw(Canvas canvas, Paint paint){
+    public void draw(Canvas canvas ){
         if (!bitmap.isRecycled()) {
-            canvas.drawBitmap(bitmap,mX,mY,paint);
+            canvas.drawBitmap(bitmap,mX,mY,new Paint());
         }
     }
 
-    public void setOnclickListener(Onclick onclick){
-        this.onclick=onclick;
+
+
+    public void upxy() {
+        if (bitmap.getWidth()<=300){
+        bitmap=Bitmap.createScaledBitmap(bitmap,(int)(bitmap.getWidth()*1.2f),(int)(bitmap.getHeight()*1.2f),false);
+        rect=new Rect(mX,mY,mX+bitmap.getWidth(),mY+bitmap.getHeight());
+        }
     }
 
-    interface Onclick{
-        void setOnClickLister(boolean success);
-    }
+
 }

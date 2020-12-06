@@ -65,8 +65,9 @@ public class DrawThread extends Thread {
 
      private ArrayList<ShotLaser> shotLasers;
 
-    // private BOSS boss;
+   private BOSS boss;
     private ArrayList<SpriteManager> sprites;
+
 
     private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
     private final Lock r = rwl.readLock();
@@ -88,7 +89,8 @@ public class DrawThread extends Thread {
          sprites=gameSurfaceView.getSprites();
          golds=gameSurfaceView.getGolds();
 
-         buttonM=new ButtonM(new Point(50,1500),btmap);
+         buttonM=gameSurfaceView.getButtonM();
+         boss=gameSurfaceView.getBoss();
 
 
         final Handler handler=new Handler();
@@ -164,7 +166,7 @@ public class DrawThread extends Thread {
     private synchronized   void updraw(Canvas canvas, Paint paint) {
         w.lock();
         try {
-        bg.draw(canvas,new Paint());
+        bg.draw(canvas);
         //把他绘制到画布上
 
        mshot.draw(canvas  );
@@ -181,7 +183,8 @@ public class DrawThread extends Thread {
                if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas);
            }
 
-            buttonM.draw(canvas,new Paint());
+            buttonM.draw(canvas);
+           boss.draw(canvas);
 
 
 }finally {
