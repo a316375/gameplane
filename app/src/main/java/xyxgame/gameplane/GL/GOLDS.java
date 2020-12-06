@@ -18,9 +18,9 @@ public class GOLDS {
         this.mY=mY;
     }
 
-    public void draw(Canvas canvas, Paint paint){
+    public void draw(Canvas canvas){
         if (!bitmap.isRecycled()) {
-            canvas.drawBitmap(bitmap,mX,mY,paint);
+            canvas.drawBitmap(bitmap,mX,mY,new Paint());
         }
         mY+=10;
         if (mY>2500)bitmap.recycle();

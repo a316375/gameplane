@@ -41,9 +41,9 @@ public class ShotLaser extends Shot {
     }
 
     @Override
-    public void draw(Canvas canvas, Paint paint) {
+    public void draw(Canvas canvas ) {
         if (!bitmap.isRecycled()){
-            canvas.drawBitmap(bitmap,mX,mY,paint);
+            canvas.drawBitmap(bitmap,mX,mY,new Paint());
             upXY();
          }
 

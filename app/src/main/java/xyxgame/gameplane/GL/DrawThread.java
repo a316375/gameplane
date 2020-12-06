@@ -167,18 +167,18 @@ public class DrawThread extends Thread {
         bg.draw(canvas,new Paint());
         //把他绘制到画布上
 
-       mshot.draw(canvas,new Paint());
+       mshot.draw(canvas  );
 
 
            for (ShotLaser s : shotLasers) {
-               if (!s.getBitmap().isRecycled() && shotLasers.size() > 0) s.draw(canvas, new Paint());
+               if (!s.getBitmap().isRecycled() && shotLasers.size() > 0) s.draw(canvas);
            }
            for (SpriteManager s : sprites) {
-               if (!s.getBitmap().isRecycled() && sprites.size() > 0) s.draw(canvas, new Paint());
+               if (!s.getBitmap().isRecycled() && sprites.size() > 0) s.draw(canvas );
            }
 
            for (GOLDS g : golds) {
-               if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas, new Paint());
+               if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas);
            }
 
             buttonM.draw(canvas,new Paint());
