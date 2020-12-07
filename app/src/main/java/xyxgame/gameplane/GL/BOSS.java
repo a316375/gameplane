@@ -87,37 +87,38 @@ public class BOSS    {
         return bitmap;
     }
 
-    public  void draw(Canvas canvas){
+    public  void draw(Canvas canvas) {
 
-        if (gameSurfaceView.isBossboo()) {
-            run = run % times;
-            Iterator<Bitmap> bitmapIterator = bitmaps.iterator();
+        if (gameSurfaceView.ismIsRun()) {
+            if (gameSurfaceView.isBossboo()) {
+                run = run % times;
+                Iterator<Bitmap> bitmapIterator = bitmaps.iterator();
 //            if (j<=times*m*10) {
-            j++;
-            if (j > 200) j = 0;
+                j++;
+                if (j > 200) j = 0;
 //                mY-=2;
 //                if (mY<=0)mY=2000;
 //            }
-            // if (j>times*m*10){//这个帧动画循环了10次播放量所以*10
+                // if (j>times*m*10){//这个帧动画循环了10次播放量所以*10
 
 //                while (bitmapIterator.hasNext()){
 //                    bitmapIterator.next().recycle();
 //                    bitmapIterator.remove();
 //                 }
 
-            //   }
+                //   }
 
-            if (bitmaps != null && bitmapIterator.hasNext() && !bitmaps.get(run).isRecycled()) {
-                canvas.drawBitmap(bitmaps.get(run), mX, mY, new Paint());
+                if (bitmaps != null && bitmapIterator.hasNext() && !bitmaps.get(run).isRecycled()) {
+                    canvas.drawBitmap(bitmaps.get(run), mX, mY, new Paint());
+                }
+
+
+                if (j % 5 == 0) run++;//每间隔m循环才去刷新帧动画
+
+
             }
-
-
-            if (j % 5 == 0) run++;//每间隔m循环才去刷新帧动画
-
-
         }
-      }
-
+    }
 
     public void resetXY( Point point) {
         mX=point.x;

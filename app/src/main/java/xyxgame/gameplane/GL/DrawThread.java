@@ -199,9 +199,6 @@ public class DrawThread extends Thread {
 
 
 
-
-
-
 }finally {
     w.unlock();
 }
@@ -213,10 +210,7 @@ public class DrawThread extends Thread {
                public void run() {
                    if (gameSurfaceView.ismIsRun()) {
                        //spriteManager.destory(play.getLasers());//消除碰撞的逻辑,由于改写了play以及子弹类，此处待续
-                       laserBoob();//子弹碰撞回收逻辑
-
-
-                   }
+                      }
                }
            }).start();
 
@@ -316,12 +310,11 @@ public class DrawThread extends Thread {
             // 不停绘制界面
             while (gameSurfaceView.ismIsRun()) {
 
+                laserBoob();//首先判断逻辑消除资源 子弹碰撞回收逻辑
+                upClear();//判断后清除对象，对集合进行清理
+                drawUI();//根据集合去绘制对象
 
-                    upClear();//判断后清除对象逻辑以释放内存
 
-                    drawUI();//绘制对象
-
-//                  laserBoob();//子弹碰撞回收逻辑
 
 
 
