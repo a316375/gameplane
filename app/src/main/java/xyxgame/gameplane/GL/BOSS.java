@@ -93,9 +93,8 @@ public class BOSS    {
             if (gameSurfaceView.isBossboo()) {
                 run = run % times;
                 Iterator<Bitmap> bitmapIterator = bitmaps.iterator();
-//            if (j<=times*m*10) {
-                j++;
-                if (j > 200) j = 0;
+            if (j<=times*m*5) {j++;}
+            if (j > times*m*5) {j = 0; setIsover(true);run=0;}
 //                mY-=2;
 //                if (mY<=0)mY=2000;
 //            }
@@ -113,7 +112,7 @@ public class BOSS    {
                 }
 
 
-                if (j % 5 == 0) run++;//每间隔m循环才去刷新帧动画
+                if (j % m == 0) run++;//每间隔m循环才去刷新帧动画
 
 
             }

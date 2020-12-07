@@ -104,7 +104,7 @@ public class DrawThread extends Thread {
                     w.lock();
                     try {
 
-                       gameSurfaceView.setBossboo(false);
+                      if (boss.isIsover())gameSurfaceView.setBossboo(false);
 
                         if (golds.size()<5){
                             golds.add(new GOLDS(gameSurfaceView.getContext(),btmap,500,0));
@@ -220,7 +220,6 @@ public class DrawThread extends Thread {
 
 
 
-    boolean booo=false;
 
     //子弹爆炸逻辑
     private void laserBoob() {
@@ -244,6 +243,7 @@ public class DrawThread extends Thread {
                         -(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getWidth())/2,
                         shotLasers.get(i).rect.top-(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getHeight())/2));
                     gameSurfaceView.setBossboo(true);
+                  boss.setIsover(false);
                 }
 
             }
@@ -262,6 +262,7 @@ public class DrawThread extends Thread {
                         -(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getWidth())/2,
                         shotLasers.get(i).rect.top-(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getHeight())/2));
                     gameSurfaceView.setBossboo(true);
+                    boss.setIsover(false);
                 }
 
             }
