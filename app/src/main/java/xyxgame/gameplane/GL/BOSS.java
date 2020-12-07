@@ -49,6 +49,8 @@ public class BOSS    {
         this.mY=point.y;
         rect=new Rect(mX,mY,mX+bitmap.getWidth(),mY+bitmap.getHeight());
 
+
+
           try {
               bitmaps=new ArrayList<>();
               for (int i = 0; i < times; i++) {
@@ -73,15 +75,9 @@ public class BOSS    {
     int run=0;int j=0,m=5;
 
 
-    public boolean isIsover() {
-        return isover;
-    }
 
-    public void setIsover(boolean isover) {
-        this.isover = isover;
-    }
-
-    private boolean isover=false;
+    int finish=1,unfinish=0;
+    int lock=unfinish;
 
     public Bitmap getBitmap() {
         return bitmap;
@@ -89,39 +85,31 @@ public class BOSS    {
 
     public  void draw(Canvas canvas) {
 
+
         if (gameSurfaceView.ismIsRun()) {
-            if (gameSurfaceView.isBossboo()) {
-                run = run % times;
-                Iterator<Bitmap> bitmapIterator = bitmaps.iterator();
-            if (j<=times*m*5) {j++;}
-            if (j > times*m*5) {j = 0; setIsover(true);run=0;}
-//                mY-=2;
-//                if (mY<=0)mY=2000;
-//            }
-                // if (j>times*m*10){//这个帧动画循环了10次播放量所以*10
 
-//                while (bitmapIterator.hasNext()){
-//                    bitmapIterator.next().recycle();
-//                    bitmapIterator.remove();
-//                 }
-
-                //   }
-
-                if (bitmaps != null && bitmapIterator.hasNext() && !bitmaps.get(run).isRecycled()) {
-                    canvas.drawBitmap(bitmaps.get(run), mX, mY, new Paint());
-                }
+           if (gameSurfaceView.isBossboo()) {
+               run = run % times;
 
 
-                if (j % m == 0) run++;//每间隔m循环才去刷新帧动画
-
+           if ( bitmaps != null &&  !bitmaps.get(run).isRecycled())
+           {
+               if (lock==unfinish)canvas.drawBitmap(bitmaps.get(run), mX, mY, new Paint());}
+             if (j %5== 0) run++;//每间隔m循环才去刷新帧动画
 
             }
+            j++;
+            if (j > 50) {j = 0; lock=finish; gameSurfaceView.setBossboo(false); run=0;}
+
+
         }
     }
 
     public void resetXY( Point point) {
+        if (lock==finish){
         mX=point.x;
         mY=point.y;
+        }
     }
 }
 

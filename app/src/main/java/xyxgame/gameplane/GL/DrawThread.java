@@ -104,7 +104,10 @@ public class DrawThread extends Thread {
                     w.lock();
                     try {
 
-                      if (boss.isIsover())gameSurfaceView.setBossboo(false);
+                           if (gameSurfaceView.isBossboo()){
+                               //去检查一下，判断是否完成了循环，重新开启爆炸特效
+                               if (boss.lock==boss.finish){ boss.lock=boss.unfinish;}
+                           }
 
                         if (golds.size()<5){
                             golds.add(new GOLDS(gameSurfaceView.getContext(),btmap,500,0));
@@ -224,52 +227,60 @@ public class DrawThread extends Thread {
     //子弹爆炸逻辑
     private void laserBoob() {
 
-        for (int i = 0; i < shotLasers.size(); i++) {
-            //对金币的操作
-            laserDosomeThing(i,golds);
-            laserDosomeThing1(i,sprites);
+         w.lock();
+        try {
+            Iterator<ShotLaser> s=shotLasers.iterator();
+              while (s.hasNext()){
+                ShotLaser shotLaser=s.next();
 
-        }
-    }
+                Iterator<SpriteManager> s1=sprites.iterator();
+                 while (s1.hasNext()){
+                 SpriteManager spriteManager=s1.next();
+                    if (Rect.intersects(shotLaser.rect,spriteManager.rect)){
+                        gameSurfaceView.setBossboo(true);
+                        Point point = new Point(shotLaser.rect.left
+                                - (boss.bitmaps.get(0).getWidth() - spriteManager.bitmap.getWidth()) / 2,
+                                shotLaser.rect.top - (boss.bitmaps.get(0).getWidth() - spriteManager.bitmap.getHeight()) / 2);
+                        boss.resetXY(point);
+                        shotLaser.getBitmap().recycle();
+                        spriteManager.getBitmap().recycle();
+                    }
 
-    private void laserDosomeThing(int i,ArrayList<GOLDS> arrayList){
-        for (int j = 0; j < arrayList.size() ; j++) {
-            if (Rect.intersects(shotLasers.get(i).rect,arrayList.get(j).rect)){
-                shotLasers.get(i).getBitmap().recycle();
-                arrayList.get(j).bitmap.recycle();
-
-                if (shotLasers.size()>0)
-                {boss.resetXY(new Point(shotLasers.get(i).rect.left
-                        -(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getWidth())/2,
-                        shotLasers.get(i).rect.top-(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getHeight())/2));
-                    gameSurfaceView.setBossboo(true);
-                  boss.setIsover(false);
                 }
 
-            }
+                  Iterator<GOLDS> goldsIterator=golds.iterator();
+                  while (goldsIterator.hasNext()){
+                      GOLDS golds=goldsIterator.next();
+                      if (Rect.intersects(shotLaser.rect,golds.rect)){
+                          gameSurfaceView.setBossboo(true);
+                          Point point = new Point(golds.rect.left
+                                  - (boss.bitmaps.get(0).getWidth() - golds.bitmap.getWidth()) / 2,
+                                  golds.rect.top - (boss.bitmaps.get(0).getWidth() - golds.bitmap.getHeight()) / 2);
+                          boss.resetXY(point);
+                          shotLaser.getBitmap().recycle();
+                          golds.getBitmap().recycle();
+                      }
 
+
+                  }
+
+
+
+
+
+
+            }
+        }finally {
+            w.unlock();
         }
 
-    }
-    private void laserDosomeThing1(int i,ArrayList<SpriteManager> arrayList){
-        for (int j = 0; j < arrayList.size() ; j++) {
-            if (Rect.intersects(shotLasers.get(i).rect,arrayList.get(j).rect)){
-                shotLasers.get(i).getBitmap().recycle();
-                arrayList.get(j).bitmap.recycle();
 
-                if (shotLasers.size()>0)
-                {boss.resetXY(new Point(shotLasers.get(i).rect.left
-                        -(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getWidth())/2,
-                        shotLasers.get(i).rect.top-(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getHeight())/2));
-                    gameSurfaceView.setBossboo(true);
-                    boss.setIsover(false);
-                }
 
-            }
-
-        }
 
     }
+
+
+
 
 
 
@@ -310,6 +321,7 @@ public class DrawThread extends Thread {
 
             // 不停绘制界面
             while (gameSurfaceView.ismIsRun()) {
+
 
                 laserBoob();//首先判断逻辑消除资源 子弹碰撞回收逻辑
                 upClear();//判断后清除对象，对集合进行清理
