@@ -104,7 +104,7 @@ public class DrawThread extends Thread {
                     w.lock();
                     try {
 
-                        boss.resetXY(new Point(new Random().nextInt(1000),new Random().nextInt(1000)));
+                       gameSurfaceView.setBossboo(false);
 
                         if (golds.size()<5){
                             golds.add(new GOLDS(gameSurfaceView.getContext(),btmap,500,0));
@@ -145,8 +145,10 @@ public class DrawThread extends Thread {
 
         for (Iterator<ShotLaser> ls = shotLasers.iterator(); ls.hasNext();){
             while (ls.hasNext()){
+
                 if (ls.next().getBitmap().isRecycled())
-                    ls.remove();}
+                    ls.remove();
+                }
         }
 
         for (Iterator<SpriteManager> ls = sprites.iterator(); ls.hasNext();){
@@ -160,6 +162,9 @@ public class DrawThread extends Thread {
                 if (ls.next().bitmap.isRecycled())
                     ls.remove();}
         }
+
+
+
 
         }finally {
             w.unlock();
@@ -176,18 +181,20 @@ public class DrawThread extends Thread {
             buttonM.draw(canvas);
             boss.draw(canvas);
 
-       mshot.draw(canvas);
+            mshot.draw(canvas);
 
 
            for (Iterator<ShotLaser> s= shotLasers.iterator();s.hasNext();) {
-                s.next().draw(canvas);
-           }
+              while (s.hasNext()) {s.next().draw(canvas); }
+            }
+
+
 
             for (Iterator<SpriteManager> s= sprites.iterator();s.hasNext();) {
-                s.next().draw(canvas);
+                while (s.hasNext())  s.next().draw(canvas);
             }
             for (Iterator<GOLDS> s= golds.iterator();s.hasNext();) {
-                s.next().draw(canvas);
+                while (s.hasNext())   s.next().draw(canvas);
             }
 
 
@@ -206,16 +213,71 @@ public class DrawThread extends Thread {
                public void run() {
                    if (gameSurfaceView.ismIsRun()) {
                        //spriteManager.destory(play.getLasers());//消除碰撞的逻辑,由于改写了play以及子弹类，此处待续
+                       laserBoob();//子弹碰撞回收逻辑
+
+
                    }
                }
            }).start();
 
 
+    }
 
 
 
+
+    boolean booo=false;
+
+    //子弹爆炸逻辑
+    private void laserBoob() {
+
+        for (int i = 0; i < shotLasers.size(); i++) {
+            //对金币的操作
+            laserDosomeThing(i,golds);
+            laserDosomeThing1(i,sprites);
+
+        }
+    }
+
+    private void laserDosomeThing(int i,ArrayList<GOLDS> arrayList){
+        for (int j = 0; j < arrayList.size() ; j++) {
+            if (Rect.intersects(shotLasers.get(i).rect,arrayList.get(j).rect)){
+                shotLasers.get(i).getBitmap().recycle();
+                arrayList.get(j).bitmap.recycle();
+
+                if (shotLasers.size()>0)
+                {boss.resetXY(new Point(shotLasers.get(i).rect.left
+                        -(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getWidth())/2,
+                        shotLasers.get(i).rect.top-(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getHeight())/2));
+                    gameSurfaceView.setBossboo(true);
+                }
+
+            }
+
+        }
 
     }
+    private void laserDosomeThing1(int i,ArrayList<SpriteManager> arrayList){
+        for (int j = 0; j < arrayList.size() ; j++) {
+            if (Rect.intersects(shotLasers.get(i).rect,arrayList.get(j).rect)){
+                shotLasers.get(i).getBitmap().recycle();
+                arrayList.get(j).bitmap.recycle();
+
+                if (shotLasers.size()>0)
+                {boss.resetXY(new Point(shotLasers.get(i).rect.left
+                        -(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getWidth())/2,
+                        shotLasers.get(i).rect.top-(boss.bitmaps.get(0).getWidth()-arrayList.get(j).bitmap.getHeight())/2));
+                    gameSurfaceView.setBossboo(true);
+                }
+
+            }
+
+        }
+
+    }
+
+
+
 
     //以后需要更新可在上面修改代码
     //以下是逻辑编辑
@@ -259,12 +321,13 @@ public class DrawThread extends Thread {
 
                     drawUI();//绘制对象
 
+//                  laserBoob();//子弹碰撞回收逻辑
+
 
 
 
         }
     }
-
 
 
 

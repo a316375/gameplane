@@ -39,13 +39,23 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         shotLasers=new ArrayList<>();
         sprites=new ArrayList<>();
         buttonM=new ButtonM(new Point(10,1500),btmap);
-        boss=new BOSS(btmap,new Point(500,1500));
+        boss=new BOSS(this,new Point(500,1500));
 
 
 
 
     }
 
+
+    public void setBossboo(boolean bossboo) {
+        this.bossboo = bossboo;
+    }
+
+    public boolean isBossboo() {
+        return bossboo;
+    }
+
+    private boolean bossboo=false;
 
 
     private ButtonM buttonM;

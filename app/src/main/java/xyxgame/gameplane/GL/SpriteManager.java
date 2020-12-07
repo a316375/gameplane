@@ -20,7 +20,7 @@ public  class SpriteManager   {
         return bitmap;
     }
 
-    private Bitmap bitmap;
+     Bitmap bitmap;
     Point selfxy,cirxy;
     float angle=0;
     public Rect getRect() {
