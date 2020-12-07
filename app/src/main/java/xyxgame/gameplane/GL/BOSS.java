@@ -21,6 +21,15 @@ import xyxgame.gameplane.spaceshooter.Laser;
 public class BOSS    {
 
     Bitmap bitmap;
+
+    public void setmX(int mX) {
+        this.mX = mX;
+    }
+
+    public void setmY(int mY) {
+        this.mY = mY;
+    }
+
     int mX,mY;
     int MoveX1,MoveX2;
     Rect rect;
@@ -59,21 +68,25 @@ public class BOSS    {
 
     //run=循环读取，
     //j定时回收
-    int run=0,j=0,m=5;
+    int run=0;int j=0,m=5;
 
     public  void draw(Canvas canvas){
 
            run=run%times;
             Iterator<Bitmap> bitmapIterator=bitmaps.iterator();
-            if (j<=times*m*10) {j++; mY-=2; if (mY<=0)mY=2000;}
-            if (j>times*m*10){//这个帧动画循环了10次播放量所以*10
+//            if (j<=times*m*10) {
+                j++;if (j>200)j=0;
+//                mY-=2;
+//                if (mY<=0)mY=2000;
+//            }
+           // if (j>times*m*10){//这个帧动画循环了10次播放量所以*10
 
-                while (bitmapIterator.hasNext()){
-                    bitmapIterator.next().recycle();
-                    bitmapIterator.remove();
-                 }
+//                while (bitmapIterator.hasNext()){
+//                    bitmapIterator.next().recycle();
+//                    bitmapIterator.remove();
+//                 }
 
-            }
+         //   }
 
             if (bitmaps!=null&&bitmapIterator.hasNext()&&!bitmaps.get(run).isRecycled() ){
                 canvas.drawBitmap(bitmaps.get(run),mX,mY,new Paint());
@@ -81,7 +94,8 @@ public class BOSS    {
 
 
 
-        if (j%m==0)   run++;//每间隔m循环才去刷新帧动画
+        if (j%5==0)
+            run++;//每间隔m循环才去刷新帧动画
 
 
 
@@ -89,8 +103,10 @@ public class BOSS    {
       }
 
 
-
-
+    public void resetXY( Point point) {
+        mX=point.x;
+        mY=point.y;
+    }
 }
 
 

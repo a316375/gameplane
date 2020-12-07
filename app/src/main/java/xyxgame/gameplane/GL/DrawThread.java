@@ -103,6 +103,9 @@ public class DrawThread extends Thread {
                 if (gameSurfaceView.ismIsRun()) {
                     w.lock();
                     try {
+
+                        boss.resetXY(new Point(new Random().nextInt(1000),new Random().nextInt(1000)));
+
                         if (golds.size()<5){
                             golds.add(new GOLDS(gameSurfaceView.getContext(),btmap,500,0));
                         }
@@ -137,6 +140,8 @@ public class DrawThread extends Thread {
 
         w.lock();
         try {
+
+
 
         for (Iterator<ShotLaser> ls = shotLasers.iterator(); ls.hasNext();){
             while (ls.hasNext()){
@@ -174,16 +179,18 @@ public class DrawThread extends Thread {
        mshot.draw(canvas);
 
 
-           for (ShotLaser s : shotLasers) {
-               if (!s.getBitmap().isRecycled() && shotLasers.size() > 0) s.draw(canvas);
-           }
-           for (SpriteManager s : sprites) {
-               if (!s.getBitmap().isRecycled() && sprites.size() > 0) s.draw(canvas );
+           for (Iterator<ShotLaser> s= shotLasers.iterator();s.hasNext();) {
+                s.next().draw(canvas);
            }
 
-           for (GOLDS g : golds) {
-               if (!g.getBitmap().isRecycled() && golds.size() > 0) g.draw(canvas);
-           }
+            for (Iterator<SpriteManager> s= sprites.iterator();s.hasNext();) {
+                s.next().draw(canvas);
+            }
+            for (Iterator<GOLDS> s= golds.iterator();s.hasNext();) {
+                s.next().draw(canvas);
+            }
+
+
 
 
 
