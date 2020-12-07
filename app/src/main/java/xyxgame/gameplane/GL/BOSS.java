@@ -53,7 +53,8 @@ public class BOSS    {
               for (int i = 0; i < times; i++) {
                   Bitmap bitmap1 = Bitmap.createBitmap(this.bitmap,this. bitmap.getWidth() * i / times, 0,
                           this.bitmap.getWidth() / times, this.bitmap.getHeight());
-                  bitmaps.add( Bitmap.createScaledBitmap(bitmap1,bitmap1.getWidth(),bitmap1.getHeight(),false));
+//                  bitmaps.add( Bitmap.createScaledBitmap(bitmap1,bitmap1.getWidth(),bitmap1.getHeight(),false));
+                  bitmaps.add(bitmap1);
               }
 
           }finally {
