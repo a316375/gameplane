@@ -36,13 +36,16 @@ public class BTMAP {
         bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.spaceship_1_blue,options));//7
         bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.bg3,options));//8
         bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.c2a,options));//9帧动画
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.a002,options));//10
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
-        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1));
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.a002,options)); //10
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.a003,options)); //11
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.b_001,options));//12
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.a002,options));
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.c_001,options));//14
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1,options));
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1,options));
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1,options));
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1,options));
+        bitmaps.add(BitmapFactory.decodeResource(context.getResources(),R.drawable.laser_1,options));
 
     }
 

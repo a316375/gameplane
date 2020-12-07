@@ -26,26 +26,33 @@ public class BOSS    {
     Rect rect;
 
     ArrayList<Bitmap> bitmaps;
-    private  int times=5;
+    private  int times=10;
 
 
 
 
 
     public BOSS(BTMAP btmap,Point point) {
-        this.bitmap = btmap.getBitmaps().get(10);
-        bitmap=Bitmap.createScaledBitmap(bitmap,400*times,400,false);
+        this.bitmap = btmap.getBitmaps().get(12);
+        bitmap=Bitmap.createScaledBitmap(bitmap,500*times,500,false);
         this.mX=point.x;
         this.mY=point.y;
         rect=new Rect(mX,mY,mX+bitmap.getWidth(),mY+bitmap.getHeight());
 
+          try {
+              bitmaps=new ArrayList<>();
+              for (int i = 0; i < times; i++) {
+                  Bitmap bitmap1 = Bitmap.createBitmap(this.bitmap,this. bitmap.getWidth() * i / times, 0,
+                          this.bitmap.getWidth() / times, this.bitmap.getHeight());
+                  bitmaps.add( Bitmap.createScaledBitmap(bitmap1,bitmap1.getWidth(),bitmap1.getHeight(),false));
+              }
 
-        bitmaps=new ArrayList<>();
-        for (int i = 0; i < times; i++) {
-            Bitmap bitmap1 = Bitmap.createBitmap(this.bitmap,this. bitmap.getWidth() * i / times, 0,
-                    this.bitmap.getWidth() / times, this.bitmap.getHeight());
-             bitmaps.add( Bitmap.createScaledBitmap(bitmap1,bitmap1.getWidth(),bitmap1.getHeight(),false));
-        }
+          }finally {
+              bitmap.recycle();
+              bitmap=null;
+
+             }
+
 
     }
 
@@ -58,7 +65,7 @@ public class BOSS    {
 
            run=run%times;
             Iterator<Bitmap> bitmapIterator=bitmaps.iterator();
-            if (j<=times*200) j++;
+            if (j<=times*200) {j++; mY-=2; if (mY<=0)mY=2000;}
             if (j>times*200){
 
                 while (bitmapIterator.hasNext()){
@@ -72,7 +79,11 @@ public class BOSS    {
                 canvas.drawBitmap(bitmaps.get(run),mX,mY,new Paint());
             }
 
-        if (j%10==0)   run++;
+
+
+        if (j%5==0)   run++;
+
+
 
 
       }
