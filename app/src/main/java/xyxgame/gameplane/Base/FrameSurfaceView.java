@@ -32,7 +32,9 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
     public FrameSurfaceView(Context context, NUMManager numManager) {
         super(context,numManager);
-        bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,numManager.scx,numManager.scy);
+    //    bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,400,480);
+        bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,400,480);
+
 
 
 
@@ -61,12 +63,12 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
     @Override
     protected void onThreadDraw(Canvas canvas) {
         if (j<=1000)j++;
-        if (effects.size()<=2&&j%5==0){
+        if (effects.size()<=20&&j%5==0){
             Effect effect = new Effect( bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
             effects.add(effect);
         }
 
-        canvas.drawBitmap(bitmap,0,1,null);
+        canvas.drawBitmap(bitmap,0,0,null);
 
         for (Effect effect:effects){
             effect.draw(canvas);
