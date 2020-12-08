@@ -17,6 +17,8 @@ import xyxgame.gameplane.spaceshooter.GameView;
 
 public class GLActivity extends AppCompatActivity {
     private GameSurfaceView mGameView;
+    private FrameSurfaceView frameSurfaceView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +49,7 @@ public class GLActivity extends AppCompatActivity {
         mGameView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
       //  setContentView(mGameView);
 
-        FrameSurfaceView frameSurfaceView=new FrameSurfaceView(this);
+        frameSurfaceView = new FrameSurfaceView(this);
         setContentView(frameSurfaceView);
     }
 
@@ -55,6 +57,7 @@ public class GLActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         mGameView.resume();
+        frameSurfaceView.startT();
         super.onResume();
 
 
@@ -63,6 +66,7 @@ public class GLActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         mGameView.pause();
+        frameSurfaceView.stopT();
         super.onPause();
 
     }

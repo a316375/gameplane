@@ -14,8 +14,8 @@ import java.util.Random;
 public class Effect {
    public ArrayList<Bitmap> bitmaps;//传入一张Bitmap
 
-    Point point;//一个坐标点
-    int mX,mY;
+    public   Point point;//一个坐标点
+    public  int mX,mY;
 
     public Effect(ArrayList<Bitmap> bitmaps,  Point point) {
         this.bitmaps = bitmaps;
@@ -23,8 +23,6 @@ public class Effect {
         this.point=point;
         this.mX=point.x;
         this.mY=point.y;
-
-
 
 
     }

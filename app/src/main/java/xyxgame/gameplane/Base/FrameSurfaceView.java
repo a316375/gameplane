@@ -65,6 +65,21 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
     }
 
+    @Override
+    protected void onThreadDraw(Canvas canvas) {
+        if (j<=1000)j++;
+        if (effects.size()<=20&&j%5==0){
+            Effect effect = new Effect( bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
+            effects.add(effect);
+        }
+        canvas.drawBitmap(bitmap,0,1,null);
+
+        for (Effect effect:effects){
+            effect.draw(canvas);
+        }
+        fps.draw(canvas);
+    }
+
     int j;
 
     @Override
@@ -73,22 +88,11 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
     }
 
     @Override
-    protected void onFrameDraw(Canvas canvas) {
-
-
-        if (j<=1000)j++;
-            if (effects.size()<=20&&j%5==0){
-               Effect effect = new Effect( bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
-               effects.add(effect);
-           }
-        canvas.drawBitmap(bitmap,0,1,null);
-
+    protected void onFrameDraw() {
         for (Effect effect:effects){
-            effect.draw(canvas);
+            effect.mY=new Random().nextInt(1500);
         }
-
-        fps.draw(canvas);
-    }
+  }
 
 
 
