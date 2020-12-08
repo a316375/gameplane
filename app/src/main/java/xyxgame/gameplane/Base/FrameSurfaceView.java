@@ -72,11 +72,13 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
             Effect effect = new Effect( bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
             effects.add(effect);
         }
+
         canvas.drawBitmap(bitmap,0,1,null);
 
         for (Effect effect:effects){
             effect.draw(canvas);
         }
+
         fps.draw(canvas);
     }
 
@@ -87,12 +89,14 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
     }
 
-    @Override
-    protected void onFrameDraw() {
-        for (Effect effect:effects){
-            effect.mY=new Random().nextInt(1500);
-        }
-  }
+
+
+
+    protected void onFrameDraw( ) {
+
+
+
+    }
 
 
 
