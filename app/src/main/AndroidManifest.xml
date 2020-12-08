@@ -32,7 +32,10 @@
             android:screenOrientation="nosensor"/>
         <activity android:name=".GL.GLActivity"
             android:screenOrientation="nosensor"
-            ></activity>
+            />
+        <activity android:name=".Base.MVVMActivity"
+            android:screenOrientation="nosensor"
+            />
     </application>
 
 </manifest>
