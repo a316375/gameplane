@@ -30,7 +30,7 @@ public class FPS {
         paint.setAntiAlias(true);
         paint.setFakeBoldText(true);               // if you like bold
         paint.setShadowLayer(5, 5, 5, Color.GRAY); // add shadow
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.RED);
         paint.setTextSize(30);
         canvas.drawText("FPS:"+(int)fps(),100,100,paint);
     }

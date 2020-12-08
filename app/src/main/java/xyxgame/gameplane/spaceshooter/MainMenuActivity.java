@@ -9,13 +9,15 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import xyxgame.gameplane.Acache.AcacheActivity;
+import xyxgame.gameplane.Acache.AcacheSurfaceView;
 import xyxgame.gameplane.Base.MVVMActivity;
 import xyxgame.gameplane.GL.GLActivity;
 import xyxgame.gameplane.R;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mPlay,mPlay2,mPlay3, mHighScore, mExit;
+    private Button mPlay,mPlay2,mPlay3,mPlay4, mHighScore, mExit;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +33,14 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay = findViewById(R.id.play);
         mPlay2 = findViewById(R.id.play2);
         mPlay3 = findViewById(R.id.play3);
+        mPlay4 = findViewById(R.id.play4);
         mHighScore = findViewById(R.id.high_score);
         mExit = findViewById(R.id.exit);
 
         mPlay.setOnClickListener(this);
         mPlay2.setOnClickListener(this);
         mPlay3.setOnClickListener(this);
+        mPlay4.setOnClickListener(this);
         mHighScore.setOnClickListener(this);
         mExit.setOnClickListener(this);
     }
@@ -52,9 +56,13 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, GLActivity.class));
                // finish();
                 break;
-                case R.id.play3:
+            case R.id.play3:
                 startActivity(new Intent(this, MVVMActivity.class));
-               // finish();
+                // finish();
+                break;
+            case R.id.play4:
+                startActivity(new Intent(this, AcacheActivity.class));
+                // finish();
                 break;
             case R.id.high_score:
                 startActivity(new Intent(this, HighScoreActivity.class));

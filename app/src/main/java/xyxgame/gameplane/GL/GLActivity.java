@@ -17,6 +17,7 @@ import xyxgame.gameplane.spaceshooter.GameView;
 
 public class GLActivity extends AppCompatActivity {
     private GameSurfaceView mGameView;
+    public Point point;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class GLActivity extends AppCompatActivity {
 
         //Mendapatkan ukuran layar
         Display display = getWindowManager().getDefaultDisplay();
-        Point point = new Point();
+        point = new Point();
         display.getSize(point);
         //Log.d("X and Y size", "X = " + point.x + ", Y = " + point.y);
 
