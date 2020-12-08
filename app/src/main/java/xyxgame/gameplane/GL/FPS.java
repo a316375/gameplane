@@ -1,5 +1,9 @@
 package xyxgame.gameplane.GL;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+
 import java.util.LinkedList;
 
 public class FPS {
@@ -19,5 +23,15 @@ public class FPS {
             times.removeFirst();
         }
         return difference > 0 ? times.size() / difference : 0.0;
+    }
+
+    public void draw(Canvas canvas){
+        Paint paint=new Paint();
+        paint.setAntiAlias(true);
+        paint.setFakeBoldText(true);               // if you like bold
+        paint.setShadowLayer(5, 5, 5, Color.GRAY); // add shadow
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(30);
+        canvas.drawText("FPS:"+(int)fps(),100,100,paint);
     }
 }

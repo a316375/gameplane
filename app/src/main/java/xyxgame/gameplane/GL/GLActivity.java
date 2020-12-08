@@ -11,6 +11,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
+import xyxgame.gameplane.Base.FrameSurfaceView;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.spaceshooter.GameView;
 
@@ -44,7 +45,10 @@ public class GLActivity extends AppCompatActivity {
 
         mGameView = new GameSurfaceView(this, point.x, point.y);
         mGameView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-        setContentView(mGameView);
+      //  setContentView(mGameView);
+
+        FrameSurfaceView frameSurfaceView=new FrameSurfaceView(this);
+        setContentView(frameSurfaceView);
     }
 
 
