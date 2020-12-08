@@ -21,7 +21,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
     private Thread mDrawThread;boolean isGameing;
 
-    public BaseSurfaceVIEW(Context context) {
+    public BaseSurfaceVIEW(Context context, NUMManager numManager) {
         super(context);
         init();
     }

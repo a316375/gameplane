@@ -1,4 +1,4 @@
-package xyxgame.gameplane.GL;
+package xyxgame.gameplane.Base;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;

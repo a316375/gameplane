@@ -5,18 +5,13 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
 
 import java.util.ArrayList;
 
 import java.util.Random;
 
 
-import xyxgame.gameplane.GL.Effect;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
 
@@ -25,7 +20,7 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
     Bitmap bitmap;
 
     ArrayList<Effect> effects;
-    private final BitmapFactory.Options options;
+
 
     public ArrayList<Bitmap> getBitmaps() {
         return bitmaps;
@@ -35,19 +30,17 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
    private FPS fps;
 
-    public FrameSurfaceView(Context context) {
-        super(context);
-        bitmap=decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,1000,3000);
+    public FrameSurfaceView(Context context, NUMManager numManager) {
+        super(context,numManager);
+        bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,numManager.scx,numManager.scy);
+
+
 
         effects =new ArrayList<>();
         fps=new FPS();
 
-        options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.RGB_565;
-        options.inSampleSize=2;
-
         bitmaps = new ArrayList<>();
-        Bitmap bt=decodeSampledBitmapFromResource(context.getResources(),R.drawable.b_001,1000,100);
+        Bitmap bt=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.b_001,1000,100);
         for (int i = 0; i <10; i++) {
             Bitmap   bt2=Bitmap.createBitmap(bt,bt.getWidth()*i/10,0,bt.getWidth()/10,bt.getHeight());
             // bt2=Bitmap.createScaledBitmap(bt2,1000,1000,false);
@@ -102,35 +95,7 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
 
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight){
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig=Bitmap.Config.RGB_565;
-        options.inJustDecodeBounds = true;
-        //加载图片
-        BitmapFactory.decodeResource(res,resId,options);
-        //计算缩放比
-        options.inSampleSize = calculateInSampleSize(options,reqHeight,reqWidth);
-        //重新加载图片
-        options.inJustDecodeBounds =false;
-        return BitmapFactory.decodeResource(res,resId,options);
-    }
 
-    private static int calculateInSampleSize(BitmapFactory.Options options, int reqHeight, int reqWidth) {
-        int height = options.outHeight;
-        int width = options.outWidth;
-        int inSampleSize = 1;
-        if(height>reqHeight||width>reqWidth){
-            int halfHeight = height/2;
-            int halfWidth = width/2;
-            //计算缩放比，是2的指数
-            while((halfHeight/inSampleSize)>=reqHeight&&(halfWidth/inSampleSize)>=reqWidth){
-                inSampleSize*=2;
-            }
-        }
-
-
-        return inSampleSize;
-    }
 
 
 }

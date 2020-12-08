@@ -14,6 +14,7 @@ public class MVVMActivity extends AppCompatActivity {
 
     private FrameSurfaceView frameSurfaceView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +39,9 @@ public class MVVMActivity extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         Point point = new Point();
         display.getSize(point);
+
         //Log.d("X and Y size", "X = " + point.x + ", Y = " + point.y);
-         frameSurfaceView = new FrameSurfaceView(this);
+         frameSurfaceView = new FrameSurfaceView(this,new NUMManager(point.x,point.y));
         setContentView(frameSurfaceView);
     }
 
