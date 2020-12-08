@@ -68,7 +68,7 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
     @Override
     protected void onThreadDraw(Canvas canvas) {
         if (j<=1000)j++;
-        if (effects.size()<=20&&j%5==0){
+        if (effects.size()<=2&&j%5==0){
             Effect effect = new Effect( bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
             effects.add(effect);
         }
