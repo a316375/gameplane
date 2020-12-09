@@ -26,6 +26,7 @@ public class AcacheSurfaceView extends BaseSurfaceVIEW {
     @Override
     protected void onThreadDraw(Canvas canvas) {
 
+
         canvas.drawBitmap(bitmap,0,0,null);
         fps.draw(canvas);
 

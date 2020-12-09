@@ -48,7 +48,7 @@ public class BaseEffectStudent extends BaseStudent {
                         canvas.drawBitmap(bitmaps.get(run),mX,mY,new Paint());
                         }
         }
-            if (j>=30){j=0;
+            if (j==30){j=0;
 //            mX=new Random().nextInt(1000);
 //            mY=new Random().nextInt(1500);
 //                Iterator<Bitmap> iterator = bitmaps.iterator();

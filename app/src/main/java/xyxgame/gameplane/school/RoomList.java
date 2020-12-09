@@ -81,7 +81,7 @@ public class RoomList {
         if (listA.size()<=3) {listA.add(new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.laser_1)));}
         if (listB.size()<=3) {listB.add(new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.c1)));}
         if (listC.size()<=3) {listC.add(new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple)));}
-        if (listD.size()<=10) {listD.add(new StudentD(baseBag, listDBitmaps,
+        if (listD.size()<=3) {listD.add(new StudentD(baseBag, listDBitmaps,
                 new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
     }
     }
@@ -103,17 +103,22 @@ public class RoomList {
         }
     }
 
-    protected ArrayList<Bitmap> creatEffcetList(int draw){
-        ArrayList<Bitmap> list=new ArrayList<>();
-        Bitmap bt= BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),draw,1000,100);
-        for (int i = 0; i <10; i++) {
-            Bitmap   bt2=Bitmap.createBitmap(bt,bt.getWidth()*i/10,0,bt.getWidth()/10,bt.getHeight());
-            // bt2=Bitmap.createScaledBitmap(bt2,1000,1000,false);
-            list.add(bt2);
+    protected    ArrayList<Bitmap> creatEffcetList(int draw){
+
+            ArrayList<Bitmap> list = new ArrayList<>();
+
+                Bitmap bt = BitmapUtils.decodeSampledBitmapFromResource(context.getResources(), draw, 1000, 100);
+                for (int i = 0; i < 10; i++) {
+                    Bitmap bt2 = Bitmap.createBitmap(bt, bt.getWidth() * i / 10, 0, bt.getWidth() / 10, bt.getHeight());
+                    // bt2=Bitmap.createScaledBitmap(bt2,1000,1000,false);
+                    list.add(bt2);
+                }
+
+                return list;
+
         }
 
-        return list;
     }
 
 
-}
+

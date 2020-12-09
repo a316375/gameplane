@@ -10,6 +10,7 @@ public class BaseBag {
     BaseActivity activity;
     public BaseBag(BaseActivity activity, int draw) {
         this.activity=activity;
+
         this.bitmap = BitmapUtils.decodeSampledBitmapFromResource(activity.getResources(),draw,100,100);
     }
 }

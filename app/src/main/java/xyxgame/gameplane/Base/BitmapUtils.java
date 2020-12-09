@@ -1,5 +1,6 @@
 package xyxgame.gameplane.Base;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +8,9 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,38 +19,47 @@ import java.io.InputStream;
 
 public class BitmapUtils {
 
-    //官方高性能读取
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight){
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig=Bitmap.Config.RGB_565;
+
+    //官网代码
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        //加载图片
-        BitmapFactory.decodeResource(res,resId,options);
-        //计算缩放比
-        options.inSampleSize = calculateInSampleSize(options,reqHeight,reqWidth);
-//        options.inSampleSize =3;
-        //重新加载图片
-        options.inJustDecodeBounds =false;
-        return BitmapFactory.decodeResource(res,resId,options);
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
     }
-     private static int calculateInSampleSize(BitmapFactory.Options options, int reqHeight, int reqWidth) {
-        int height = options.outHeight;
-        int width = options.outWidth;
-        int inSampleSize = 1;//初始值为1
-        if(height>reqHeight||width>reqWidth){
-            int halfHeight = height/2;
-            int halfWidth = width/2;
-            //计算缩放比，是2的指数
-            while((halfHeight/inSampleSize)>=reqHeight&&(halfWidth/inSampleSize)>=reqWidth){
-                inSampleSize*=2;
+
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
             }
         }
 
         return inSampleSize;
     }
-
-
-
 
 
 
