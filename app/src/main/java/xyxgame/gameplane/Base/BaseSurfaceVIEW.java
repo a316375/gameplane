@@ -146,7 +146,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
 
                 //不停的将自己推送到绘制线程的消息队列以实现帧刷新
-                handler.postDelayed(this, frameDuration);
+               if (isAlive)handler.postDelayed(this, frameDuration);
             }
 
         }
