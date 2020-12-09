@@ -1,9 +1,6 @@
 package xyxgame.gameplane.Base;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
 
@@ -19,7 +16,8 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
     Bitmap bitmap;
 
-    ArrayList<Effect> effects;
+    ArrayList<BaseEffectStudent> baseEffectStudents;
+    private BaseBag baseBag;
 
 
     public ArrayList<Bitmap> getBitmaps() {
@@ -29,16 +27,18 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
     private  ArrayList<Bitmap> bitmaps;
 
    private FPS fps;
-
+    BaseActivity context;
     public FrameSurfaceView(BaseActivity context, NUMManager numManager) {
         super(context);
+        this.context=context;
+        baseBag = new BaseBag(context, R.drawable.b_001);
     //    bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,400,480);
         bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,numManager.scx,numManager.scy);
 
 
 
 
-        effects =new ArrayList<>();
+        baseEffectStudents =new ArrayList<>();
         fps=new FPS();
 
         bitmaps = new ArrayList<>();
@@ -51,9 +51,9 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
 
         for (int i = 0; i <1; i++) {
-            Effect effect = new Effect( bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
+            BaseEffectStudent baseEffectStudent = new BaseEffectStudent( baseBag,bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
 
-            effects.add(effect);
+            baseEffectStudents.add(baseEffectStudent);
         }
 
 
@@ -63,15 +63,16 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
     @Override
     protected void onThreadDraw(Canvas canvas) {
         if (j<=1000)j++;
-        if (effects.size()<=20&&j%5==0){
-            Effect effect = new Effect( bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
-            effects.add(effect);
+        if (baseEffectStudents.size()<=20&&j%5==0){
+
+            BaseEffectStudent baseEffectStudent = new BaseEffectStudent(baseBag, bitmaps, new Point(new Random().nextInt(1000), new Random().nextInt(1000)));
+            baseEffectStudents.add(baseEffectStudent);
         }
 
         canvas.drawBitmap(bitmap,0,0,null);
 
-        for (Effect effect:effects){
-            effect.draw(canvas);
+        for (BaseEffectStudent baseEffectStudent : baseEffectStudents){
+            baseEffectStudent.draw(canvas);
         }
 
         fps.draw(canvas);

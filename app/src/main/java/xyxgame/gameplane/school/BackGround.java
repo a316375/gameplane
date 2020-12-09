@@ -9,12 +9,12 @@ import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BitmapUtils;
 import xyxgame.gameplane.GL.BTMAP;
 
-public class RoomBG {
+public class BackGround {
     private Bitmap bitmap;
     private int y1,y2,screenSizeX,screenSizeY;
 
 
-    public RoomBG(BaseActivity context, int draw ) {
+    public BackGround(BaseActivity context, int draw ) {
         this. screenSizeX=context.point.x;
         this. screenSizeY=context.point.y;
         this.bitmap  = BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),draw,screenSizeX,screenSizeY);

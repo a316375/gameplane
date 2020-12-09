@@ -5,10 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Point;
 
+import java.util.ArrayList;
+
 public abstract class BaseStudent {
+
+
     public Bitmap bitmap;
     public int mx,my;
     public Point point;
+
     public BaseStudent(BaseBag baseBag) {
         bitmap=baseBag.bitmap;
         point=baseBag.activity.point;

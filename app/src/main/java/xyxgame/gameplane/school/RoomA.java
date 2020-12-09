@@ -17,12 +17,12 @@ public class RoomA extends BaseSurfaceVIEW {
 
     BaseTeacher teacherA;
     RoomList list;
-    RoomBG roomBG;
+    BackGround backGround;
     FPS fps;
 
    public RoomA(BaseActivity context) {
         super(context);
-        roomBG=new RoomBG(context,R.drawable.bg3);
+        backGround =new BackGround(context,R.drawable.bg3);
         list=new RoomList(context);
         teacherA = new TeacherA(new TeacherFinishPK());
         fps=new FPS();
@@ -32,10 +32,11 @@ public class RoomA extends BaseSurfaceVIEW {
 
     @Override//1用画布去绘制
     protected void onThreadDraw(Canvas canvas) {
-        roomBG.draw(canvas);
+        backGround.draw(canvas);
         draws(list.listA,canvas);
         draws(list.listB,canvas);
         draws(list.listC,canvas);
+        draws(list.listD,canvas);
 
 
 
@@ -52,6 +53,7 @@ public class RoomA extends BaseSurfaceVIEW {
          UPXY(list.listA);
          UPXY(list.listB);
          UPXY(list.listC);
+         UPXY(list.listD);
 
          teacherA.pkResult(list);//
 
@@ -66,7 +68,6 @@ public class RoomA extends BaseSurfaceVIEW {
             if (j%10==0) list.AddList();
 
     }
-
 
 
 

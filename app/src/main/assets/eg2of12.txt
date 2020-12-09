@@ -11183,7 +11183,7 @@ eeriness
 eery
 efface
 effacement
-effect
+baseEffectStudent
 effective
 effectively
 effectiveness

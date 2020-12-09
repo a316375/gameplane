@@ -1,6 +1,6 @@
 package xyxgame.gameplane.school;
 
-import xyxgame.gameplane.Base.BaseStudent;
+import xyxgame.gameplane.Base.PK;
 
 public class TeacherFinishPK implements PK {
 

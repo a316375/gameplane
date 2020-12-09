@@ -1,6 +1,5 @@
 package xyxgame.gameplane.Base;
 
-import xyxgame.gameplane.school.PK;
 import xyxgame.gameplane.school.RoomList;
 
 
