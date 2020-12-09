@@ -10,11 +10,12 @@ public class StudentC extends BaseStudent {
 
     public StudentC(BaseBag baseBag) {
         super(baseBag);
+
+
     }
 
     @Override
     public void UPXP() {
-        mx+=1;
-        my+=1;
+       my-=10;
     }
 }

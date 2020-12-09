@@ -9,6 +9,10 @@ import android.os.HandlerThread;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHolder.Callback {
     public static final int DEFAULT_FRAME_DURATION_MILLISECOND =20;
     //用于计算帧数据的线程
@@ -87,52 +91,64 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     private class ThreadRunable implements Runnable{
         @Override
         public void run() {
-            synchronized (this){
+
             while (isGameing&&getHolder().getSurface().isValid()) {
 
                 try {
                     //1.获取画布
                     canvas = getHolder().lockCanvas();
                     //2.绘制一帧
-                    onThreadDraw(canvas);
+                    w.lock();
+                    try {
+                        onThreadDraw(canvas);
+                    }finally {
+                        w.unlock();
+                    }
+
                     //3.将帧数据提交
                     getHolder().unlockCanvasAndPost(canvas);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
 
-                    //4.一帧绘制结束
-                    onFrameDrawFinish();
+
+                } finally {
+                    w.lock();
+                    try {
+                        //4.一帧绘制结束
+                        onFrameDrawFinish();
+                    }finally {
+                        w.unlock();
+                    }
+
+
+
                 }
+
             }
 
-        }
+
     }
     }
 
 
+    private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+    private final Lock r = rwl.readLock();
+    private final Lock w = rwl.writeLock();
     private class DrawRunnable implements Runnable {
 
         @Override
         public void run() {
-            if (!isAlive) {
-                return;
+            if (isAlive) {
+                w.lock();
+                try {
+                    onFrameDraw();
+                }finally {
+                    w.unlock();
+                }
+
+
+                //不停的将自己推送到绘制线程的消息队列以实现帧刷新
+                handler.postDelayed(this, frameDuration);
             }
-            try {
-                //1.获取画布
-              //  canvas = getHolder().lockCanvas();
-                //2.绘制一帧
-                onFrameDraw();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                //3.将帧数据提交
-             //   getHolder().unlockCanvasAndPost(canvas);
-                //4.一帧绘制结束
-             //   onFrameDrawFinish();
-            }
-            //不停的将自己推送到绘制线程的消息队列以实现帧刷新
-            handler.postDelayed(this, frameDuration);
+
         }
     }
 

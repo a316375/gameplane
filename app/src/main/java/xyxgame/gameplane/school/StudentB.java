@@ -14,6 +14,6 @@ public class StudentB extends BaseStudent {
 
     @Override
     public void UPXP() {
-        mx+=1;
+        my-=10;
     }
 }

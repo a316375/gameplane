@@ -9,8 +9,8 @@ public abstract class BaseStudent {
     public int mx,my;
     public BaseStudent(BaseBag baseBag) {
         bitmap=baseBag.bitmap;
-        mx=0;
-        my=0;
+        mx=500;
+        my=1000;
    }
 
    public void draw(Canvas canvas){
