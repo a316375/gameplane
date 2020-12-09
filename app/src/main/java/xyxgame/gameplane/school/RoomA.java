@@ -55,21 +55,23 @@ public class RoomA extends BaseSurfaceVIEW {
 
     }
 
+
+    protected void UPXY(ArrayList list){
+        Iterator<BaseStudent> iterator = list.iterator();
+        while (iterator.hasNext()){
+            iterator.next().upXY();
+        }
+    };
+
     @Override
     protected void onFrameDrawFinish() {
-        Iterator<BaseStudent> iterator = list.listA.iterator();
-        while (iterator.hasNext()){
-            iterator.next().UPXP();
-        }
+         UPXY(list.listA);
+         UPXY(list.listB);
+         UPXY(list.listC);
 
-        Iterator<BaseStudent> iterator1 = list.listB.iterator();
-        while (iterator1.hasNext()){
-            iterator1.next().UPXP();
-        }
-        Iterator<BaseStudent> iterator2 = list.listC.iterator();
-        while (iterator2.hasNext()){
-            iterator2.next().UPXP();
-        }
+
+
+
 
     }
 
@@ -77,6 +79,8 @@ public class RoomA extends BaseSurfaceVIEW {
     @Override
     protected void onFrameDraw() {
                 j++;
+                if (j>100)j=0;
             if (j%10==0) list.AddList();
+
     }
 }

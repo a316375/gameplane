@@ -15,7 +15,9 @@ public class StudentC extends BaseStudent {
     }
 
     @Override
-    public void UPXP() {
-       my-=10;
+    public void drawXP() {
+        my-=10;
     }
+
+
 }

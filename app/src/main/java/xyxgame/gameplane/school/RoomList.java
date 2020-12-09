@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseBag;
@@ -31,7 +32,7 @@ public class RoomList {
         listC=new ArrayList<>();
 
         studentA=new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.laser_1));
-        studentB=new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.laser_2));
+        studentB=new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.c1));
         studentC=new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple));
 
         for (int i = 0; i <1 ; i++) {
@@ -47,10 +48,27 @@ public class RoomList {
 
     }
 
+    protected void cleanNull(ArrayList list){
+        Iterator<BaseStudent> iterator = list.iterator();
+        while (iterator.hasNext()){
+            if (iterator.next().bitmap.isRecycled())iterator.remove();
+        }
+    }
+
+
     public void AddList(){
+
+        try {
+         cleanNull(listA);
+         cleanNull(listB);
+         cleanNull(listC);
+
+    }finally {
+
         if (listA.size()<=10) {listA.add(new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.laser_1)));}
-        if (listB.size()<=10) {listB.add(new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.meteor_1)));}
-        if (listC.size()<=10) {listC.add(new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.meteor_2)));}
+        if (listB.size()<=10) {listB.add(new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.c1)));}
+        if (listC.size()<=10) {listC.add(new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple)));}
+    }
     }
 
 
