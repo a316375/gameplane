@@ -63,10 +63,10 @@ public class RoomA extends BaseSurfaceVIEW {
     int j=0;
     @Override//3定时任务的循环清理，主要是负责清理空集合并且产生新的对象
     protected void onFrameDraw() {
-                j++;
-                if (j>100)j=0;
-            if (j%10==0) list.AddList();
 
+        j++;
+        if (j>100)j=0;
+        if (j%10==0) list.AddList();
     }
 
 

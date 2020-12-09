@@ -17,6 +17,9 @@ import xyxgame.gameplane.R;
 
 public class RoomList {
 
+
+    //这个类负责bitmap管理，要求是全局变量，可以复用，否则会很卡
+
     public HashMap<Integer,ArrayList<BaseStudent>> Map;
 
     ArrayList<BaseStudent> listA;
