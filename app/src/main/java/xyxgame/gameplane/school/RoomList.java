@@ -1,9 +1,7 @@
 package xyxgame.gameplane.school;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +30,10 @@ public class RoomList {
     BaseStudent studentC;
     BaseStudent studentD;
     BaseActivity context;
-    private final BaseBag baseBag;
+    private final BaseBag baseBagD;
+    private final BaseBag baseBagA;
+    private final BaseBag baseBagB;
+    private final BaseBag baseBagC;
 
     public RoomList(BaseActivity context) {
         this.context=context;
@@ -42,12 +43,15 @@ public class RoomList {
         listC=new ArrayList<>();
         listD=new ArrayList<>();
         listDBitmaps=creatEffcetList(R.drawable.b_001);
-        baseBag = new BaseBag((ASchoolActivity) context, R.drawable.b_001);
+        baseBagD = new BaseBag((ASchoolActivity) context, R.drawable.b_001);
 
-        studentA=new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.laser_1));
-        studentB=new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.c1));
-        studentC=new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple));
-        studentD=new BaseEffectStudent(baseBag, listDBitmaps,new Point(50,20));
+        baseBagA = new BaseBag((ASchoolActivity) context, R.drawable.laser_1);
+        baseBagB = new BaseBag((ASchoolActivity) context, R.drawable.c1);
+        baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple);
+        studentA=new StudentA(baseBagA);
+        studentB=new StudentB(baseBagB);
+        studentC=new StudentC(baseBagC);
+        studentD=new BaseEffectStudent(this.baseBagD, listDBitmaps,new Point(50,20));
 
         for (int i = 0; i <1 ; i++) {
             listA.add(studentA);
@@ -78,10 +82,10 @@ public class RoomList {
 
     }finally {
 
-        if (listA.size()<=3) {listA.add(new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.laser_1)));}
-        if (listB.size()<=3) {listB.add(new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.c1)));}
-        if (listC.size()<=3) {listC.add(new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple)));}
-        if (listD.size()<=3) {listD.add(new StudentD(baseBag, listDBitmaps,
+        if (listA.size()<=3) {listA.add(new StudentA(baseBagA));}
+        if (listB.size()<=3) {listB.add(new StudentB(baseBagB));}
+        if (listC.size()<=3) {listC.add(new StudentC(baseBagC));}
+        if (listD.size()<=3) {listD.add(new StudentD(baseBagD, listDBitmaps,
                 new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
     }
     }
@@ -99,7 +103,7 @@ public class RoomList {
     protected void cleanNull(ArrayList list){
         Iterator<BaseStudent> iterator = list.iterator();
         while (iterator.hasNext()){
-            if (iterator.next().bitmap.isRecycled())iterator.remove();
+            if (iterator.next().is_over)iterator.remove();
         }
     }
 
