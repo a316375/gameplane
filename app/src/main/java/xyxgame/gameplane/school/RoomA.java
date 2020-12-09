@@ -3,6 +3,7 @@ package xyxgame.gameplane.school;
 import android.graphics.Canvas;
 
 import xyxgame.gameplane.Base.BaseActivity;
+import xyxgame.gameplane.Base.BaseBag;
 import xyxgame.gameplane.Base.BaseStudent;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.Base.BaseTeacher;
@@ -19,9 +20,9 @@ public class RoomA extends BaseSurfaceVIEW {
     BaseTeacher teacherA;
     public RoomA(BaseActivity context) {
         super(context);
-        studentA=new StudentA((ASchoolActivity) context, R.drawable.bg);
-        studentB=new StudentB((ASchoolActivity) context, R.drawable.bg);
-        studentC=new StudentC((ASchoolActivity) context, R.drawable.bg3);
+        studentA=new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.bg));
+        studentB=new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.bg));
+        studentC=new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.bg));
 
 
         teacherA = new TeacherA(new TeacherFinishPK());
