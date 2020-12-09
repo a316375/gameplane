@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.Base.BitmapUtils;
 import xyxgame.gameplane.Base.NUMManager;
@@ -14,10 +15,10 @@ public class AcacheSurfaceView extends BaseSurfaceVIEW {
     private FPS fps;
 
     Bitmap bitmap;
-    public AcacheSurfaceView(Context context, NUMManager numManager, AcacheActivity activity) {
-        super(context, numManager);
+    public AcacheSurfaceView(BaseActivity activity,AcacheActivity A) {
+        super(activity );
         fps=new FPS();
-        bitmap=activity.memoryCache.get("bg4");
+        bitmap=A.memoryCache.get("bg4");
 
 
     }

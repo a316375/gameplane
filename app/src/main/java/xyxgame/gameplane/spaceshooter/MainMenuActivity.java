@@ -10,14 +10,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import xyxgame.gameplane.Acache.AcacheActivity;
-import xyxgame.gameplane.Acache.AcacheSurfaceView;
 import xyxgame.gameplane.Base.MVVMActivity;
 import xyxgame.gameplane.GL.GLActivity;
 import xyxgame.gameplane.R;
+import xyxgame.gameplane.school.ASchoolActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mPlay,mPlay2,mPlay3,mPlay4, mHighScore, mExit;
+    private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5, mHighScore, mExit;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay2 = findViewById(R.id.play2);
         mPlay3 = findViewById(R.id.play3);
         mPlay4 = findViewById(R.id.play4);
+        mPlay5 = findViewById(R.id.play5);
         mHighScore = findViewById(R.id.high_score);
         mExit = findViewById(R.id.exit);
 
@@ -41,6 +42,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay2.setOnClickListener(this);
         mPlay3.setOnClickListener(this);
         mPlay4.setOnClickListener(this);
+        mPlay5.setOnClickListener(this);
         mHighScore.setOnClickListener(this);
         mExit.setOnClickListener(this);
     }
@@ -62,6 +64,10 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.play4:
                 startActivity(new Intent(this, AcacheActivity.class));
+                // finish();
+                break;
+            case R.id.play5:
+                startActivity(new Intent(this, ASchoolActivity.class));
                 // finish();
                 break;
             case R.id.high_score:

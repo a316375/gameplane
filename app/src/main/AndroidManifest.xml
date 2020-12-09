@@ -40,6 +40,9 @@
         <activity android:name=".Acache.AcacheActivity"
             android:screenOrientation="nosensor"
             />
+        <activity android:name=".school.ASchoolActivity"
+            android:screenOrientation="nosensor"
+            />
     </application>
 
 </manifest>

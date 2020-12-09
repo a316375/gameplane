@@ -81,6 +81,17 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/play5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/custom_button_background"
+                android:text="PLAY-school"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
                 android:id="@+id/high_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

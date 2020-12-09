@@ -30,10 +30,10 @@ public class FrameSurfaceView extends BaseSurfaceVIEW {
 
    private FPS fps;
 
-    public FrameSurfaceView(Context context, NUMManager numManager) {
-        super(context,numManager);
+    public FrameSurfaceView(BaseActivity context, NUMManager numManager) {
+        super(context);
     //    bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,400,480);
-        bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,400,480);
+        bitmap=BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),R.drawable.bg4,numManager.scx,numManager.scy);
 
 
 

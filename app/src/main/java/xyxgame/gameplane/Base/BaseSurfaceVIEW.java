@@ -1,5 +1,6 @@
 package xyxgame.gameplane.Base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
@@ -21,7 +22,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
     private Thread mDrawThread;boolean isGameing;
 
-    public BaseSurfaceVIEW(Context context, NUMManager numManager) {
+    public BaseSurfaceVIEW(BaseActivity context) {
         super(context);
         init();
     }

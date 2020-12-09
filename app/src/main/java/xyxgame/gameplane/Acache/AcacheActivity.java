@@ -14,6 +14,7 @@ import com.jakewharton.disklrucache.DiskLruCache;
 
 import java.io.File;
 
+import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BitmapUtils;
 import xyxgame.gameplane.Base.NUMManager;
 import xyxgame.gameplane.GL.GLActivity;
@@ -21,16 +22,14 @@ import xyxgame.gameplane.R;
 
 import static android.os.Environment.isExternalStorageRemovable;
 
-public class AcacheActivity extends GLActivity {
+public class AcacheActivity extends BaseActivity {
     AcacheSurfaceView acacheSurfaceView;
 
      LruCache<String, Bitmap> memoryCache;
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    protected void setView() {
 
         // Get max available VM memory, exceeding this amount will throw an
         // OutOfMemory exception. Stored in kilobytes as LruCache takes an
@@ -53,22 +52,29 @@ public class AcacheActivity extends GLActivity {
 
 
 
-try {
-    addBitmapToMemoryCache("bg1", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg1,200,800));
-    addBitmapToMemoryCache("bg2", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg2,200,800));
-    addBitmapToMemoryCache("bg3", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg3,200,800));
-    addBitmapToMemoryCache("bg4", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg4,200,800));
+        try {
+            addBitmapToMemoryCache("bg1", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg1,200,800));
+            addBitmapToMemoryCache("bg2", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg2,200,800));
+            addBitmapToMemoryCache("bg3", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg3,200,800));
+            addBitmapToMemoryCache("bg4", BitmapUtils.decodeSampledBitmapFromResource(getResources(),R.drawable.bg4,200,800));
 
-}finally {
-    acacheSurfaceView=new AcacheSurfaceView(this,new NUMManager(point.x,point.y),this);
-    setContentView(acacheSurfaceView);
-}
-
-
-
-
+        }finally {
+            acacheSurfaceView=new AcacheSurfaceView(this,AcacheActivity.this);
+            setContentView(acacheSurfaceView);
+        }
 
     }
+
+    @Override
+    protected void viewResume() {
+
+    }
+
+    @Override
+    protected void viewPause() {
+
+    }
+
     public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
         if (getBitmapFromMemCache(key) == null) {
             memoryCache.put(key, bitmap);

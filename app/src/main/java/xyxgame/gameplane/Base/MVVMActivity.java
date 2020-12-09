@@ -10,57 +10,38 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import xyxgame.gameplane.GL.GameSurfaceView;
 
-public class MVVMActivity extends AppCompatActivity {
+public class MVVMActivity extends BaseActivity {
 
     private FrameSurfaceView frameSurfaceView;
 
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setView();
+    protected void setView() {
 
-
-    }
-
-    private void setView() {
-        //Membuat tampilan menjadi full screen全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        //Membuat tampilan selalu menyala jika activity aktif
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-//        //硬件加速开启
-//        getWindow().setFlags(
-//                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
-//                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-
-        //Mendapatkan ukuran layar
-        Display display = getWindowManager().getDefaultDisplay();
-        Point point = new Point();
-        display.getSize(point);
 
         //Log.d("X and Y size", "X = " + point.x + ", Y = " + point.y);
-         frameSurfaceView = new FrameSurfaceView(this,new NUMManager(point.x,point.y));
+        frameSurfaceView = new FrameSurfaceView(this,new NUMManager(point.x,point.y));
         setContentView(frameSurfaceView);
     }
 
-
     @Override
-    protected void onResume() {
-
+    protected void viewResume() {
         frameSurfaceView.startT();
-        super.onResume();
-
 
     }
 
     @Override
-    protected void onPause() {
+    protected void viewPause() {
 
         frameSurfaceView.stopT();
-        super.onPause();
+
 
     }
+
+
+
+
+
 
 }
