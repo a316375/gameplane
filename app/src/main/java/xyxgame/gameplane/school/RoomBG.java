@@ -14,12 +14,13 @@ public class RoomBG {
     private int y1,y2,screenSizeX,screenSizeY;
 
 
-    public RoomBG(BaseActivity context, int draw, int screenSizeX, int screenSizeY) {
+    public RoomBG(BaseActivity context, int draw ) {
+        this. screenSizeX=context.point.x;
+        this. screenSizeY=context.point.y;
         this.bitmap  = BitmapUtils.decodeSampledBitmapFromResource(context.getResources(),draw,screenSizeX,screenSizeY);
         bitmap=Bitmap.createScaledBitmap(bitmap,screenSizeX,screenSizeY,false);
         y2 = y1 -bitmap.getHeight();
-        this. screenSizeX=screenSizeX;
-        this. screenSizeY=screenSizeY;
+
     }
 
 

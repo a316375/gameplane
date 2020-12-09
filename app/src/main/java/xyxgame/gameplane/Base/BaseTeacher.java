@@ -1,5 +1,11 @@
 package xyxgame.gameplane.Base;
 
+import xyxgame.gameplane.school.PK;
+import xyxgame.gameplane.school.RoomList;
+
+
+//这个老师要解决括号里RoomList的pk结果
+//pk是一个行为
 public  abstract  class BaseTeacher  {
     private PK pk;
 
@@ -7,7 +13,7 @@ public  abstract  class BaseTeacher  {
         this.pk = pk;
     }
 
-    public void  pkResult(BaseStudent s1,BaseStudent s2){
-        pk.pk(s1,s2);
+    public void  pkResult(RoomList list){
+        pk.pk(list);
     }
 }

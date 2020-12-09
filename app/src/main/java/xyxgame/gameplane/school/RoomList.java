@@ -65,9 +65,9 @@ public class RoomList {
 
     }finally {
 
-        if (listA.size()<=10) {listA.add(new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.laser_1)));}
-        if (listB.size()<=10) {listB.add(new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.c1)));}
-        if (listC.size()<=10) {listC.add(new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple)));}
+        if (listA.size()<=3) {listA.add(new StudentA(new BaseBag((ASchoolActivity) context, R.drawable.laser_1)));}
+        if (listB.size()<=3) {listB.add(new StudentB(new BaseBag((ASchoolActivity) context, R.drawable.c1)));}
+        if (listC.size()<=3) {listC.add(new StudentC(new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple)));}
     }
     }
 
