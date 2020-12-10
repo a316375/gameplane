@@ -1,7 +1,7 @@
 package xyxgame.gameplane.Base;
 
-import xyxgame.gameplane.school.RoomList;
+import xyxgame.gameplane.school.StudentList;
 
 public interface PK {
-      void pk(RoomList list);
+      void pk(StudentList list);
 }

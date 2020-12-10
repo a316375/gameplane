@@ -1,4 +1,4 @@
-package xyxgame.gameplane.school;
+package xyxgame.gameplane.school.Students;
 
 import android.app.Activity;
 
@@ -15,7 +15,7 @@ public class StudentA extends BaseStudent {
 
     @Override
     public void drawXP() {
-        my-=35;
+        my-=10;
     }
 
 

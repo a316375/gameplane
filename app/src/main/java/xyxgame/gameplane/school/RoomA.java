@@ -16,14 +16,14 @@ public class RoomA extends BaseSurfaceVIEW {
 
 
     BaseTeacher teacherA;
-    RoomList list;
+    StudentList list;
     BackGround backGround;
     FPS fps;
 
    public RoomA(BaseActivity context) {
         super(context);
         backGround =new BackGround(context,R.drawable.bg3);
-        list=new RoomList(context);
+        list=new StudentList(context);
         teacherA = new TeacherA(new TeacherFinishPK());
         fps=new FPS();
 
@@ -37,10 +37,8 @@ public class RoomA extends BaseSurfaceVIEW {
         draws(list.listB,canvas);
         draws(list.listC,canvas);
         draws(list.listD,canvas);
-
-
-
-
+        draws(list.listVipA,canvas);
+        draws(list.listVipB,canvas);
 
         fps.draw(canvas);
 
@@ -54,19 +52,23 @@ public class RoomA extends BaseSurfaceVIEW {
          UPXY(list.listB);
          UPXY(list.listC);
          UPXY(list.listD);
+         UPXY(list.listVipA);
+         UPXY(list.listVipB);
 
          teacherA.pkResult(list);//
 
 
-    }
-
-    int j=0;
-    @Override//3定时任务的循环清理，主要是负责清理空集合并且产生新的对象
-    protected void onFrameDraw() {
-
         j++;
         if (j>100)j=0;
         if (j%10==0) list.AddList();
+
+    }
+
+    int j=0;
+    @Override//3定时任务的循环清理，主要是负责清理空集合并且产生新的对象//这里产生一些特殊事件，如boss进场时间
+    protected void onFrameDraw() {
+
+
     }
 
 

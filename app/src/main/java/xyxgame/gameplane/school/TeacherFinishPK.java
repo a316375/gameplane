@@ -7,7 +7,7 @@ public class TeacherFinishPK implements PK {
 
 
     @Override
-    public void pk(RoomList list) {
+    public void pk(StudentList list) {
 
 
     }

@@ -1,4 +1,4 @@
-package xyxgame.gameplane.school;
+package xyxgame.gameplane.school.Students;
 
 import android.app.Activity;
 
@@ -6,10 +6,10 @@ import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseBag;
 import xyxgame.gameplane.Base.BaseStudent;
 
-public class StudentB extends BaseStudent {
+public class StudentC extends BaseStudent {
 
 
-    public StudentB(  BaseBag baseBag) {
+    public StudentC(  BaseBag baseBag) {
         super(  baseBag);
     }
 
