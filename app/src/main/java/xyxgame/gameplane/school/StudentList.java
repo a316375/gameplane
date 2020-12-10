@@ -95,7 +95,7 @@ public class StudentList {
             justclean();
         }finally {
 
-        if (listA.size()<students_Max) {listA.add(new StudentA(baseBagA));}
+        if (listA.size()<students_Max*2) {listA.add(new StudentA(baseBagA));}
         if (listB.size()<students_Max) {listB.add(new StudentB(baseBagB));}
         if (listC.size()<students_Max) {listC.add(new StudentC(baseBagC));}
         if (listD.size()<students_Max) {listD.add(new StudentD(baseBagD));}
