@@ -29,7 +29,7 @@ public abstract class BaseStudent {
 
    public void upXY(){
         drawXP();
-      if (my<-100||mx<-100)is_over=true;
+      if (my<-100||mx<-100||mx>point.x||my>point.y)is_over=true;
    }
 
     public abstract  void drawXP();

@@ -59,12 +59,14 @@ public class RoomA extends BaseSurfaceVIEW {
 
 
         j++;
-        if (j>100)j=0;
+        if (j>900)j=0;
+        if (j%300==0)list.onTimeClean();//定时清理产出敌人
         if (j%10==0) list.AddList();
+
 
     }
 
-    int j=0;
+    volatile int j=0;
     @Override//3定时任务的循环清理，主要是负责清理空集合并且产生新的对象//这里产生一些特殊事件，如boss进场时间
     protected void onFrameDraw() {
 

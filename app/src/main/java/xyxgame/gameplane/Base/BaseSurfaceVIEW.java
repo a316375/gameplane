@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHolder.Callback {
-    public static final int DEFAULT_FRAME_DURATION_MILLISECOND =20;
+    public static final int DEFAULT_FRAME_DURATION_MILLISECOND =10;
     //用于计算帧数据的线程
     private HandlerThread handlerThread;
     private Handler handler;

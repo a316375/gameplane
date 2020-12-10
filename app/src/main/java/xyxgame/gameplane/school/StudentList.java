@@ -2,11 +2,20 @@ package xyxgame.gameplane.school;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.os.Build;
+import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseBag;
@@ -24,9 +33,10 @@ import xyxgame.gameplane.school.Students.StudentVIPB;
 public class StudentList {
 
 
-    //这个类负责bitmap管理，要求是全局变量，可以复用，否则会很卡
+    //这个类负责bitmap管理，bitmap的控制类要求是全局变量，可以复用，否则会很卡，拒绝recycle提高复用率实现高性能
+    int students_Max=5;//每次同时出现的最大值
 
-    public HashMap<Integer,ArrayList<BaseStudent>> Map;
+
 //普通无帧动画的Student
     BaseStudent studentA,studentB,studentC,studentD;
     private final BaseBag baseBagA,baseBagB,baseBagC,baseBagD;
@@ -47,7 +57,7 @@ public class StudentList {
 
     public StudentList(BaseActivity context) {
         this.context=context;
-        Map=new HashMap<>();
+
         listA=new ArrayList<>();
         listB=new ArrayList<>();
         listC=new ArrayList<>();
@@ -59,10 +69,10 @@ public class StudentList {
         listVIPB_Bitmaps =creatEffcetList(R.drawable.b_001_1);
 
 
-        baseBagA = new BaseBag((ASchoolActivity) context, R.drawable.laser_1);
+        baseBagA = new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple);
         baseBagB = new BaseBag((ASchoolActivity) context, R.drawable.c1);
-        baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple);
-        baseBagD = new BaseBag((ASchoolActivity) context, R.drawable.meteor_1);
+        baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.laser_1);
+        baseBagD = new BaseBag((ASchoolActivity) context, R.drawable.spaceship_1_blue);
         baseBagVIPA = new BaseBag((ASchoolActivity) context, R.drawable.b_001);
         baseBagVIPB = new BaseBag((ASchoolActivity) context, R.drawable.b_001_1);
 
@@ -70,45 +80,20 @@ public class StudentList {
         studentA=new StudentA(baseBagA);
         studentB=new StudentB(baseBagB);
         studentC=new StudentC(baseBagC);
-        studentD=new StudentC(baseBagD);
+        studentD=new StudentD(baseBagD);
         StudentVIPA =new BaseEffectStudent(this.baseBagVIPA, listVIPA_Bitmaps,new Point(50,20));
         StudentVIPB =new BaseEffectStudent(this.baseBagVIPB, listVIPB_Bitmaps,new Point(50,20));
 
-        for (int i = 0; i <1 ; i++) {
-            listA.add(studentA);
-            listB.add(studentB);
-            listC.add(studentC);
-            listD.add(studentD);
-            listVipA.add(StudentVIPA);
-            listVipB.add(StudentVIPB);
-        }
-
-        Map.put(0,listA);
-        Map.put(1,listB);
-        Map.put(2,listC);
-        Map.put(3,listD);
-        Map.put(4, listVipA);
-        Map.put(5, listVipB);
 
 
     }
 
 
-
-
-    int students_Max=5;//每次同时出现的最大值
-
     public void AddList(){
 
         try {
-         cleanNull(listA);
-         cleanNull(listB);
-         cleanNull(listC);
-         cleanNull(listD);
-         cleanNullEffect(listVipA);
-         cleanNullEffect(listVipB);
-
-    }finally {
+            justclean();
+        }finally {
 
         if (listA.size()<students_Max) {listA.add(new StudentA(baseBagA));}
         if (listB.size()<students_Max) {listB.add(new StudentB(baseBagB));}
@@ -118,25 +103,49 @@ public class StudentList {
                 new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
         if (listVipB.size()<students_Max) {listVipB.add(new StudentVIPB(baseBagVIPB, listVIPB_Bitmaps,
                 new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
-    }
+        }
+
     }
 
-    protected void cleanNullEffect(ArrayList list) {
+
+    //即时清理对象用于子弹 私有自己去维护
+    protected void justclean(){
+        cleanNull(listA);
+        cleanNullEffect(listVipA);
+        cleanNullEffect(listVipB);
+    }
+    //定时清理用于boss产出 其他类去维护，因为时间在RoomA这个类控制,如果把时间传过来处理会导致卡顿，所以不推荐
+    public void onTimeClean(){
+
+        cleanNull(listB);
+        cleanNull(listC);
+        cleanNull(listD);
+
+    }
+
+    protected void cleanNullEffect(ArrayList   list) {
 
         Iterator<BaseEffectStudent> iterator = list.iterator();
+
         while (iterator.hasNext()){
+
             if (iterator.next().bitmaps_is_over){iterator.remove();};
        }
 
 
     }
 
-    protected void cleanNull(ArrayList list){
+
+
+
+    protected void cleanNull(ArrayList<BaseStudent> list){
 
         Iterator<BaseStudent> iterator = list.iterator();
         while (iterator.hasNext()){
             if (iterator.next().is_over)iterator.remove();
-        }
+
+       }
+
     }
 
     protected    ArrayList<Bitmap> creatEffcetList(int draw){

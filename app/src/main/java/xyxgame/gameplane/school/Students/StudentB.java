@@ -11,11 +11,13 @@ public class StudentB extends BaseStudent {
 
     public StudentB(  BaseBag baseBag) {
         super(  baseBag);
+        mx=point.x/2;
+        my=0;
     }
 
     @Override
     public void drawXP() {
-        my-=35;
+        my+=35;
     }
 
 
