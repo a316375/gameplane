@@ -12,6 +12,7 @@ public class ASchoolActivity extends BaseActivity {
     @Override
     protected void setView() {
         roomA = new RoomA(this);
+
         setContentView(roomA);
     }
 

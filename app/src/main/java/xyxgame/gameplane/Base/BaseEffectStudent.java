@@ -1,21 +1,17 @@
 package xyxgame.gameplane.Base;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
 
 public class BaseEffectStudent extends BaseStudent {
 
     public ArrayList<Bitmap> bitmaps;//传入一堆Bitmap
     public   Point point;//一个坐标点
-    public  int mX,mY;
+
 
     public boolean bitmaps_is_over=false;
     public BaseEffectStudent(BaseBag baseBag,ArrayList<Bitmap> bitmaps, Point point) {
@@ -23,8 +19,8 @@ public class BaseEffectStudent extends BaseStudent {
         this.bitmaps = bitmaps;
 
         this.point=point;
-        this.mX=point.x;
-        this.mY=point.y;
+        mx_BaseStudent =point.x;
+        my_BaseStudent =point.y;
 
 
     }
@@ -33,7 +29,7 @@ public class BaseEffectStudent extends BaseStudent {
 
        //run=循环读取，
         //j定时回收
-        int run=0,j=0;
+       public   int run=0,j=0;
 
 
     @Override
@@ -45,7 +41,7 @@ public class BaseEffectStudent extends BaseStudent {
              {
                  j++;
                  if (bitmaps!=null&&!bitmaps.get(run).isRecycled() ){
-                        canvas.drawBitmap(bitmaps.get(run),mX,mY,new Paint());
+                        canvas.drawBitmap(bitmaps.get(run), mx_BaseStudent, my_BaseStudent,new Paint());
                         }
         }
             if (j==30){j=0;

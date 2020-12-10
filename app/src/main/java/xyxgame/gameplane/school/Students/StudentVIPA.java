@@ -16,6 +16,8 @@ public class StudentVIPA extends BaseEffectStudent {
     @Override
     public void drawXP() {
         super.drawXP();
-        my-=10;
+
     }
+
+
 }

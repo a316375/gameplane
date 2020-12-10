@@ -29,6 +29,7 @@ import xyxgame.gameplane.school.Students.StudentC;
 import xyxgame.gameplane.school.Students.StudentD;
 import xyxgame.gameplane.school.Students.StudentVIPA;
 import xyxgame.gameplane.school.Students.StudentVIPB;
+import xyxgame.gameplane.school.Students.StudentVIP_Play;
 
 public class StudentList {
 
@@ -37,16 +38,22 @@ public class StudentList {
     int students_Max=5;//每次同时出现的最大值
 
 
+
+
 //普通无帧动画的Student
     BaseStudent studentA,studentB,studentC,studentD;
     private final BaseBag baseBagA,baseBagB,baseBagC,baseBagD;
     ArrayList<BaseStudent> listA,listB,listC,listD  ;
 
+
+
+
 //特殊有帧动画的Student 比普通多一组Arrlist<Bitmaps>
-    BaseStudent StudentVIPA,StudentVIPB;
-    private final BaseBag baseBagVIPA,baseBagVIPB;
-    ArrayList<BaseStudent> listVipA ,listVipB;
-    ArrayList<Bitmap> listVIPA_Bitmaps,listVIPB_Bitmaps;
+     StudentVIP_Play studentVIP_Play;//特例
+    BaseStudent   StudentVIPA,StudentVIPB;
+    private final BaseBag baseBagVIP_Play,baseBagVIPA,baseBagVIPB;
+    ArrayList<BaseStudent> listVip_Play,listVipA ,listVipB;
+    ArrayList<Bitmap> listVIPPlay_Bitmaps,listVIPA_Bitmaps,listVIPB_Bitmaps;
 
 
 
@@ -63,6 +70,9 @@ public class StudentList {
         listC=new ArrayList<>();
         listD=new ArrayList<>();
 
+
+        listVip_Play =new ArrayList<>();
+        listVIPPlay_Bitmaps =creatEffcetList(R.drawable.c1ani);
         listVipA =new ArrayList<>();
         listVIPA_Bitmaps =creatEffcetList(R.drawable.b_001);
         listVipB =new ArrayList<>();
@@ -73,6 +83,7 @@ public class StudentList {
         baseBagB = new BaseBag((ASchoolActivity) context, R.drawable.c1);
         baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.laser_1);
         baseBagD = new BaseBag((ASchoolActivity) context, R.drawable.spaceship_1_blue);
+        baseBagVIP_Play = new BaseBag((ASchoolActivity) context, R.drawable.c1ani);
         baseBagVIPA = new BaseBag((ASchoolActivity) context, R.drawable.b_001);
         baseBagVIPB = new BaseBag((ASchoolActivity) context, R.drawable.b_001_1);
 
@@ -81,10 +92,15 @@ public class StudentList {
         studentB=new StudentB(baseBagB);
         studentC=new StudentC(baseBagC);
         studentD=new StudentD(baseBagD);
+        studentVIP_Play =new StudentVIP_Play(this.baseBagVIP_Play, listVIPPlay_Bitmaps,
+                new Point(context.point.x/2,context.point.y-500));
         StudentVIPA =new BaseEffectStudent(this.baseBagVIPA, listVIPA_Bitmaps,new Point(50,20));
         StudentVIPB =new BaseEffectStudent(this.baseBagVIPB, listVIPB_Bitmaps,new Point(50,20));
 
 
+
+        //特例玩家
+        listVip_Play.add(studentVIP_Play);
 
     }
 
@@ -93,6 +109,7 @@ public class StudentList {
 
         try {
             justclean();
+            if (OnTimeClean){onTimeClean(); }
         }finally {
 
         if (listA.size()<students_Max*2) {listA.add(new StudentA(baseBagA));}
@@ -114,12 +131,14 @@ public class StudentList {
         cleanNullEffect(listVipA);
         cleanNullEffect(listVipB);
     }
-    //定时清理用于boss产出 其他类去维护，因为时间在RoomA这个类控制,如果把时间传过来处理会导致卡顿，所以不推荐
-    public void onTimeClean(){
 
+    public  boolean OnTimeClean=false;
+    //定时清理用于boss产出 其他类去维护，因为时间在RoomA这个类控制,如果把时间传过来处理会导致卡顿，所以不推荐
+    protected void onTimeClean(){
         cleanNull(listB);
         cleanNull(listC);
         cleanNull(listD);
+        OnTimeClean=false;
 
     }
 

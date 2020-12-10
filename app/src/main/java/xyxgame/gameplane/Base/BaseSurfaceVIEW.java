@@ -6,14 +6,16 @@ import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHolder.Callback {
+public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHolder.Callback{
     public static final int DEFAULT_FRAME_DURATION_MILLISECOND =10;
     //用于计算帧数据的线程
     private HandlerThread handlerThread;
@@ -134,11 +136,13 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     private final Lock w = rwl.writeLock();
     private class DrawRunnable implements Runnable {
 
+
         @Override
         public void run() {
             if (isAlive) {
                 w.lock();
                 try {
+
                     onFrameDraw();
                 }finally {
                     w.unlock();
@@ -156,5 +160,8 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
     protected abstract void onFrameDraw();
 
-
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
 }
