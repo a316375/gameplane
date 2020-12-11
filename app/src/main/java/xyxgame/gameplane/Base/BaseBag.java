@@ -8,6 +8,10 @@ public class BaseBag {
 
     public Bitmap bitmap;
     BaseActivity activity;
+    public BaseBag changWH(int width,int height){
+        bitmap=Bitmap.createScaledBitmap(bitmap,width,height,false);
+        return this;
+    }
 
     public BaseBag(BaseActivity activity, int draw) {
         this.activity=activity;

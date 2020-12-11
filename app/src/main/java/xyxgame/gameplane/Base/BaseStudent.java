@@ -11,8 +11,16 @@ public abstract class BaseStudent {
     public int mx_BaseStudent, my_BaseStudent;
     public Point point;
     public boolean is_over=false;
+    BaseBag baseBag;
+
+    public  BaseStudent onBuildXY(BaseStudent baseStudent){
+        mx_BaseStudent=baseStudent.mx_BaseStudent+baseBag.bitmap.getWidth();
+        my_BaseStudent=baseStudent.my_BaseStudent-baseBag.bitmap.getHeight();
+        return this;
+    };
 
     public BaseStudent(BaseBag baseBag) {
+        this.baseBag=baseBag;
         bitmap=baseBag.bitmap;
         point=baseBag.activity.point;
         mx_BaseStudent =point.x/2;
@@ -30,6 +38,13 @@ public abstract class BaseStudent {
    }
 
     public abstract  void drawXP();
+
+
+    public void  moveToXY(int x, int y){
+        mx_BaseStudent =x;
+        my_BaseStudent =y;
+
+    }
 
 }
 

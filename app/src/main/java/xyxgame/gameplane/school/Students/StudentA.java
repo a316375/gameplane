@@ -6,9 +6,12 @@ import xyxgame.gameplane.Base.BaseStudent;
 public class StudentA extends BaseStudent {
 
 
-    public StudentA(  BaseBag baseBag) {
+    public StudentA(  BaseBag baseBag   ) {
         super(  baseBag);
+
     }
+
+
 
     @Override
     public void drawXP() {

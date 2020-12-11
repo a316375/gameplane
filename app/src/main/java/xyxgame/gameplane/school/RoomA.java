@@ -21,7 +21,7 @@ public class RoomA extends BaseSurfaceVIEW {
     StudentList list;
     BackGround backGround;
     FPS fps;
-    StudentVIP_Play studentVIP_play;
+    BaseStudent studentVIP_play;
 
    public RoomA(BaseActivity context) {
         super(context);
@@ -29,7 +29,7 @@ public class RoomA extends BaseSurfaceVIEW {
         list=new StudentList(context);
         teacherA = new TeacherA(new TeacherFinishPK());
         fps=new FPS();
-        studentVIP_play= (StudentVIP_Play) list.studentVIP_Play;
+        studentVIP_play= (BaseStudent) list.studentVIP_Play;
 
 
     }

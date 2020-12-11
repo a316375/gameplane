@@ -42,9 +42,5 @@ public class StudentVIP_Play extends BaseEffectStudent {
 
     }
 
-    public void  moveToXY(int x, int y){
-       mx_BaseStudent =x;
-       my_BaseStudent =y;
 
-    }
 }

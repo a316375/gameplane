@@ -49,7 +49,7 @@ public class StudentList {
 
 
 //特殊有帧动画的Student 比普通多一组Arrlist<Bitmaps>
-     StudentVIP_Play studentVIP_Play;//特例
+    BaseStudent studentVIP_Play;//特例
     BaseStudent   StudentVIPA,StudentVIPB;
     private final BaseBag baseBagVIP_Play,baseBagVIPA,baseBagVIPB;
     ArrayList<BaseStudent> listVip_Play,listVipA ,listVipB;
@@ -79,7 +79,7 @@ public class StudentList {
         listVIPB_Bitmaps =creatEffcetList(R.drawable.b_001_1);
 
 
-        baseBagA = new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple);
+        baseBagA = new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple).changWH(50,200);
         baseBagB = new BaseBag((ASchoolActivity) context, R.drawable.c1);
         baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.laser_1);
         baseBagD = new BaseBag((ASchoolActivity) context, R.drawable.spaceship_1_blue);
@@ -112,7 +112,9 @@ public class StudentList {
             if (OnTimeClean){onTimeClean(); }
         }finally {
 
-        if (listA.size()<students_Max*2) {listA.add(new StudentA(baseBagA));}
+        if (listA.size()<students_Max*2) {
+
+            listA.add(new StudentA(baseBagA).onBuildXY(studentVIP_Play));}
         if (listB.size()<students_Max) {listB.add(new StudentB(baseBagB));}
         if (listC.size()<students_Max) {listC.add(new StudentC(baseBagC));}
         if (listD.size()<students_Max) {listD.add(new StudentD(baseBagD));}
