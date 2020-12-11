@@ -66,6 +66,7 @@ public class RoomA extends BaseSurfaceVIEW {
         j++;
         if (j>900)j=0;
         if (j%300==0)list.OnTimeClean=true;//定时清理产出敌人
+        if (j%100==0)list.onTimeCreat=true;//定时产出敌人
         if (j%10==0) list.AddList();
 
 
@@ -75,7 +76,7 @@ public class RoomA extends BaseSurfaceVIEW {
 
 
     private int lastX, lastY;//手指的位置
-    private int pointX, pointY;//飞机的位置
+    private float pointX, pointY;//飞机的位置
     private int pointXFix, pointYFix;//最终飞机的位置
     //按下屏幕触摸事件
     @Override

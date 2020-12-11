@@ -17,11 +17,20 @@ public class StudentD extends BaseStudent {
 
     }
 
+
+
     @Override
     public void drawXP() {
-        my_BaseStudent +=10;
-        if (my_BaseStudent >500){
-            mx_BaseStudent -=15;}
+
+        if (my_BaseStudent <500) {
+            my_BaseStudent +=2;
+            }else {
+
+            my_BaseStudent+=3;
+
+
+             }
+
     }
 
 

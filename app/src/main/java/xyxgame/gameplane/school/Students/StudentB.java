@@ -14,7 +14,13 @@ public class StudentB extends BaseStudent {
 
     @Override
     public void drawXP() {
-        my_BaseStudent +=35;
+        if (my_BaseStudent<30){
+            my_BaseStudent +=2;
+        }
+        else {
+
+            my_BaseStudent +=2;
+            mx_BaseStudent -= (float) ((Math.tan(45)*my_BaseStudent)/999);}
     }
 
 

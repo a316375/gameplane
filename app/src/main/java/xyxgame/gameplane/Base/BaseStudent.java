@@ -8,7 +8,7 @@ public abstract class BaseStudent {
 
 
     public Bitmap bitmap;
-    public int mx_BaseStudent, my_BaseStudent;
+    public float mx_BaseStudent, my_BaseStudent;
     public Point point;
     public boolean is_over=false;
     BaseBag baseBag;

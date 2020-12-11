@@ -109,15 +109,17 @@ public class StudentList {
 
         try {
             justclean();
-            if (OnTimeClean){onTimeClean(); }
+            if (OnTimeClean){TimeClean(); }
         }finally {
 
         if (listA.size()<students_Max*2) {
 
             listA.add(new StudentA(baseBagA).onBuildXY(studentVIP_Play));}
-        if (listB.size()<students_Max) {listB.add(new StudentB(baseBagB));}
-        if (listC.size()<students_Max) {listC.add(new StudentC(baseBagC));}
-        if (listD.size()<students_Max) {listD.add(new StudentD(baseBagD));}
+
+        if (onTimeCreat) {if (listB.size()<students_Max/students_Max) {listB.add(new StudentB(baseBagB));} onTimeCreat=false;}
+
+        if (listC.size()<students_Max/students_Max) {listC.add(new StudentC(baseBagC));}
+        if (listD.size()<students_Max/students_Max) {listD.add(new StudentD(baseBagD));}
         if (listVipA.size()<students_Max) {listVipA.add(new StudentVIPA(baseBagVIPA, listVIPA_Bitmaps,
                 new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
         if (listVipB.size()<students_Max) {listVipB.add(new StudentVIPB(baseBagVIPB, listVIPB_Bitmaps,
@@ -125,6 +127,7 @@ public class StudentList {
         }
 
     }
+   public   boolean onTimeCreat=false;
 
 
     //即时清理对象用于子弹 私有自己去维护
@@ -136,7 +139,7 @@ public class StudentList {
 
     public  boolean OnTimeClean=false;
     //定时清理用于boss产出 其他类去维护，因为时间在RoomA这个类控制,如果把时间传过来处理会导致卡顿，所以不推荐
-    protected void onTimeClean(){
+    protected void TimeClean(){
         cleanNull(listB);
         cleanNull(listC);
         cleanNull(listD);
