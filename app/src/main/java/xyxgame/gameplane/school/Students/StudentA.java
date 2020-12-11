@@ -9,13 +9,14 @@ public class StudentA extends BaseStudent {
     public StudentA(  BaseBag baseBag   ) {
         super(  baseBag);
 
+
     }
 
 
 
     @Override
     public void drawXP() {
-        my_BaseStudent -=35;
+        my_BaseStudent -=20;
     }
 
 

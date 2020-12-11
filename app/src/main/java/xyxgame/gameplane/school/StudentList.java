@@ -72,7 +72,7 @@ public class StudentList {
 
 
         listVip_Play =new ArrayList<>();
-        listVIPPlay_Bitmaps =creatEffcetList(R.drawable.c1ani);
+        listVIPPlay_Bitmaps =creatEffcetList(R.drawable.play_01);
         listVipA =new ArrayList<>();
         listVIPA_Bitmaps =creatEffcetList(R.drawable.b_001);
         listVipB =new ArrayList<>();
@@ -80,10 +80,10 @@ public class StudentList {
 
 
         baseBagA = new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple).changWH(50,200);
-        baseBagB = new BaseBag((ASchoolActivity) context, R.drawable.c1);
+        baseBagB = new BaseBag((ASchoolActivity) context, R.drawable.meteor_2);
         baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.laser_1);
         baseBagD = new BaseBag((ASchoolActivity) context, R.drawable.spaceship_1_blue);
-        baseBagVIP_Play = new BaseBag((ASchoolActivity) context, R.drawable.c1ani);
+        baseBagVIP_Play = new BaseBag((ASchoolActivity) context, R.drawable.play_01);
         baseBagVIPA = new BaseBag((ASchoolActivity) context, R.drawable.b_001);
         baseBagVIPB = new BaseBag((ASchoolActivity) context, R.drawable.b_001_1);
 

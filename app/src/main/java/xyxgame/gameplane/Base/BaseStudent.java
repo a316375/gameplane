@@ -11,11 +11,11 @@ public abstract class BaseStudent {
     public float mx_BaseStudent, my_BaseStudent;
     public Point point;
     public boolean is_over=false;
-    BaseBag baseBag;
+    public  BaseBag baseBag;
 
     public  BaseStudent onBuildXY(BaseStudent baseStudent){
-        mx_BaseStudent=baseStudent.mx_BaseStudent+baseBag.bitmap.getWidth();
-        my_BaseStudent=baseStudent.my_BaseStudent-baseBag.bitmap.getHeight();
+        mx_BaseStudent=baseStudent.mx_BaseStudent+100;
+        my_BaseStudent=baseStudent.my_BaseStudent-200;
         return this;
     };
 
