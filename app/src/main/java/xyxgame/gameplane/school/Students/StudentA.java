@@ -13,9 +13,17 @@ public class StudentA extends BaseStudent {
     }
 
 
+    @Override
+    public void creatRect() {
+        rect.set((int)mx_BaseStudent ,
+                (int)my_BaseStudent,
+                (int)mx_BaseStudent+bitmap.getWidth(),
+                (int)my_BaseStudent+bitmap.getHeight()*1/5);
+    }
 
     @Override
     public void drawXP() {
+
         my_BaseStudent -=15;
     }
 

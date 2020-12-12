@@ -38,11 +38,7 @@ public class BaseEffectStudent extends BaseStudent {
     @Override
     public  void draw(Canvas canvas){
 
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
-        paint.setStrokeWidth(5);
-        paint.setColor(Color.RED);
-        canvas.drawRect(rect,paint);
+
 
             run=run%10;
 
@@ -68,14 +64,22 @@ public class BaseEffectStudent extends BaseStudent {
             if (j%3==0)     run++;
 
 
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
+        paint.setStrokeWidth(5);
+        paint.setColor(Color.RED);
+        canvas.drawRect(rect,paint);
+
+
         }
 
     @Override
     public void drawXP() {
         if (bitmaps==null)return;
-        rect.set((int)mx_BaseStudent,(int)my_BaseStudent,
-                (int) mx_BaseStudent+bitmaps.get(0).getWidth(),
-                (int)my_BaseStudent+bitmaps.get(0).getHeight());
+        rect.set((int)mx_BaseStudent+bitmaps.get(0).getWidth()/5,
+                (int)my_BaseStudent+bitmaps.get(0).getHeight()/5,
+                (int)mx_BaseStudent+bitmaps.get(0).getWidth()*4/5,
+                (int)my_BaseStudent+bitmaps.get(0).getHeight()*4/5);
     }
 
 

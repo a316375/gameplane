@@ -36,24 +36,32 @@ public abstract class BaseStudent {
 
    public void draw(Canvas canvas){
 
+       creatRect();//矩形绘制
+
+
+        if (!bitmap.isRecycled())
+        canvas.drawBitmap(bitmap, mx_BaseStudent, my_BaseStudent,null);
+
        Paint paint = new Paint();
        paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
        paint.setStrokeWidth(5);
        paint.setColor(Color.RED);
        canvas.drawRect(rect,paint);
-
-        if (!bitmap.isRecycled())
-        canvas.drawBitmap(bitmap, mx_BaseStudent, my_BaseStudent,null);
    }
 
    public void upXY(){
-        rect.set((int)mx_BaseStudent,(int)my_BaseStudent,
-                (int)mx_BaseStudent+bitmap.getWidth(),
-                (int)my_BaseStudent+bitmap.getHeight());
+
         drawXP();
+
       if (my_BaseStudent <-100|| mx_BaseStudent <-100|| mx_BaseStudent >point.x|| my_BaseStudent >point.y)is_over=true;
    }
 
+   public void creatRect(){
+       rect.set((int)mx_BaseStudent+bitmap.getWidth()/5,
+               (int)my_BaseStudent,
+               (int)mx_BaseStudent+bitmap.getWidth()*4/5,
+               (int)my_BaseStudent+bitmap.getHeight()*3/5);
+   }
     public abstract  void drawXP();
 
 

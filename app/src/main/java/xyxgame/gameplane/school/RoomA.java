@@ -42,15 +42,17 @@ public class RoomA extends BaseSurfaceVIEW {
     @Override//1用画布去绘制
     protected void onThreadDraw(Canvas canvas) {
         backGround.draw(canvas);
-        draws(list.listA,canvas);
+
         draws(list.listB,canvas);
         draws(list.listC,canvas);
         draws(list.listD,canvas);
         draws(list.listVipA,canvas);
         draws(list.listVipB,canvas);
-        draws(list.listVip_Play,canvas);
 
-        fps.draw(canvas);
+       //在最顶层
+        draws(list.listA,canvas);
+        draws(list.listVip_Play,canvas);
+         fps.draw(canvas);
 
     }
 

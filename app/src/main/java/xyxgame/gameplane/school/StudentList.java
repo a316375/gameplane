@@ -126,8 +126,8 @@ public class StudentList {
 //        if (listVipA.size()<students_Max) {listVipA.add(new StudentVIPA(baseBagVIPA, listVIPA_Bitmaps,
 //                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
 
-        if (listVipB.size()<students_Max) {listVipB.add(new StudentVIPB(baseBagVIPB, listVIPB_Bitmaps,
-                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
+//        if (listVipB.size()<students_Max) {listVipB.add(new StudentVIPB(baseBagVIPB, listVIPB_Bitmaps,
+//                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
         }
 
     }

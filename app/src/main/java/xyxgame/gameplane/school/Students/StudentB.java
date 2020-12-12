@@ -26,7 +26,8 @@ public class StudentB extends BaseStudent {
 
     public StudentB(BaseBag baseBag) {
         super(  baseBag);
-        mx_BaseStudent =point.x/2;
+//        mx_BaseStudent =point.x/2;
+        mx_BaseStudent =0;
         my_BaseStudent =0;
 
         paint = new Paint();
@@ -51,7 +52,7 @@ public class StudentB extends BaseStudent {
     @Override
     public void draw(Canvas canvas) {
 
-      super.draw(canvas);
+
     if (is_over==true) return;
         path = new Path();
         path.moveTo(startx, starty);
@@ -63,8 +64,8 @@ public class StudentB extends BaseStudent {
         //we'll get 200 points from path to animate the circle
         fSegmentLen = pm.getLength() / 2000;
 
-        canvas.drawBitmap(bitmap, afP[0], afP[1], paint);
-      // super.draw(canvas);
+       // canvas.drawBitmap(bitmap, afP[0], afP[1], paint);
+       super.draw(canvas);
     }
 
     int iCurStep = 0;// current animation step
