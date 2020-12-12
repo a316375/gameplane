@@ -2,6 +2,7 @@ package xyxgame.gameplane.school.Students;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 
@@ -16,16 +17,28 @@ public class StudentVIP_Play extends BaseEffectStudent {
 
     }
 
-    @Override
-    public void drawXP() {
-        super.drawXP();
-         
-    }
+
 
     @Override
     public void draw(Canvas canvas) {
 
-        run=run%10;
+
+
+        if (bitmaps==null)return;
+
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
+        paint.setStrokeWidth(5);
+        paint.setColor(Color.RED);
+        canvas.drawRect(rect,paint);
+        rect.set((int)mx_BaseStudent,(int)my_BaseStudent,
+                (int) mx_BaseStudent+bitmaps.get(0).getWidth(),
+                (int)my_BaseStudent+bitmaps.get(0).getHeight());
+
+
+
+
+         run=run%10;
 
         if (j<30)
         {
@@ -41,6 +54,7 @@ public class StudentVIP_Play extends BaseEffectStudent {
 
 
     }
+
 
 
 }

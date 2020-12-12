@@ -1,10 +1,13 @@
 package xyxgame.gameplane.school;
 
 import android.graphics.Canvas;
+import android.graphics.Point;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseStudent;
@@ -12,6 +15,8 @@ import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.Base.BaseTeacher;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
+import xyxgame.gameplane.school.Students.StudentD;
+import xyxgame.gameplane.school.Students.StudentVIPA;
 import xyxgame.gameplane.school.Students.StudentVIP_Play;
 
 public class RoomA extends BaseSurfaceVIEW {
@@ -67,10 +72,16 @@ public class RoomA extends BaseSurfaceVIEW {
         if (j>900)j=0;
         if (j%300==0)list.OnTimeClean=true;//定时清理产出敌人
         if (j%100==0)list.onTimeCreat=true;//定时产出敌人
-        if (j%10==0) list.AddList();
+        if (j%20==0) list.onStudentA=true;//定时产生StudentA
+        if (j%10==0)  list.AddList();//定时产生
+
+
 
 
     }
+
+
+
 
 
 

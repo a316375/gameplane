@@ -16,7 +16,7 @@ public class StudentA extends BaseStudent {
 
     @Override
     public void drawXP() {
-        my_BaseStudent -=20;
+        my_BaseStudent -=15;
     }
 
 

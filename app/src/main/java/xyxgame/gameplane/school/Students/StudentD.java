@@ -1,11 +1,16 @@
 package xyxgame.gameplane.school.Students;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.Log;
 
 import xyxgame.gameplane.Base.BaseBag;
 import xyxgame.gameplane.Base.BaseStudent;
 
 public class StudentD extends BaseStudent {
+
 
 
     public StudentD(BaseBag baseBag) {
@@ -18,9 +23,15 @@ public class StudentD extends BaseStudent {
     }
 
 
+    @Override
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+
+    }
 
     @Override
     public void drawXP() {
+
 
         if (my_BaseStudent <500) {
             my_BaseStudent +=2;

@@ -2,6 +2,7 @@ package xyxgame.gameplane.Base;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 
@@ -23,6 +24,8 @@ public class BaseEffectStudent extends BaseStudent {
         my_BaseStudent =point.y;
 
 
+
+
     }
 
 
@@ -34,6 +37,12 @@ public class BaseEffectStudent extends BaseStudent {
 
     @Override
     public  void draw(Canvas canvas){
+
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
+        paint.setStrokeWidth(5);
+        paint.setColor(Color.RED);
+        canvas.drawRect(rect,paint);
 
             run=run%10;
 
@@ -63,7 +72,10 @@ public class BaseEffectStudent extends BaseStudent {
 
     @Override
     public void drawXP() {
-
+        if (bitmaps==null)return;
+        rect.set((int)mx_BaseStudent,(int)my_BaseStudent,
+                (int) mx_BaseStudent+bitmaps.get(0).getWidth(),
+                (int)my_BaseStudent+bitmaps.get(0).getHeight());
     }
 
 

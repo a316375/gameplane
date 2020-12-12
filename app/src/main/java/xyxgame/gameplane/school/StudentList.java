@@ -42,7 +42,7 @@ public class StudentList {
 
 //普通无帧动画的Student
     BaseStudent studentA,studentB,studentC,studentD;
-    private final BaseBag baseBagA,baseBagB,baseBagC,baseBagD;
+     BaseBag baseBagA,baseBagB,baseBagC,baseBagD;
     ArrayList<BaseStudent> listA,listB,listC,listD  ;
 
 
@@ -51,7 +51,7 @@ public class StudentList {
 //特殊有帧动画的Student 比普通多一组Arrlist<Bitmaps>
     BaseStudent studentVIP_Play;//特例
     BaseStudent   StudentVIPA,StudentVIPB;
-    private final BaseBag baseBagVIP_Play,baseBagVIPA,baseBagVIPB;
+     BaseBag baseBagVIP_Play,baseBagVIPA,baseBagVIPB;
     ArrayList<BaseStudent> listVip_Play,listVipA ,listVipB;
     ArrayList<Bitmap> listVIPPlay_Bitmaps,listVIPA_Bitmaps,listVIPB_Bitmaps;
 
@@ -109,25 +109,32 @@ public class StudentList {
 
         try {
             justclean();
-            if (OnTimeClean){TimeClean(); }
+            if (OnTimeClean){ TimeClean(); }
         }finally {
 
+            if (onStudentA){
         if (listA.size()<students_Max*2) {
 
             listA.add(new StudentA(baseBagA).onBuildXY(studentVIP_Play));}
+           onStudentA=false;
+            }
 
         if (onTimeCreat) {if (listB.size()<students_Max/students_Max) {listB.add(new StudentB(baseBagB));} onTimeCreat=false;}
 
         if (listC.size()<students_Max/students_Max) {listC.add(new StudentC(baseBagC));}
         if (listD.size()<students_Max/students_Max) {listD.add(new StudentD(baseBagD));}
-        if (listVipA.size()<students_Max) {listVipA.add(new StudentVIPA(baseBagVIPA, listVIPA_Bitmaps,
-                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
+//        if (listVipA.size()<students_Max) {listVipA.add(new StudentVIPA(baseBagVIPA, listVIPA_Bitmaps,
+//                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
+
         if (listVipB.size()<students_Max) {listVipB.add(new StudentVIPB(baseBagVIPB, listVIPB_Bitmaps,
                 new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
         }
 
     }
    public   boolean onTimeCreat=false;
+   public   boolean onStudentA=false;
+
+
 
 
     //即时清理对象用于子弹 私有自己去维护

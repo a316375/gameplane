@@ -51,7 +51,7 @@ public class StudentB extends BaseStudent {
     @Override
     public void draw(Canvas canvas) {
 
-
+      super.draw(canvas);
     if (is_over==true) return;
         path = new Path();
         path.moveTo(startx, starty);
