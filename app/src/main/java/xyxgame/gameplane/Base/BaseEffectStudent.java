@@ -15,6 +15,17 @@ public class BaseEffectStudent extends BaseStudent {
 
 
     public boolean bitmaps_is_over=false;
+
+    public boolean isRound=false;
+
+    public BaseEffectStudent withRound(){
+        isRound=true;
+      return this;
+    };
+
+
+
+
     public BaseEffectStudent(BaseBag baseBag,ArrayList<Bitmap> bitmaps, Point point) {
         super(baseBag);
         this.bitmaps = bitmaps;
@@ -49,16 +60,18 @@ public class BaseEffectStudent extends BaseStudent {
                         canvas.drawBitmap(bitmaps.get(run), mx_BaseStudent, my_BaseStudent,new Paint());
                         }
         }
-            if (j==30){j=0;
-//            mX=new Random().nextInt(1000);
-//            mY=new Random().nextInt(1500);
-//                Iterator<Bitmap> iterator = bitmaps.iterator();
-//                while (iterator.hasNext()){
-//                    iterator.next().recycle();
-//                }
+            if (j==30){
+
+
+                j=0;
+                if (isRound==false){
+
                 bitmaps=null;
                 bitmaps_is_over=true;
+                }
             }
+
+
 
 
             if (j%3==0)     run++;
@@ -75,11 +88,18 @@ public class BaseEffectStudent extends BaseStudent {
 
     @Override
     public void drawXP() {
-        if (bitmaps==null)return;
+        if (bitmaps==null)
+            return;
         rect.set((int)mx_BaseStudent+bitmaps.get(0).getWidth()/5,
                 (int)my_BaseStudent+bitmaps.get(0).getHeight()/5,
                 (int)mx_BaseStudent+bitmaps.get(0).getWidth()*4/5,
                 (int)my_BaseStudent+bitmaps.get(0).getHeight()*4/5);
+
+        if (isRound==true)my_BaseStudent+=2;
+        if (my_BaseStudent>2000){bitmaps_is_over=true;bitmaps=null;}
+
+
+
     }
 
 

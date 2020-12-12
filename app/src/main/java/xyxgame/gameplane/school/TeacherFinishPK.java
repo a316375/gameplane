@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+import xyxgame.gameplane.Base.BaseEffectStudent;
 import xyxgame.gameplane.Base.BaseStudent;
 import xyxgame.gameplane.Base.PK;
+import xyxgame.gameplane.school.Students.StudentB;
 import xyxgame.gameplane.school.Students.StudentVIPA;
 
 public class TeacherFinishPK implements PK {
@@ -50,6 +52,30 @@ public class TeacherFinishPK implements PK {
         A_removePK(list.listA,list.listD);
 
 
+
+    }
+
+
+
+
+
+
+
+    @Override
+    public void Eating(StudentList list) {
+
+        Iterator<BaseStudent> iterator = list.listB.iterator();
+        while (iterator.hasNext()){
+            BaseStudent next = iterator.next();
+            if (next instanceof StudentB &&next.isEating==true){
+               // next.my_BaseStudent=50;如果student正在吃东西//播放帧动画
+                if (list.listVipB.size()<2)
+                list.listVipB.add(new BaseEffectStudent(list.baseBagVIPB,list.listVIPB_Bitmaps,
+                        new Point((int) next.mx_BaseStudent,(int)next.my_BaseStudent)).withRound());
+               iterator.remove();
+            }
+
+        }
 
     }
 }

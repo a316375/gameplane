@@ -19,6 +19,9 @@ public abstract class BaseStudent {
     public boolean is_over=false;
     public  BaseBag baseBag;
 
+    public boolean isEating=false;//正在吃东西状态
+
+
     public  BaseStudent onBuildXY(BaseStudent baseStudent){
         mx_BaseStudent=baseStudent.mx_BaseStudent+100;
         my_BaseStudent=baseStudent.my_BaseStudent-200;

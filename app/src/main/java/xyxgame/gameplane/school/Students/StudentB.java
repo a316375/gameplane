@@ -24,11 +24,24 @@ public class StudentB extends BaseStudent {
     private PathMeasure pm;
     private float fSegmentLen;
 
+   public int stoplen=new Random().nextInt(point.x);
+
+
+    public StudentB withLen(int startx,int stopx){
+
+        this.startx=startx;
+        this.stopx=stopx;
+        mx_BaseStudent =startx;
+        my_BaseStudent =starty;
+        stoplen=new Random().nextInt(point.x*2/3);
+        return this;
+    }
+
     public StudentB(BaseBag baseBag) {
         super(  baseBag);
 //        mx_BaseStudent =point.x/2;
-        mx_BaseStudent =0;
-        my_BaseStudent =0;
+        mx_BaseStudent =startx;
+        my_BaseStudent =starty;
 
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
@@ -38,13 +51,10 @@ public class StudentB extends BaseStudent {
         //小球跟随路径移动
         pm = new PathMeasure(path, false);
 
-
-
     }
 
+    int startx=0, starty=0, stopx=point.x ,stopy=0;
 
-    int starty=50,stopy=50;
-    int startx=0;
 
 
 
@@ -56,7 +66,7 @@ public class StudentB extends BaseStudent {
     if (is_over==true) return;
         path = new Path();
         path.moveTo(startx, starty);
-        path.lineTo(point.x, stopy);
+        path.lineTo(stopx, stopy);
      //   canvas.drawPath(path, paint);
 
         pm = new PathMeasure(path, false);
@@ -76,13 +86,14 @@ public class StudentB extends BaseStudent {
 
 
 
-//让他移动到屏幕1/3的地方停下来
-        if (iCurStep <= point.x/3) {
+//让他移动到屏幕随机的地方停下来
+        if (iCurStep <= stoplen) {
             pm.getPosTan(fSegmentLen * iCurStep, afP, null);
             iCurStep++;
             // invalidate();
         } else {
-            iCurStep = point.x/3;
+            iCurStep = stoplen;
+            isEating=true;
         }
 
 

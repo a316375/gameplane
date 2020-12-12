@@ -12,4 +12,6 @@ public class StudentVIPB extends BaseEffectStudent {
     public StudentVIPB(BaseBag baseBag, ArrayList<Bitmap> bitmaps, Point point) {
         super(baseBag, bitmaps, point);
     }
+
+
 }

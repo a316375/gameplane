@@ -2,20 +2,9 @@ package xyxgame.gameplane.school;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.os.Build;
-import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseBag;
@@ -27,8 +16,6 @@ import xyxgame.gameplane.school.Students.StudentA;
 import xyxgame.gameplane.school.Students.StudentB;
 import xyxgame.gameplane.school.Students.StudentC;
 import xyxgame.gameplane.school.Students.StudentD;
-import xyxgame.gameplane.school.Students.StudentVIPA;
-import xyxgame.gameplane.school.Students.StudentVIPB;
 import xyxgame.gameplane.school.Students.StudentVIP_Play;
 
 public class StudentList {
@@ -59,7 +46,6 @@ public class StudentList {
 
 
     BaseActivity context;
-
 
 
     public StudentList(BaseActivity context) {
@@ -119,10 +105,14 @@ public class StudentList {
            onStudentA=false;
             }
 
-        if (onTimeCreat) {if (listB.size()<students_Max/students_Max) {listB.add(new StudentB(baseBagB));} onTimeCreat=false;}
+        if (onStudenB) {
+
+            if (listB.size()<students_Max/students_Max) {
+            listB.add(new StudentB(baseBagB).withLen(0,context.point.x));}
+            onStudenB =false;}
 
         if (listC.size()<students_Max/students_Max) {listC.add(new StudentC(baseBagC));}
-        if (listD.size()<students_Max/students_Max) {listD.add(new StudentD(baseBagD));}
+            if (listD.size()<students_Max/students_Max) {listD.add(new StudentD(baseBagD));}
 //        if (listVipA.size()<students_Max) {listVipA.add(new StudentVIPA(baseBagVIPA, listVIPA_Bitmaps,
 //                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
 
@@ -131,7 +121,7 @@ public class StudentList {
         }
 
     }
-   public   boolean onTimeCreat=false;
+   public   boolean onStudenB =false;
    public   boolean onStudentA=false;
 
 

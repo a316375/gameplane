@@ -14,5 +14,6 @@ public  abstract  class BaseTeacher  {
 
     public void  pkResult(StudentList list){
         pk.pk(list);
+        pk.Eating(list);
     }
 }
