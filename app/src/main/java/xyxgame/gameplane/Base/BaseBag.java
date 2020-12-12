@@ -7,7 +7,7 @@ public class BaseBag {
 
 
     public Bitmap bitmap;
-    BaseActivity activity;
+    public BaseActivity activity;
     public BaseBag changWH(int width,int height){
         bitmap=Bitmap.createScaledBitmap(bitmap,width,height,false);
         return this;

@@ -33,7 +33,11 @@ public class StudentB extends BaseStudent {
         this.stopx=stopx;
         mx_BaseStudent =startx;
         my_BaseStudent =starty;
-        stoplen=new Random().nextInt(point.x*2/3);
+        stoplen=new Random().nextInt(point.x/3)+point.x/3;//屏幕的终点就是1/3-2/3的位置
+        leftOrRight=new Random().nextInt(2);//生成随机看是左边还是右边
+
+
+
         return this;
     }
 
@@ -51,6 +55,7 @@ public class StudentB extends BaseStudent {
         //小球跟随路径移动
         pm = new PathMeasure(path, false);
 
+
     }
 
     int startx=0, starty=0, stopx=point.x ,stopy=0;
@@ -58,6 +63,7 @@ public class StudentB extends BaseStudent {
 
 
 
+    int leftOrRight=0 ;
 
     @Override
     public void draw(Canvas canvas) {
@@ -65,16 +71,26 @@ public class StudentB extends BaseStudent {
 
     if (is_over==true) return;
         path = new Path();
+    if (leftOrRight==0){
         path.moveTo(startx, starty);
-        path.lineTo(stopx, stopy);
-     //   canvas.drawPath(path, paint);
+        path.lineTo(stopx, stopy);}
+    else
+       {
+
+           path.moveTo(stopx-bitmap.getWidth(), stopy);
+           path.lineTo(startx, starty);
+       }
+
+       //  canvas.drawPath(path, paint);
 
         pm = new PathMeasure(path, false);
 
         //we'll get 200 points from path to animate the circle
-        fSegmentLen = pm.getLength() / 2000;
+     if (leftOrRight==0)  fSegmentLen = pm.getLength() / 2000;
+    else   fSegmentLen = pm.getLength() / 1000;
 
-       // canvas.drawBitmap(bitmap, afP[0], afP[1], paint);
+        if (afP[0]!=0)
+       //canvas.drawBitmap(bitmap, afP[0], afP[1], paint);
        super.draw(canvas);
     }
 
@@ -97,8 +113,9 @@ public class StudentB extends BaseStudent {
         }
 
 
+      if (iCurStep!=0){
          mx_BaseStudent=afP[0];
-         my_BaseStudent=afP[1];
+         my_BaseStudent=afP[1];}
 
         // if (mx_BaseStudent>point.x)is_over=true;
 

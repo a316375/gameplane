@@ -32,6 +32,7 @@ public abstract class BaseStudent {
         this.baseBag=baseBag;
         bitmap=baseBag.bitmap;
         point=baseBag.activity.point;
+
         mx_BaseStudent =point.x/2;
         my_BaseStudent =point.y-bitmap.getHeight()-200;
         rect=new Rect();

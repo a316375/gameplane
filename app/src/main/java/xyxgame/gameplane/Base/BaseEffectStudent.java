@@ -96,7 +96,7 @@ public class BaseEffectStudent extends BaseStudent {
                 (int)my_BaseStudent+bitmaps.get(0).getHeight()*4/5);
 
         if (isRound==true)my_BaseStudent+=2;
-        if (my_BaseStudent>2000){bitmaps_is_over=true;bitmaps=null;}
+        if (my_BaseStudent>baseBag.activity.point.y){bitmaps_is_over=true;bitmaps=null;}
 
 
 

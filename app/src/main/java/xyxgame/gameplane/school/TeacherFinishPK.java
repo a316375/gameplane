@@ -68,8 +68,8 @@ public class TeacherFinishPK implements PK {
         while (iterator.hasNext()){
             BaseStudent next = iterator.next();
             if (next instanceof StudentB &&next.isEating==true){
-               // next.my_BaseStudent=50;如果student正在吃东西//播放帧动画
-                if (list.listVipB.size()<2)
+               // 如果student正在吃东西//播放帧动画
+                if (list.listVipB.size()<5)
                 list.listVipB.add(new BaseEffectStudent(list.baseBagVIPB,list.listVIPB_Bitmaps,
                         new Point((int) next.mx_BaseStudent,(int)next.my_BaseStudent)).withRound());
                iterator.remove();
