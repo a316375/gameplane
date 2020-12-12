@@ -68,7 +68,7 @@ public class RoomA extends BaseSurfaceVIEW {
         j++;
         if (j>10000)j=0;
         if (j%300==0)list.OnTimeClean=true;//定时清理产出敌人
-        if (j%500==0&&new Random().nextInt(2)==0)list.onStudenB =true;//定时产出敌人
+        if (j%200==0&&new Random().nextInt(2)==0)list.onStudenB =true;//定时产出敌人
         if (j%20==0) list.onStudentA=true;//定时产生StudentA 代表子弹
         if (j%10==0)  list.AddList();//定时产生
 
