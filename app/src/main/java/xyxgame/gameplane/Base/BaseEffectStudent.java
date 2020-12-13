@@ -23,7 +23,11 @@ public class BaseEffectStudent extends BaseStudent {
       return this;
     };
 
+    public BaseEffectStudent creatBitmaps() {
+        this.bitmaps = baseBag.bitmaplist;
+        return this;
 
+    }
 
 
     public BaseEffectStudent(BaseBag baseBag,ArrayList<Bitmap> bitmaps, Point point) {

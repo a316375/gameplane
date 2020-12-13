@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import java.util.ArrayList;
+
 public abstract class BaseStudent {
 
 
@@ -20,6 +22,7 @@ public abstract class BaseStudent {
     public  BaseBag baseBag;
 
     public boolean isEating=false;//正在吃东西状态
+
 
 
     public  BaseStudent onBuildXY(BaseStudent baseStudent){

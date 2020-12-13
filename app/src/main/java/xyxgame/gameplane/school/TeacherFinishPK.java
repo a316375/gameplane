@@ -10,7 +10,7 @@ import xyxgame.gameplane.Base.BaseEffectStudent;
 import xyxgame.gameplane.Base.BaseStudent;
 import xyxgame.gameplane.Base.PK;
 import xyxgame.gameplane.school.Students.StudentB;
-import xyxgame.gameplane.school.Students.StudentVIPA;
+
 
 public class TeacherFinishPK implements PK {
 
@@ -29,7 +29,7 @@ public class TeacherFinishPK implements PK {
                          int x=(int) next.mx_BaseStudent-list.listVIPA_Bitmaps.get(0).getWidth()/2+50;
                          int y=(int)next.my_BaseStudent-list.listVIPA_Bitmaps.get(0).getWidth()/2;
                          iterator.remove();
-                         list. listVipA.add(new StudentVIPA(list.baseBagVIPA,list. listVIPA_Bitmaps,
+                         list. listVipA.add(new BaseEffectStudent(list.baseBagVIPA,list. listVIPA_Bitmaps,
                                  new Point(x,y)) );
 
 
