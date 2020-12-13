@@ -5,7 +5,6 @@ import android.graphics.Point;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseBag;
@@ -39,10 +38,10 @@ public class StudentList {
 
 //特殊有帧动画的Student 比普通多一组Arrlist<Bitmaps>
     BaseStudent studentVIP_Play;//特例
-    BaseStudent   StudentVIPA,StudentVIPB;
-     BaseBag baseBagVIP_Play,baseBagVIPA,baseBagVIPB;
-    ArrayList<BaseStudent> listVip_Play,listVipA ,listVipB;
-    ArrayList<Bitmap> listVIPPlay_Bitmaps,listVIPA_Bitmaps,listVIPB_Bitmaps;
+    BaseStudent BaseEffcetA, BaseEffcetB;//子弹攻击的爆炸特效动画
+    ArrayList<BaseStudent> listVip_Play,listVipA ,listVipB;//把这些特效交给集合去管理，必须调用remove否则内存开销很大
+     BaseBag baseBagVIP_Play,baseBagVIPA,baseBagVIPB;//那拿到这张原始序列帧长图
+    ArrayList<Bitmap> listVIPPlay_Bitmaps,listVIPA_Bitmaps,listVIPB_Bitmaps;//把这张序列长图拿去解析成各种集合并且放到内存里；
 
 
 
@@ -82,8 +81,8 @@ public class StudentList {
         studentD=new StudentD(baseBagD);
         studentVIP_Play =new StudentVIP_Play(this.baseBagVIP_Play, listVIPPlay_Bitmaps,
                 new Point(context.point.x/2,context.point.y-500));
-        StudentVIPA =new BaseEffectStudent(this.baseBagVIPA, listVIPA_Bitmaps,new Point(50,20));
-        StudentVIPB =new BaseEffectStudent(this.baseBagVIPB, listVIPB_Bitmaps,new Point(50,20));
+        BaseEffcetA =new BaseEffectStudent(this.baseBagVIPA, listVIPA_Bitmaps,new Point(50,20));
+        BaseEffcetB =new BaseEffectStudent(this.baseBagVIPB, listVIPB_Bitmaps,new Point(50,20));
 
 
 

@@ -69,8 +69,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     //停止帧绘制线程
     public void stopT() {
         isAlive = false;
-        handlerThread.quit();
-        handler = null;
+       if (handlerThread!=null) { handlerThread.quit(); handler = null;}
         isGameing=false;
 
     }
