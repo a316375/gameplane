@@ -22,9 +22,7 @@ public class StudentVIP_Play extends BaseEffectStudent {
     @Override
     public void draw(Canvas canvas) {
 
-
-
-        if (bitmaps==null)return;
+         if (bitmaps==null)return;
 
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
