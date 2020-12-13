@@ -17,8 +17,7 @@ import xyxgame.gameplane.school.Students.StudentA;
 import xyxgame.gameplane.school.Students.StudentB;
 import xyxgame.gameplane.school.Students.StudentC;
 import xyxgame.gameplane.school.Students.StudentD;
-import xyxgame.gameplane.school.Students.StudentVIPA;
-import xyxgame.gameplane.school.Students.StudentVIPB;
+
 import xyxgame.gameplane.school.Students.StudentVIP_Play;
 
 public class StudentList {
@@ -70,7 +69,7 @@ public class StudentList {
 
         baseBagA = new BaseBag((ASchoolActivity) context, R.drawable.my_bullet_purple).changWH(50,200);
         baseBagB = new BaseBag((ASchoolActivity) context, R.drawable.meteor_2);
-        baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.laser_1);
+        baseBagC = new BaseBag((ASchoolActivity) context, R.drawable.c1);
         baseBagD = new BaseBag((ASchoolActivity) context, R.drawable.spaceship_1_blue);
         baseBagVIP_Play = new BaseBag((ASchoolActivity) context, R.drawable.play_01);
         baseBagVIPA = new BaseBag((ASchoolActivity) context, R.drawable.b_001);
