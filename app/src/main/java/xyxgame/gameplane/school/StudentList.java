@@ -18,6 +18,7 @@ import xyxgame.gameplane.school.Students.StudentB;
 import xyxgame.gameplane.school.Students.StudentC;
 import xyxgame.gameplane.school.Students.StudentD;
 import xyxgame.gameplane.school.Students.StudentVIPA;
+import xyxgame.gameplane.school.Students.StudentVIPB;
 import xyxgame.gameplane.school.Students.StudentVIP_Play;
 
 public class StudentList {
@@ -119,10 +120,10 @@ public class StudentList {
             if (listD.size()<students_Max/students_Max) {listD.add(new StudentD(baseBagD));}
 //        if (listVipA.size()<students_Max) {listVipA.add(new StudentVIPA(baseBagVIPA, listVIPA_Bitmaps,
 //                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
-
-        if (listVipB.size()<students_Max) {
-            listVipB.add(new StudentVIPA(this.baseBagVIPB,
-                    new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
+//
+//        if (listVipB.size()<students_Max) {
+//            listVipB.add(new StudentVIPB(this.baseBagVIPB,listVIPB_Bitmaps,
+//                    new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
         }
 
     }

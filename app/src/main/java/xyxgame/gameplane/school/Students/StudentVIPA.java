@@ -11,7 +11,7 @@ import xyxgame.gameplane.Base.BaseEffectStudent;
 public class StudentVIPA extends BaseEffectStudent {
 
 
-    public StudentVIPA(BaseBag baseBag, Point point) {
-         super(baseBag, baseBag.bitmaplist, point);
+    public StudentVIPA(BaseBag baseBag, ArrayList<Bitmap> bitmaps, Point point) {
+        super(baseBag, bitmaps, point);
     }
 }
