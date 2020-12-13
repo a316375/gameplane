@@ -25,7 +25,9 @@ public class RoomA extends BaseSurfaceVIEW {
 
    public RoomA(BaseActivity context) {
         super(context);
-        backGround =new BackGround(context,R.drawable.bg5);
+
+
+       backGround =new BackGround(context,R.drawable.bg5);
         list=new StudentList(context);
         teacherA = new TeacherA(new TeacherFinishPK());
         fps=new FPS();
@@ -70,6 +72,7 @@ public class RoomA extends BaseSurfaceVIEW {
         if (j%300==0)list.OnTimeClean=true;//定时清理产出敌人
         if (j%200==0&&new Random().nextInt(2)==0)list.onStudenB =true;//定时产出敌人
         if (j%20==0) list.onStudentA=true;//定时产生StudentA 代表子弹
+        if (j%150==0) list.onStudentD=true;//定时产生StudentA 代表子弹
         if (j%10==0)  list.AddList();//定时产生
 
 

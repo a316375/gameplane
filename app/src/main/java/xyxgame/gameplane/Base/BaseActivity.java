@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import xyxgame.gameplane.GL.GameSurfaceView;
+import xyxgame.gameplane.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         point = new Point();
         display.getSize(point);
         //Log.d("X and Y size", "X = " + point.x + ", Y = " + point.y);
+
         setView();
 
 

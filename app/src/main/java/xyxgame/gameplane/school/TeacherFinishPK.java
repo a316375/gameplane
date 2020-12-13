@@ -18,6 +18,7 @@ public class TeacherFinishPK implements PK {
          {
 
              Iterator<BaseStudent> iterator = listA.iterator();
+
              while (iterator.hasNext()){
                  BaseStudent next = iterator.next();
 
@@ -28,9 +29,10 @@ public class TeacherFinishPK implements PK {
 
                          int x=(int) next.mx_BaseStudent-list.listVIPA_Bitmaps.get(0).getWidth()/2+50;
                          int y=(int)next.my_BaseStudent-list.listVIPA_Bitmaps.get(0).getWidth()/2;
-                         iterator.remove();
+                          iterator.remove();
                          list. listVipA.add(new BaseEffectStudent(list.baseBagVIPA,list. listVIPA_Bitmaps,
                                  new Point(x,y)) );
+                         break;
 
 
                      }
@@ -66,7 +68,8 @@ public class TeacherFinishPK implements PK {
                 if (list.listVipB.size()<10)
                     list.listVipB.add(new BaseEffectStudent(list.baseBagVIPB,list.listVIPB_Bitmaps,
                             new Point((int) next.mx_BaseStudent,(int)next.my_BaseStudent)).withRound());
-                iterator.remove();
+                      iterator.remove();
+                  break;
             }
 
         }}

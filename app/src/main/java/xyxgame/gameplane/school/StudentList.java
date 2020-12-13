@@ -102,20 +102,18 @@ public class StudentList {
         }finally {
 
             if (onStudentA){
-        if (listA.size()<students_Max*2) {
-
-            listA.add(new StudentA(baseBagA).onBuildXY(studentVIP_Play));}
-           onStudentA=false;
-            }
+        if (listA.size()<students_Max*20)
+        { listA.add(new StudentA(baseBagA).onBuildXY(studentVIP_Play));} onStudentA=false;  }
 
         if (onStudenB) {
+              if (listB.size()<students_Max/students_Max)
+              { listB.add(new StudentB(baseBagB).withLen(0,context.point.x));}  onStudenB =false;}
 
-            if (listB.size()<students_Max/students_Max) {
-            listB.add(new StudentB(baseBagB).withLen(0,context.point.x));}
-            onStudenB =false;}
+
 
         if (listC.size()<students_Max/students_Max) {listC.add(new StudentC(baseBagC));}
-            if (listD.size()<students_Max/students_Max) {listD.add(new StudentD(baseBagD));}
+
+        if (onStudentD) { if (listD.size()<students_Max) {listD.add(new StudentD(baseBagD));} onStudentD=false;}
 //        if (listVipA.size()<students_Max) {listVipA.add(new StudentVIPA(baseBagVIPA, listVIPA_Bitmaps,
 //                new Point(new Random().nextInt(context.point.x),new Random().nextInt(context.point.y))));}
 //
@@ -127,6 +125,7 @@ public class StudentList {
     }
    public   boolean onStudenB =false;
    public   boolean onStudentA=false;
+   public   boolean onStudentD=false;
 
 
 
