@@ -22,10 +22,15 @@ public class BaseBag {
     public BaseBag(BaseActivity activity, int draw) {
 
         this.activity=activity;
-        this.bitmap = BitmapUtils.decodeSampledBitmapFromResource(activity.getResources(),draw,100,100);
+        changBitmap(draw);
+      //  this.bitmap = BitmapUtils.decodeSampledBitmapFromResource(activity.getResources(),draw,100,100);
         //bitmap=Bitmap.createScaledBitmap(bitmap,100,100,false);
 
 
+    }
+
+    public void changBitmap(int draw){
+        this.bitmap = BitmapUtils.decodeSampledBitmapFromResource(activity.getResources(),draw,100,100);
     }
 
 

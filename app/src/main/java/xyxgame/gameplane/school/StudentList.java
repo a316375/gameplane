@@ -5,6 +5,7 @@ import android.graphics.Point;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseBag;
@@ -20,6 +21,8 @@ import xyxgame.gameplane.school.Students.StudentD;
 import xyxgame.gameplane.school.Students.StudentVIP_Play;
 
 public class StudentList {
+
+
 
 
     //这个类负责bitmap管理，bitmap的控制类要求是全局变量，可以复用，否则会很卡，拒绝recycle提高复用率实现高性能
@@ -43,7 +46,8 @@ public class StudentList {
      BaseBag baseBagVIP_Play,baseBagVIPA,baseBagVIPB;//那拿到这张原始序列帧长图
     ArrayList<Bitmap> listVIPPlay_Bitmaps,listVIPA_Bitmaps,listVIPB_Bitmaps;//把这张序列长图拿去解析成各种集合并且放到内存里；
 
-
+//随机图片
+    int image[]={R.drawable.enemy_red_3,R.drawable.enemy_red_2,R.drawable.enemy_red_1};
 
 
     BaseActivity context;
@@ -107,7 +111,9 @@ public class StudentList {
 
         if (onStudenB) {
               if (listB.size()<students_Max/students_Max)
-              { listB.add(new StudentB(baseBagB).withLen(0,context.point.x));}  onStudenB =false;}
+              {    baseBagB.changBitmap(image[new Random().nextInt(image.length)]);
+
+                  listB.add(new StudentB(baseBagB).withLen(0,context.point.x));}  onStudenB =false;}
 
 
 
