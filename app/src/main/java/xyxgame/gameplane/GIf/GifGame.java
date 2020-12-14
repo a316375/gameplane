@@ -49,6 +49,7 @@ public class GifGame extends BaseSurfaceVIEW {
     protected void onThreadDraw(Canvas canvas) {
 
 
+
         backGround.draw(canvas);
 
 
