@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -54,12 +55,16 @@ public class GifGame extends BaseSurfaceVIEW {
 
 
         i++;
-        if (i>1000)i=0;
+        if (i>1000)i=1;
         if (i%10==0)j++;
-        if (i%100==0)baseGIFS.add(new BaseGIF(mActivity,Bitmaps.getxue(mActivity),500,500,6));
-        for (int k = 0; k <baseGIFS.size(); k++) {
-            baseGIFS.get(k).draw(canvas);
+        if (i%100==0)baseGIFS.add(new BaseGIF(mActivity,Bitmaps.getxue(mActivity),new Random().nextInt(1000),0,6));
+
+        Iterator<BaseGIF> iterator = baseGIFS.iterator();
+        while (iterator.hasNext()){
+            iterator.next().draw(canvas);
         }
+
+
 
 
 
