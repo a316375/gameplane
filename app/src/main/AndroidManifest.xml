@@ -43,6 +43,9 @@
         <activity android:name=".school.ASchoolActivity"
             android:screenOrientation="nosensor"
             />
+        <activity android:name=".GIf.GifActivity"
+            android:screenOrientation="nosensor"
+            />
     </application>
 
 </manifest>

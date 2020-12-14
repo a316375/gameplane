@@ -24,12 +24,12 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     private int frameDuration = DEFAULT_FRAME_DURATION_MILLISECOND;
     //用于绘制帧的画布
     private Canvas canvas;
-    private boolean isAlive;
+    public boolean isAlive;
 
-    private Thread mDrawThread;boolean isGameing;
+    private Thread mDrawThread ; public boolean isGameing;
 
-    public BaseSurfaceVIEW(BaseActivity context) {
-        super(context);
+    public BaseSurfaceVIEW(BaseActivity mBaseActivity) {
+        super(mBaseActivity);
         init();
     }
 
