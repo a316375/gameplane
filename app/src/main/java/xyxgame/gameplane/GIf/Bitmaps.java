@@ -20,8 +20,13 @@ import xyxgame.gameplane.R;
 
 public class Bitmaps {
 
+    int width=100,height=100;
     public  CopyOnWriteArrayList<Bitmap> getxue(Activity activity){
         return getbitmaps(activity, R.drawable.gif_xue);
+    }
+
+    public  CopyOnWriteArrayList<Bitmap> getplay_bg(Activity activity){
+        return getbitmaps(activity, R.drawable.play_bg);
     }
 
     public  CopyOnWriteArrayList<Bitmap> getniu(Activity activity){
@@ -35,7 +40,7 @@ public class Bitmaps {
         final CopyOnWriteArrayList<Bitmap> bitmaps=new CopyOnWriteArrayList<>();
          Glide.with(activity)
                 .asGif()
-                .load(draw).into(new CustomTarget<GifDrawable>(){
+                .load(draw).override(width,height).into(new CustomTarget<GifDrawable>(){
             @Override
             public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
                 try {

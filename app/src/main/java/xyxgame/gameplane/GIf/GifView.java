@@ -53,9 +53,9 @@ public class GifView extends BaseSurfaceVIEW {
 
         GIFA gifa=new GIFA(bitmaps.getxue(mActivity),new Random().nextInt(1000),0,6);
         gifTimeManager=new GifTimeManager(gifa);
-        gifPlay=new GIFPlay( bitmaps.getniu(mActivity),
+        gifPlay=new GIFPlay(bitmaps.getniu(mActivity),
                 (mActivity.point.x-100)/2,
-                mActivity.point.y-200,6);
+                mActivity.point.y-200,6,bitmaps.getplay_bg(mActivity));
 
     }
 

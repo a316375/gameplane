@@ -63,11 +63,14 @@ public abstract class BaseGIFObject {
     public void draw(Canvas canvas){
         if (bitmaps.size()==0||drawOk==false)return;
 
+        drawBG(canvas);//绘制背景
 
         drawPath(canvas);
 
         j++;
          i=i%bitmaps.size();
+
+
 
       canvas.drawBitmap((Bitmap) bitmaps.get(i),xX,xY,null);
 
@@ -78,6 +81,11 @@ public abstract class BaseGIFObject {
 
 
     }
+
+    //绘制第一层背景
+    public void drawBG(Canvas canvas){
+
+    };
 
 
     public   void moveToXY(int pointXFix, int pointYFix){
