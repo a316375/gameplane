@@ -4,11 +4,11 @@ import xyxgame.gameplane.Base.BaseActivity;
 
 public class GifActivity extends BaseActivity {
 
-    GifGame gifGame;
+    GifView gifView;
     @Override
     protected void setView() {
-        gifGame =new GifGame(GifActivity.this);
-       setContentView(gifGame);
+        gifView =new GifView(GifActivity.this);
+       setContentView(gifView);
 //       setContentView(R.layout.layout_wait);
 //       GUI gui=new GUI(this);
 //        RelativeLayout viewById = findViewById(R.id.rl);
@@ -27,12 +27,12 @@ public class GifActivity extends BaseActivity {
     @Override
     protected void viewResume() {
 
-        gifGame.startT();
+        gifView.startT();
     }
 
     @Override
     protected void viewPause() {
 
-        gifGame.stopT();
+        gifView.stopT();
     }
 }

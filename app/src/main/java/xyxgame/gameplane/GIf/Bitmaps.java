@@ -20,12 +20,17 @@ import xyxgame.gameplane.R;
 
 public class Bitmaps {
 
-    public static CopyOnWriteArrayList<Bitmap> getxue(Activity activity){
+    public  CopyOnWriteArrayList<Bitmap> getxue(Activity activity){
         return getbitmaps(activity, R.drawable.gif_xue);
     }
 
+    public  CopyOnWriteArrayList<Bitmap> getniu(Activity activity){
+        return getbitmaps(activity, R.drawable.gif_niu);
+    }
 
-    public static CopyOnWriteArrayList<Bitmap> getbitmaps(Activity activity,int draw){
+
+
+    public  CopyOnWriteArrayList<Bitmap> getbitmaps(Activity activity,int draw){
 
         final CopyOnWriteArrayList<Bitmap> bitmaps=new CopyOnWriteArrayList<>();
          Glide.with(activity)
