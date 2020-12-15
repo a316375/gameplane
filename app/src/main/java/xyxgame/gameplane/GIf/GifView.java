@@ -3,6 +3,7 @@ package xyxgame.gameplane.GIf;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 
@@ -36,6 +37,8 @@ public class GifView extends BaseSurfaceVIEW {
 
 
     Point point;
+     final GestureDetector gestureDetector;//方位监听
+    private final Bitmaps bitmaps;
 
 
     public GifView(BaseActivity mActivity)  {
@@ -47,15 +50,18 @@ public class GifView extends BaseSurfaceVIEW {
 
         baseGIFObjects =new ArrayList<>();
 
-        Bitmaps bitmaps=new Bitmaps();
+        bitmaps = new Bitmaps();
 
 
 
         GIFA gifa=new GIFA(bitmaps.getxue(mActivity),new Random().nextInt(1000),0,6);
         gifTimeManager=new GifTimeManager(gifa);
-        gifPlay=new GIFPlay(bitmaps.getniu(mActivity),
+        gifPlay=new GIFPlay(bitmaps.getyu5(mActivity),
                 (mActivity.point.x-100)/2,
-                mActivity.point.y-200,6,bitmaps.getplay_bg(mActivity));
+                mActivity.point.y-200,6, bitmaps);
+
+        //定义手势监听器
+        gestureDetector = new GestureDetector(mActivity,new MotionListener(bitmaps,gifPlay));
 
     }
 
@@ -132,7 +138,7 @@ public class GifView extends BaseSurfaceVIEW {
     //按下屏幕触摸事件
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
+        gestureDetector.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
@@ -153,6 +159,10 @@ public class GifView extends BaseSurfaceVIEW {
 
 
                 break;
+
+//            case MotionEvent.ACTION_UP:
+//                gifPlay.upbitmaps(4);
+//                break;
 
 
         }
