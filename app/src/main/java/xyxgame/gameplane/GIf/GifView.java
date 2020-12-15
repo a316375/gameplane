@@ -37,7 +37,7 @@ public class GifView extends BaseSurfaceVIEW {
 
 
     Point point;
-     final GestureDetector gestureDetector;//方位监听
+    // final GestureDetector gestureDetector;//方位监听
     private final Bitmaps bitmaps;
 
 
@@ -61,7 +61,7 @@ public class GifView extends BaseSurfaceVIEW {
                 mActivity.point.y-200,6, bitmaps);
 
         //定义手势监听器
-        gestureDetector = new GestureDetector(mActivity,new MotionListener(bitmaps,gifPlay));
+      //  gestureDetector = new GestureDetector(mActivity,new MotionListener(bitmaps,gifPlay));
 
     }
 
@@ -138,7 +138,7 @@ public class GifView extends BaseSurfaceVIEW {
     //按下屏幕触摸事件
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
+       // gestureDetector.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
