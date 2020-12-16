@@ -16,30 +16,34 @@ import java.util.Random;
 import xyxgame.gameplane.Base.BaseActivity;
 
 public class TextDraw  {
-    BaseActivity baseActivity;
+    private BaseActivity baseActivity;
 
 
-    int hit;int pointx;int pointy;
+    private int hit;private int pointx;private int pointy;
+    private Typeface typeFace;
+
     public TextDraw(BaseActivity baseActivity,int hit,int pointx,int pointy) {
         this.baseActivity=baseActivity;
         this.hit=hit;
         this.pointx=pointx;
         this.pointy=pointy;
-
+        typeFace = Typeface.createFromAsset(baseActivity.getAssets(),"xyx.ttf");
 
     }
 
 
-    int j=0;
+    private int j=0;
 
-    boolean over=false;
+
+    private boolean over=false;
 
     public void draw(Canvas canvas){
         if (!baseActivity.start)return;
 
         if (over)return;
 
-        j+=5;
+
+         j+=5;
 
         if (j>150){j=0;over=true;}
 
@@ -49,7 +53,7 @@ public class TextDraw  {
         paint.setColor(Color.RED);
         paint.setTextSize(j);
 
-        Typeface typeFace = Typeface.createFromAsset(baseActivity.getAssets(),"xyx.ttf");
+
         paint.setTypeface(typeFace);
 
         canvas.drawText("-"+hit,pointx,pointy,paint);

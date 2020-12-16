@@ -2,28 +2,21 @@ package xyxgame.gameplane.GIf;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.util.Log;
-import android.util.SparseIntArray;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import xyxgame.gameplane.GL.FPS;
 
 
 //**玩家的类，不需要实现抽象方法**//
 public class GIFPlay extends BaseGIFObject   {
 
     Bitmaps bitmapsS;
-    CopyOnWriteArrayList<Bitmap> bitmapCopyOnWriteArrayList;
+    CopyOnWriteArrayList<Bitmap> fblist;
     public GIFPlay(CopyOnWriteArrayList<Bitmap> bitmaps, int x, int y, int time, Bitmaps bitmapsS) {
         super(bitmaps, x, y, time);
         this.bitmapsS=bitmapsS;
-        bitmapCopyOnWriteArrayList=bitmapsS.getplay_bg(bitmapsS.activity);
+        fblist =bitmapsS.getfb03(bitmapsS.activity);
+        mMaxX=bitmapsS.activity.point.x-200;
+        mMaxY=bitmapsS.activity.point.y-200;
 
     }
 
@@ -35,16 +28,26 @@ public class GIFPlay extends BaseGIFObject   {
     public void drawBG(Canvas canvas) {
         super.drawBG(canvas);
 
-        if (bitmapCopyOnWriteArrayList.size()==0)return;
+        if (fblist.size()==0)return;
         j++;
-        i=i%bitmapCopyOnWriteArrayList.size();
-        canvas.drawBitmap(bitmapCopyOnWriteArrayList.get(i),xX-60,xY-20,null);
+        i=i% fblist.size();
+        canvas.drawBitmap(fblist.get(i),xX-60,xY-20,null);
        if (j%5==0)i++;
        if (j>=500)j=0;
 
 
 
 
+    }
+
+   int mMinX=-20,mMinY=200,mMaxX,mMaxY;
+    @Override
+    public void moveToXY(int pointXFix, int pointYFix) {
+        super.moveToXY(pointXFix, pointYFix);
+        if (xX<mMinX)xX=mMinX;
+        if (xY<mMinY)xY=mMinY;
+        if (xX>mMaxX)xX=mMaxX;
+        if (xY>mMaxY)xY=mMaxY;
     }
 
     @Override

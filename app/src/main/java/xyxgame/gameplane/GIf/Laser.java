@@ -29,7 +29,7 @@ public class Laser {
         this.pointx=gifPlay.xX;
         this.pointy=gifPlay.xY;
 
-        bitmaps = gifPlay.bitmapsS.getxue(gifPlay.bitmapsS.activity);
+        bitmaps = gifPlay.bitmapsS.getlaser02(gifPlay.bitmapsS.activity);
         bags=new CopyOnWriteArrayList<>();
 
 
@@ -74,7 +74,7 @@ public class Laser {
     }
 
     public void add(){
-     if (bags.size()<20) bags.add(new Bags(gifPlay.xX,gifPlay.xY,bitmaps));
+     if (bags.size()<20) bags.add(new Bags(gifPlay.xX+100,gifPlay.xY-20,bitmaps));
 
 
     }
@@ -88,6 +88,7 @@ public class Laser {
         CopyOnWriteArrayList<Bitmap> bitmaps;
 
         public Bags(int x, int y, CopyOnWriteArrayList<Bitmap> bitmaps) {
+
             this.x = x;
             this.y = y;
             this.bitmaps = bitmaps;

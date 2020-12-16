@@ -88,11 +88,14 @@ public abstract class BaseGIFObject {
     };
 
 
+
     public   void moveToXY(int pointXFix, int pointYFix){
+
         xX=pointXFix;
         xY=pointYFix;
-    };
 
+
+    };
 
 
 

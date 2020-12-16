@@ -38,11 +38,13 @@ public class GifView extends BaseSurfaceVIEW {
 
     Point point;
     // final GestureDetector gestureDetector;//方位监听
-    private final Bitmaps bitmaps;
+   Bitmaps bitmaps;
 
 
-    TextDraw textDraw;
-    private final Laser laser;
+
+     Laser laser;
+
+    T1 t1;
 
     public GifView(BaseActivity mActivity)  {
         super(mActivity);
@@ -50,11 +52,14 @@ public class GifView extends BaseSurfaceVIEW {
         this.mActivity=mActivity;
         fps=new FPS();
         backGround=new BaseBackGround(mActivity, R.drawable.bg5);
-        textDraw=new TextDraw(mActivity,500,500,500);
+     //   textDraw=new TextDraw(mActivity,500,500,500);
 
         baseGIFObjects =new ArrayList<>();
 
         bitmaps = new Bitmaps();
+
+        t1=new T1(this);
+
 
 
 
@@ -82,6 +87,7 @@ public class GifView extends BaseSurfaceVIEW {
     protected void onThreadDraw(Canvas canvas) {
 
 
+        t1.postResult();//处理碰撞结果，调整集合-注意不能去这个类里边draw canvas《Canvas是绘画主线程，传参是在子线程》
 
         backGround.draw(canvas);
 
@@ -98,12 +104,11 @@ public class GifView extends BaseSurfaceVIEW {
 //        }
 //
 
-
-
-
         laser.draw(canvas);
 
-        textDraw.draw(canvas);
+
+
+
 
         gifPlay.draw(canvas);
         fps.draw(canvas);
@@ -160,7 +165,7 @@ public class GifView extends BaseSurfaceVIEW {
 
 
 
-                break;
+                return true;
             case MotionEvent.ACTION_MOVE:
 
                 pointXFix = (int) (pointX + (event.getX() - lastX));
@@ -169,7 +174,7 @@ public class GifView extends BaseSurfaceVIEW {
                 gifPlay.moveToXY(pointXFix, pointYFix);
 
 
-                break;
+                return false;
 
 //            case MotionEvent.ACTION_UP:
 //                gifPlay.upbitmaps(4);

@@ -22,7 +22,7 @@ public class TextDraw_copy {
 
     }
 
-    Handler handler=new Handler();
+    Handler handler=new Handler(Looper.getMainLooper());
     class run implements Runnable{
         @Override
         public void run() {
