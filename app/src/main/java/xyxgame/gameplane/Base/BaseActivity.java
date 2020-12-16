@@ -14,6 +14,7 @@ import xyxgame.gameplane.R;
 public abstract class BaseActivity extends AppCompatActivity {
 
     public Point point;
+    public boolean start=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
 
-      viewResume();
+        start=true;
+        viewResume();
         super.onResume();
 
 
@@ -58,7 +60,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-       viewPause();
+        start=false;
+        viewPause();
 
         super.onPause();
 

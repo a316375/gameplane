@@ -2,11 +2,17 @@ package xyxgame.gameplane.GIf;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import xyxgame.gameplane.GL.FPS;
 
 
 //**玩家的类，不需要实现抽象方法**//
@@ -22,6 +28,8 @@ public class GIFPlay extends BaseGIFObject   {
     }
 
 
+
+
     int i=0;int j=0;
     @Override
     public void drawBG(Canvas canvas) {
@@ -33,6 +41,10 @@ public class GIFPlay extends BaseGIFObject   {
         canvas.drawBitmap(bitmapCopyOnWriteArrayList.get(i),xX-60,xY-20,null);
        if (j%5==0)i++;
        if (j>=500)j=0;
+
+
+
+
     }
 
     @Override

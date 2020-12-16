@@ -41,16 +41,21 @@ public class GifView extends BaseSurfaceVIEW {
     private final Bitmaps bitmaps;
 
 
+    TextDraw textDraw;
+    private final Laser laser;
+
     public GifView(BaseActivity mActivity)  {
         super(mActivity);
         point=mActivity.point;
         this.mActivity=mActivity;
         fps=new FPS();
         backGround=new BaseBackGround(mActivity, R.drawable.bg5);
+        textDraw=new TextDraw(mActivity,500,500,500);
 
         baseGIFObjects =new ArrayList<>();
 
         bitmaps = new Bitmaps();
+
 
 
 
@@ -59,6 +64,9 @@ public class GifView extends BaseSurfaceVIEW {
         gifPlay=new GIFPlay(bitmaps.getyu5(mActivity),
                 (mActivity.point.x-100)/2,
                 mActivity.point.y-200,6, bitmaps);
+
+
+        laser = new Laser(gifPlay);
 
         //定义手势监听器
       //  gestureDetector = new GestureDetector(mActivity,new MotionListener(bitmaps,gifPlay));
@@ -93,6 +101,9 @@ public class GifView extends BaseSurfaceVIEW {
 
 
 
+        laser.draw(canvas);
+
+        textDraw.draw(canvas);
 
         gifPlay.draw(canvas);
         fps.draw(canvas);

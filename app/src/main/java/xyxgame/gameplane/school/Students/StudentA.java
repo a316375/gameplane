@@ -39,7 +39,7 @@ public class StudentA extends BaseStudent {
         //赛贝尔待续
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 描边
-        paint.setStrokeWidth(5);
+//        paint.setStrokeWidth(5);
         paint.setColor(Color.RED);
         paint.setStrokeWidth(3);
 

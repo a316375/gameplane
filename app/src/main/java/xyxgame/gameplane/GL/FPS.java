@@ -3,6 +3,7 @@ package xyxgame.gameplane.GL;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 
 import java.util.LinkedList;
 
@@ -32,6 +33,7 @@ public class FPS {
         paint.setShadowLayer(5, 5, 5, Color.GRAY); // add shadow
         paint.setColor(Color.RED);
         paint.setTextSize(30);
+
         canvas.drawText("FPS:"+(int)fps(),100,100,paint);
     }
 }
