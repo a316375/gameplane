@@ -1,14 +1,12 @@
-package xyxgame.gameplane.GIf;
+package xyxgame.gameplane.GIf_v1;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Laser {
+public class Laser_copy {
     int hit;
     int speed;
     int pointx;
@@ -21,7 +19,7 @@ public class Laser {
 
     CopyOnWriteArrayList<Bags> bags;
 
-    public Laser(GIFPlay gifPlay) {
+    public Laser_copy(GIFPlay gifPlay) {
 
         this.gifPlay = gifPlay;
         hit=100;
@@ -29,7 +27,7 @@ public class Laser {
         this.pointx=gifPlay.xX;
         this.pointy=gifPlay.xY;
 
-        bitmaps = gifPlay.bitmapsS.getlaser02(gifPlay.bitmapsS.activity);
+        bitmaps = gifPlay.bitmapsS.getxue(gifPlay.bitmapsS.activity);
         bags=new CopyOnWriteArrayList<>();
 
 
@@ -74,7 +72,7 @@ public class Laser {
     }
 
     public void add(){
-     if (bags.size()<20) bags.add(new Bags(gifPlay.xX+100,gifPlay.xY-20,bitmaps));
+     if (bags.size()<20) bags.add(new Bags(gifPlay.xX,gifPlay.xY,bitmaps));
 
 
     }
@@ -84,17 +82,13 @@ public class Laser {
 
 
     public class Bags {
-        int x;int y;int with=0;int height=0;
+        int x;int y;
         CopyOnWriteArrayList<Bitmap> bitmaps;
 
         public Bags(int x, int y, CopyOnWriteArrayList<Bitmap> bitmaps) {
-
             this.x = x;
             this.y = y;
             this.bitmaps = bitmaps;
-            if (bitmaps.size()<=0)return;
-            this.with=bitmaps.get(0).getWidth();
-            this.height=bitmaps.get(0).getHeight();
         }
     }
 }

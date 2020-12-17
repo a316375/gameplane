@@ -1,10 +1,8 @@
-package xyxgame.gameplane.GIf;
+package xyxgame.gameplane.GIf_v1;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
