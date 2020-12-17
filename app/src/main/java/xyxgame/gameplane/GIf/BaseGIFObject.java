@@ -33,7 +33,7 @@ import xyxgame.gameplane.R;
 
 
 
-/***一个基类，默认放置在顶部，不会移动，需要实现抽象方法去更新xx，xy等坐标**/
+/***一个基类，默认放置在顶部，不会移动，需要实现抽象方法去更新xx，xy等坐标,所有的敌人/玩家/动态gif都继承自该类**/
 public abstract class BaseGIFObject {
 
     abstract void drawPath(Canvas canvas);
@@ -42,12 +42,15 @@ public abstract class BaseGIFObject {
     }
 
     public CopyOnWriteArrayList<Bitmap>  bitmaps;
+    public  int width=0,height=0;
 
     public BaseGIFObject(CopyOnWriteArrayList<Bitmap>  bitmaps, int x, int y, int time) {
         this.xX=x;
         this.xY=y;
         this.time=time;
         this. bitmaps =bitmaps;
+        if (bitmaps.size()>0){width=bitmaps.get(0).getWidth();height=bitmaps.get(0).getHeight();}
+
 
 
     }

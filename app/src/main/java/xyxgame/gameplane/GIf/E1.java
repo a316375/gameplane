@@ -14,8 +14,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**怪物A的路径**/
 
 
-public class GIFA extends BaseGIFObject {
-    public GIFA( CopyOnWriteArrayList<Bitmap> bitmaps, int x, int y, int time) {
+public class E1 extends BaseGIFObject {
+    public E1(CopyOnWriteArrayList<Bitmap> bitmaps, int x, int y, int time) {
         super(  bitmaps, x, y, time);
     }
 

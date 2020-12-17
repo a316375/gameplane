@@ -26,7 +26,7 @@ public class GifTimeManager {
         public void run() {
             if (!isStart){stopHandler();return;}
 
-            gifAs.add(new GIFA(baseGIFObject.bitmaps,new Random().nextInt(1000),0,5));
+            gifAs.add(new E1(baseGIFObject.bitmaps,new Random().nextInt(1000),0,5));
             handler.postDelayed(runnable,3000);
         }
     };

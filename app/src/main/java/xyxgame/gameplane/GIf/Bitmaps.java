@@ -28,6 +28,30 @@ public class Bitmaps {
         return getbitmaps(activity, R.drawable.gif_xue);
     }
 
+    public  CopyOnWriteArrayList<Bitmap> getxiong8Move(BaseActivity activity){
+        width=100;height=100;
+        return getbitmaps(activity, R.drawable.em_xiong_08move);
+    }
+    public  CopyOnWriteArrayList<Bitmap> getxiong8stop(BaseActivity activity){
+        width=100;height=100;
+        return getbitmaps(activity, R.drawable.em_xiong_08stop);
+    }
+    public  CopyOnWriteArrayList<Bitmap> getxiong8attker(BaseActivity activity){
+        width=200;height=200;
+        return getbitmaps(activity, R.drawable.em_xiong_08attker);
+    }
+    public  CopyOnWriteArrayList<Bitmap> getxiong4Move(BaseActivity activity){
+        width=100;height=100;
+        return getbitmaps(activity, R.drawable.em_xiong_04move);
+    }
+    public  CopyOnWriteArrayList<Bitmap> getxiong4stop(BaseActivity activity){
+        width=100;height=100;
+        return getbitmaps(activity, R.drawable.em_xiong_04stop);
+    }
+    public  CopyOnWriteArrayList<Bitmap> getxiong4attker(BaseActivity activity){
+        width=100;height=100;
+        return getbitmaps(activity, R.drawable.em_xiong_04attker);
+    }
     public  CopyOnWriteArrayList<Bitmap> getplay_bg(BaseActivity activity){
         width=100;height=100;
         return getbitmaps(activity, R.drawable.play_bg);

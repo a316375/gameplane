@@ -1,15 +1,12 @@
 package xyxgame.gameplane.GIf;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Point;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 
 import xyxgame.gameplane.Base.BaseActivity;
@@ -45,9 +42,11 @@ public class GifView extends BaseSurfaceVIEW {
      Laser laser;
 
     T1 t1;
+    GifView gifView;
 
     public GifView(BaseActivity mActivity)  {
         super(mActivity);
+        gifView=this;
         point=mActivity.point;
         this.mActivity=mActivity;
         fps=new FPS();
@@ -58,14 +57,14 @@ public class GifView extends BaseSurfaceVIEW {
 
         bitmaps = new Bitmaps();
 
-        t1=new T1(this);
+        t1=new T1(gifView);
 
 
 
 
 
-        GIFA gifa=new GIFA(bitmaps.getxue(mActivity),new Random().nextInt(1000),0,6);
-        gifTimeManager=new GifTimeManager(gifa);
+        E1 e1 =new E1(bitmaps.getxiong8stop(mActivity),new Random().nextInt(1000),0,6);
+        gifTimeManager=new GifTimeManager(e1);
         gifPlay=new GIFPlay(bitmaps.getyu5(mActivity),
                 (mActivity.point.x-100)/2,
                 mActivity.point.y-200,6, bitmaps);
@@ -86,10 +85,12 @@ public class GifView extends BaseSurfaceVIEW {
     @Override
     protected void onThreadDraw(Canvas canvas) {
 
-
-        t1.postResult();//处理碰撞结果，调整集合-注意不能去这个类里边draw canvas《Canvas是绘画主线程，传参是在子线程》
-
+        t1.postPKResult();//处理碰撞结果，调整集合-注意不能去这个类里边draw canvas《Canvas是绘画主线程，传参是在子线程》
         backGround.draw(canvas);
+
+
+
+
 
         gifTimeManager.draw(canvas,point);
 //
@@ -105,6 +106,7 @@ public class GifView extends BaseSurfaceVIEW {
 //
 
         laser.draw(canvas);
+
 
 
 
