@@ -15,10 +15,11 @@ import xyxgame.gameplane.GIf.GifActivity;
 import xyxgame.gameplane.GL.GLActivity;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.school.ASchoolActivity;
+import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6, mHighScore, mExit;
+    private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6,mPlay7, mHighScore, mExit;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay4 = findViewById(R.id.play4);
         mPlay5 = findViewById(R.id.play5);
         mPlay6 = findViewById(R.id.play6);
+        mPlay7 = findViewById(R.id.play7);
         mHighScore = findViewById(R.id.high_score);
         mExit = findViewById(R.id.exit);
 
@@ -46,6 +48,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay4.setOnClickListener(this);
         mPlay5.setOnClickListener(this);
         mPlay6.setOnClickListener(this);
+        mPlay7.setOnClickListener(this);
         mHighScore.setOnClickListener(this);
         mExit.setOnClickListener(this);
     }
@@ -75,6 +78,10 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 break;
                 case R.id.play6:
                 startActivity(new Intent(this, GifActivity.class));
+                // finish();
+                break;
+            case R.id.play7:
+                startActivity(new Intent(this, SchoolGifActivity.class));
                 // finish();
                 break;
             case R.id.high_score:

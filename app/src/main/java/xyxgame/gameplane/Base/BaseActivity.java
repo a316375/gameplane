@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import xyxgame.gameplane.GL.GameSurfaceView;
 import xyxgame.gameplane.R;
 
+
+
+
+//**在此类下新建的sufcaseview 必须去实现start跟stop方法，以此来绑定生命周期**///
 public abstract class BaseActivity extends AppCompatActivity {
 
     public Point point;

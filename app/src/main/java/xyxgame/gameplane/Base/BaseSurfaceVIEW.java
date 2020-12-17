@@ -15,6 +15,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+
+//**此类被继承的时候必须去Activity的生命周期里边调用onstart 跟 onstop，否则会出错**//
 public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHolder.Callback{
     public static final int DEFAULT_FRAME_DURATION_MILLISECOND =10;
     //用于计算帧数据的线程
@@ -93,6 +95,8 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     private class ThreadRunable implements Runnable{
         @Override
         public void run() {
+
+
 
             while (isGameing&&getHolder().getSurface().isValid()) {
 

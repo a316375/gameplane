@@ -7,9 +7,10 @@ import android.graphics.Paint;
 public class BaseBackGround {
     private Bitmap bitmap;
     private int y1,y2,screenSizeX,screenSizeY;
-
+    BaseActivity baseActivity;
 
     public BaseBackGround(BaseActivity baseActivity, int draw ) {
+        this.baseActivity=baseActivity;
         this. screenSizeX=baseActivity.point.x;
         this. screenSizeY=baseActivity.point.y;
         this.bitmap  = BitmapUtils.decodeSampledBitmapFromResource(baseActivity.getResources(),draw,screenSizeX,screenSizeY);
@@ -21,8 +22,9 @@ public class BaseBackGround {
 
 
     public void draw(Canvas canvas){
-        canvas.drawBitmap(bitmap,0,y1,new Paint());
-        canvas.drawBitmap(bitmap,0,y2,new Paint());
+
+        canvas.drawBitmap(bitmap,0,y1,null);
+        canvas.drawBitmap(bitmap,0,y2,null);
         update();
     }
 
