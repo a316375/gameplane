@@ -7,6 +7,7 @@ import android.view.View;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
+import xyxgame.gameplane.schoolGif.laser.LaserBags;
 import xyxgame.gameplane.schoolGif.laser.LaserGif;
 
 public class Teacher extends View {
@@ -27,6 +28,11 @@ public class Teacher extends View {
                 if (schoolGifView.buttonGif01.bags.get(0).rect.contains((int) event.getX(),(int) event.getY())){
                     Log.v("-------","------O-nClickListener---obj--"+schoolGifView.buttonGif01.obj.giflist);
 
+
+                   //示例改变子弹
+                    schoolGifView.laserGif. obj.oW=100;
+                    schoolGifView.laserGif. obj.oH=150;
+                    schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser04(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);
 
 
 
