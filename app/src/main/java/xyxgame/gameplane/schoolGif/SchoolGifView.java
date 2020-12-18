@@ -17,42 +17,49 @@ import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.EnemyGIf;
 import xyxgame.gameplane.schoolGif.GifButton.ButtonGif;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
+import xyxgame.gameplane.schoolGif.Teacher.Teacher;
 import xyxgame.gameplane.schoolGif.laser.LaserGif;
 import xyxgame.gameplane.spaceshooter.Enemy;
 
 public class SchoolGifView extends BaseSurfaceVIEW {
 
-
-    GifBG gifBG;
-    FPS fps;
-    GifObj gifObj;
-    GifAllBitmaps allBitmaps;
-    private final LaserGif laserGif;
-    private final ButtonGif buttonGif01;
-    private final ButtonGif buttonGif02;
-    private final EnemyGIf xiong;
-    private final PlayGif gifPlay;
+   public BaseActivity mBaseActivity;
+    public GifBG gifBG;
+    public  FPS fps;
+    public GifObj gifObj;
+    public  GifAllBitmaps allBitmaps;
+    public LaserGif laserGif;
+    public final ButtonGif buttonGif01;
+    public final ButtonGif buttonGif02;
+    public final EnemyGIf xiong;
+    public final PlayGif gifPlay;
+    public final Teacher teacher;
+    public final int x;
+    public final int y;
 
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
+        this.mBaseActivity=mBaseActivity;
         gifBG=new GifBG(mBaseActivity, R.drawable.bg5);
         fps=new FPS();
         allBitmaps=new GifAllBitmaps(mBaseActivity);//拿到图片合集
 
-        int x = mBaseActivity.point.x;//初始化屏幕大小
-        int y = mBaseActivity.point.y;//初始化屏幕大小
+        //初始化屏幕大小
+        x = mBaseActivity.point.x;
+        //初始化屏幕大小
+        y = mBaseActivity.point.y;
 
-        GifObj play=new GifObj(1,x,y)
-                .withPoint(x/2-100,y-400)
+        GifObj play=new GifObj(1, x, y)
+                .withPoint(x /2-100, y -400)
                 .withSize(200,200);
 
         gifPlay = new PlayGif(play,allBitmaps);
 
 
         //具体的类--赋予属性
-        gifObj=new GifObj(25,x,y)
-                .withSize(100,100)
-                .withPoint(x/2,y)
+        gifObj=new GifObj(25, x, y)
+                .withSize(50,100)
+                .withPoint(x /2, y)
                 .init(1,100,10,100,1)
                .setgiflist(1);
 
@@ -60,27 +67,27 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         laserGif = new LaserGif(gifObj,allBitmaps).with(gifPlay);
 
 
-        GifObj button01=new GifObj(1,x,y)
-                .withPoint(50,y-600)
+        GifObj button01=new GifObj(1, x, y)
+                .withPoint(50, y -600)
                 .withSize(200,200)
                 .setgiflist(1);
         buttonGif01 = new ButtonGif(button01,allBitmaps);
 
 
-        GifObj button02=new GifObj(1,x,y)
-                .withPoint(50,y-900)
+        GifObj button02=new GifObj(1, x, y)
+                .withPoint(50, y -900)
                 .withSize(200,200)
                 .setgiflist(2);
         buttonGif02 = new ButtonGif(button02,allBitmaps);
 
-        GifObj xiong01=new GifObj(20,x,y)
+        GifObj xiong01=new GifObj(20, x, y)
                 .withPoint(500,0)
                 .withSize(200,200)
                 .setgiflist(2);
         xiong = new EnemyGIf(xiong01,allBitmaps);
 
 
-
+        teacher = new Teacher(this);
 
 
 
@@ -117,8 +124,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         gifPlay.onTouchEvent(event);
-        buttonGif01.onTouchEvent(event);
-        buttonGif02.onTouchEvent(event);
+        teacher.onTouchEvent(event);
+
         return true;
 
     }

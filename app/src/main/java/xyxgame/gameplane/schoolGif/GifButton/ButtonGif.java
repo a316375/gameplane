@@ -32,17 +32,5 @@ public class ButtonGif extends GifBaseObj {
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
 
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                if (bags.size()<=0)return true;
-                if (bags.get(0).rect.contains((int) event.getX(),(int) event.getY())){
-                    Log.v("-------","------O-nClickListener---obj--"+obj.giflist);
-                }
-        return true;}
-
-        return true;
-    }
 }
