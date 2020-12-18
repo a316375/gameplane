@@ -1,5 +1,9 @@
 package xyxgame.gameplane.schoolGif.BaseGIf;
 
+
+import android.graphics.Rect;
+
+//**一个属性的类，赋予坐标，血量，大小**//
 public class GifObj {
     public  int max;//数组最大值上限
     public int pointx,pointy;//屏幕最大值
@@ -16,7 +20,11 @@ public class GifObj {
     public    int oW=100;//默认宽度
     public    int oH=100;//默认高度
 
-
+    public  boolean showRect=false;
+    public GifObj showRect(boolean showRect){
+        this.showRect=showRect;
+        return this;
+    }
 
     public GifObj withPoint(int oX, int oY) {
 
@@ -39,7 +47,7 @@ public class GifObj {
     }
 
 
-    public GifObj withgiflist(int giflist){this.giflist=giflist;return this;};
+    public GifObj setgiflist(int giflist){this.giflist=giflist;return this;};
     public GifObj init(int level, int hit, int speed, int life, int giflist) {
         this.level = level;
         this.hit = hit;

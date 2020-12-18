@@ -1,6 +1,7 @@
 package xyxgame.gameplane.schoolGif.BaseGIf;
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
@@ -22,170 +23,174 @@ public class GifAllBitmaps {
 
     public GifAllBitmaps(BaseActivity activity) {
         this.activity = activity;
+
     }
 
     BaseActivity activity;
 
-    int width=100,height=100;
+     
     public  CopyOnWriteArrayList<Bitmap> getxue(int width,int height){
-        this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_xue);
+        
+        return getbitmaps(width,height,activity, R.drawable.gif_xue);
     }
 
+  
+
     public  CopyOnWriteArrayList<Bitmap> getxiong8Move(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.em_xiong_08move);
+         
+        return getbitmaps( width, height,activity, R.drawable.em_xiong_08move);
     }
     public  CopyOnWriteArrayList<Bitmap> getxiong8stop(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.em_xiong_08stop);
+         
+        return getbitmaps( width, height,activity, R.drawable.em_xiong_08stop);
     }
     public  CopyOnWriteArrayList<Bitmap> getxiong8attker(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.em_xiong_08attker);
+         
+        return getbitmaps( width, height,activity, R.drawable.em_xiong_08attker);
     }
     public  CopyOnWriteArrayList<Bitmap> getxiong4Move(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.em_xiong_04move);
+         
+        return getbitmaps( width, height,activity, R.drawable.em_xiong_04move);
     }
     public  CopyOnWriteArrayList<Bitmap> getxiong4stop(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.em_xiong_04stop);
+         
+        return getbitmaps( width, height,activity, R.drawable.em_xiong_04stop);
     }
     public  CopyOnWriteArrayList<Bitmap> getxiong4attker(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.em_xiong_04attker);
+         
+        return getbitmaps( width, height,activity, R.drawable.em_xiong_04attker);
     }
     public  CopyOnWriteArrayList<Bitmap> getplay_bg(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.play_bg);
+         
+        return getbitmaps( width, height,activity, R.drawable.play_bg);
     } public  CopyOnWriteArrayList<Bitmap> getfb01(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb01);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb01);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb02(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb02);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb02);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb03(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb03);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb03);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb04(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb04);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb04);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb05(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb05);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb05);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb06(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb06);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb06);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb07(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb07);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb07);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb08(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb08);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb08);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb09(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb09);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb09);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb10(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb10);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb10);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb11(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb11);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb11);
     }
     public  CopyOnWriteArrayList<Bitmap> getfb12(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.fb12);
+         
+        return getbitmaps( width, height,activity, R.drawable.fb12);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser01(int width,int height){
-         this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser01);
+        
+        return getbitmaps( width, height,activity, R.drawable.laser01);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser02(int width,int height){
-         this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser02);
+        
+        return getbitmaps( width, height,activity, R.drawable.laser02);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser03(int width,int height){
-         this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser03);
+        
+        return getbitmaps( width, height,activity, R.drawable.laser03);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser04(int width,int height){
-         this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser04);
+        
+        return getbitmaps( width, height,activity, R.drawable.laser04);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser05(int width,int height){
-         this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser05);
+        
+        return getbitmaps( width, height,activity, R.drawable.laser05);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser06(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser06);
+         
+        return getbitmaps( width, height,activity, R.drawable.laser06);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser07(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser07);
+         
+        return getbitmaps( width, height,activity, R.drawable.laser07);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser08(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser08);
+         
+        return getbitmaps( width, height,activity, R.drawable.laser08);
     }
     public  CopyOnWriteArrayList<Bitmap> getlaser09(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.laser09);
+         
+        return getbitmaps( width, height,activity, R.drawable.laser09);
     }
 
 
     public  CopyOnWriteArrayList<Bitmap> getniu(int width,int height){
-        return getbitmaps(activity, R.drawable.gif_niu);
+        return getbitmaps( width, height,activity, R.drawable.gif_niu);
     }
 
     public  CopyOnWriteArrayList<Bitmap> getyu1(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu0);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu0);
     } public  CopyOnWriteArrayList<Bitmap> getyu2(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu1);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu1);
     } public  CopyOnWriteArrayList<Bitmap> getyu3(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu2);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu2);
     } public  CopyOnWriteArrayList<Bitmap> getyu4(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu3);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu3);
     } public  CopyOnWriteArrayList<Bitmap> getyu5(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu4);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu4);
     } public  CopyOnWriteArrayList<Bitmap> getyu6(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu5);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu5);
     } public  CopyOnWriteArrayList<Bitmap> getyu7(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu6);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu6);
     } public  CopyOnWriteArrayList<Bitmap> getyu8(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu7);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu7);
     } public  CopyOnWriteArrayList<Bitmap> getyu9(int width,int height){
-          this.width=width;this.height=height;
-        return getbitmaps(activity, R.drawable.gif_yu8);
+         
+        return getbitmaps( width, height,activity, R.drawable.gif_yu8);
     }
 
 
-    public  CopyOnWriteArrayList<Bitmap> getbitmaps(BaseActivity activity,int draw){
-        this.activity=activity;
+    public  CopyOnWriteArrayList<Bitmap> getbitmaps(final int width, final int height, BaseActivity activity, int draw){
+
 
         final CopyOnWriteArrayList<Bitmap> bitmaps=new CopyOnWriteArrayList<>();
          Glide.with(activity)
                 .asGif()
-                .load(draw).override(width,height).into(new CustomTarget<GifDrawable>(){
+//                 .override(200,200)
+                .load(draw).into(new CustomTarget<GifDrawable>(){
             @Override
             public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
                 try {
@@ -200,7 +205,9 @@ public class GifAllBitmaps {
                     StandardGifDecoder standardGifDecoder = (StandardGifDecoder) gifDecoder.get(gifFrameLoader);
                     for (int i = 0; i < standardGifDecoder.getFrameCount(); i++) {
                         standardGifDecoder.advance();
-                        bitmaps.add(standardGifDecoder.getNextFrame());
+                        Bitmap nextFrame = standardGifDecoder.getNextFrame();
+//                        bitmaps.add(zoomImg(nextFrame,width,height));
+                        bitmaps.add(Bitmap.createScaledBitmap(nextFrame,width,height,false));
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -217,4 +224,22 @@ public class GifAllBitmaps {
     };
 
 
+
+    public  Bitmap zoomImg(Bitmap bm, int newWidth, int newHeight) {
+        Bitmap newbm = null;
+        if (bm != null) {
+            // 获得图片的宽高
+            int width = bm.getWidth();
+            int height = bm.getHeight();
+            // 计算缩放比例
+            float scaleWidth = ((float) newWidth) / width;
+            float scaleHeight = ((float) newHeight) / height;
+            // 取得想要缩放的matrix参数
+            Matrix matrix = new Matrix();
+            matrix.postScale(scaleWidth, scaleHeight);
+            // 得到新的图片
+            newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+        }
+        return newbm;
+    }
 }
