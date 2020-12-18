@@ -28,13 +28,13 @@ public abstract class GifBaseObj extends View {
         this.allBitmaps = allBitmaps;
         bags=new CopyOnWriteArrayList<>();
 
-        lodebitmaps_list__allBitmaps_get_objow_obj_oh();
-        creatBags_gifbag_newxx_obj_list();
+        lodebitmaps_list__allBitmaps_get_objow_obj_oh();//赋予图片
+        creatBags_gifbag_newxx_obj_list();//赋予路径
 
     }
-
+   //**赋予路径**//
     protected abstract void creatBags_gifbag_newxx_obj_list();
-
+    //**赋予图片**//
     protected abstract void lodebitmaps_list__allBitmaps_get_objow_obj_oh();
 
 //    private void creatBags() {
@@ -55,16 +55,16 @@ public abstract class GifBaseObj extends View {
     public int F5_GIf=5;
     public int Time_wait=50;
     int i=0;  int t=0;
-    public void draw(Canvas canvas) {
+    public void draws(Canvas canvas) {
 
-        super.draw(canvas);
+
         if (gifBag == null) return;
 
         t++;
         if (t > 6000) t = 1;
 
         if (bags.size() < obj.max && t % Time_wait == 0) {
-            add_bags_add_new_obj_list();
+            add_bags_add_new_obj_list();//集合赋予图片
         }
         ;
 
@@ -104,7 +104,7 @@ public abstract class GifBaseObj extends View {
 
 
     }
-
+    //**集合赋予图片**//
     protected abstract void add_bags_add_new_obj_list();
 
 

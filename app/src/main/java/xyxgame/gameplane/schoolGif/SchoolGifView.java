@@ -19,6 +19,7 @@ import xyxgame.gameplane.schoolGif.GifButton.ButtonGif;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.Teacher.Teacher;
 import xyxgame.gameplane.schoolGif.laser.LaserGif;
+import xyxgame.gameplane.schoolGif.list.listAGif;
 import xyxgame.gameplane.spaceshooter.Enemy;
 
 public class SchoolGifView extends BaseSurfaceVIEW {
@@ -36,6 +37,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public final Teacher teacher;
     public final int x;
     public final int y;
+    public final  listAGif listAGif;
 
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
@@ -87,25 +89,38 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         xiong = new EnemyGIf(xiong01,allBitmaps);
 
 
+        GifObj lista=new GifObj(9,x,y).withPoint(100,y/3);
+        listAGif = new listAGif(lista,allBitmaps);
+
+
+
+
+
+
         teacher = new Teacher(this);
+
+
 
 
 
 
     }
 
+
+    public boolean showlistA=false;
     @Override
     protected void onThreadDraw(Canvas canvas) {
         gifBG.draw(canvas);
 
-        xiong.draw(canvas);
+        xiong.draws(canvas);
 
-        laserGif.draw(canvas);
-        buttonGif01.draw(canvas);
-        buttonGif02.draw(canvas);
+        laserGif.draws(canvas);
+        buttonGif01.draws(canvas);
+        buttonGif02.draws(canvas);
 
+       if (showlistA)listAGif.draws(canvas);
 
-        gifPlay.draw(canvas);
+        gifPlay.draws(canvas);
         fps.draw(canvas);
 
     }
