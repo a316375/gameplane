@@ -27,9 +27,12 @@ public abstract class BaseGifBag   {
 
     public  abstract void drawpath();
 
-    public void moveToXY(int pointXFix, int pointYFix) {
+    public void moveToXY(int pointXFix, int pointYFix,int MaxX,int MaxY) {
         x=pointXFix;
         y=pointYFix;
+        if (x<-20)x=-20;if (y<50)y=50;
+        if (x>MaxX+20-w)x=MaxX+20-w;
+        if (y>MaxY-20)y=MaxY-20;
     }
 
 

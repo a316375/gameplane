@@ -1,12 +1,10 @@
 package xyxgame.gameplane.schoolGif.BaseGIf;
 
 
-import android.graphics.Rect;
-
 //**一个属性的类，赋予坐标，血量，大小**//
 public class GifObj {
     public  int max;//数组最大值上限
-    public int pointx,pointy;//屏幕最大值
+    public int maXx, maXy;//屏幕最大值
 
     public  int level=1;
     public  int hit=10;
@@ -39,10 +37,10 @@ public class GifObj {
         return this;
     }
 
-    public GifObj  (int Max,int pointx,int pointy) {
+    public GifObj  (int Max, int maXx, int maXy) {
         this.max=Max;
-        this.pointx=pointx;
-        this.pointy=pointy;
+        this.maXx = maXx;
+        this.maXy = maXy;
 
     }
 

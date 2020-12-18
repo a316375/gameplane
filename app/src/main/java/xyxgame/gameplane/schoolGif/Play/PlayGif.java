@@ -1,8 +1,6 @@
 package xyxgame.gameplane.schoolGif.Play;
 
-import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
@@ -64,7 +62,7 @@ public class PlayGif extends GifBaseObj   {
 
                 if (bags.size()<=0)return true;
                 BaseGifBag baseGifBag = bags.get(0);
-                baseGifBag.moveToXY(pointXFix, pointYFix);
+                baseGifBag.moveToXY(pointXFix, pointYFix,obj.maXx,obj.maXy);
 
 
                 return false;

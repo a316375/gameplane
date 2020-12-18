@@ -72,7 +72,7 @@ public abstract class GifBaseObj extends View {
         while (remove.hasNext()) {
             BaseGifBag next = remove.next();
             if (next.list.size() == 0) return;
-            if (next.x < -obj.oW || next.y < -obj.oH || next.x > obj.pointx || next.y > obj.pointy) {
+            if (next.x < -obj.oW || next.y < -obj.oH || next.x > obj.maXx || next.y > obj.maXy) {
                 next.list = null;
                 bags.remove(next);
             }
