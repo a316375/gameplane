@@ -14,7 +14,7 @@ public class BaseBackGround {
         this. screenSizeX=baseActivity.point.x;
         this. screenSizeY=baseActivity.point.y;
         this.bitmap  = BitmapUtils.decodeSampledBitmapFromResource(baseActivity.getResources(),draw,screenSizeX,screenSizeY);
-        bitmap=Bitmap.createScaledBitmap(bitmap,screenSizeX,screenSizeY,false);
+        bitmap=Bitmap.createScaledBitmap(bitmap,screenSizeX,screenSizeY+250,false);
         y2 = y1 -bitmap.getHeight();
 
     }
@@ -31,10 +31,10 @@ public class BaseBackGround {
     public void update(){
         y1 +=2;
         y2 +=2;
-        if(y1>screenSizeY){
+        if(y1>screenSizeY+250){
             y1 = y2 -bitmap.getHeight();
         }
-        if (y2>screenSizeY){
+        if (y2>screenSizeY+250){
             y2 = y1 - bitmap.getHeight();
         }
     }

@@ -1,12 +1,17 @@
 package xyxgame.gameplane.schoolGif;
 
 import android.graphics.Canvas;
+import android.util.Log;
+import android.view.MotionEvent;
+
+import androidx.annotation.Nullable;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.GIf.GIFPlay;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.EnemyGIf;
@@ -37,6 +42,13 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         int x = mBaseActivity.point.x;//初始化屏幕大小
         int y = mBaseActivity.point.y;//初始化屏幕大小
 
+        GifObj play=new GifObj(1,x,y)
+                .withPoint(x/2-100,y-400)
+                .withSize(200,200);
+
+        gifPlay = new PlayGif(play,allBitmaps);
+
+
         //具体的类--赋予属性
         gifObj=new GifObj(25,x,y)
                 .withSize(100,100)
@@ -45,7 +57,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
                .setgiflist(1);
 
         //添加赋予图片资源
-        laserGif = new LaserGif(gifObj,allBitmaps);
+        laserGif = new LaserGif(gifObj,allBitmaps).with(gifPlay);
 
 
         GifObj button01=new GifObj(1,x,y)
@@ -53,6 +65,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
                 .withSize(200,200)
                 .setgiflist(1);
         buttonGif01 = new ButtonGif(button01,allBitmaps);
+
 
         GifObj button02=new GifObj(1,x,y)
                 .withPoint(50,y-900)
@@ -66,11 +79,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
                 .setgiflist(2);
         xiong = new EnemyGIf(xiong01,allBitmaps);
 
-        GifObj play=new GifObj(1,x,y)
-                .withPoint(x/2-100,y-400)
-                .withSize(200,200);
 
-        gifPlay = new PlayGif(play,allBitmaps);
 
 
 
@@ -105,12 +114,14 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     }
 
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gifPlay.onTouchEvent(event);
+        buttonGif01.onTouchEvent(event);
+        buttonGif02.onTouchEvent(event);
+        return true;
 
-
-
-
-
-
+    }
 
 
 }

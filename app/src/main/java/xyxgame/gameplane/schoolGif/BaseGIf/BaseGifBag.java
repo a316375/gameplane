@@ -26,4 +26,11 @@ public abstract class BaseGifBag   {
 
 
     public  abstract void drawpath();
+
+    public void moveToXY(int pointXFix, int pointYFix) {
+        x=pointXFix;
+        y=pointYFix;
+    }
+
+
 }

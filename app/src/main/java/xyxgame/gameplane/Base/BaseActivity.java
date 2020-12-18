@@ -28,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hideNavKey(this);
         super.onCreate(savedInstanceState);
         //Membuat tampilan menjadi full screen全屏
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -51,7 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
 
-        hideNavKey(this);
+
 
 
         setView();
@@ -123,7 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-
+        hideNavKey(this);
         start=true;
         viewResume();
         super.onResume();
