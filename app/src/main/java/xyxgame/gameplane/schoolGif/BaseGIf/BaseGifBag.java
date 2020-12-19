@@ -43,6 +43,10 @@ public abstract class BaseGifBag   {
         if (x>MaxX+20-w)x=MaxX+20-w;
         if (y>MaxY-20)y=MaxY-20;
     }
+    public void moveToXY(int pointXFix, int pointYFix ) {
+        x=pointXFix;
+        y=pointYFix;
 
+    }
 
 }

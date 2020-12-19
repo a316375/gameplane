@@ -4,8 +4,8 @@ import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class EnemyGIf extends BaseGifObj {
-    public EnemyGIf(GifObj obj, GifAllBitmaps allBitmaps) {
+public class XiongGIf extends BaseGifObj {
+    public XiongGIf(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
         F5_GIf=10;
         Time_wait=100;
@@ -13,7 +13,7 @@ public class EnemyGIf extends BaseGifObj {
 
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
-        gifBag=new EnemyBags(obj,list);
+        gifBag=new XiongBags(obj,list);
 
     }
 
@@ -25,6 +25,6 @@ public class EnemyGIf extends BaseGifObj {
 
     @Override
     protected void add_bags_add_new_obj_list() {
-        bags.add(new EnemyBags(obj,list));
+        bags.add(new XiongBags(obj,list));
     }
 }

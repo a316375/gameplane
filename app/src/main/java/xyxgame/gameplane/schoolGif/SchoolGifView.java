@@ -9,7 +9,7 @@ import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Enemy.EnemyGIf;
+import xyxgame.gameplane.schoolGif.Enemy.XiongGIf;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
@@ -25,13 +25,13 @@ public class SchoolGifView extends BaseSurfaceVIEW {
    public BaseActivity mBaseActivity;
     public GifBG gifBG;
     public  FPS fps;
-    public GifObj gifObj;
+    public GifObj laserObj;
     public  GifAllBitmaps allBitmaps;
     public LaserGif laserGif;
     public final ButtonGif buttonGif01;
 //    public final ButtonGif buttonGif02;
     public Button2Gif buttonGif02;
-    public final EnemyGIf xiong;
+    public final XiongGIf xiong;
     public final PlayGif gifPlay;
     public final TouchTeacher touchTeacher;
     public final int x;
@@ -56,20 +56,20 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         GifObj play=new GifObj(1, x, y)
                 .withPoint(x /2-100, y -400)
                 .withSize(200,200)
-                .init(1,10,10,50,ShuXin.Huo);
+                .init(1,100,10,50,ShuXin.Huo);
 
         gifPlay = new PlayGif(play,allBitmaps);
 
 
         //具体的类--赋予属性
-        gifObj=new GifObj(5, x, y)
+        laserObj =new GifObj(5, x, y)
                 .withSize(50,100)
                 .withPoint(x /2, y)
-                .init(1,100,10,100,1)
+                .init(1,10,10,100,1)
                ;
 
         //添加赋予图片资源
-        laserGif = new LaserGif(gifObj,allBitmaps).with(gifPlay);
+        laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay);
 
         GifObj button01=new GifObj(1, x, y)
                 .withPoint(50, y -800)
@@ -92,12 +92,12 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         panGif = new PanGif(pano,allBitmaps);
         panGif.F5_GIf=15;
 
-        GifObj xiongo=new GifObj(20, x, y)
+        GifObj xiongo=new GifObj(1, x, y)
                 .withPoint(500,0)
                 .withSize(200,200)
                 .init(1,10,10,500,ShuXin.Huo)
                 .setShuXin(ShuXin.Huo);
-        xiong = new EnemyGIf(xiongo,allBitmaps);
+        xiong = new XiongGIf(xiongo,allBitmaps);
 
 
 
