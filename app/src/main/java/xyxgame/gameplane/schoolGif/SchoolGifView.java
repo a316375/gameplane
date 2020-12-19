@@ -13,7 +13,8 @@ import xyxgame.gameplane.schoolGif.Enemy.EnemyGIf;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
-import xyxgame.gameplane.schoolGif.Teacher.Teacher;
+import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
+import xyxgame.gameplane.schoolGif.Teacher.TouchTeacher;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
@@ -32,11 +33,12 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public Button2Gif buttonGif02;
     public final EnemyGIf xiong;
     public final PlayGif gifPlay;
-    public final Teacher teacher;
+    public final TouchTeacher touchTeacher;
     public final int x;
     public final int y;
     public ListB listB;
     public final PanGif panGif;
+    private final LaserTeacher laserTeacher;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -53,13 +55,14 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
         GifObj play=new GifObj(1, x, y)
                 .withPoint(x /2-100, y -400)
-                .withSize(200,200);
+                .withSize(200,200)
+                .init(1,10,10,50,ShuXin.Huo);
 
         gifPlay = new PlayGif(play,allBitmaps);
 
 
         //具体的类--赋予属性
-        gifObj=new GifObj(25, x, y)
+        gifObj=new GifObj(5, x, y)
                 .withSize(50,100)
                 .withPoint(x /2, y)
                 .init(1,100,10,100,1)
@@ -92,6 +95,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         GifObj xiongo=new GifObj(20, x, y)
                 .withPoint(500,0)
                 .withSize(200,200)
+                .init(1,10,10,500,ShuXin.Huo)
                 .setShuXin(ShuXin.Huo);
         xiong = new EnemyGIf(xiongo,allBitmaps);
 
@@ -105,7 +109,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
 
 
-        teacher = new Teacher(this);
+        touchTeacher = new TouchTeacher(this);
+        laserTeacher = new LaserTeacher(this);
 
 
     }
@@ -114,13 +119,18 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public boolean showlistA=false;
     @Override
     protected void onThreadDraw(Canvas canvas) {
-        gifBG.draw(canvas);
+
+
+
+
+
+        gifBG.drawCanvas(canvas);
 
         xiong.drawCanvas(canvas);
 
 
         buttonGif01.drawCanvas(canvas);
-       buttonGif02.drawCanvas(canvas);
+        buttonGif02.drawCanvas(canvas);
         panGif.drawCanvas(canvas);
 
 
@@ -134,15 +144,13 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
 
         //展示列表
-
-
-        if (showlistA) listB.draws(canvas);
+         if (showlistA) listB.draws(canvas);
 
     }
 
     @Override
     protected void onFrameDrawFinish() {
-
+        laserTeacher.PKResult();
     }
 
     @Override
@@ -154,7 +162,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         gifPlay.onTouchEvent(event);
-        teacher.onTouchEvent(event);
+        touchTeacher.onTouchEvent(event);
 
         return true;
 

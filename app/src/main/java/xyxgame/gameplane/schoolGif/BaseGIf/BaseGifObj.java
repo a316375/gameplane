@@ -37,6 +37,7 @@ public abstract class BaseGifObj extends View   {
 
         lodebitmaps_list__allBitmaps_get_objow_obj_oh();//赋予图片
         creatBags_gifbag_newxx_obj_list();//赋予路径
+//        if (bags.size()==0&&(gifBag != null))  add_bags_add_new_obj_list();//集合赋予图片
 
     }
    //**赋予路径**//
@@ -63,6 +64,7 @@ public abstract class BaseGifObj extends View   {
     public int Time_wait=50;
 //    int i=0;
     int t=0;
+    private boolean ready=true;
     public void drawCanvas(Canvas canvas) {
 
 
@@ -70,8 +72,9 @@ public abstract class BaseGifObj extends View   {
 
         t++;
         if (t > 6000) t = 1;
-
+       if (bags.size()==0&&ready) {add_bags_add_new_obj_list();ready=false;}//集合赋予图片
         if (bags.size() < obj.max && t % Time_wait == 0) {
+
             add_bags_add_new_obj_list();//集合赋予图片
         }
         ;
@@ -83,6 +86,7 @@ public abstract class BaseGifObj extends View   {
             if (next.x < -obj.oW || next.y < -obj.oH || next.x > obj.maXx || next.y > obj.maXy) {
                 next.list = null;
                 bags.remove(next);
+
             }
         }
 

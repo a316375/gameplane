@@ -11,10 +11,10 @@ import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
 
-public class Teacher extends View {
+public class TouchTeacher extends View {
 
     SchoolGifView schoolGifView;
-    public Teacher(SchoolGifView schoolGifView) {
+    public TouchTeacher(SchoolGifView schoolGifView) {
         super(schoolGifView.mBaseActivity);
         this.schoolGifView = schoolGifView;
     }
@@ -68,6 +68,7 @@ public class Teacher extends View {
 
 
                 if (schoolGifView.showlistA) {
+
                     ListB listB = schoolGifView.listB;
                     ArrayList<BaseStopBitmap> list = listB.list;
                     for (BaseStopBitmap baseStopBitmap:list){

@@ -21,7 +21,7 @@ public class BaseBackGround {
 
 
 
-    public void draw(Canvas canvas){
+    public void drawCanvas(Canvas canvas){
 
         canvas.drawBitmap(bitmap,0,y1,null);
         canvas.drawBitmap(bitmap,0,y2,null);

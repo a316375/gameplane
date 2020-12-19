@@ -86,7 +86,7 @@ public class GifView extends BaseSurfaceVIEW {
     protected void onThreadDraw(Canvas canvas) {
 
         t1.postPKResult();//处理碰撞结果，调整集合-注意不能去这个类里边draw canvas《Canvas是绘画主线程，传参是在子线程》
-        backGround.draw(canvas);
+        backGround.drawCanvas(canvas);
 
 
 
