@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**继承自这个类需要实现路径的绘制，不绘制默认静止，此时obj的max应该为最大为1**/
-public abstract class BaseGifBag   {
+public abstract class BaseGifBag   implements BaseGifBagPath{
     public int x,y,w,h;
     public  CopyOnWriteArrayList<Bitmap> list;
 
@@ -21,6 +21,7 @@ public abstract class BaseGifBag   {
 
 
     public BaseGifBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
+        path=this;
         this.obj=obj;
         this.x = obj.oX;
         this.y = obj.oY;
@@ -34,7 +35,7 @@ public abstract class BaseGifBag   {
     }
 
 
-    public  abstract void drawpath();
+    public  BaseGifBagPath path;
 
     public void moveToXY(int pointXFix, int pointYFix,int MaxX,int MaxY) {
         x=pointXFix;

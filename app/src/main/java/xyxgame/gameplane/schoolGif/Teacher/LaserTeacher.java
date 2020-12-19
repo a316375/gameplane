@@ -5,6 +5,7 @@ import android.graphics.Rect;
 import java.util.Iterator;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
@@ -23,18 +24,29 @@ public class LaserTeacher {
     }
 
 
-    private void pk(BaseGifObj baseGifBag){
+    private void pk(final BaseGifObj baseGifBag){
+        final int[] j = {0};
         Iterator<BaseGifBag> iterator = laserGif.bags.iterator();
         for (Iterator<BaseGifBag> it = iterator; it.hasNext(); ) {
-            BaseGifBag bag = it.next();
+            final BaseGifBag bag = it.next();
 
             for (Iterator<BaseGifBag> iter = baseGifBag.bags.iterator(); iter.hasNext(); ) {
-                BaseGifBag bagxiong = iter.next();
+                final BaseGifBag bagxiong = iter.next();
                 if (Rect.intersects(bag.rect,bagxiong.rect)){
 
                     laserGif.bags.remove(bag);
                     bagxiong.life-=bag.hit;
-                   if (laserGif.obj.ShuXin== ShuXin.Mu)bagxiong.moveToXY(bagxiong.x,bagxiong.y-baseGifBag.obj.speed*2);
+                   if (laserGif.obj.ShuXin== ShuXin.Mu)bagxiong.path=new BaseGifBagPath() {
+                       //风属性后退效果
+                       @Override
+                       public void drawpath() {
+                           j[0]++;
+                           if (j[0]>500)j[0]=21;
+                         if (j[0] >20) bagxiong.y+=2;
+                          else    bagxiong.y-=2;
+
+                       }
+                   };
                     if (bagxiong.life<=0)  baseGifBag.bags.remove(bagxiong);
                 }
             }

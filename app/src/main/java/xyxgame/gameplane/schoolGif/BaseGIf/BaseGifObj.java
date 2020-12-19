@@ -107,7 +107,7 @@ public abstract class BaseGifObj extends View   {
 
             canvas.drawBitmap(next.list.get(next.i), next.x, next.y, null);
             if (next.obj.showRect) canvas.drawRect(next.rect, paint);
-            next.drawpath();////这个是分离代码
+          if (next.path!=null) next.path.drawpath();////这个是分离代码
             if (t % F5_GIf == 0) next.i++;
         }
 
