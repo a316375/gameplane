@@ -1,14 +1,10 @@
-package xyxgame.gameplane.schoolGif.GifButton;
-
-import android.graphics.Rect;
-import android.util.Log;
-import android.view.MotionEvent;
+package xyxgame.gameplane.schoolGif.Button;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
-import xyxgame.gameplane.schoolGif.BaseGIf.GifBaseObj;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class ButtonGif extends GifBaseObj {
+public class ButtonGif extends BaseGifObj {
     public ButtonGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
     }

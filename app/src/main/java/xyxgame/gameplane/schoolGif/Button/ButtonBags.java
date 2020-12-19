@@ -1,4 +1,4 @@
-package xyxgame.gameplane.schoolGif.pan;
+package xyxgame.gameplane.schoolGif.Button;
 
 import android.graphics.Bitmap;
 
@@ -7,8 +7,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class PanBag extends BaseGifBag {
-    public PanBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
+public class ButtonBags extends BaseGifBag {
+    public ButtonBags(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         super(obj, list);
     }
 

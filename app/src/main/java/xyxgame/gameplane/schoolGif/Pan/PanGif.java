@@ -1,10 +1,10 @@
-package xyxgame.gameplane.schoolGif.pan;
+package xyxgame.gameplane.schoolGif.Pan;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
-import xyxgame.gameplane.schoolGif.BaseGIf.GifBaseObj;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class PanGif extends GifBaseObj {
+public class PanGif extends BaseGifObj {
     public PanGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
     }

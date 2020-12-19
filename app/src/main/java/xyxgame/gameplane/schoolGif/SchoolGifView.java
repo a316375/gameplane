@@ -10,13 +10,14 @@ import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.EnemyGIf;
-import xyxgame.gameplane.schoolGif.GifButton.ButtonGif;
+import xyxgame.gameplane.schoolGif.Button.Button2Gif;
+import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.Teacher.Teacher;
-import xyxgame.gameplane.schoolGif.laser.LaserGif;
-import xyxgame.gameplane.schoolGif.list.ListA;
-import xyxgame.gameplane.schoolGif.pan.PanBag;
-import xyxgame.gameplane.schoolGif.pan.PanGif;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Laser.LaserGif;
+import xyxgame.gameplane.schoolGif.ShowList.ListA;
+import xyxgame.gameplane.schoolGif.Pan.PanGif;
 
 public class SchoolGifView extends BaseSurfaceVIEW {
 
@@ -27,7 +28,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public  GifAllBitmaps allBitmaps;
     public LaserGif laserGif;
     public final ButtonGif buttonGif01;
-    public final ButtonGif buttonGif02;
+//    public final ButtonGif buttonGif02;
+    public Button2Gif buttonGif02;
     public final EnemyGIf xiong;
     public final PlayGif gifPlay;
     public final Teacher teacher;
@@ -66,19 +68,20 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         //添加赋予图片资源
         laserGif = new LaserGif(gifObj,allBitmaps).with(gifPlay);
 
-
         GifObj button01=new GifObj(1, x, y)
-                .withPoint(50, y -600)
-                .withSize(200,200)
-                 ;
-        buttonGif01 = new ButtonGif(button01,allBitmaps);
-
-
-        GifObj button02=new GifObj(1, x, y)
                 .withPoint(50, y -800)
                 .withSize(200,200)
-                 ;
-        buttonGif02 = new ButtonGif(button02,allBitmaps);
+                ;
+
+        buttonGif01 = new ButtonGif(button01,allBitmaps);
+
+        GifObj button02=new GifObj(1, x, y)
+                .withPoint(50, y -600)
+                .withSize(200,200)
+                ;
+
+         buttonGif02=new Button2Gif(button02,allBitmaps);
+
 
         GifObj pano=new GifObj(1,x,y)
                  .withPoint(80, y -1000)
@@ -117,17 +120,23 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
 
         buttonGif01.drawCanvas(canvas);
-        buttonGif02.drawCanvas(canvas);
+       buttonGif02.drawCanvas(canvas);
         panGif.drawCanvas(canvas);
 
 
-      if (showlistA) listA.draws(canvas);
+
 
 
 
         laserGif.drawCanvas(canvas);
         gifPlay.drawCanvas(canvas);
         fps.draw(canvas);
+
+
+        //展示列表
+
+
+        if (showlistA) listA.draws(canvas);
 
     }
 

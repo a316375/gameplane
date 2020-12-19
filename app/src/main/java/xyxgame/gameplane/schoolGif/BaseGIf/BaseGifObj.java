@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 //**继承自这个类需要实现三个方法，这个类可以控制集合的自我清理+自我创建，三个方法都是加载**//
-public abstract class GifBaseObj extends View   {
+public abstract class BaseGifObj extends View   {
 
 
 
@@ -29,7 +29,7 @@ public abstract class GifBaseObj extends View   {
     public  CopyOnWriteArrayList<BaseGifBag> bags;
     private Paint paint;
 
-    public GifBaseObj(GifObj obj, GifAllBitmaps allBitmaps) {
+    public BaseGifObj(GifObj obj, GifAllBitmaps allBitmaps) {
         super(allBitmaps.activity);
         this.obj = obj;
         this.allBitmaps = allBitmaps;

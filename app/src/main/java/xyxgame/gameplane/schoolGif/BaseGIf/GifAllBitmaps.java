@@ -27,6 +27,10 @@ public class GifAllBitmaps {
     }
 
     BaseActivity activity;
+    public  CopyOnWriteArrayList<Bitmap> getbutton2(int width,int height){
+
+        return getbitmaps(width,height,activity, R.drawable.button02);
+    }
 
      
     public  CopyOnWriteArrayList<Bitmap> getxue(int width,int height){

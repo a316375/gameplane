@@ -1,11 +1,11 @@
-package xyxgame.gameplane.schoolGif.laser;
+package xyxgame.gameplane.schoolGif.Laser;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
-import xyxgame.gameplane.schoolGif.BaseGIf.GifBaseObj;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 
-public class LaserGif extends GifBaseObj {
+public class LaserGif extends BaseGifObj {
     PlayGif playGif;
     public LaserGif with(PlayGif playGif){
         this.playGif=playGif;

@@ -1,4 +1,4 @@
-package xyxgame.gameplane.schoolGif.list;
+package xyxgame.gameplane.schoolGif.ShowList;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
