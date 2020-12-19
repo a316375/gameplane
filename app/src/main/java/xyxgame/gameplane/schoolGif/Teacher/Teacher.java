@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseStopBitmap;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
-import xyxgame.gameplane.schoolGif.ShowList.ListA;
+import xyxgame.gameplane.schoolGif.ShowList.ListB;
 
 public class Teacher extends View {
 
@@ -68,8 +68,8 @@ public class Teacher extends View {
 
 
                 if (schoolGifView.showlistA) {
-                    ListA listA = schoolGifView.listA;
-                    ArrayList<BaseStopBitmap> list = listA.list;
+                    ListB listB = schoolGifView.listB;
+                    ArrayList<BaseStopBitmap> list = listB.list;
                     for (BaseStopBitmap baseStopBitmap:list){
                         if (baseStopBitmap.rect.contains((int) event.getX(),(int) event.getY())){
                             schoolGifView.showlistA=!schoolGifView.showlistA;

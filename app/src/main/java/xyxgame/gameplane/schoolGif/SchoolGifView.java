@@ -16,7 +16,7 @@ import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.Teacher.Teacher;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
-import xyxgame.gameplane.schoolGif.ShowList.ListA;
+import xyxgame.gameplane.schoolGif.ShowList.ListB;
 import xyxgame.gameplane.schoolGif.Pan.PanGif;
 
 public class SchoolGifView extends BaseSurfaceVIEW {
@@ -35,7 +35,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public final Teacher teacher;
     public final int x;
     public final int y;
-    public   ListA listA;
+    public ListB listB;
     public final PanGif panGif;
 
 
@@ -98,7 +98,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
 
 
-        listA = new ListA(mBaseActivity);
+        listB = new ListB(mBaseActivity);
 
 
 
@@ -136,7 +136,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         //展示列表
 
 
-        if (showlistA) listA.draws(canvas);
+        if (showlistA) listB.draws(canvas);
 
     }
 
