@@ -15,6 +15,8 @@ import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.Teacher.Teacher;
 import xyxgame.gameplane.schoolGif.laser.LaserGif;
 import xyxgame.gameplane.schoolGif.list.ListA;
+import xyxgame.gameplane.schoolGif.pan.PanBag;
+import xyxgame.gameplane.schoolGif.pan.PanGif;
 
 public class SchoolGifView extends BaseSurfaceVIEW {
 
@@ -32,6 +34,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public final int x;
     public final int y;
     public   ListA listA;
+    public final PanGif panGif;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -58,7 +61,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
                 .withSize(50,100)
                 .withPoint(x /2, y)
                 .init(1,100,10,100,1)
-               .setgiflist(1);
+               ;
 
         //添加赋予图片资源
         laserGif = new LaserGif(gifObj,allBitmaps).with(gifPlay);
@@ -67,31 +70,39 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         GifObj button01=new GifObj(1, x, y)
                 .withPoint(50, y -600)
                 .withSize(200,200)
-                .setgiflist(1);
+                 ;
         buttonGif01 = new ButtonGif(button01,allBitmaps);
 
 
         GifObj button02=new GifObj(1, x, y)
-                .withPoint(50, y -900)
+                .withPoint(50, y -800)
                 .withSize(200,200)
-                .setgiflist(2);
+                 ;
         buttonGif02 = new ButtonGif(button02,allBitmaps);
 
-        GifObj xiong01=new GifObj(20, x, y)
+        GifObj pano=new GifObj(1,x,y)
+                 .withPoint(80, y -1000)
+                .withSize(150,150) ;
+        panGif = new PanGif(pano,allBitmaps);
+        panGif.F5_GIf=15;
+
+        GifObj xiongo=new GifObj(20, x, y)
                 .withPoint(500,0)
                 .withSize(200,200)
-                .setgiflist(2);
-        xiong = new EnemyGIf(xiong01,allBitmaps);
+                .setShuXin(ShuXin.Huo);
+        xiong = new EnemyGIf(xiongo,allBitmaps);
+
 
 
 
         listA = new ListA(mBaseActivity);
 
+
+
+
+
+
         teacher = new Teacher(this);
-
-
-
-
 
 
     }
@@ -104,13 +115,17 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
         xiong.drawCanvas(canvas);
 
-        laserGif.drawCanvas(canvas);
+
         buttonGif01.drawCanvas(canvas);
         buttonGif02.drawCanvas(canvas);
+        panGif.drawCanvas(canvas);
 
 
       if (showlistA) listA.draws(canvas);
 
+
+
+        laserGif.drawCanvas(canvas);
         gifPlay.drawCanvas(canvas);
         fps.draw(canvas);
 

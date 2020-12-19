@@ -28,11 +28,11 @@ public class ListA   {
 
         max = baseActivity.point.x/2;
         may = baseActivity.point.y/2;
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.c1, new Point(max -50-160*2, may -210), 100, 100,1));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.meteor_1, new Point(max -50-160, may -210), 100, 100,2));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.meteor_1, new Point(max -50, may -210), 100, 100,3));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.meteor_1, new Point(max +50+60, may -210), 100, 100,4));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.meteor_1, new Point(max +50+60*2+100, may -210), 100, 100,5));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max -50-160*2, may -210), 100, 100,1));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max -50-160, may -210), 100, 100,2));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max -50, may -210), 100, 100,3));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210), 100, 100,4));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210), 100, 100,5));
 
         for (BaseStopBitmap baseStopBitmap:list){
             rects.add(baseStopBitmap.rect);

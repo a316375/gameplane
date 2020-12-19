@@ -1,36 +1,29 @@
-package xyxgame.gameplane.schoolGif.GifButton;
-
-import android.graphics.Rect;
-import android.util.Log;
-import android.view.MotionEvent;
+package xyxgame.gameplane.schoolGif.pan;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifBaseObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class ButtonGif extends GifBaseObj {
-    public ButtonGif(GifObj obj, GifAllBitmaps allBitmaps) {
+public class PanGif extends GifBaseObj {
+    public PanGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
     }
 
-
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
-        gifBag=new ButtonBags(obj,list);
+        gifBag=new PanBag(obj,list);
+
     }
 
     @Override
     protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-      list=allBitmaps.getfb01(obj.oW,obj.oH);
-
+        list=allBitmaps.getPan(obj.oW,obj.oH);
 
     }
 
     @Override
     protected void add_bags_add_new_obj_list() {
-        bags.add(new ButtonBags(obj,list));
+        bags.add(new PanBag(obj,list));
 
     }
-
-
 }

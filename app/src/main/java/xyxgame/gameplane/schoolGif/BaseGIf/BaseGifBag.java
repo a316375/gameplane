@@ -3,6 +3,7 @@ package xyxgame.gameplane.schoolGif.BaseGIf;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -13,6 +14,7 @@ public abstract class BaseGifBag   {
 
     public  GifObj obj;
     public Rect rect;
+    public int i;
 
     public BaseGifBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         this.obj=obj;
@@ -21,6 +23,7 @@ public abstract class BaseGifBag   {
         this.w = obj.oW;
         this.h = obj.oH;
         this.list = list;
+       if (list.size()>0)i=new Random().nextInt(500)%list.size();
         rect=new Rect(x,y,x+w,y+h);
     }
 

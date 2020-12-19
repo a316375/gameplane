@@ -34,7 +34,10 @@ public class GifAllBitmaps {
         return getbitmaps(width,height,activity, R.drawable.gif_xue);
     }
 
-  
+    public  CopyOnWriteArrayList<Bitmap> getPan(int width,int height){
+
+        return getbitmaps( width, height,activity, R.drawable.pan);
+    }
 
     public  CopyOnWriteArrayList<Bitmap> getxiong8Move(int width,int height){
          

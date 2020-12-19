@@ -10,7 +10,7 @@ public class GifObj {
     public  int hit=10;
     public  int speed=2;
     public  int life=100;
-    public  int giflist=0;//默认图片
+    public  int ShuXin=0;//默认属性
 
 
     public   int oX=0;//默认坐标
@@ -44,14 +44,14 @@ public class GifObj {
 
     }
 
-
-    public GifObj setgiflist(int giflist){this.giflist=giflist;return this;};
-    public GifObj init(int level, int hit, int speed, int life, int giflist) {
+    public GifObj setSpeed(int speed){this.speed=speed;return this;};
+    public GifObj setShuXin(int ShuXin){this.ShuXin=ShuXin;return this;};
+    public GifObj init(int level, int hit, int speed, int life, int ShuXin) {
         this.level = level;
         this.hit = hit;
         this.speed = speed;
         this.life = life;
-        this.giflist = giflist;
+        this.ShuXin = ShuXin;
         return this;
     }
 }
