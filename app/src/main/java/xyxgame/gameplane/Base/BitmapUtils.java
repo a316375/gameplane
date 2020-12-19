@@ -34,7 +34,8 @@ public class BitmapUtils {
 
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
+        Bitmap bitmap = BitmapFactory.decodeResource(res, resId, options);
+        return Bitmap.createScaledBitmap(bitmap,reqWidth,reqHeight,true);//true false暂时未知用法
     }
 
 

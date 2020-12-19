@@ -1,17 +1,12 @@
 package xyxgame.gameplane.schoolGif;
 
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
-
-import androidx.annotation.Nullable;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
-import xyxgame.gameplane.GIf.GIFPlay;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.EnemyGIf;
@@ -19,8 +14,7 @@ import xyxgame.gameplane.schoolGif.GifButton.ButtonGif;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.Teacher.Teacher;
 import xyxgame.gameplane.schoolGif.laser.LaserGif;
-import xyxgame.gameplane.schoolGif.list.listAGif;
-import xyxgame.gameplane.spaceshooter.Enemy;
+import xyxgame.gameplane.schoolGif.list.ListA;
 
 public class SchoolGifView extends BaseSurfaceVIEW {
 
@@ -37,7 +31,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public final Teacher teacher;
     public final int x;
     public final int y;
-    public final  listAGif listAGif;
+    public   ListA listA;
+
 
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
@@ -89,13 +84,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         xiong = new EnemyGIf(xiong01,allBitmaps);
 
 
-        GifObj lista=new GifObj(9,x,y).withPoint(100,y/3);
-        listAGif = new listAGif(lista,allBitmaps);
 
-
-
-
-
+        listA = new ListA(mBaseActivity);
 
         teacher = new Teacher(this);
 
@@ -112,15 +102,16 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     protected void onThreadDraw(Canvas canvas) {
         gifBG.draw(canvas);
 
-        xiong.draws(canvas);
+        xiong.drawCanvas(canvas);
 
-        laserGif.draws(canvas);
-        buttonGif01.draws(canvas);
-        buttonGif02.draws(canvas);
+        laserGif.drawCanvas(canvas);
+        buttonGif01.drawCanvas(canvas);
+        buttonGif02.drawCanvas(canvas);
 
-       if (showlistA)listAGif.draws(canvas);
 
-        gifPlay.draws(canvas);
+      if (showlistA) listA.draws(canvas);
+
+        gifPlay.drawCanvas(canvas);
         fps.draw(canvas);
 
     }

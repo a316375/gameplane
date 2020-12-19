@@ -4,15 +4,22 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
 
 //**继承自这个类需要实现三个方法，这个类可以控制集合的自我清理+自我创建，三个方法都是加载**//
-public abstract class GifBaseObj extends View {
+public abstract class GifBaseObj extends View   {
+
+
+
+
     public  GifObj obj;
     public  GifAllBitmaps allBitmaps;
 
@@ -55,7 +62,7 @@ public abstract class GifBaseObj extends View {
     public int F5_GIf=5;
     public int Time_wait=50;
     int i=0;  int t=0;
-    public void draws(Canvas canvas) {
+    public void drawCanvas(Canvas canvas) {
 
 
         if (gifBag == null) return;
