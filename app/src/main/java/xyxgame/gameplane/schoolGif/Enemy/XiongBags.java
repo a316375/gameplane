@@ -16,6 +16,12 @@ public class XiongBags extends BaseGifBag implements BaseGifBagPath {
     @Override
     public void drawpath() {
 
-        y+=2;
+        y+=10;
+    }
+
+    @Override
+    public void setRect(int x, int y, int w, int h) {
+        rect.set(x+this.w/5, y, w-this.w/5, h-this.h/5);
+
     }
 }

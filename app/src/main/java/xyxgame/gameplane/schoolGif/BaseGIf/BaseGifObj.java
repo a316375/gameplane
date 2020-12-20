@@ -103,7 +103,7 @@ public abstract class BaseGifObj extends View   {
             BaseGifBag next = iterator.next();
             if (next.list.size() == 0) return;
             next.i= next.i % next.list.size();
-            next.rect.set(next.x, next.y, next.x + next.w, next.y + next.h);
+            next.setRect(next.x , next.y, next.x + next.w, next.y + next.h);
 
             canvas.drawBitmap(next.list.get(next.i), next.x, next.y, null);
             if (next.obj.showRect) canvas.drawRect(next.rect, paint);

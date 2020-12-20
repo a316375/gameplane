@@ -37,6 +37,10 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
     public  BaseGifBagPath path;
 
+    public void setRect(int x,int y,int w,int h){
+        rect.set(x,y,w,h);
+    }
+
     public void moveToXY(int pointXFix, int pointYFix,int MaxX,int MaxY) {
         x=pointXFix;
         y=pointYFix;
@@ -44,10 +48,11 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         if (x>MaxX+20-w)x=MaxX+20-w;
         if (y>MaxY-20)y=MaxY-20;
     }
-    public void moveToXY(int pointXFix, int pointYFix ) {
-        x=pointXFix;
-        y=pointYFix;
 
+
+    public void resetPath(){
+        path=this;
     }
+
 
 }

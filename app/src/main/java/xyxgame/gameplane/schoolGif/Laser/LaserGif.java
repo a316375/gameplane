@@ -1,5 +1,7 @@
 package xyxgame.gameplane.schoolGif.Laser;
 
+import android.graphics.Rect;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
@@ -13,6 +15,7 @@ public class LaserGif extends BaseGifObj {
 
     public LaserGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
+
     }
 
 
@@ -34,6 +37,7 @@ public class LaserGif extends BaseGifObj {
     protected void add_bags_add_new_obj_list() {
 
 
+        //子弹重新定义位置
         if (playGif.bags.size()<=0)return;
         if (playGif!=null) {
             obj.oX=playGif.bags.get(0).x+playGif.bags.get(0).w/2-obj.oW/2;
