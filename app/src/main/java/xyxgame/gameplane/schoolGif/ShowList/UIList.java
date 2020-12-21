@@ -42,6 +42,7 @@ public class UIList {
         list.add(new BaseStopBitmap(baseActivity, R.drawable.jinbi02, new Point(max*2-300, may*2 ), 100, 100));
 
         list.add(new BaseStopBitmap(baseActivity, R.drawable.att_bg, new Point(80, may*2-100 ), 200, 100));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.lv, new Point(120, may*2-200 ), 100, 100));
 
 
 
@@ -76,7 +77,8 @@ public class UIList {
         canvas.drawText(schoolGifView.money.stringA(),max*2-200,may*2-40,uiPaint.paint1());
         canvas.drawText(schoolGifView.money.stringB(),max*2-200,may*2+60,uiPaint.paint1());
         canvas.drawText(Int0000.get0000(schoolGifView.laserGif.obj.hit),120,may*2-30,uiPaint.paint2());
-        canvas.drawText("DAMAGE.",120,may*2+60,uiPaint.paint2());
+        canvas.drawText("DAMAGE",100,may*2+40,uiPaint.paint2());
+        canvas.drawText(Int0000.get00(schoolGifView.gifPlay.obj.level),160,may*2-135,uiPaint.paint1());
 
     }
 }

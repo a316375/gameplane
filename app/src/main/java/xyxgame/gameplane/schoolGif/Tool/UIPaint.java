@@ -17,7 +17,7 @@ public class UIPaint {
         paint.setStyle(Paint.Style.FILL);  // 填充模式 - 所有
         paint.setStrokeWidth(10);
         paint.setTextSize(50);
-        paint.setTypeface(Typeface.createFromAsset(baseActivity.getAssets(),"xyx.ttf"));
+        paint.setTypeface(Typeface.createFromAsset(baseActivity.getAssets(),"xyx2.ttf"));
     }
 
     public Paint paint1(){
