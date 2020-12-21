@@ -32,11 +32,11 @@ public class ListB {
 
         max = baseActivity.point.x/2;
         may = baseActivity.point.y/2;
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max -50-160*2, may -210), 100, 100).withShuxin(ShuXin.Jin));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max -50-160, may -210), 100, 100).withShuxin(ShuXin.Mu));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max -50, may -210), 100, 100).withShuxin(ShuXin.Shui));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210), 100, 100).withShuxin(ShuXin.Huo));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210), 100, 100).withShuxin(ShuXin.Tu));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max -50-160*2, may -210+600), 100, 100).withShuxin(ShuXin.Jin));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max -50-160, may -210+600), 100, 100).withShuxin(ShuXin.Mu));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max -50, may -210+600), 100, 100).withShuxin(ShuXin.Shui));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210+600), 100, 100).withShuxin(ShuXin.Huo));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210+600), 100, 100).withShuxin(ShuXin.Tu));
 
 
 
@@ -64,11 +64,11 @@ public class ListB {
 
     public void draws(Canvas canvas){
         if (list.size()<=0)return;
-        canvas.drawRoundRect(new RectF(max-430, may-270, max+430, may+270), 50, 50, mPaint);
+        canvas.drawRoundRect(new RectF(max-430, may-270+600, max+430, may+270+300), 50, 50, mPaint);
 
 
 
-        canvas.drawText(ShuXin.ListB_title,max-230,may-250,mPaint2);
+        canvas.drawText(ShuXin.ListB_title,max-230,may-250+600,mPaint2);
 
         for (BaseStopBitmap baseStopBitmap:list){
             baseStopBitmap.draws(canvas);

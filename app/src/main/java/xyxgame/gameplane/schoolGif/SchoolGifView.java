@@ -39,7 +39,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public final int x;
     public final int y;
     public ListB listB;
-    public final PanGif panGif;
+//    public final PanGif panGif;
     private final LaserTeacher laserTeacher;
     public final BlastTextGif blastTextGif;
     public UIList uiList;
@@ -79,25 +79,25 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay).withMoney(money);
 
         GifObj button01=new GifObj(1, x, y)
-                .withPoint(50, y -800)
+                .withPoint(x-230, 200)
                 .withSize(200,200)
                 ;
 
         buttonGif01 = new ButtonGif(button01,allBitmaps);
 
         GifObj button02=new GifObj(1, x, y)
-                .withPoint(50, y -600)
+                .withPoint(60, y -380)
                 .withSize(200,200)
                 ;
 
          buttonGif02=new Button2Gif(button02,allBitmaps);
 
-
-        GifObj pano=new GifObj(1,x,y)
-                 .withPoint(80, y -1000)
-                .withSize(150,150) ;
-        panGif = new PanGif(pano,allBitmaps);
-        panGif.F5_GIf=15;
+//
+//        GifObj pano=new GifObj(1,x,y)
+//                 .withPoint(80, y -1000)
+//                .withSize(150,150) ;
+//        panGif = new PanGif(pano,allBitmaps);
+//        panGif.F5_GIf=15;
 
         GifObj xiongo=new GifObj(1, x, y)
                 .withPoint(500,0)
@@ -139,7 +139,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
         buttonGif01.drawCanvas(canvas);
         buttonGif02.drawCanvas(canvas);
-        panGif.drawCanvas(canvas);
+//        panGif.drawCanvas(canvas);
 
 
 
