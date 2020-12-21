@@ -23,6 +23,8 @@ public class ListB {
     private final int may;
     private final Paint mPaint2;
 
+
+
     public ListB(BaseActivity baseActivity) {
 //        super(baseActivity, R.drawable.meteor_1, new Point(500,500), 200, 200);
         list=new ArrayList<>();
@@ -30,11 +32,14 @@ public class ListB {
 
         max = baseActivity.point.x/2;
         may = baseActivity.point.y/2;
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max -50-160*2, may -210), 100, 100,1));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max -50-160, may -210), 100, 100,2));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max -50, may -210), 100, 100,3));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210), 100, 100,4));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210), 100, 100,5));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max -50-160*2, may -210), 100, 100).withShuxin(ShuXin.Jin));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max -50-160, may -210), 100, 100).withShuxin(ShuXin.Mu));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max -50, may -210), 100, 100).withShuxin(ShuXin.Shui));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210), 100, 100).withShuxin(ShuXin.Huo));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210), 100, 100).withShuxin(ShuXin.Tu));
+
+
+
 
         for (BaseStopBitmap baseStopBitmap:list){
             rects.add(baseStopBitmap.rect);

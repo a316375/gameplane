@@ -70,6 +70,8 @@ public abstract class BaseGifObj extends View   {
 
         if (gifBag == null) return;
 
+        add_drawCanvas(canvas);//补充绘制其他内容
+
         t++;
         if (t > 6000) t = 1;
        if (bags.size()==0&&ready) {add_bags_add_new_obj_list();ready=false;}//集合赋予图片
@@ -118,6 +120,10 @@ public abstract class BaseGifObj extends View   {
     }
     //**集合赋予图片**//
     protected abstract void add_bags_add_new_obj_list();
+
+
+
+    public void add_drawCanvas(Canvas canvas){}
 
 
 }

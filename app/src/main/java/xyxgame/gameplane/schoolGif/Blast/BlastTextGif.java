@@ -16,7 +16,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class BlastGif  {
+public class BlastTextGif  {
 
 
 
@@ -27,7 +27,7 @@ public class BlastGif  {
     Paint paint;
     private Typeface typeFace;
     BaseActivity baseActivity;
-    public BlastGif(BaseActivity baseActivity) {
+    public BlastTextGif(BaseActivity baseActivity) {
         this.baseActivity=baseActivity;
           bags=new CopyOnWriteArrayList<>();
 

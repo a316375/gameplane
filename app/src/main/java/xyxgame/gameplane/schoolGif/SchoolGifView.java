@@ -1,7 +1,6 @@
 package xyxgame.gameplane.schoolGif;
 
 import android.graphics.Canvas;
-import android.graphics.Point;
 import android.view.MotionEvent;
 
 import xyxgame.gameplane.Base.BaseActivity;
@@ -10,14 +9,15 @@ import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Blast.BlastBags;
-import xyxgame.gameplane.schoolGif.Blast.BlastGif;
+import xyxgame.gameplane.schoolGif.Blast.BlastTextGif;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGIf;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
+import xyxgame.gameplane.schoolGif.ShowList.UIList;
 import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.TouchTeacher;
+import xyxgame.gameplane.schoolGif.Tool.Money;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
@@ -41,12 +41,16 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public ListB listB;
     public final PanGif panGif;
     private final LaserTeacher laserTeacher;
-    public final BlastGif blastGif;
+    public final BlastTextGif blastTextGif;
+    public UIList uiList;
+    public Money money;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
         this.mBaseActivity=mBaseActivity;
+        money=new Money(99998);
+
         gifBG=new GifBG(mBaseActivity, R.drawable.bg5);
         fps=new FPS();
         allBitmaps=new GifAllBitmaps(mBaseActivity);//拿到图片合集
@@ -72,7 +76,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
                ;
 
         //添加赋予图片资源
-        laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay);
+        laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay).withMoney(money);
 
         GifObj button01=new GifObj(1, x, y)
                 .withPoint(50, y -800)
@@ -108,7 +112,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         listB = new ListB(mBaseActivity);
 
 
-        blastGif = new BlastGif(mBaseActivity);
+        blastTextGif = new BlastTextGif(mBaseActivity);
+        uiList=new UIList(mBaseActivity,this);
 
 
         touchTeacher = new TouchTeacher(this);
@@ -127,6 +132,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
 
         gifBG.drawCanvas(canvas);
+        uiList.drawCanvas(canvas);
 
         xiong.drawCanvas(canvas);
 
@@ -141,7 +147,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
 
         laserGif.drawCanvas(canvas);
-        blastGif.draws(canvas);//绘制爆炸
+        blastTextGif.draws(canvas);//绘制爆炸
         gifPlay.drawCanvas(canvas);
         fps.draw(canvas);
 

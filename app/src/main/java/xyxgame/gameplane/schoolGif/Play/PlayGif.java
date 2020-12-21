@@ -1,5 +1,6 @@
 package xyxgame.gameplane.schoolGif.Play;
 
+import android.graphics.Canvas;
 import android.view.MotionEvent;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
@@ -8,9 +9,18 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
 public class PlayGif extends BaseGifObj {
+
+
     public PlayGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
         F5_GIf=10;
+
+    }
+
+
+    @Override
+    public void add_drawCanvas(Canvas canvas) {
+        super.add_drawCanvas(canvas);
 
     }
 

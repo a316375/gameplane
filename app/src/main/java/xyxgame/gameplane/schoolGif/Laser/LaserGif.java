@@ -6,6 +6,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
+import xyxgame.gameplane.schoolGif.Tool.Money;
 
 public class LaserGif extends BaseGifObj {
     PlayGif playGif;
@@ -18,6 +19,12 @@ public class LaserGif extends BaseGifObj {
 
     }
 
+    Money money;
+    public LaserGif withMoney(Money money) {
+       this.money=money;
+       return this;
+
+    }
 
 
 
@@ -38,7 +45,7 @@ public class LaserGif extends BaseGifObj {
 
 
         //子弹重新定义位置
-        if (playGif.bags.size()<=0)return;
+        if (playGif.bags.size()<=0||money==null)return;
         if (playGif!=null) {
             obj.oX=playGif.bags.get(0).x+playGif.bags.get(0).w/2-obj.oW/2;
             obj.oY=playGif.bags.get(0).y;
@@ -46,9 +53,12 @@ public class LaserGif extends BaseGifObj {
 
 
 
-        LaserBags e = new LaserBags(obj, list);
 
-        bags.add(e);
+
+     if (money.all>0) {
+         bags.add(new LaserBags(obj, list));
+         money.all-=1;
+     }
 
     }
 

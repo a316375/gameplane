@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import java.util.Iterator;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastBags;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
@@ -37,7 +36,7 @@ public class LaserTeacher {
                 final BaseGifBag bagxiong = iter.next();
                 if (Rect.intersects(bag.rect,bagxiong.rect)){
 
-                    schoolGifView.blastGif.addBags(new BlastBags(bag.hit,new Point(bag.rect.left,bag.rect.top)));
+                    schoolGifView.blastTextGif.addBags(new BlastBags(bag.hit,new Point(bag.rect.left,bag.rect.top)));
                     laserGif.bags.remove(bag);
                     bagxiong.life-=bag.hit;
                    if (laserGif.obj.ShuXin== ShuXin.Mu)bagxiong.path=new PathMu(bagxiong);

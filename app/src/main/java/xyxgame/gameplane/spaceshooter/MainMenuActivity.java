@@ -1,11 +1,17 @@
 package xyxgame.gameplane.spaceshooter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,18 +25,35 @@ import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
+
     private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6,mPlay7, mHighScore, mExit;
 //
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_main_menu);
 
-        //Membuat tampilan menjadi full screen
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //Membuat tampilan selalu menyala jika activity aktif
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
+
+        hideNavKey(this);
+
+
+
+//        //Membuat tampilan menjadi full screen
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//
+//        //Membuat tampilan selalu menyala jika activity aktif
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
 
         mPlay = findViewById(R.id.play);
         mPlay2 = findViewById(R.id.play2);
@@ -52,6 +75,35 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mHighScore.setOnClickListener(this);
         mExit.setOnClickListener(this);
     }
+
+
+
+
+            ;//隐藏底部
+    public static void hideNavKey(Context context) {
+        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) {
+            View v = ((Activity) context).getWindow().getDecorView();
+
+            v.setSystemUiVisibility(View.GONE);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            //for new api versions.
+            View decorView = ((Activity) context).getWindow().getDecorView();
+
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            decorView.setSystemUiVisibility(uiOptions);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void onClick(View v) {
@@ -91,5 +143,12 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        hideNavKey(this);
+        super.onResume();
+
     }
 }

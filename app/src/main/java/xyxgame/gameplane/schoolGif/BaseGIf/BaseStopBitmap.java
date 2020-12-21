@@ -18,8 +18,10 @@ public class BaseStopBitmap {
 
 
     Point point;
-    public BaseStopBitmap(BaseActivity baseActivity, int raw, Point point,int width,int height,int num) {
-        this.num=num;
+
+    public BaseStopBitmap withShuxin(int num){this.num=num;return this;}
+    public BaseStopBitmap(BaseActivity baseActivity, int raw, Point point,int width,int height) {
+
         this.baseActivity = baseActivity;
         this.point=point;
         bitmap= BitmapUtils.decodeSampledBitmapFromResource(baseActivity.getResources(),raw,width,height);
