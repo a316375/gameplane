@@ -102,12 +102,13 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 //        panGif = new PanGif(pano,allBitmaps);
 //        panGif.F5_GIf=15;
 
-        GifObj xiongo=new GifObj(1, x, y)
+        GifObj xiongo=new GifObj(2, x, y)
                 .withPoint(500,0)
                 .withSize(200,200)
                 .init(1,10,10,500,ShuXin.Huo)
                // .setShuXin(ShuXin.Huo)
                 .showRect(false);
+
         xiong = new XiongGIf(xiongo,allBitmaps);
 
 
@@ -124,6 +125,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         laserTeacher = new LaserTeacher(this);
 
 
+
+
     }
 
 
@@ -137,6 +140,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
         gifBG.drawCanvas(canvas);
         uiList.drawCanvas(canvas);
+        //展示列表
+        if (showlistA) listB.draws(canvas);
 
         xiong.drawCanvas(canvas);
 
@@ -156,8 +161,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         fps.draw(canvas);
 
 
-        //展示列表
-         if (showlistA) listB.draws(canvas);
+
 
 
     }
@@ -175,7 +179,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        gifPlay.onTouchEvent(event);
+//        gifPlay.onTouchEvent(event);
+
         touchTeacher.onTouchEvent(event);
 
         return true;

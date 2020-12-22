@@ -9,6 +9,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastBags;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
+import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Path.PathMu;
 import xyxgame.gameplane.schoolGif.Path.PathShui;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
@@ -42,7 +43,8 @@ public class LaserTeacher {
                     bagxiong.life-=bag.hit;
 
                     if (bag.shuxin==ShuXin.Mu)bagxiong.path=new PathMu(bagxiong);
-                    if (bag.shuxin==ShuXin.Shui)bagxiong.path=new PathShui(bagxiong);
+                    if (bag.shuxin==ShuXin.Shui){bagxiong.path=new PathShui(bagxiong);
+                     }
                     if (bagxiong.life<=0)  baseGifBag.bags.remove(bagxiong);
                 }
             }

@@ -32,11 +32,17 @@ public class ListB {
 
         max = baseActivity.point.x/2;
         may = baseActivity.point.y/2;
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max -50-160*2, may -210+600), 100, 100).withShuxin(ShuXin.Jin));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max -50-160, may -210+600), 100, 100).withShuxin(ShuXin.Mu));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max -50, may -210+600), 100, 100).withShuxin(ShuXin.Shui));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210+600), 100, 100).withShuxin(ShuXin.Huo));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210+600), 100, 100).withShuxin(ShuXin.Tu));
+//        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max -50-160*2, may -210+600), 100, 100).withShuxin(ShuXin.Jin));
+//        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max -50-160, may -210+600), 100, 100).withShuxin(ShuXin.Mu));
+//        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max -50, may -210+600), 100, 100).withShuxin(ShuXin.Shui));
+//        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210+600), 100, 100).withShuxin(ShuXin.Huo));
+//        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210+600), 100, 100).withShuxin(ShuXin.Tu));
+
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max*2-150,may*2-800 ), 120, 120).withShuxin(ShuXin.Jin));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max*2-150,may*2-650 ), 120, 120).withShuxin(ShuXin.Mu));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max*2-150,may*2-500 ), 120, 120).withShuxin(ShuXin.Shui));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max*2-150,may*2-350 ), 120, 120).withShuxin(ShuXin.Huo));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max*2-150,may*2-200 ), 120, 120).withShuxin(ShuXin.Tu));
 
 
 
@@ -58,17 +64,18 @@ public class ListB {
         mPaint2.setColor(Color.YELLOW);//设置画笔颜色
         mPaint2.setStyle(Paint.Style.FILL);  // 填充模式 - 描边
         mPaint2.setStrokeWidth(10);
-        mPaint2.setTextSize(50);
+        mPaint2.setTextSize(30);
 
     }
 
     public void draws(Canvas canvas){
         if (list.size()<=0)return;
-        canvas.drawRoundRect(new RectF(max-430, may-270+600, max+430, may+270+300), 50, 50, mPaint);
+       // canvas.drawRoundRect(new RectF(max-430, may-270+600, max+430, may+270+300), 50, 50, mPaint);
 
 
 
-        canvas.drawText(ShuXin.ListB_title,max-230,may-250+600,mPaint2);
+       // canvas.drawText(ShuXin.ListB_title,max-230,may-250+600,mPaint2);
+        canvas.drawText("Close",120,may*2-200,mPaint2);
 
         for (BaseStopBitmap baseStopBitmap:list){
             baseStopBitmap.draws(canvas);
