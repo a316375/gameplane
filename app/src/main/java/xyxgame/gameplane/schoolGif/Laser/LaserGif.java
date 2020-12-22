@@ -55,7 +55,12 @@ public class LaserGif extends BaseGifObj {
 
      if (money.all>0) {
          bags.add(new LaserBags(obj, list));
-         money.all-=1;
+         if (playGif.obj.level>0)money.all-=1;
+         if (playGif.obj.level>10)money.all-=1;
+         if (playGif.obj.level>20)money.all-=1;
+         if (playGif.obj.level>30)money.all-=1;
+         if (playGif.obj.level>40)money.all-=1;
+
      }
 
     }

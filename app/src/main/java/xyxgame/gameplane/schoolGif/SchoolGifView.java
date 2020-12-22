@@ -14,6 +14,8 @@ import xyxgame.gameplane.schoolGif.Blast.BlastTextGif;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGIf;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
+import xyxgame.gameplane.schoolGif.Model.Exp;
+import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.ShowList.UIList;
 import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
@@ -31,25 +33,27 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public GifObj laserObj;
     public  GifAllBitmaps allBitmaps;
     public BaseGifObj laserGif;
-    public final ButtonGif buttonGif01;
+    public  ButtonGif buttonGif01;
      public Button2Gif buttonGif02;
-    public final XiongGIf xiong;
-    public final PlayGif gifPlay;
-    public final TouchTeacher touchTeacher;
-    public final int x;
-    public final int y;
+    public  XiongGIf xiong;
+    public  PlayGif gifPlay;
+    public  TouchTeacher touchTeacher;
+    public  int x;
+    public  int y;
     public ListB listB;
-//    public final PanGif panGif;
-    private final LaserTeacher laserTeacher;
-    public final BlastTextGif blastTextGif;
+//    public  PanGif panGif;
+    private  LaserTeacher laserTeacher;
+    public  BlastTextGif blastTextGif;
     public UIList uiList;
     public Money money;
+    public  Level level;
+    public   Exp exp;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
         this.mBaseActivity=mBaseActivity;
-        money=new Money(99998);
+        money=new Money(9998);
 
         gifBG=new GifBG(mBaseActivity, R.drawable.bg5);
         fps=new FPS();
@@ -60,10 +64,14 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         //初始化屏幕大小
         y = mBaseActivity.point.y;
 
+
+        level = new Level(1);
+        exp = new Exp(0);
+
         GifObj play=new GifObj(1, x, y)
                 .withPoint(x /2-100, y -400)
                 .withSize(200,200)
-                .init(1,10,10,50,ShuXin.Huo);
+                .init(level.level, level.backValue().hit,10, level.backValue().life,ShuXin.Jin);
 
         gifPlay = new PlayGif(play,allBitmaps);
 
@@ -105,7 +113,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         GifObj xiongo=new GifObj(2, x, y)
                 .withPoint(500,0)
                 .withSize(200,200)
-                .init(1,10,10,500,ShuXin.Huo)
+                .init(level.level, level.backEnemyValue().hit,10, level.backEnemyValue().life,ShuXin.Huo)
                // .setShuXin(ShuXin.Huo)
                 .showRect(false);
 

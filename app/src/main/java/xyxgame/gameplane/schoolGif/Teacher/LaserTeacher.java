@@ -4,11 +4,13 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import java.util.Iterator;
+import java.util.Random;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastBags;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
+import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Path.PathMu;
 import xyxgame.gameplane.schoolGif.Path.PathShui;
@@ -28,6 +30,26 @@ public class LaserTeacher {
     }
 
 
+
+    public void  addexp(){
+        schoolGifView.exp.exp+=50;
+        if (schoolGifView.exp.exp>schoolGifView.level.backValue().exp-1){
+            schoolGifView.exp.exp=0;
+            schoolGifView.level.level++;
+            schoolGifView.gifPlay.obj.level=schoolGifView.level.level;
+            schoolGifView.gifPlay.obj.hit=schoolGifView.level.backValue().hit;
+
+
+           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
+           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Mu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
+           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*1;
+           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
+           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Tu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
+        }
+
+
+    }
+
     private void pk(final BaseGifObj baseGifBag){
 
         Iterator<BaseGifBag> iterator = laserGif.bags.iterator();
@@ -38,14 +60,18 @@ public class LaserTeacher {
                 final BaseGifBag bagxiong = iter.next();
                 if (Rect.intersects(bag.rect,bagxiong.rect)){
 
-                    schoolGifView.blastTextGif.addBags(new BlastBags(bag.hit,new Point(bag.rect.left,bag.rect.top)));
+                    int add=new Random().nextInt(bag.hit/10);
+                    schoolGifView.blastTextGif.addBags(new BlastBags(bag.hit+add,new Point(bag.rect.left,bag.rect.top)));
                     laserGif.bags.remove(bag);
-                    bagxiong.life-=bag.hit;
+                    bagxiong.life-=bag.hit+add;
 
+                    addexp();
                     if (bag.shuxin==ShuXin.Mu)bagxiong.path=new PathMu(bagxiong);
                     if (bag.shuxin==ShuXin.Shui){bagxiong.path=new PathShui(bagxiong);
                      }
-                    if (bagxiong.life<=0)  baseGifBag.bags.remove(bagxiong);
+                    if (bagxiong.life<=0)  {baseGifBag.bags.remove(bagxiong);
+
+                    }
                 }
             }
         }

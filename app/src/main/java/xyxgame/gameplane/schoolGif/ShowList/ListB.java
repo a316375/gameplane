@@ -38,11 +38,11 @@ public class ListB {
 //        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max +50+60, may -210+600), 100, 100).withShuxin(ShuXin.Huo));
 //        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max +50+60*2+100, may -210+600), 100, 100).withShuxin(ShuXin.Tu));
 
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max*2-150,may*2-800 ), 120, 120).withShuxin(ShuXin.Jin));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max*2-150,may*2-650 ), 120, 120).withShuxin(ShuXin.Mu));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max*2-150,may*2-500 ), 120, 120).withShuxin(ShuXin.Shui));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max*2-150,may*2-350 ), 120, 120).withShuxin(ShuXin.Huo));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max*2-150,may*2-200 ), 120, 120).withShuxin(ShuXin.Tu));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a01, new Point(max*2-150,may*2-may/3-150*5 ), 120, 120).withShuxin(ShuXin.Jin));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a02, new Point(max*2-150,may*2-may/3-150*4 ), 120, 120).withShuxin(ShuXin.Mu));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a03, new Point(max*2-150,may*2-may/3-150*3 ), 120, 120).withShuxin(ShuXin.Shui));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a04, new Point(max*2-150,may*2-may/3-150*2 ), 120, 120).withShuxin(ShuXin.Huo));
+        list.add(new BaseStopBitmap(baseActivity, R.drawable.list_a05, new Point(max*2-150,may*2-may/3-150 ), 120, 120).withShuxin(ShuXin.Tu));
 
 
 

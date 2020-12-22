@@ -54,9 +54,9 @@ public class PlayGif extends BaseGifObj {
 
 
 
-    private int lastX, lastY;//手指的位置
-    private float pointX, pointY;//飞机的位置
-    private int pointXFix, pointYFix;//最终飞机的位置
+//    private int lastX, lastY;//手指的位置
+//    private float pointX, pointY;//飞机的位置
+//    private int pointXFix, pointYFix;//最终飞机的位置
     //按下屏幕触摸事件
 
 
@@ -101,61 +101,61 @@ public class PlayGif extends BaseGifObj {
 //        }
 //        return true;
 //    }
-
-    private int mActivePointerId;
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        // Get the pointer ID
-        mActivePointerId = event.getPointerId(0);
-
-        // ... Many touch events later...
-
-        // Use the pointer ID to find the index of the active pointer
-        // and fetch its position
-        int pointerIndex = event.findPointerIndex(mActivePointerId);
-
-
-        switch (event.getActionMasked()) {
-            case MotionEvent.ACTION_DOWN:
-                if (event.getPointerId(event.getActionIndex()) == 0){
-                    lastX = (int) event.getX();//保存手指临时值
-                lastY = (int) event.getY();
-                if (bags.size()<=0)return true;
-                pointX = bags.get(0).x;//保存飞机按下时候的原始位置
-                pointY = bags.get(0).y;
-                    Log.v("-------","---coming");
-                return true;
-                }
-
-                case MotionEvent.ACTION_MOVE:
-                    if (event.getPointerId(event.getActionIndex()) == 0){
-                        pointXFix = (int) (pointX + (event.getX() - lastX));
-                         pointYFix = (int) (pointY + (event.getY() - lastY));
-
-                         if (bags.size()<=0)return true;
-                         BaseGifBag baseGifBag = bags.get(0);
-                         baseGifBag.moveToXY(pointXFix, pointYFix,obj.maXx,obj.maXy);
-
-
-                 } return true;
-
-
-            case MotionEvent.ACTION_POINTER_DOWN:
-                if (event.getPointerId(event.getActionIndex()) == 1){
-                    if (pointerIndex == -1) { return true; }
-                    Log.v("-------","---coming1");
-
-
-                }
-
-
-                return true;
-
-        }
-        return true;
-
-
-    }
+//
+//    private int mActivePointerId;
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        // Get the pointer ID
+//        mActivePointerId = event.getPointerId(0);
+//
+//        // ... Many touch events later...
+//
+//        // Use the pointer ID to find the index of the active pointer
+//        // and fetch its position
+//        int pointerIndex = event.findPointerIndex(mActivePointerId);
+//
+//
+//        switch (event.getActionMasked()) {
+//            case MotionEvent.ACTION_DOWN:
+//                if (event.getPointerId(event.getActionIndex()) == 0){
+//                    lastX = (int) event.getX();//保存手指临时值
+//                lastY = (int) event.getY();
+//                if (bags.size()<=0)return true;
+//                pointX = bags.get(0).x;//保存飞机按下时候的原始位置
+//                pointY = bags.get(0).y;
+//                    Log.v("-------","---coming");
+//                return true;
+//                }
+//
+//                case MotionEvent.ACTION_MOVE:
+//                    if (event.getPointerId(event.getActionIndex()) == 0){
+//                        pointXFix = (int) (pointX + (event.getX() - lastX));
+//                         pointYFix = (int) (pointY + (event.getY() - lastY));
+//
+//                         if (bags.size()<=0)return true;
+//                         BaseGifBag baseGifBag = bags.get(0);
+//                         baseGifBag.moveToXY(pointXFix, pointYFix,obj.maXx,obj.maXy);
+//
+//
+//                 } return true;
+//
+//
+//            case MotionEvent.ACTION_POINTER_DOWN:
+//                if (event.getPointerId(event.getActionIndex()) == 1){
+//                    if (pointerIndex == -1) { return true; }
+//                    Log.v("-------","---coming1");
+//
+//
+//                }
+//
+//
+//                return true;
+//
+//        }
+//        return true;
+//
+//
+//    }
 
 
 

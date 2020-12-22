@@ -111,10 +111,14 @@ public class UIList {
 //        canvas.drawText(Int0000.get00(schoolGifView.gifPlay.obj.level),145-10,may*2-135+40,uiPaint.paint1());
 
         canvas.drawText(schoolGifView.money.stringA(),max*2-200+50,130,uiPaint.paint1());//金币
-        canvas.drawText(schoolGifView.money.stringB(),max*2-200+50,200,uiPaint.paint1());
+        canvas.drawText(schoolGifView.money.stringB(),max*2-200+50,200,uiPaint.paint1());//金币2
         canvas.drawText(Int0000.get0000(schoolGifView.laserGif.obj.hit),120-10,may*2-30+40,uiPaint.paint2());//伤害
         canvas.drawText("DAMAGE",100-10,may*2+40+40,uiPaint.paint2());
-        canvas.drawText(Int0000.get00(schoolGifView.gifPlay.obj.level),145-10,may*2-135+40,uiPaint.paint1());
+        canvas.drawText(Int0000.get00(schoolGifView.gifPlay.obj.level),145-10,may*2-135+40,uiPaint.paint1());//等级
+
+//        canvas.drawText( "U P"+(schoolGifView.level.backValue().exp),50,130,uiPaint.paint1());//升级需要经验
+        canvas.drawText( "EXP"+(schoolGifView.exp.exp)+"/"+(schoolGifView.level.backValue().exp),50,200,uiPaint.paint1());//经验
+
 
 
         i+=5;
