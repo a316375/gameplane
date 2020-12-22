@@ -15,7 +15,6 @@ import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseStopBitmap;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.Int0000;
-import xyxgame.gameplane.schoolGif.Tool.Money;
 import xyxgame.gameplane.schoolGif.Tool.UIPaint;
 
 public class UIList {
@@ -111,9 +110,9 @@ public class UIList {
 //        canvas.drawText("DAMAGE",100-10,may*2+40+40,uiPaint.paint2());
 //        canvas.drawText(Int0000.get00(schoolGifView.gifPlay.obj.level),145-10,may*2-135+40,uiPaint.paint1());
 
-        canvas.drawText(schoolGifView.money.stringA(),max*2-200+50,130,uiPaint.paint1());
+        canvas.drawText(schoolGifView.money.stringA(),max*2-200+50,130,uiPaint.paint1());//金币
         canvas.drawText(schoolGifView.money.stringB(),max*2-200+50,200,uiPaint.paint1());
-        canvas.drawText(Int0000.get0000(schoolGifView.laserGif.obj.hit),120-10,may*2-30+40,uiPaint.paint2());
+        canvas.drawText(Int0000.get0000(schoolGifView.laserGif.obj.hit),120-10,may*2-30+40,uiPaint.paint2());//伤害
         canvas.drawText("DAMAGE",100-10,may*2+40+40,uiPaint.paint2());
         canvas.drawText(Int0000.get00(schoolGifView.gifPlay.obj.level),145-10,may*2-135+40,uiPaint.paint1());
 

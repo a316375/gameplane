@@ -1,12 +1,10 @@
 package xyxgame.gameplane.schoolGif.Laser;
 
-import android.graphics.Rect;
-
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
-import xyxgame.gameplane.schoolGif.Tool.Money;
+import xyxgame.gameplane.schoolGif.Model.Money;
 
 public class LaserGif extends BaseGifObj {
     PlayGif playGif;
@@ -37,7 +35,7 @@ public class LaserGif extends BaseGifObj {
     @Override
     protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 //        list=allBitmaps.getlaser03(obj.oW,obj.oH);
-        list=allBitmaps.getlaser03(obj.oW,obj.oH);
+        list=allBitmaps.getlaser02(obj.oW,obj.oH);
     }
 
     @Override

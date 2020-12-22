@@ -60,6 +60,16 @@ public abstract class BaseGifObj extends View   {
 
 //以下是run方法
 
+    public BaseGifObj withTime_wait(int Time_wait){
+        this.Time_wait=Time_wait;
+        return this;
+    }
+    public BaseGifObj withF5_GIf(int F5_GIf){
+        this.F5_GIf=F5_GIf;
+        return this;
+    }
+
+
     public int F5_GIf=5;
     public int Time_wait=50;
 //    int i=0;

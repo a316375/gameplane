@@ -6,6 +6,8 @@ import android.graphics.Rect;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+
 
 /**继承自这个类需要实现路径的绘制，不绘制默认静止，此时obj的max应该为最大为1**/
 public abstract class BaseGifBag   implements BaseGifBagPath{
@@ -20,8 +22,11 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public int hit;
 
 
+    public int shuxin;
+
     public BaseGifBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         path=this;
+        this.shuxin=obj.ShuXin;
         this.obj=obj;
         this.x = obj.oX;
         this.y = obj.oY;

@@ -15,6 +15,7 @@ public class PlayGif extends BaseGifObj {
         super(obj, allBitmaps);
         F5_GIf=10;
 
+
     }
 
 

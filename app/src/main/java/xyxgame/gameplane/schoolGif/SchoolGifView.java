@@ -7,6 +7,7 @@ import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastTextGif;
@@ -17,11 +18,10 @@ import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.ShowList.UIList;
 import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.TouchTeacher;
-import xyxgame.gameplane.schoolGif.Tool.Money;
+import xyxgame.gameplane.schoolGif.Model.Money;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
-import xyxgame.gameplane.schoolGif.Pan.PanGif;
 
 public class SchoolGifView extends BaseSurfaceVIEW {
 
@@ -30,7 +30,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public  FPS fps;
     public GifObj laserObj;
     public  GifAllBitmaps allBitmaps;
-    public LaserGif laserGif;
+    public BaseGifObj laserGif;
     public final ButtonGif buttonGif01;
      public Button2Gif buttonGif02;
     public final XiongGIf xiong;
@@ -63,7 +63,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         GifObj play=new GifObj(1, x, y)
                 .withPoint(x /2-100, y -400)
                 .withSize(200,200)
-                .init(1,100,10,50,ShuXin.Huo);
+                .init(1,10,10,50,ShuXin.Huo);
 
         gifPlay = new PlayGif(play,allBitmaps);
 
@@ -72,11 +72,14 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         laserObj =new GifObj(5, x, y)
                 .withSize(50,100)
                 .withPoint(x /2, y)
-                .init(1,10,10,100,1).showRect(false)
+                .init(1,play.hit*5,30,100,ShuXin.Jin).showRect(false)
                ;
 
+
+
         //添加赋予图片资源
-        laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay).withMoney(money);
+        laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay).withMoney(money).withTime_wait(15);
+
 
         GifObj button01=new GifObj(1, x, y)
                 .withPoint(x-230, 200)
@@ -103,7 +106,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
                 .withPoint(500,0)
                 .withSize(200,200)
                 .init(1,10,10,500,ShuXin.Huo)
-                .setShuXin(ShuXin.Huo).showRect(false);
+               // .setShuXin(ShuXin.Huo)
+                .showRect(false);
         xiong = new XiongGIf(xiongo,allBitmaps);
 
 

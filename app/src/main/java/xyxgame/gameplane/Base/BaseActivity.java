@@ -31,12 +31,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         hideNavKey(this);
         super.onCreate(savedInstanceState);
         //Membuat tampilan menjadi full screen全屏
+
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //
 //        //Membuat tampilan selalu menyala jika activity aktif
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
+
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);//不允许截屏
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        //硬件加速开启
 //        getWindow().setFlags(
 //                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,

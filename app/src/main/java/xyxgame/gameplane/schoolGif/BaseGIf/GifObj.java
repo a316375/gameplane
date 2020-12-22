@@ -1,6 +1,8 @@
 package xyxgame.gameplane.schoolGif.BaseGIf;
 
 
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+
 //**一个属性的类，赋予坐标，血量，大小**//
 public class GifObj {
     public  int max;//数组最大值上限
@@ -10,7 +12,7 @@ public class GifObj {
     public  int hit=10;
     public  int speed=2;
     public  int life=100;
-    public  int ShuXin=0;//默认属性
+    public  int ShuXin= xyxgame.gameplane.schoolGif.Tool.ShuXin.Jin;//默认属性
 
 
     public   int oX=0;//默认坐标

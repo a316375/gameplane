@@ -1,4 +1,4 @@
-package xyxgame.gameplane.schoolGif.Tool;
+package xyxgame.gameplane.schoolGif.Model;
 
 import java.text.DecimalFormat;
 

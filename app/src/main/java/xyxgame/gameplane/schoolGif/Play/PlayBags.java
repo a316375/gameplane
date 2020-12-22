@@ -11,6 +11,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 public class PlayBags extends BaseGifBag implements BaseGifBagPath {
     public PlayBags(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         super(obj, list);
+
     }
 
     @Override

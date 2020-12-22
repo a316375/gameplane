@@ -10,6 +10,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastBags;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.Path.PathMu;
+import xyxgame.gameplane.schoolGif.Path.PathShui;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
@@ -18,7 +19,7 @@ import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 public class LaserTeacher {
 
     SchoolGifView schoolGifView;
-    private final LaserGif laserGif;
+    private final BaseGifObj laserGif;
 
     public LaserTeacher(SchoolGifView schoolGifView) {
         this.schoolGifView = schoolGifView;
@@ -39,7 +40,9 @@ public class LaserTeacher {
                     schoolGifView.blastTextGif.addBags(new BlastBags(bag.hit,new Point(bag.rect.left,bag.rect.top)));
                     laserGif.bags.remove(bag);
                     bagxiong.life-=bag.hit;
-                   if (laserGif.obj.ShuXin== ShuXin.Mu)bagxiong.path=new PathMu(bagxiong);
+
+                    if (bag.shuxin==ShuXin.Mu)bagxiong.path=new PathMu(bagxiong);
+                    if (bag.shuxin==ShuXin.Shui)bagxiong.path=new PathShui(bagxiong);
                     if (bagxiong.life<=0)  baseGifBag.bags.remove(bagxiong);
                 }
             }
