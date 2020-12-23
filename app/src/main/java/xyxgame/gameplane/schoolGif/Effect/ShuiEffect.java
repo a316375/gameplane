@@ -53,7 +53,7 @@ public class ShuiEffect  {
             if (next.time!=0||next.life<=0   ){  shuiBags.remove(next);  return;  }
         }
 
-        Log.v("--","-----"+shuiBags.size());
+       // Log.v("--","-----"+shuiBags.size());
     }
 
 
