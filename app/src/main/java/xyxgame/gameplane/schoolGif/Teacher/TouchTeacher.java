@@ -106,7 +106,7 @@ public class TouchTeacher extends View {
     private boolean downTouch(MotionEvent event, int i) {
         if (schoolGifView.buttonGif01.bags.size()<=0) return true;
         if (schoolGifView.buttonGif01.bags.get(0).rect.contains((int) event.getX(i),(int) event.getY(i))){
-            Log.v("-------","------O-nClickListener---obj--" +schoolGifView.buttonGif01.obj.ShuXin);
+         //   Log.v("-------","------O-nClickListener---obj--" +schoolGifView.buttonGif01.obj.ShuXin);
 
 
         }

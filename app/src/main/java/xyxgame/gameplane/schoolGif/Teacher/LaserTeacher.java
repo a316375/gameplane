@@ -70,7 +70,7 @@ public class LaserTeacher {
 
                     addexp();
                     if (bag.shuxin==ShuXin.Mu){enemy.path=new PathMu(enemy);
-                    enemy.baseState.changState(State.Move,enemy,schoolGifView.allBitmaps);}
+                    enemy.baseState.changState(State.Att,enemy,schoolGifView.allBitmaps);}
                     if (bag.shuxin==ShuXin.Shui){
                         PathShui path = new PathShui(enemy);
                         enemy.path= path;

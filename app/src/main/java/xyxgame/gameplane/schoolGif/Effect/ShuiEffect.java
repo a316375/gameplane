@@ -69,27 +69,15 @@ public class ShuiEffect  {
             ShuiBag next = iterator.next();
 
             if (j%5==0) next.i++;
+             next.time++;
+            if (next.time>=next.showTime||next.life<=0 ){  shuiBags.remove(next);  return;  }
 
-
-            next.time++;
-
-            if (next.time>=next.showTime||next.life<=0 ){
-                shuiBags.remove(next);
-               }
-
-
-
-            Iterator<Bitmap> iterator1 = next.list.iterator();
-            while (iterator1.hasNext()){
-                Bitmap next1 = iterator1.next();
+            for (Bitmap bitmap:next.list){
                 next.i= next.i%next.list.size();
                 canvas.drawBitmap(next.list.get(next.i),next.x,next.y,null);
-
-
-//              canvas.drawRect(next.rect,new UIPaint(null).paint1());
-
-
+//                canvas.drawRect(next.rect,new UIPaint(null).paint1());
             }
+
 
         }
 
