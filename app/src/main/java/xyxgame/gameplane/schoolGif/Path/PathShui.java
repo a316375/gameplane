@@ -17,4 +17,6 @@ public class PathShui implements BaseGifBagPath {
         if (j>200)baseGifBag.resetPath();
         if (j<=200)j++;
     }
+
+
 }

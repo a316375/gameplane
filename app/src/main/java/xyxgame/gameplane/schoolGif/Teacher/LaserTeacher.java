@@ -66,8 +66,10 @@ public class LaserTeacher {
                     bagxiong.life-=bag.hit+add;
 
                     addexp();
-                    if (bag.shuxin==ShuXin.Mu)bagxiong.path=new PathMu(bagxiong);
+                    if (bag.shuxin==ShuXin.Mu){bagxiong.path=new PathMu(bagxiong);
+                    bagxiong.baseState.changState(State.Move,bagxiong,schoolGifView.allBitmaps);}
                     if (bag.shuxin==ShuXin.Shui){bagxiong.path=new PathShui(bagxiong);
+                    bagxiong.baseState.changState(State.Stop,bagxiong,schoolGifView.allBitmaps);
                      }
                     if (bagxiong.life<=0)  {baseGifBag.bags.remove(bagxiong);
 

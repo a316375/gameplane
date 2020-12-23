@@ -18,7 +18,7 @@ public class XiongGIf extends BaseGifObj {
 
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
-        gifBag=new XiongBags(obj,list);
+        gifBag=new XiongBags(obj,list).addState(new xiongState());
 
 
     }
@@ -34,8 +34,9 @@ public class XiongGIf extends BaseGifObj {
 
 
 
+
     @Override
     protected void add_bags_add_new_obj_list() {
-        bags.add(new XiongBags(obj,list));
+        bags.add(new XiongBags(obj,list).addState(new xiongState()));
     }
 }

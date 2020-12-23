@@ -17,4 +17,6 @@ public class Button2Bags extends BaseGifBag implements BaseGifBagPath {
     public void drawpath() {
 
     }
+
+
 }

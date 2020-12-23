@@ -190,7 +190,7 @@ public class GifAllBitmaps {
     }
 
 
-    public  CopyOnWriteArrayList<Bitmap> getbitmaps(final int width, final int height, BaseActivity activity, int draw){
+    private   CopyOnWriteArrayList<Bitmap> getbitmaps(final int width, final int height, BaseActivity activity, int draw){
 
 
         final CopyOnWriteArrayList<Bitmap> bitmaps=new CopyOnWriteArrayList<>();

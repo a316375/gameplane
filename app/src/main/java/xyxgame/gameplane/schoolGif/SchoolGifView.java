@@ -7,6 +7,7 @@ import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseBossGif;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
@@ -48,6 +49,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public Money money;
     public  Level level;
     public   Exp exp;
+
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -127,6 +129,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
         blastTextGif = new BlastTextGif(mBaseActivity);
         uiList=new UIList(mBaseActivity,this);
+
 
 
         touchTeacher = new TouchTeacher(this);

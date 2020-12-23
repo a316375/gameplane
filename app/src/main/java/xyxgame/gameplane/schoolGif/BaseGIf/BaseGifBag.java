@@ -14,6 +14,7 @@ import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 public abstract class BaseGifBag   implements BaseGifBagPath{
     public int x,y,w,h;
     public  CopyOnWriteArrayList<Bitmap> list;
+    public  CopyOnWriteArrayList<Bitmap> list_copy;//备份一下数组
 
     public  GifObj obj;
     public Rect rect;
@@ -25,10 +26,18 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
 
     public int shuxin ;
+    public BaseState baseState;
 
+
+    public BaseGifBag addState(BaseState baseState){
+        this.baseState=baseState;
+        return this;
+    }
     public BaseGifBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         path=this;
         this.shuxin=obj.ShuXin;
+
+        this.list_copy=list;
 
         this.obj=obj;
         this.x = obj.oX;
@@ -41,6 +50,8 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
        if (list.size()>0)i=new Random().nextInt(500)%list.size();
         rect=new Rect(x,y,x+w,y+h);
     }
+
+
 
 
     public  BaseGifBagPath path;
@@ -60,6 +71,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
     public void resetPath(){
         path=this;
+        list=list_copy;
     }
 
 

@@ -12,6 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import xyxgame.gameplane.schoolGif.Model.State;
 
 
 //**继承自这个类需要实现三个方法，这个类可以控制集合的自我清理+自我创建，三个方法都是加载**//
@@ -44,6 +45,8 @@ public abstract class BaseGifObj extends View   {
     protected abstract void creatBags_gifbag_newxx_obj_list();
     //**赋予图片**//
     protected abstract void lodebitmaps_list__allBitmaps_get_objow_obj_oh();
+
+
 
 //    private void creatBags() {
 //        gifBag= new LayerBags(obj,  list);

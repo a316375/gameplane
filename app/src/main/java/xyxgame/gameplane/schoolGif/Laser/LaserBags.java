@@ -28,4 +28,6 @@ public  class LaserBags extends BaseGifBag implements BaseGifBagPath {
     public   void drawpath() {
         y-=obj.speed;
     }
+
+
 }
