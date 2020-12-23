@@ -12,6 +12,8 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastTextGif;
+import xyxgame.gameplane.schoolGif.Effect.ShuiBag;
+import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGIf;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
@@ -49,7 +51,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public Money money;
     public  Level level;
     public   Exp exp;
-
+    public   ShuiEffect shuiEffect;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -131,6 +133,13 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         uiList=new UIList(mBaseActivity,this);
 
 
+        GifObj shui=new GifObj(8, x, y)
+                .withPoint(500,100)
+                .withSize(200,200)
+                .init(level.level, level.backEnemyValue().hit,10, level.backEnemyValue().life,ShuXin.Huo)
+                // .setShuXin(ShuXin.Huo)
+                .showRect(false);
+        shuiEffect = new ShuiEffect(shui,allBitmaps);
 
         touchTeacher = new TouchTeacher(this);
         laserTeacher = new LaserTeacher(this);
@@ -164,6 +173,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
 
 
+        shuiEffect.drawCanvas(canvas);
 
 
         laserGif.drawCanvas(canvas);

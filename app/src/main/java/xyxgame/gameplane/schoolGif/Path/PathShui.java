@@ -6,6 +6,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 public class PathShui implements BaseGifBagPath {
     BaseGifBag baseGifBag;
 
+    public  int showTime=200;
     public PathShui(BaseGifBag baseGifBag) {
         this.baseGifBag = baseGifBag;
     }
@@ -14,8 +15,8 @@ public class PathShui implements BaseGifBagPath {
     @Override
     public void drawpath() {
 
-        if (j>200)baseGifBag.resetPath();
-        if (j<=200)j++;
+        if (j>showTime){baseGifBag.resetPath();j=0;return;}
+        if (j<=showTime)j++;
     }
 
 

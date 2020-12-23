@@ -27,7 +27,7 @@ public class XiongGIf extends BaseGifObj {
     protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
 
-      list=allBitmaps.getxiong8attker(obj.oW,obj.oH);
+      list=allBitmaps.getxiong8Move(obj.oW,obj.oH);
 
 
     }

@@ -5,8 +5,8 @@ import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 //**一个属性的类，赋予坐标，血量，大小**//
 public class GifObj {
-    public  int max;//数组最大值上限
-    public int maXx, maXy;//屏幕最大值
+    public  int max=0;//数组最大值上限
+    public int maXx=0, maXy=0;//屏幕最大值
 
     public  int level=1;
     public  int hit=10;
@@ -44,6 +44,11 @@ public class GifObj {
         this.maXx = maXx;
         this.maXy = maXy;
 
+    }
+    public GifObj(){}
+    public GifObj withLife(int life){
+        this.life=life;
+        return this;
     }
 
     public GifObj setSpeed(int speed){this.speed=speed;return this;};

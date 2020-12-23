@@ -8,7 +8,10 @@ import java.util.Random;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
+import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastBags;
+import xyxgame.gameplane.schoolGif.Effect.ShuiBag;
+import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
@@ -50,28 +53,45 @@ public class LaserTeacher {
 
     }
 
-    private void pk(final BaseGifObj baseGifBag){
+    private void pk(  BaseGifObj baseGifBag){
 
         Iterator<BaseGifBag> iterator = laserGif.bags.iterator();
         for (Iterator<BaseGifBag> it = iterator; it.hasNext(); ) {
             final BaseGifBag bag = it.next();
 
             for (Iterator<BaseGifBag> iter = baseGifBag.bags.iterator(); iter.hasNext(); ) {
-                final BaseGifBag bagxiong = iter.next();
-                if (Rect.intersects(bag.rect,bagxiong.rect)){
+                final BaseGifBag enemy = iter.next();
+                if (Rect.intersects(bag.rect,enemy.rect)){
 
                     int add=new Random().nextInt(bag.hit/10);
                     schoolGifView.blastTextGif.addBags(new BlastBags(bag.hit+add,new Point(bag.rect.left,bag.rect.top)));
                     laserGif.bags.remove(bag);
-                    bagxiong.life-=bag.hit+add;
+                    enemy.life-=bag.hit+add;
 
                     addexp();
-                    if (bag.shuxin==ShuXin.Mu){bagxiong.path=new PathMu(bagxiong);
-                    bagxiong.baseState.changState(State.Move,bagxiong,schoolGifView.allBitmaps);}
-                    if (bag.shuxin==ShuXin.Shui){bagxiong.path=new PathShui(bagxiong);
-                    bagxiong.baseState.changState(State.Stop,bagxiong,schoolGifView.allBitmaps);
-                     }
-                    if (bagxiong.life<=0)  {baseGifBag.bags.remove(bagxiong);
+                    if (bag.shuxin==ShuXin.Mu){enemy.path=new PathMu(enemy);
+                    enemy.baseState.changState(State.Move,enemy,schoolGifView.allBitmaps);}
+                    if (bag.shuxin==ShuXin.Shui){
+                        PathShui path = new PathShui(enemy);
+                        enemy.path= path;
+                        enemy.baseState.changState(State.Stop,enemy,schoolGifView.allBitmaps);
+                        GifObj gifObj = new GifObj() .withPoint(enemy.x, enemy.y + enemy.h / 3)  .withSize(enemy.w, enemy.h / 2).showRect(true) ;
+                         gifObj.life=enemy.life;
+                         schoolGifView.shuiEffect.add(gifObj, path.showTime);
+
+
+                    }
+                    if (enemy.life<=0)  {
+                        Iterator<ShuiBag> iterator1 = schoolGifView.shuiEffect.shuiBags.iterator();
+                        while (iterator1.hasNext()){
+                            ShuiBag next = iterator1.next();
+                            if (Rect.intersects(next.rect,enemy.rect)){
+                                next.life=-100;
+                            }
+                        }
+
+                        baseGifBag.bags.remove(enemy);
+
 
                     }
                 }

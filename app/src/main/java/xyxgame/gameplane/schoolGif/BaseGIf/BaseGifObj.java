@@ -80,10 +80,10 @@ public abstract class BaseGifObj extends View   {
     private boolean ready=true;
     public void drawCanvas(Canvas canvas) {
 
-
+        add_drawCanvas(canvas);//补充绘制其他内容
         if (gifBag == null) return;
 
-        add_drawCanvas(canvas);//补充绘制其他内容
+
 
         t++;
         if (t > 6000) t = 1;
