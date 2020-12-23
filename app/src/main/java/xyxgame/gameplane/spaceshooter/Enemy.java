@@ -42,7 +42,9 @@ public class Enemy {
 
         mHP = 10;
 
-        mEnemies = new int[]{R.drawable.abd, R.drawable.abc, R.drawable.aab};
+        mEnemies = new int[]{R.drawable.abd,
+                R.drawable.meteor_3,
+                R.drawable.spaceship_1_blue};
 //        mEnemies = new int[]{R.drawable.enemy_red_1, R.drawable.enemy_red_2, R.drawable.enemy_red_3};
         Random random = new Random();
         mBitmap = BitmapFactory.decodeResource(context.getResources(), mEnemies[random.nextInt(3)]);
