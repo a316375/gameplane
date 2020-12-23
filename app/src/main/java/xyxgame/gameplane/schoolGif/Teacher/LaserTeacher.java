@@ -77,7 +77,12 @@ public class LaserTeacher {
                         enemy.baseState.changState(State.Stop,enemy,schoolGifView.allBitmaps);
                         GifObj gifObj = new GifObj() .withPoint(enemy.x, enemy.y + enemy.h / 3)  .withSize(enemy.w, enemy.h / 2).showRect(true) ;
                          gifObj.life=enemy.life;
+
+
+
                          schoolGifView.shuiEffect.add(gifObj, path.showTime);
+
+
 
 
                     }

@@ -117,7 +117,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         GifObj xiongo=new GifObj(2, x, y)
                 .withPoint(500,0)
                 .withSize(200,200)
-                .init(level.level, level.backEnemyValue().hit,10, level.backEnemyValue().life,ShuXin.Huo)
+                .init(level.level, level.backEnemyValue().hit,10, new Level(100).backEnemyValue().life,ShuXin.Huo)
                // .setShuXin(ShuXin.Huo)
                 .showRect(false);
 

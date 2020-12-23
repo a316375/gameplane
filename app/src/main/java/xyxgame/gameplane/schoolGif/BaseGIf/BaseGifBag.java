@@ -47,7 +47,8 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         this.list = list;
         this.life=obj.life;
         this.hit=obj.hit;
-       if (list.size()>0)i=new Random().nextInt(500)%list.size();
+//       if (list.size()>0)i=new Random().nextInt(500)%list.size();
+        i=0;
         rect=new Rect(x,y,x+w,y+h);
     }
 

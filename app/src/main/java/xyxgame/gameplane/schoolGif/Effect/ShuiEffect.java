@@ -2,7 +2,9 @@ package xyxgame.gameplane.schoolGif.Effect;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.renderscript.BaseObj;
+import android.util.Log;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -20,13 +22,16 @@ public class ShuiEffect  {
     GifAllBitmaps allBitmaps;
 //    ShuiBag shuiBag;
     public  CopyOnWriteArrayList<ShuiBag> shuiBags;
+    private ShuiBag shuiBag;
 
     public ShuiEffect(GifObj obj, GifAllBitmaps allBitmaps) {
         this.allBitmaps=allBitmaps;
        this.obj=obj;
-      //  list=allBitmaps.getlaser08(obj.oW,obj.oH);
         shuiBags=new CopyOnWriteArrayList<>();
-     //   shuiBag=new ShuiBag(obj,list);
+
+        list=allBitmaps.getlaser08(obj.oW,obj.oH);
+
+//        shuiBag=new ShuiBag(obj,list);
 //        add(new GifObj(1,100,100).withPoint(500,200).withSize(300,200),500);
 //        add(new GifObj(1,100,100).withPoint(100,1200).withSize(300,200),250);
     }
@@ -35,10 +40,20 @@ public class ShuiEffect  {
 
     public void add(GifObj gifObj,int showTime){
         list=allBitmaps.getlaser08(gifObj.oW,gifObj.oH);
-        ShuiBag shuiBag= (ShuiBag) new ShuiBag(gifObj,list).withShowTime(showTime);
+        shuiBag = (ShuiBag) new ShuiBag(gifObj,list).withShowTime(showTime);
 
         shuiBag.life=gifObj.life;
          shuiBags.add(shuiBag);
+          //这里有问题的,每次碰撞都添加到集合，导致闪烁
+        //闪烁解决：
+        Iterator<ShuiBag> iterator = shuiBags.iterator();
+        while (iterator.hasNext()){
+            ShuiBag next = iterator.next();
+            if (Rect.intersects(next.rect,shuiBag.rect))
+            if (next.time!=0||next.life<=0   ){  shuiBags.remove(next);  return;  }
+        }
+
+        Log.v("--","-----"+shuiBags.size());
     }
 
 
@@ -46,7 +61,7 @@ public class ShuiEffect  {
 
 
 
-//    int i=0;
+//     int i=0;
     int j=0;
 
 
@@ -56,7 +71,29 @@ public class ShuiEffect  {
 
         j++;
         if (j>1000)j=1;
-//        i=i%list.size();
+
+
+
+        Iterator<ShuiBag> iterator = shuiBags.iterator();
+        while (iterator.hasNext()){
+            ShuiBag next = iterator.next();
+            if (next.time>next.showTime||next.life<=0 ){  shuiBags.remove(next);  return;  }
+            next.time++;
+
+             for (Bitmap bitmap:next.list){
+                 next.i= next.i%next.list.size();
+                canvas.drawBitmap(next.list.get(next.i),next.x,next.y,null);
+//                canvas.drawRect(next.rect,new UIPaint(null).paint1());
+            }
+
+            if (j%5==0) next.i++;
+
+        }
+
+
+
+
+//                i=i%list.size();
 //        Iterator<Bitmap> iterators = list.iterator();
 //        while (iterators.hasNext()){
 //            Bitmap next = iterators.next();
@@ -64,22 +101,8 @@ public class ShuiEffect  {
 //        }
 
 
-        Iterator<ShuiBag> iterator = shuiBags.iterator();
-        while (iterator.hasNext()){
-            ShuiBag next = iterator.next();
-
-            if (j%5==0) next.i++;
-             next.time++;
-            if (next.time>=next.showTime||next.life<=0 ){  shuiBags.remove(next);  return;  }
-
-            for (Bitmap bitmap:next.list){
-                next.i= next.i%next.list.size();
-                canvas.drawBitmap(next.list.get(next.i),next.x,next.y,null);
-//                canvas.drawRect(next.rect,new UIPaint(null).paint1());
-            }
 
 
-        }
 
 
 //        if (j%5==0) i++;
