@@ -12,7 +12,7 @@ import xyxgame.gameplane.Base.BitmapUtils;
 ////***加载基础图片***///
 public class BaseStopBitmap {
     BaseActivity baseActivity;
-    Bitmap bitmap;
+    public Bitmap bitmap;
     public Rect rect;
     public int num;
 

@@ -30,8 +30,8 @@ public class UIList {
   SchoolGifView schoolGifView;
 
     float i=44;
-    private Bitmap bitmap;
-    private Matrix matrix;
+//    private Bitmap bitmap;
+//    private Matrix matrix;
 
 
     //    int money=10000;
@@ -50,19 +50,19 @@ public class UIList {
 
         list.add(new BaseStopBitmap(baseActivity, R.drawable.att_bg, new Point(80-10, may*2-100+40 ), 200, 100));
         list.add(new BaseStopBitmap(baseActivity, R.drawable.lv, new Point(120-10, may*2-200+40 ), 100, 100));
-        list.add(new BaseStopBitmap(baseActivity, R.drawable.pan_01, new Point(max*2-190, 380 ), 130, 130));
+//        list.add(new BaseStopBitmap(baseActivity, R.drawable.pan_01, new Point(max*2-190, 380 ), 130, 130));
 
 
 
 
 
 
-        bitmap = Bitmap.createBitmap(BitmapUtils
-                        .decodeSampledBitmapFromResource(
-                                baseActivity.getResources(),R.drawable.pan_zheng,30,80)
-                  );
+//        bitmap = Bitmap.createBitmap(BitmapUtils
+//                        .decodeSampledBitmapFromResource(
+//                                baseActivity.getResources(),R.drawable.pan_zheng,30,80)
+//                  );
 
-        matrix = new Matrix();
+//        matrix = new Matrix();
 
 
         for (BaseStopBitmap baseStopBitmap:list){
@@ -89,7 +89,8 @@ public class UIList {
         if (list.size()<=0)return;
 
 
-
+//        if (schoolGifView.showAD&&list.size()<5)
+//        list.add(new BaseStopBitmap(baseActivity, R.drawable.pan_01, new Point(max*2-190, 380 ), 130, 130));
 
 
 
@@ -121,13 +122,13 @@ public class UIList {
 
 
 
-        i+=5;
-        if (i>360)i=0;
+//        i+=5;
+//        if (i>360)i=0;
+//
+//        matrix.setRotate (i,bitmap.getWidth()/2,bitmap.getHeight()-10);
+//        matrix.postTranslate(max*2-140, 375);
 
-        matrix.setRotate (i,bitmap.getWidth()/2,bitmap.getHeight()-10);
-        matrix.postTranslate(max*2-140, 375);
 
-
-       canvas.drawBitmap(bitmap,matrix,new Paint());
+    //   canvas.drawBitmap(bitmap,matrix,new Paint());
     }
 }

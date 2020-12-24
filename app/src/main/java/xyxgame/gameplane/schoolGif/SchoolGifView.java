@@ -22,6 +22,7 @@ import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Model.Exp;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
+import xyxgame.gameplane.schoolGif.ShowList.ADList;
 import xyxgame.gameplane.schoolGif.ShowList.UIList;
 import xyxgame.gameplane.schoolGif.Teacher.FireTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
@@ -47,7 +48,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public  int x;
     public  int y;
     public ListB listB;
-//    public  PanGif panGif;
+    public boolean showAD=false;
+    //    public  PanGif panGif;
     private  LaserTeacher laserTeacher;
     public  BlastTextGif blastTextGif;
     public UIList uiList;
@@ -58,6 +60,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public   FireEffect fireEffect;
     public FireTeacher fireTeacher;
     public   LeiEffect leiEffect;
+    public   ADList adList;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -159,7 +162,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         fireTeacher = new FireTeacher(this);
 
 
-
+        adList = new ADList(mBaseActivity,this);
 
     }
 
@@ -176,6 +179,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         uiList.drawCanvas(canvas);
         //展示列表
         if (showlistA) listB.draws(canvas);
+         adList.drawCanvas(canvas);
 
         fireEffect.drawCanvas(canvas);
 

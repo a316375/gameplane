@@ -63,7 +63,7 @@ public class LaserTeacher {
 //                    if (bag.shuxin==ShuXin.Tu)return;
                     if (schoolGifView.leiEffect.open==true){
                         schoolGifView.leiEffect.add_leiBag(enemy_bag,schoolGifView.gifPlay.obj.level);
-                        lei=laser_bag.hit*2;
+                        lei=laser_bag.hit*5;
                       if (laser_bag.shuxin==ShuXin.Jin) schoolGifView.money.all-=30;
                       if (laser_bag.shuxin==ShuXin.Mu) schoolGifView.money.all-=20;
                       if (laser_bag.shuxin==ShuXin.Shui) schoolGifView.money.all-=10;

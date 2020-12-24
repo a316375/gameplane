@@ -78,11 +78,11 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     }
 
     //启动帧绘制线程
-    private void startDrawThread() {
+    public void startDrawThread() {
         handlerThread = new HandlerThread("SurfaceViewThread");
         handlerThread.start();
         handler = new Handler(handlerThread.getLooper());
-         handler.post(new DrawRunnable());
+        handler.post(new DrawRunnable());
 
         runable=new ThreadRunable();
         mDrawThread=new Thread(runable);
