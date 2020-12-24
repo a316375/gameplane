@@ -23,6 +23,10 @@ public class SchoolGifActivity extends BaseActivity {
 
     SchoolGifView schoolGifView;
     private RewardedAd rewardedAd;
+    private RewardedAdLoadCallback adLoadCallback;
+    String s = "ca-app-pub-3940256099942544/5224354917";//测试id
+//    String s = "ca-app-pub-7420611722821229/7438820365";
+
 
     @Override
     protected void setView() {
@@ -38,19 +42,14 @@ public class SchoolGifActivity extends BaseActivity {
             }
         });
 
-        rewardedAd = new RewardedAd(this,
-                "ca-app-pub-3940256099942544/5224354917"
+        rewardedAd = new RewardedAd(this, s
 //                "ca-app-pub-7420611722821229/7438820365"
         );
         // Set app volume to be half of current device volume.
         MobileAds.setAppVolume(0.1f);
 
 
-
-
-
-
-        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+        adLoadCallback = new RewardedAdLoadCallback() {
             @Override
             public void onRewardedAdLoaded() {
                 // Ad successfully loaded.
@@ -98,7 +97,12 @@ public class SchoolGifActivity extends BaseActivity {
                     schoolGifView.startT();
                     schoolGifView.startDrawThread();
 
-                    schoolGifView.adList.clear();
+                    rewardedAd = createAndLoadRewardedAd();
+
+//                    schoolGifView.adList.clear();
+
+
+
 
                 }
 
@@ -107,6 +111,7 @@ public class SchoolGifActivity extends BaseActivity {
                     // User earned reward.
 
 
+                    schoolGifView.money.all+=10000;
                     schoolGifView.adList.clear();
 
                 }
@@ -118,9 +123,20 @@ public class SchoolGifActivity extends BaseActivity {
 
 
                 }
+
+
             };
             rewardedAd.show(activityContext, adCallback);
         } else {
+
+
+            //rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+
+
+
+
+
+
             Log.d("TAG", "The rewarded ad wasn't loaded yet.");
         }
 
@@ -141,13 +157,16 @@ public class SchoolGifActivity extends BaseActivity {
 
 
     public RewardedAd createAndLoadRewardedAd() {
-        RewardedAd rewardedAd = new RewardedAd(this,
-                "ca-app-pub-3940256099942544/5224354917"
+
+        final RewardedAd rewardedAd = new RewardedAd(this,
+                s
         );
         RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
             @Override
             public void onRewardedAdLoaded() {
                 // Ad successfully loaded.
+
+
             }
 
             @Override
@@ -160,9 +179,7 @@ public class SchoolGifActivity extends BaseActivity {
     }
 
 
-    public void onRewardedAdClosed() {
-        this.rewardedAd = createAndLoadRewardedAd();
-    }
+
 
 
 
