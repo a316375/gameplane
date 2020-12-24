@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "835339244977",
+    "firebase_url": "https://planegame-aa1f4-default-rtdb.firebaseio.com",
+    "project_id": "planegame-aa1f4",
+    "storage_bucket": "planegame-aa1f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835339244977:android:6b34873d2fd834c0d1d990",
+        "android_client_info": {
+          "package_name": "xyxgame.gameplane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835339244977-o5ia47pj7ggqpf1cha2dhlivi5pk09nu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQFy7PcGPBRFkPRd1YlVCHazZrUM25k1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835339244977-o5ia47pj7ggqpf1cha2dhlivi5pk09nu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

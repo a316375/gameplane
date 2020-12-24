@@ -53,8 +53,8 @@ public class ADList {
 
     public void clear(){
         schoolGifView.showAD=false;
-        baseStopBitmap.bitmap.recycle();
-        bitmap.recycle();
+//        baseStopBitmap.bitmap.recycle();
+//        bitmap.recycle();
     }
 
 

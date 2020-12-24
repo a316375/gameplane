@@ -28,6 +28,9 @@ public class SchoolGifActivity extends BaseActivity {
 //    String s = "ca-app-pub-7420611722821229/7438820365";
 
 
+
+
+
     @Override
     protected void setView() {
         schoolGifView=new SchoolGifView(this);
@@ -144,23 +147,9 @@ public class SchoolGifActivity extends BaseActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     public RewardedAd createAndLoadRewardedAd() {
 
-        final RewardedAd rewardedAd = new RewardedAd(this,
-                s
-        );
+        final RewardedAd rewardedAd = new RewardedAd(this,  s  );
         RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
             @Override
             public void onRewardedAdLoaded() {
