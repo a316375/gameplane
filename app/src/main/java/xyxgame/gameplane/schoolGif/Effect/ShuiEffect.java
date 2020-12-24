@@ -14,6 +14,9 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseStopBitmap;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
+import xyxgame.gameplane.schoolGif.Model.State;
+import xyxgame.gameplane.schoolGif.Path.PathMu;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UIPaint;
 
 public class ShuiEffect  {
@@ -36,7 +39,20 @@ public class ShuiEffect  {
 //        add(new GifObj(1,100,100).withPoint(100,1200).withSize(300,200),250);
     }
 
-
+    public void remove_effcet(BaseGifBag enemy,int shuxin){
+        Iterator<ShuiBag> iterator1 =  shuiBags.iterator();
+        while (iterator1.hasNext()){
+            ShuiBag next = iterator1.next();
+            if (Rect.intersects(next.rect,enemy.rect)){
+                next.life=-100;
+                if (shuxin== ShuXin.Mu){
+                    if (enemy.baseState==null)return;
+                    enemy.path=new PathMu(enemy);
+                    enemy.baseState.changState(State.Att,enemy, allBitmaps);
+                }
+            }
+        }
+    }
 
     public void add(GifObj gifObj,int showTime){
         list=allBitmaps.getlaser08(gifObj.oW,gifObj.oH);

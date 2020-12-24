@@ -19,7 +19,7 @@ public class Level {
       }
     //返回攻击力*10，等级*100，需要经验值*500--敌人数值
     public value backEnemyValue(){
-        return new value(level*5,level*500,level*1500);
+        return new value(level*50,level*500,level*1500);
     }
 
 

@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import xyxgame.gameplane.schoolGif.Effect.FireEffect;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
@@ -24,9 +25,11 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public int hit;
 
 
-
+    public int showtime=0;//显示时间
+    public int showMaxtime;//时间最大值
     public int shuxin ;
     public BaseState baseState;
+
 
 
     public BaseGifBag addState(BaseState baseState){
@@ -50,6 +53,8 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 //       if (list.size()>0)i=new Random().nextInt(500)%list.size();
         i=0;
         rect=new Rect(x,y,x+w,y+h);
+
+        showMaxtime=ShuXin.Speed*50+new Random().nextInt(50);
     }
 
 
@@ -69,11 +74,24 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         if (y>MaxY-20)y=MaxY-20;
     }
 
+    public BaseGifBag moveToXY(int point_x, int point_y) {
+        x=point_x;
+        y=point_y;
+        return this;
+    }
+
+
 
     public void resetPath(){
         path=this;
         list=list_copy;
     }
+
+
+    public  BaseGifBag withHit(int hit){
+        this.hit=hit;
+        return this;
+    };
 
 
 }

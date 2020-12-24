@@ -6,23 +6,18 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Typeface;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.Base.BaseActivity;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
-import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
-import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
 public class BlastTextGif  {
 
 
 
-    public  CopyOnWriteArrayList<BlastBags> bags;
-    public void addBags(BlastBags bag){
-           bags.add(bag);
+    public  CopyOnWriteArrayList<BlastBag> bags;
+    public void addBag(int hit,int x,int y){
+           bags.add(new BlastBag(hit,new Point(x,y)));
            }
     Paint paint;
     private Typeface typeFace;
@@ -46,9 +41,9 @@ public class BlastTextGif  {
 
 
 
-        Iterator<BlastBags> iterator = bags.iterator();
+        Iterator<BlastBag> iterator = bags.iterator();
         while (iterator.hasNext()){
-            BlastBags next = iterator.next();
+            BlastBag next = iterator.next();
             next.size+=5;
 
             paint.setTextSize(next.size);

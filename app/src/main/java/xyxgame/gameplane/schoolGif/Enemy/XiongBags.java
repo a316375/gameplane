@@ -9,6 +9,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Model.State;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 public class XiongBags extends BaseGifBag implements BaseGifBagPath {
 
@@ -23,7 +24,7 @@ public class XiongBags extends BaseGifBag implements BaseGifBagPath {
     @Override
     public void drawpath() {
 
-        y+=10;
+        y+= ShuXin.Speed*2;
     }
 
 

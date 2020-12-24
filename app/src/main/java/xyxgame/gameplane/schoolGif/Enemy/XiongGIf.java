@@ -18,7 +18,7 @@ public class XiongGIf extends BaseGifObj {
 
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
-        gifBag=new XiongBags(obj,list).addState(new xiongState());
+        gifBag=new XiongBags(obj,list).addState(new xiongState());//注意：赋予其状态属性
 
 
     }

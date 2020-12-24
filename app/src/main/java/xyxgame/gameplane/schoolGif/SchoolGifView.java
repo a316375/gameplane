@@ -12,6 +12,8 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastTextGif;
+import xyxgame.gameplane.schoolGif.Effect.FireEffect;
+import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
 import xyxgame.gameplane.schoolGif.Effect.ShuiBag;
 import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGIf;
@@ -21,6 +23,7 @@ import xyxgame.gameplane.schoolGif.Model.Exp;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.ShowList.UIList;
+import xyxgame.gameplane.schoolGif.Teacher.FireTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.TouchTeacher;
 import xyxgame.gameplane.schoolGif.Model.Money;
@@ -52,6 +55,9 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public  Level level;
     public   Exp exp;
     public   ShuiEffect shuiEffect;
+    public   FireEffect fireEffect;
+    public FireTeacher fireTeacher;
+    public   LeiEffect leiEffect;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -69,7 +75,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         y = mBaseActivity.point.y;
 
 
-        level = new Level(1);
+        level = new Level(60);
         exp = new Exp(0);
 
         GifObj play=new GifObj(1, x, y)
@@ -141,8 +147,16 @@ public class SchoolGifView extends BaseSurfaceVIEW {
                 .showRect(false);
         shuiEffect = new ShuiEffect(shui,allBitmaps);
 
+
+        GifObj fire=new GifObj(1,x,y).withPoint(500,500).withSize(150,150);
+        fireEffect = new FireEffect(fire,allBitmaps);
+
+        GifObj lei=new GifObj(1,x,y).withPoint(500,500).withSize(200,400);
+        leiEffect = new LeiEffect(lei,allBitmaps);
+
         touchTeacher = new TouchTeacher(this);
         laserTeacher = new LaserTeacher(this);
+        fireTeacher = new FireTeacher(this);
 
 
 
@@ -163,6 +177,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         //展示列表
         if (showlistA) listB.draws(canvas);
 
+        fireEffect.drawCanvas(canvas);
+
         xiong.drawCanvas(canvas);
 
 
@@ -175,6 +191,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
 
         shuiEffect.drawCanvas(canvas);
 
+
+        leiEffect.drawCanvas(canvas);
 
         laserGif.drawCanvas(canvas);
         blastTextGif.draws(canvas);//绘制爆炸
@@ -190,6 +208,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     @Override
     protected void onFrameDrawFinish() {
         laserTeacher.PKResult();
+        fireTeacher.PKResult();
     }
 
     @Override

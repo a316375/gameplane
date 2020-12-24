@@ -27,6 +27,21 @@ public class GifAllBitmaps {
     }
 
     BaseActivity activity;
+
+
+
+    public  CopyOnWriteArrayList<Bitmap> getfire(int width,int height){
+
+        return getbitmaps(width,height,activity, R.drawable.fire_effect);
+    }
+
+
+
+    public  CopyOnWriteArrayList<Bitmap> getlei(int width,int height){
+
+        return getbitmaps(width,height,activity, R.drawable.lei);
+    }
+
     public  CopyOnWriteArrayList<Bitmap> getbutton2(int width,int height){
 
         return getbitmaps(width,height,activity, R.drawable.button02);

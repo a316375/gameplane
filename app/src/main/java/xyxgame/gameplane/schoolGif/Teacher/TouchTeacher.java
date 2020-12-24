@@ -141,6 +141,7 @@ public class TouchTeacher extends View {
                         schoolGifView.laserGif. obj.oH=100;
                         schoolGifView.laserGif. Time_wait=15;
                         schoolGifView.laserGif. obj.speed=30;
+                        schoolGifView.laserGif.obj.max=10;
                         schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
                         schoolGifView.laserGif.obj.ShuXin= ShuXin.Jin;
                         schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser02(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);
@@ -157,6 +158,7 @@ public class TouchTeacher extends View {
                         schoolGifView.laserGif. obj.oH=150;
                         schoolGifView.laserGif. Time_wait=28;
                         schoolGifView.laserGif. obj.speed=22;
+                        schoolGifView.laserGif.obj.max=10;
                         schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
                         schoolGifView.laserGif.obj.ShuXin= ShuXin.Mu;
                         schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser04(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);
@@ -168,6 +170,7 @@ public class TouchTeacher extends View {
                         schoolGifView.laserGif. obj.oH=150;
                         schoolGifView.laserGif. Time_wait=25;
                         schoolGifView.laserGif. obj.speed=23;
+                        schoolGifView.laserGif.obj.max=10;
                         schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit;
                         schoolGifView.laserGif.obj.ShuXin= ShuXin.Shui;
                         schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser05(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);
@@ -179,20 +182,25 @@ public class TouchTeacher extends View {
                         schoolGifView.laserGif. obj.oH=130;
                         schoolGifView.laserGif. Time_wait=24;
                         schoolGifView.laserGif. obj.speed=24;
-                        schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
+                        schoolGifView.laserGif.obj.max=10;
+                        schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit;
                         schoolGifView.laserGif.obj.ShuXin= ShuXin.Huo;
                         schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser09(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);
 
                     }
                     if (baseStopBitmap.num==ShuXin.Tu){
-                        schoolGifView.laserGif.F5_GIf=10;
-                        schoolGifView.laserGif. obj.oW=120;
-                        schoolGifView.laserGif. obj.oH=100;
-                        schoolGifView.laserGif. Time_wait=22;
-                        schoolGifView.laserGif. obj.speed=23;
-                        schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
-                        schoolGifView.laserGif.obj.ShuXin= ShuXin.Tu;
-                        schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser06(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);
+                        schoolGifView.leiEffect.open=!schoolGifView.leiEffect.open;
+//                        schoolGifView.laserGif.obj.max=0;
+//                        schoolGifView.laserGif.obj.hit=99999;
+//                        schoolGifView.laserGif.obj.ShuXin= ShuXin.Tu;
+//                        schoolGifView.laserGif.F5_GIf=10;
+//                        schoolGifView.laserGif. obj.oW=220;
+//                        schoolGifView.laserGif. obj.oH=200;
+//                        schoolGifView.laserGif. Time_wait=20;
+//                        schoolGifView.laserGif. obj.speed=20;
+//                        schoolGifView.laserGif. obj.max=1;
+//                        schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
+//                        schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser06(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);
 
                     }
                 }

@@ -111,17 +111,18 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
                         w.unlock();
                     }
 
-                    //3.将帧数据提交
-                    getHolder().unlockCanvasAndPost(canvas);
+
 
 
                 } finally {
-                    w.lock();
+                    r.lock();
                     try {
                         //4.一帧绘制结束
                         onFrameDrawFinish();
                     }finally {
-                        w.unlock();
+                        r.unlock();
+                        //3.将帧数据提交
+                        getHolder().unlockCanvasAndPost(canvas);
                     }
 
 

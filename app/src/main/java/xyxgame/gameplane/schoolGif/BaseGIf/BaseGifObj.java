@@ -139,4 +139,5 @@ public abstract class BaseGifObj extends View   {
     public void add_drawCanvas(Canvas canvas){}
 
 
+
 }

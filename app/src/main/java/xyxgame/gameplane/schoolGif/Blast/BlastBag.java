@@ -13,14 +13,14 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class BlastBags   {
+public class BlastBag {
 
     int hit;
     Point point;
 
     int size=0;
 
-    public BlastBags(int hit, Point point) {
+    public BlastBag(int hit, Point point) {
 
         this.hit = hit;
         this.point = point;
