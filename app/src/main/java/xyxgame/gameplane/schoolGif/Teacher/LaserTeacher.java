@@ -69,7 +69,19 @@ public class LaserTeacher {
                     enemy.life-=bag.hit+add;
 
                     addexp();
-                    if (bag.shuxin==ShuXin.Mu){enemy.path=new PathMu(enemy);
+                    if (bag.shuxin==ShuXin.Mu){
+                        Iterator<ShuiBag> iterator2 = schoolGifView.shuiEffect.shuiBags.iterator();
+                        while (iterator2.hasNext()){
+                            ShuiBag next = iterator2.next();
+                            if (Rect.intersects(next.rect,bag.rect))
+                               {  next.life=-120;
+                                   enemy.path=new PathMu(enemy);
+                                   enemy.baseState.changState(State.Att,enemy,schoolGifView.allBitmaps);
+                               }
+                        }
+
+
+                        enemy.path=new PathMu(enemy);
                     enemy.baseState.changState(State.Att,enemy,schoolGifView.allBitmaps);}
                     if (bag.shuxin==ShuXin.Shui){
                         PathShui path = new PathShui(enemy);
