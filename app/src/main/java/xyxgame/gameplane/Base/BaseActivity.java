@@ -45,8 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private RewardedAd rewardedAd;
     private RewardedAdLoadCallback adLoadCallback;
-    String s = "ca-app-pub-3940256099942544/5224354917";//测试id
-//    String s = "ca-app-pub-7420611722821229/7438820365";
+    String s = ShuXin.id;//测试id
+
 
     AD mad;
 
