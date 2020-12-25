@@ -28,6 +28,8 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     private Canvas canvas;
     public boolean isAlive;
 
+    public boolean showAD=false;
+
     private Thread mDrawThread ; public boolean isGameing;
 
     public BaseSurfaceVIEW(BaseActivity mBaseActivity) {
@@ -169,4 +171,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     public boolean onTouchEvent(MotionEvent event) {
         return super.onTouchEvent(event);
     }
+
+
+   public void ADFinish(){}
 }

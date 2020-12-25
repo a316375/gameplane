@@ -48,7 +48,7 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public  int x;
     public  int y;
     public ListB listB;
-    public boolean showAD=false;
+
     //    public  PanGif panGif;
     private  LaserTeacher laserTeacher;
     public  BlastTextGif blastTextGif;
@@ -232,4 +232,10 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     }
 
 
+    @Override
+    public void ADFinish() {
+        super.ADFinish();
+        money.all+=10000;
+        adList.clear();
+    }
 }

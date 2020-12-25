@@ -5,4 +5,6 @@ public class ShuXin {
 
 
     public static String ListB_title="Choose Game Gear";
+
+    public static int ADTime=60000;
 }

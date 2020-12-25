@@ -7,17 +7,34 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdCallback;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import xyxgame.gameplane.GL.GameSurfaceView;
 import xyxgame.gameplane.R;
-
-
+import xyxgame.gameplane.schoolGif.AD.AD;
+import xyxgame.gameplane.schoolGif.AD.BaseAD;
+import xyxgame.gameplane.schoolGif.SchoolGifActivity;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
 //**在此类下新建的sufcaseview 必须去实现start跟stop方法，以此来绑定生命周期**///
@@ -25,6 +42,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public Point point;
     public boolean start=true;
+
+    private RewardedAd rewardedAd;
+    private RewardedAdLoadCallback adLoadCallback;
+    String s = "ca-app-pub-3940256099942544/5224354917";//测试id
+//    String s = "ca-app-pub-7420611722821229/7438820365";
+
+    AD mad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,20 +79,166 @@ public abstract class BaseActivity extends AppCompatActivity {
         //Log.d("X and Y size", "X = " + point.x + ", Y = " + point.y);
 
 
+        BaseSurfaceVIEW baseSurfaceVIEW = setView();
+        setContentView(baseSurfaceVIEW);
 
+        mad=new BaseAD(baseSurfaceVIEW);
 
-
-
-
-
-        setView();
-
-
+        initAD();
 
 
     }
 
-    protected abstract void setView();
+
+
+
+
+
+
+
+
+
+    public void initAD() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+
+            }
+        });
+
+        rewardedAd = new RewardedAd(this, s
+//                "ca-app-pub-7420611722821229/7438820365"
+        );
+        // Set app volume to be half of current device volume.
+        MobileAds.setAppVolume(0.1f);
+
+
+        adLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                // Ad successfully loaded.
+
+
+                mad.coming();
+
+            }
+
+            @Override
+            public void onRewardedAdFailedToLoad(LoadAdError adError) {
+                // Ad failed to load.
+            }
+        };
+        rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+    }
+
+
+    public void show_AD(){
+
+        if (rewardedAd.isLoaded()) {
+            Activity activityContext = BaseActivity.this;
+            RewardedAdCallback adCallback = new RewardedAdCallback() {
+                @Override
+                public void onRewardedAdOpened() {
+                    // Ad opened.
+                }
+
+
+                @Override
+                public void onRewardedAdClosed() {
+                    // Ad closed.
+
+                    start=true;
+
+                    mad.exit();
+
+
+                    UiThead.runInUIThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            rewardedAd = createAndLoadRewardedAd();//关闭时候重新加载新的
+                            mad.reload();
+                        }
+                    }, ShuXin.ADTime);
+
+
+
+//                    schoolGifView.adList.clear();
+
+
+
+
+                }
+
+                @Override
+                public void onUserEarnedReward(@NonNull RewardItem reward) {
+                    // User earned reward.
+
+
+                    mad.FinishOK();
+
+
+                }
+
+                @Override
+                public void onRewardedAdFailedToShow(AdError adError) {
+                    // Ad failed to display.
+
+
+
+                }
+
+
+            };
+            rewardedAd.show(activityContext, adCallback);
+        } else {
+
+
+            //rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+
+
+
+
+
+
+            Log.d("TAG", "The rewarded ad wasn't loaded yet.");
+        }
+
+    }
+
+
+
+    public RewardedAd createAndLoadRewardedAd() {
+
+        final RewardedAd rewardedAd = new RewardedAd(this,  s  );
+        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                // Ad successfully loaded.
+
+
+            }
+
+            @Override
+            public void onRewardedAdFailedToLoad(LoadAdError adError) {
+                // Ad failed to load.
+            }
+        };
+        rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+        return rewardedAd;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    protected abstract BaseSurfaceVIEW setView();
 
     protected abstract void viewResume();
     protected abstract void viewPause();

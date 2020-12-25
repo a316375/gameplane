@@ -5,9 +5,6 @@ import android.os.Handler;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
-import xyxgame.gameplane.Base.FrameSurfaceView;
-import xyxgame.gameplane.Base.NUMManager;
-import xyxgame.gameplane.R;
 
 public class ASchoolActivity extends BaseActivity {
 
@@ -24,16 +21,15 @@ public class ASchoolActivity extends BaseActivity {
 
 
     @Override
-    protected void setView() {
+    protected BaseSurfaceVIEW setView() {
 
        // setContentView(R.layout.layout_wait);
         roomA = new RoomA(ASchoolActivity.this);
 //        handler.postDelayed(viewisOK,5000);
-        setContentView(roomA);
 
 
 
-
+        return roomA;
     }
 
     @Override

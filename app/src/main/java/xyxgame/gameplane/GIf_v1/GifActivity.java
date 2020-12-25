@@ -1,14 +1,15 @@
 package xyxgame.gameplane.GIf_v1;
 
 import xyxgame.gameplane.Base.BaseActivity;
+import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 
 public class GifActivity extends BaseActivity {
 
     GifView gifView;
     @Override
-    protected void setView() {
+    protected BaseSurfaceVIEW setView() {
         gifView =new GifView(GifActivity.this);
-       setContentView(gifView);
+
 //       setContentView(R.layout.layout_wait);
 //       GUI gui=new GUI(this);
 //        RelativeLayout viewById = findViewById(R.id.rl);
@@ -22,6 +23,7 @@ public class GifActivity extends BaseActivity {
 
 //        Glide.with(this).asGif().load(R.drawable.gif_xue).into(imageView);
 
+        return gifView;
     }
 
     @Override

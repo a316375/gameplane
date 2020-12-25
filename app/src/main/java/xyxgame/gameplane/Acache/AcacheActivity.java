@@ -1,23 +1,11 @@
 package xyxgame.gameplane.Acache;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Environment;
 import android.util.LruCache;
 
-import androidx.annotation.Nullable;
-
-import com.jakewharton.disklrucache.DiskLruCache;
-
-import java.io.File;
-
 import xyxgame.gameplane.Base.BaseActivity;
+import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.Base.BitmapUtils;
-import xyxgame.gameplane.Base.NUMManager;
-import xyxgame.gameplane.GL.GLActivity;
 import xyxgame.gameplane.R;
 
 import static android.os.Environment.isExternalStorageRemovable;
@@ -29,7 +17,7 @@ public class AcacheActivity extends BaseActivity {
 
 
     @Override
-    protected void setView() {
+    protected BaseSurfaceVIEW setView() {
 
         // Get max available VM memory, exceeding this amount will throw an
         // OutOfMemory exception. Stored in kilobytes as LruCache takes an
@@ -60,9 +48,10 @@ public class AcacheActivity extends BaseActivity {
 
         }finally {
             acacheSurfaceView=new AcacheSurfaceView(this,AcacheActivity.this);
-            setContentView(acacheSurfaceView);
+
         }
 
+        return acacheSurfaceView;
     }
 
     @Override
