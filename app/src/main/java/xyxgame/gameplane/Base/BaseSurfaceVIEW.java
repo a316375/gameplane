@@ -30,6 +30,8 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
     public boolean showAD=false;
 
+
+
     private Thread mDrawThread ; public boolean isGameing;
 
     public BaseSurfaceVIEW(BaseActivity mBaseActivity) {

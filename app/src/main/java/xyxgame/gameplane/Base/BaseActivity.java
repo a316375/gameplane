@@ -111,7 +111,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //                "ca-app-pub-7420611722821229/7438820365"
         );
         // Set app volume to be half of current device volume.
-        MobileAds.setAppVolume(0.1f);
+        MobileAds.setAppVolume(0.05f);
 
 
         adLoadCallback = new RewardedAdLoadCallback() {
@@ -132,7 +132,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
     }
 
-
+    public boolean  AD_FINISHED=false;
     public void show_AD(){
 
         if (rewardedAd.isLoaded()) {
@@ -153,6 +153,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     mad.exit();
 
 
+                    if (!AD_FINISHED)
                     UiThead.runInUIThread(new Runnable() {
                         @Override
                         public void run() {
@@ -176,6 +177,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
                     mad.FinishOK();
+                    AD_FINISHED=true;
 
 
                 }

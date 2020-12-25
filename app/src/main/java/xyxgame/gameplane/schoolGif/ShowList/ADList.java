@@ -36,7 +36,7 @@ public class ADList {
         );
 
 
-        baseStopBitmap = new BaseStopBitmap(baseActivity, R.drawable.pan_01, new Point(max * 2 - 190, 380), 130, 130);
+        baseStopBitmap = new BaseStopBitmap(baseActivity, R.drawable.pan_02, new Point(max * 2 - 190, 380), 130, 130);
 
 
 
