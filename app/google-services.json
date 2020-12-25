@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "835339244977-pa7dfhlgi8hfjo4e8dtiktlsd3s6novl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xyxgame.gameplane",
+            "certificate_hash": "823d6984a37d6b8699e42693b189a4da501a2037"
+          }
+        },
+        {
           "client_id": "835339244977-o5ia47pj7ggqpf1cha2dhlivi5pk09nu.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -33,7 +41,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-7420611722821229~1188288542"
     }
   ],
   "configuration_version": "1"

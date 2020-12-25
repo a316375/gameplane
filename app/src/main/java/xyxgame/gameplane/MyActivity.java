@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
 
 public class MyActivity extends Activity   {
@@ -72,6 +73,7 @@ public class MyActivity extends Activity   {
             @Override
             public void onClick(View v) {
 // Configure Google Sign In
+                ok=true;
                 signIn();
 
             }
@@ -97,16 +99,23 @@ public class MyActivity extends Activity   {
 
 
 
+    boolean ok=false;
     private void updateUI(@Nullable FirebaseUser user) {
         // No-op
+
 
         if(user!=null){
 
             Log.i("a user is logged in: ",user.getEmail());
+            if (!ok)return;
+            startActivity(new Intent(this, MainMenuActivity.class));
+            finish();
         }
         else{
             Log.i("Username", "there is no user");
         }
+
+
     }
 
 
