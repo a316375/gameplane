@@ -32,6 +32,12 @@ public class MyActivity extends Activity   {
 
     String WEB_ID = ShuXin.WEB_ID;
     private FirebaseAuth mAuth;
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
