@@ -59,3 +59,9 @@
 
 #-keep class  * extends xyxgame.gameplane.Base.BaseSurfaceVIEW
 
+#去除log
+-assumenosideeffects class android.util.Log {
+	public static *** d(...);
+	public static *** v(...);
+	public static *** e(...);
+}
