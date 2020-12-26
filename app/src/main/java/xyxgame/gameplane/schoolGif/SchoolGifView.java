@@ -2,9 +2,24 @@ package xyxgame.gameplane.schoolGif;
 
 import android.graphics.Canvas;
 import android.view.MotionEvent;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
+import xyxgame.gameplane.DB.DB;
+import xyxgame.gameplane.DB.DBBack;
+import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseBossGif;
@@ -32,7 +47,7 @@ import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
 
-public class SchoolGifView extends BaseSurfaceVIEW {
+public class SchoolGifView extends BaseSurfaceVIEW  {
 
    public BaseActivity mBaseActivity;
     public GifBG gifBG;
@@ -63,10 +78,15 @@ public class SchoolGifView extends BaseSurfaceVIEW {
     public   ADList adList;
 
 
+
+
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
         this.mBaseActivity=mBaseActivity;
-        money=new Money(9998);
+        money=new Money(mBaseActivity.info.money);
+
+
+
 
         gifBG=new GifBG(mBaseActivity, R.drawable.bg5);
         fps=new FPS();
@@ -78,8 +98,8 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         y = mBaseActivity.point.y;
 
 
-        level = new Level(60);
-        exp = new Exp(0);
+        level = new Level(mBaseActivity.info.level);
+        exp = new Exp(mBaseActivity.info.exp);
 
         GifObj play=new GifObj(1, x, y)
                 .withPoint(x /2-100, y -400)
@@ -215,8 +235,10 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         fireTeacher.PKResult();
     }
 
+
     @Override
     protected void onFrameDraw() {
+
 
     }
 
@@ -238,4 +260,6 @@ public class SchoolGifView extends BaseSurfaceVIEW {
         money.all+=10000;
         adList.clear();
     }
+
+
 }

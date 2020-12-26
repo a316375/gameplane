@@ -18,7 +18,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 //**此类被继承的时候必须去Activity的生命周期里边调用onstart 跟 onstop，否则会出错**//
 public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHolder.Callback{
-    public static final int DEFAULT_FRAME_DURATION_MILLISECOND =10;
+    public static final int DEFAULT_FRAME_DURATION_MILLISECOND =1000;
     //用于计算帧数据的线程
     private HandlerThread handlerThread;
     private Handler handler;

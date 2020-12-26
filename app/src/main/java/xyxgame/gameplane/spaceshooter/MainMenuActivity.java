@@ -13,21 +13,35 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchUIUtil;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import xyxgame.gameplane.Acache.AcacheActivity;
 import xyxgame.gameplane.Base.MVVMActivity;
+import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.GIf.GifActivity;
 import xyxgame.gameplane.GL.GLActivity;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.school.ASchoolActivity;
 import xyxgame.gameplane.schoolGif.SchoolGifActivity;
+import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6,mPlay7, mHighScore, mExit;
-//
+    private Info info;
+    //
 
 
     @Override
@@ -40,8 +54,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_main_menu);
 
 
-
-
+        info = IntentUtils.getInfo(this);
 
         hideNavKey(this);
 
@@ -133,7 +146,35 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 // finish();
                 break;
             case R.id.play7:
-                startActivity(new Intent(this, SchoolGifActivity.class));
+             //   startActivity(new Intent(this, SchoolGifActivity.class));
+
+                if (info.id==null)return;
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                FirebaseDatabase.getInstance().goOnline();
+                DatabaseReference hopperRef = reference.child("info").child(info.id);
+
+
+                ValueEventListener listener=new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Info infos=  snapshot.getValue(Info.class);
+                        // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
+                        info=infos.withId(info.id);
+                        IntentUtils.startActivity(MainMenuActivity.this,SchoolGifActivity.class,info.withId(info.id));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                };
+                hopperRef.addListenerForSingleValueEvent(listener);
+
+
+
+
+
+
                 // finish();
                 break;
             case R.id.high_score:

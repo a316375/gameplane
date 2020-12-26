@@ -3,10 +3,9 @@ package xyxgame.gameplane;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,24 +25,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Comment;
-
-import java.util.HashMap;
-import java.util.Map;
-
+import xyxgame.gameplane.DB.DB;
+import xyxgame.gameplane.DB.DBBack;
 import xyxgame.gameplane.DB.Info;
+import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
 
-public class MyActivity extends Activity   {
+public class MyActivity extends Activity implements DBBack {
 
     private static final int RC_SIGN_IN =999;
 
@@ -51,6 +42,8 @@ public class MyActivity extends Activity   {
     private FirebaseAuth mAuth;
 
     private  String string;
+    private DB db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +80,7 @@ public class MyActivity extends Activity   {
             @Override
             public void onClick(View v) {
 // Configure Google Sign In
-                ok=true;
+
                 signIn();
 
             }
@@ -96,51 +89,7 @@ public class MyActivity extends Activity   {
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
-
-                // Google sign out
-                mGoogleSignInClient.signOut().addOnCompleteListener(MyActivity.this,
-                        new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                updateUI(null);
-                            }
-                        });
-
-
-
-
-
-            }
-        });
-
-
-
-        findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (string==null)return;
-                 DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
-
-                 writeNewUser(mDatabase,string+444,1,2,3000);
-
-
-            }
-        });
-
-
-
-        findViewById(R.id.get).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Read from the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference();
-
-//                getUser(myRef,string+5555555);
-               get_and_up_User(myRef,string+1244,500,220,200);
-
+                SignOut();
 
 
             }
@@ -154,68 +103,39 @@ public class MyActivity extends Activity   {
 
 
 
-    }
-
-    private void writeNewUser(DatabaseReference mDatabase,String userId, int a, int b,int c) {
-        DatabaseReference hopperRef = mDatabase.child("info");
-
-        Map<String, Object> hopperUpdates = new HashMap<>();
-        hopperUpdates.put(userId, new Info(a,b,c));
-
-        hopperRef.updateChildren(hopperUpdates);
-
-    }
-    private void upNewUser(DatabaseReference mDatabase,String userId, int a, int b,int c) {
-
-        DatabaseReference hopperRef = mDatabase.child("info");
-        Map<String, Object> hopperUpdates = new HashMap<>();
-        hopperUpdates.put(userId, new Info(a,b,c));
-        hopperRef.updateChildren(hopperUpdates);
-
-    }
-
-    private void get_and_up_User(final DatabaseReference mDatabase, final String userId , final int newa, final int newb, final int newc) {
-
-        //执行查询操作
-        DatabaseReference hopperRef = mDatabase.child("info").child(userId);
-        hopperRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Info post = dataSnapshot.getValue(Info.class);
-                if (post==null){
-                    //插入新的数据
-                    writeNewUser(mDatabase,userId,newa,newb,newc); return;}
-                   //升级数据
-                Log.v("----------",post.toString());
-                upNewUser(mDatabase,userId,newa,newb,newc);
-
-            }
 
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
 
 
     }
 
+    private void SignOut() {
+        string=null;
+        mAuth.signOut();
 
-    boolean ok=false;
+        // Google sign out
+        mGoogleSignInClient.signOut().addOnCompleteListener(MyActivity.this,
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        updateUI(null);
+                    }
+                });
+    }
+
+
     private void updateUI(@Nullable FirebaseUser user) {
         // No-op
 
 
         if(user!=null){
 
+            //登陆成功
             Log.i("a user is logged in: ",user.getEmail());
             string=user.getUid();
+            db = new DB(string,MyActivity.this);
+           // SignOut();
 
-            if (!ok)return;
-            startActivity(new Intent(this, MainMenuActivity.class));
-            finish();
         }
         else{
             Log.i("Username", "there is no user");
@@ -323,6 +243,52 @@ public class MyActivity extends Activity   {
     private static final String TAG = "MainActivity";
 
 
+    @Override
+    public void getInfo(Info info) {
+
+            //升级数据
+            Log.v("----info------",info.toString());
+
+      IntentUtils.startActivity(MyActivity.this,MainMenuActivity.class,info.withId(string));
+
+
+      finish();
+     // db.database.getReference().child("info").child(string).removeEventListener(db.listener);
+
+
+    }
+
+    @Override
+    public void EmptyInfo() {
+
+           //如果没有，则添加数据
+        db.writeNewUser(1,0,9999);
+
+    }
+
+
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        if (db.database != null)
+        {
+            db.database.goOnline();
+        }
+    }
+
+    @Override
+    public void onPause() {
+
+        super.onPause();
+
+        if(db.database!=null)
+        {
+            db.database.goOffline();
+        }
+    }
 
 }
 

@@ -1,21 +1,16 @@
 package xyxgame.gameplane.Base;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdError;
@@ -32,11 +27,9 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import java.util.Map;
 
-import xyxgame.gameplane.GL.GameSurfaceView;
-import xyxgame.gameplane.R;
+import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.schoolGif.AD.AD;
 import xyxgame.gameplane.schoolGif.AD.BaseAD;
-import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
@@ -51,7 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private RewardedAdLoadCallback adLoadCallback;
     String s = ShuXin.id;//测试id
 
-
+    public Info info;
     AD mad;
 
     @Override
@@ -86,26 +79,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         BaseSurfaceVIEW baseSurfaceVIEW = setView();
         setContentView(baseSurfaceVIEW);
 
+
+
         mad=new BaseAD(baseSurfaceVIEW);
-
-
-
-
-
-
-
-
 
         initAD();
 
 
     }
-
-
-
-
-
-
 
 
 
