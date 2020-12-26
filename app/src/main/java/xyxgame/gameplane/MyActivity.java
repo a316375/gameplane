@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -17,12 +20,25 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Comment;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
@@ -34,21 +50,19 @@ public class MyActivity extends Activity   {
     String WEB_ID = ShuXin.WEB_ID;
     private FirebaseAuth mAuth;
 
-
-
-
-
-
+    private  String string;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // 别忘了开始的时候载入我们加工好的的SurfaceView
 
 
+
+
+
+
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
-
 
 //
 //        startActivity(new Intent(this, GameActivity.class));
@@ -92,11 +106,101 @@ public class MyActivity extends Activity   {
                                 updateUI(null);
                             }
                         });
+
+
+
+
+
             }
         });
 
+
+
+        findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (string==null)return;
+                 DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
+
+                 writeNewUser(mDatabase,string+444,1,2,3000);
+
+
+            }
+        });
+
+
+
+        findViewById(R.id.get).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Read from the database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference();
+
+//                getUser(myRef,string+5555555);
+               get_and_up_User(myRef,string+1244,500,220,200);
+
+
+
+            }
+        });
+
+
+
+
+
+
+
+
+
     }
 
+    private void writeNewUser(DatabaseReference mDatabase,String userId, int a, int b,int c) {
+        DatabaseReference hopperRef = mDatabase.child("info");
+
+        Map<String, Object> hopperUpdates = new HashMap<>();
+        hopperUpdates.put(userId, new Info(a,b,c));
+
+        hopperRef.updateChildren(hopperUpdates);
+
+    }
+    private void upNewUser(DatabaseReference mDatabase,String userId, int a, int b,int c) {
+
+        DatabaseReference hopperRef = mDatabase.child("info");
+        Map<String, Object> hopperUpdates = new HashMap<>();
+        hopperUpdates.put(userId, new Info(a,b,c));
+        hopperRef.updateChildren(hopperUpdates);
+
+    }
+
+    private void get_and_up_User(final DatabaseReference mDatabase, final String userId , final int newa, final int newb, final int newc) {
+
+        //执行查询操作
+        DatabaseReference hopperRef = mDatabase.child("info").child(userId);
+        hopperRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Info post = dataSnapshot.getValue(Info.class);
+                if (post==null){
+                    //插入新的数据
+                    writeNewUser(mDatabase,userId,newa,newb,newc); return;}
+                   //升级数据
+                Log.v("----------",post.toString());
+                upNewUser(mDatabase,userId,newa,newb,newc);
+
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+
+    }
 
 
     boolean ok=false;
@@ -107,6 +211,8 @@ public class MyActivity extends Activity   {
         if(user!=null){
 
             Log.i("a user is logged in: ",user.getEmail());
+            string=user.getUid();
+
             if (!ok)return;
             startActivity(new Intent(this, MainMenuActivity.class));
             finish();

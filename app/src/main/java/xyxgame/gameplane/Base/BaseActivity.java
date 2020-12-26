@@ -12,6 +12,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
@@ -21,12 +22,15 @@ import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.AdapterStatus;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdCallback;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+
+import java.util.Map;
 
 import xyxgame.gameplane.GL.GameSurfaceView;
 import xyxgame.gameplane.R;
@@ -84,6 +88,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         mad=new BaseAD(baseSurfaceVIEW);
 
+
+
+
+
+
+
+
+
         initAD();
 
 
@@ -104,6 +116,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
 
 
+
+                Map<String, AdapterStatus> adapterStatusMap = initializationStatus.getAdapterStatusMap();
+                for (Map.Entry<String, AdapterStatus> entry : adapterStatusMap.entrySet()) {
+
+
+                    Log.v("ADMOB",entry.getKey()+"----"+entry.getValue().getDescription()+"-"+entry.getValue().getInitializationState().name());
+                }
+
+
             }
         });
 
@@ -119,14 +140,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             public void onRewardedAdLoaded() {
                 // Ad successfully loaded.
 
-
-                mad.coming();
+               mad.coming();
 
             }
 
             @Override
             public void onRewardedAdFailedToLoad(LoadAdError adError) {
                 // Ad failed to load.
+
             }
         };
         rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
@@ -197,10 +218,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
             //rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
-
-
-
-
 
 
             Log.d("TAG", "The rewarded ad wasn't loaded yet.");

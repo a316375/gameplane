@@ -8,5 +8,6 @@ public class ShuXin {
     public static String ListB_title="Choose Game Gear";
 
     public static int ADTime=60000;
-    public static String id="ca-app-pub-3940256099942544/5224354917";//    String s = "ca-app-pub-7420611722821229/7438820365";
+//    public static String id="ca-app-pub-3940256099942544/3419835294";//   ca-app-pub-3940256099942544/3419835294 String s = "ca-app-pub-7420611722821229/7438820365";
+    public static String id="ca-app-pub-3940256099942544/5224354917";//   ca-app-pub-3940256099942544/3419835294 String s = "ca-app-pub-7420611722821229/7438820365";
 }
