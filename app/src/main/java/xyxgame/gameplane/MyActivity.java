@@ -34,7 +34,7 @@ import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
 
-public class MyActivity extends Activity implements DBBack {
+public class MyActivity extends Activity  {
 
     private static final int RC_SIGN_IN =999;
 
@@ -42,7 +42,7 @@ public class MyActivity extends Activity implements DBBack {
     private FirebaseAuth mAuth;
 
     private  String string;
-    private DB db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,29 +86,12 @@ public class MyActivity extends Activity implements DBBack {
             }
         });
 
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SignOut();
-
-
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
 
+
+    //登陆登出
     private void SignOut() {
         string=null;
         mAuth.signOut();
@@ -133,7 +116,8 @@ public class MyActivity extends Activity implements DBBack {
             //登陆成功
             Log.i("a user is logged in: ",user.getEmail());
             string=user.getUid();
-            db = new DB(string,MyActivity.this);
+            IntentUtils.startActivity(MyActivity.this,MainMenuActivity.class,new Info().withId(string));
+            finish();
            // SignOut();
 
         }
@@ -243,52 +227,10 @@ public class MyActivity extends Activity implements DBBack {
     private static final String TAG = "MainActivity";
 
 
-    @Override
-    public void getInfo(Info info) {
-
-            //升级数据
-            Log.v("----info------",info.toString());
-
-      IntentUtils.startActivity(MyActivity.this,MainMenuActivity.class,info.withId(string));
-
-
-      finish();
-     // db.database.getReference().child("info").child(string).removeEventListener(db.listener);
-
-
-    }
-
-    @Override
-    public void EmptyInfo() {
-
-           //如果没有，则添加数据
-        db.writeNewUser(1,0,9999);
-
-    }
 
 
 
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
 
-        if (db.database != null)
-        {
-            db.database.goOnline();
-        }
-    }
-
-    @Override
-    public void onPause() {
-
-        super.onPause();
-
-        if(db.database!=null)
-        {
-            db.database.goOffline();
-        }
-    }
 
 }
 

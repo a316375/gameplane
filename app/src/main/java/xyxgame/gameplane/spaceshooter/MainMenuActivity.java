@@ -17,6 +17,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchUIUtil;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,20 +32,25 @@ import java.util.Map;
 
 import xyxgame.gameplane.Acache.AcacheActivity;
 import xyxgame.gameplane.Base.MVVMActivity;
+import xyxgame.gameplane.DB.DB;
+import xyxgame.gameplane.DB.DBBack;
 import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.GIf.GifActivity;
 import xyxgame.gameplane.GL.GLActivity;
+import xyxgame.gameplane.MyActivity;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.school.ASchoolActivity;
 import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
-public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener  {
 
 
-    private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6,mPlay7, mHighScore, mExit;
+    private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6,mPlay7, mHighScore, mExit,msignOut;
     private Info info;
     //
+
 
 
     @Override
@@ -55,6 +64,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
 
         info = IntentUtils.getInfo(this);
+
 
         hideNavKey(this);
 
@@ -77,6 +87,17 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay7 = findViewById(R.id.play7);
         mHighScore = findViewById(R.id.high_score);
         mExit = findViewById(R.id.exit);
+        msignOut = findViewById(R.id.signOut);
+
+
+        mPlay.setVisibility(View.GONE);
+        mPlay2.setVisibility(View.GONE);
+        mPlay3.setVisibility(View.GONE);
+        mPlay4.setVisibility(View.GONE);
+        mPlay5.setVisibility(View.GONE);
+        mPlay6.setVisibility(View.GONE);
+
+
 
         mPlay.setOnClickListener(this);
         mPlay2.setOnClickListener(this);
@@ -87,6 +108,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay7.setOnClickListener(this);
         mHighScore.setOnClickListener(this);
         mExit.setOnClickListener(this);
+        msignOut.setOnClickListener(this);
     }
 
 
@@ -151,7 +173,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 if (info.id==null)return;
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
                 FirebaseDatabase.getInstance().goOnline();
-                DatabaseReference hopperRef = reference.child("info").child(info.id);
+                final DatabaseReference hopperRef = reference.child("info").child(info.id);
 
 
                 ValueEventListener listener=new ValueEventListener() {
@@ -159,8 +181,19 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Info infos=  snapshot.getValue(Info.class);
                         // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
-                        info=infos.withId(info.id);
+                        if (infos==null)
+
+                        {DatabaseReference hopperRef = FirebaseDatabase.getInstance().getReference().child("info");
+
+                        Map<String, Object> hopperUpdates = new HashMap<>();
+                        hopperUpdates.put(info.id, new Info(1,0,9999));
+                        hopperRef.updateChildren(hopperUpdates);
+                         info= new Info(1,0,9999).withId(info.id);
+                        }
+                      else {  info=infos.withId(info.id);}
+
                         IntentUtils.startActivity(MainMenuActivity.this,SchoolGifActivity.class,info.withId(info.id));
+
                     }
 
                     @Override
@@ -181,10 +214,25 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, HighScoreActivity.class));
                 break;
             case R.id.exit:
+
+                finish();
+                break;
+
+                case R.id.signOut:
+                FirebaseAuth.getInstance().signOut();
+
+                 GoogleSignIn.getClient(this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                         .requestIdToken( ShuXin.WEB_ID)
+                         .requestEmail()
+                         .build()).signOut();
+
+
+                startActivity(new Intent(this, MyActivity.class));
                 finish();
                 break;
         }
     }
+
 
     @Override
     protected void onResume() {
@@ -192,4 +240,6 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         super.onResume();
 
     }
+
+
 }

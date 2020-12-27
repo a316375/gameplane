@@ -15,6 +15,9 @@ public class LeiBag extends BaseGifBag {
         super(obj, list);
 
         showMaxtime=10;
+        obj.oH=100;
+        obj.oW=100;
+
 
     }
 

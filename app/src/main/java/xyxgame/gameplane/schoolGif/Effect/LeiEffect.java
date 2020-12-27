@@ -32,7 +32,7 @@ public class LeiEffect extends BaseGifObj {
 
     @Override
     protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-        list=allBitmaps.getlei(obj.oW,obj.oH);
+        list=allBitmaps.getlei(obj.oW/2,obj.oH/2);
 
     }
 
@@ -64,7 +64,7 @@ int i=0;
 
     public boolean open=false;
     public void add_leiBag(BaseGifBag bag, int level){
-        bags.add(new LeiBag(obj,list).moveToXY(bag.x, bag.y-obj.oH/2));
+        bags.add(new LeiBag(obj,list).moveToXY(bag.x+bag.w/10, bag.y-obj.oH/2));
 
     }
 

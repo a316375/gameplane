@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 public class Info implements Serializable   {
     public String id;
-    public   int level;
-    public  int exp;
-    public  int money;
+    public   int level=-1;
+    public  int exp=-1;
+    public  int money=-1;
 
     public Info() {
     }
