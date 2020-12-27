@@ -10,6 +10,15 @@ import xyxgame.gameplane.MyActivity;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
 public class IntentUtils {
+
+    public static void startActivity(Activity context, Class<?> activity){
+
+        Intent intent = new Intent(context, activity);
+         context.startActivity(intent);
+
+
+    }
+
    public static String info_name="info";
     public static void startActivity(Activity context, Class<?> activity, Info info){
 
@@ -21,6 +30,20 @@ public class IntentUtils {
 
     public static Info getInfo(Activity context){
         return  (Info)context.getIntent().getSerializableExtra(info_name);
+    }
+
+
+
+    public static void startActivity(Activity context, Class<?> activity, String str){
+
+        Intent intent = new Intent(context, activity);
+        intent.putExtra("name", str);
+        context.startActivity(intent);
+
+    }
+
+    public static String getStr(Activity contexts){
+        return  (String)contexts.getIntent().getExtras().get("name").toString();
     }
 
 

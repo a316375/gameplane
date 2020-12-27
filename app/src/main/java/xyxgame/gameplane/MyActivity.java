@@ -1,17 +1,22 @@
 package xyxgame.gameplane;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 
-
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -31,6 +36,7 @@ import xyxgame.gameplane.DB.DBBack;
 import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.UIHide;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
 
@@ -44,10 +50,19 @@ public class MyActivity extends Activity  {
     private  String string;
 
 
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UIHide.hideNavKey(this);
         setContentView(R.layout.activity_main); // 别忘了开始的时候载入我们加工好的的SurfaceView
+
 
 
 
@@ -73,6 +88,7 @@ public class MyActivity extends Activity  {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
+
 // in OnClickListener
 
 
@@ -82,6 +98,7 @@ public class MyActivity extends Activity  {
 // Configure Google Sign In
 
                 signIn();
+                startAnima();
 
             }
         });
@@ -89,6 +106,22 @@ public class MyActivity extends Activity  {
 
 
     }
+
+
+
+    private void startAnima(){
+
+        ImageView mImage = findViewById(R.id.imageView);
+        mImage.setVisibility(View.VISIBLE);
+        Glide.with(this).load(R.drawable.fb02).into(mImage);
+
+    }
+
+
+
+
+
+
 
 
     //登陆登出
@@ -154,6 +187,7 @@ public class MyActivity extends Activity  {
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+
     }
 
 

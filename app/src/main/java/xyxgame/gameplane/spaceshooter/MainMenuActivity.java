@@ -1,6 +1,7 @@
 package xyxgame.gameplane.spaceshooter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -43,12 +44,14 @@ import xyxgame.gameplane.school.ASchoolActivity;
 import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.UIAlertDialog;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener  {
 
 
     private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6,mPlay7, mHighScore, mExit,msignOut;
     private Info info;
+    private AlertDialog alertDialog;
     //
 
 
@@ -170,6 +173,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
             case R.id.play7:
              //   startActivity(new Intent(this, SchoolGifActivity.class));
 
+                alertDialog = UIAlertDialog.showDialogA(this);
                 if (info.id==null)return;
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
                 FirebaseDatabase.getInstance().goOnline();
@@ -179,6 +183,8 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 ValueEventListener listener=new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        alertDialog.dismiss();
                         Info infos=  snapshot.getValue(Info.class);
                         // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
                         if (infos==null)
