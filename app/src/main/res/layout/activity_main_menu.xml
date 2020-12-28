@@ -7,11 +7,13 @@
 
     tools:context=".spaceshooter.MainMenuActivity">
 
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg" />
+        android:src="@drawable/bg7_load" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +29,35 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="80dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/logo" />
+
+            android:src="@drawable/title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@mipmap/ad" />
+
+            <Switch
+                android:id="@+id/openAD"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+
+
+                android:button="@drawable/ad_check"
+                android:checked="true"
+                android:thumb="@null"
+                app:track="@null" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -146,6 +176,18 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/showADText"
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#FF1180" />
+
     </LinearLayout>
 
 </RelativeLayout>

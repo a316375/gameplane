@@ -113,7 +113,7 @@ public class MyActivity extends Activity  {
 
         ImageView mImage = findViewById(R.id.imageView);
         mImage.setVisibility(View.VISIBLE);
-        Glide.with(this).load(R.drawable.fb02).into(mImage);
+        Glide.with(this).load(R.drawable.gif_yu6).into(mImage);
 
     }
 

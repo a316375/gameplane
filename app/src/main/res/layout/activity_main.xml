@@ -4,25 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyActivity"
-    android:background="@drawable/bg_login">
-
+    android:background="@drawable/bg7_load"
+    tools:context=".MyActivity">
 
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/button1"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom ="100dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_marginBottom="100dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:visibility="invisible"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/aab" />
+        android:layout_centerInParent="true"
+        android:src="@drawable/aab"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/title" />
 
 </RelativeLayout>

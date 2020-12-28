@@ -19,6 +19,7 @@ import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.DB.DB;
 import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
+import xyxgame.gameplane.schoolGif.Tool.SaveUtils;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class SchoolGifActivity extends BaseActivity {
@@ -37,6 +38,8 @@ public class SchoolGifActivity extends BaseActivity {
 
 
         return schoolGifView;
+
+
     }
 
 

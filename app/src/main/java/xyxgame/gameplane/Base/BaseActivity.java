@@ -30,6 +30,7 @@ import java.util.Map;
 import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.schoolGif.AD.AD;
 import xyxgame.gameplane.schoolGif.AD.BaseAD;
+import xyxgame.gameplane.schoolGif.Tool.SaveUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
@@ -83,7 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         mad=new BaseAD(baseSurfaceVIEW);
 
-        initAD();
+        if (SaveUtils.getShared(getApplicationContext()))initAD();
 
 
     }

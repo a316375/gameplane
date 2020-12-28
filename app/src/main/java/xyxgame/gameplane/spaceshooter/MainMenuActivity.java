@@ -12,6 +12,9 @@ import android.os.Looper;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,8 +46,10 @@ import xyxgame.gameplane.R;
 import xyxgame.gameplane.school.ASchoolActivity;
 import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
+import xyxgame.gameplane.schoolGif.Tool.SaveUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UIAlertDialog;
+import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener  {
 
@@ -99,6 +104,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mPlay4.setVisibility(View.GONE);
         mPlay5.setVisibility(View.GONE);
         mPlay6.setVisibility(View.GONE);
+        mHighScore.setVisibility(View.GONE);
 
 
 
@@ -112,6 +118,30 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mHighScore.setOnClickListener(this);
         mExit.setOnClickListener(this);
         msignOut.setOnClickListener(this);
+
+        final TextView textView = findViewById(R.id.showADText);
+        Switch openad = findViewById(R.id.openAD);
+        openad.setChecked(SaveUtils.getShared(this));
+        if (!SaveUtils.getShared(this))textView.setText(ShuXin.NOAD);
+        UiThead.runInUIThread(new Runnable() {
+            @Override
+            public void run() {
+                textView.setText("");
+            }
+        },2500);
+
+        openad.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveUtils.savaShared(getApplicationContext(),isChecked);
+
+
+                if (isChecked)textView.setText(ShuXin.ThankYou);
+                else textView.setText(ShuXin.NOAD);
+
+
+            }
+        });
     }
 
 
