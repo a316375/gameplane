@@ -1,8 +1,11 @@
 package xyxgame.gameplane.schoolGif.Tool;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -35,7 +38,8 @@ public class UIAlertDialog {
 //                    }
 //                });
         //Creating dialog box
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,R.style.NoActionBar));
         View dialogView = View.inflate(context, R.layout.loading, null);
         ImageView iv_gif = dialogView.findViewById(R.id.iv_gif);
 //        dialogView.findViewById(R.id.tv_loading).setVisibility(View.GONE);
@@ -46,6 +50,10 @@ public class UIAlertDialog {
         alertDialog.setCancelable(false);
          alertDialog.getWindow().setLayout(500,400);
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+
+         UIHide.hideNavKey((Activity) context,alertDialog);
+
+
         return alertDialog;
     }
 

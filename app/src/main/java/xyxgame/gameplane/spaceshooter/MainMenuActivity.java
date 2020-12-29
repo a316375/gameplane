@@ -44,6 +44,7 @@ import xyxgame.gameplane.GL.GLActivity;
 import xyxgame.gameplane.MyActivity;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.school.ASchoolActivity;
+import xyxgame.gameplane.schoolGif.Music.MusicPlayer;
 import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 import xyxgame.gameplane.schoolGif.Tool.SaveUtils;
@@ -57,6 +58,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     private Button mPlay,mPlay2,mPlay3,mPlay4,mPlay5,mPlay6,mPlay7, mHighScore, mExit,msignOut;
     private Info info;
     private AlertDialog alertDialog;
+    private MusicPlayer musicPlayer;
     //
 
 
@@ -72,6 +74,10 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
 
         info = IntentUtils.getInfo(this);
+
+        musicPlayer = new MusicPlayer(this);
+
+
 
 
         hideNavKey(this);
@@ -251,7 +257,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.exit:
 
-                finish();
+               finish();
                 break;
 
                 case R.id.signOut:
@@ -274,8 +280,15 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     protected void onResume() {
         hideNavKey(this);
         super.onResume();
+        musicPlayer.onStart();
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
+          musicPlayer.onPause();
+
+    }
 }

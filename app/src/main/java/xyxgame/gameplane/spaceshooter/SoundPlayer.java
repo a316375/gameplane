@@ -18,11 +18,12 @@ import xyxgame.gameplane.R;
 
 public class SoundPlayer implements Runnable {
 
+    int mBGLoadId;
     private Thread mSoundThread;
     private volatile boolean mIsPlaying;
     private SoundPool mSoundPool;
     private int mExplodeId, mLaserId, mCrashId;
-    private boolean mIsLaserPlaying, mIsExplodePlaying, mIsCrashPlaying;
+    private boolean mIsLaserPlaying, mIsExplodePlaying, mIsCrashPlaying,mIsBGPlaying;
 
     public SoundPlayer(Context context){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -40,6 +41,7 @@ public class SoundPlayer implements Runnable {
         mExplodeId = mSoundPool.load(context, R.raw.rock_explode_1, 1);
         mLaserId = mSoundPool.load(context, R.raw.laser_1, 1);
         mCrashId = mSoundPool.load(context, R.raw.rock_explode_2, 1);
+        mBGLoadId = mSoundPool.load(context, R.raw.bg, 1);
     }
 
     @Override
@@ -58,6 +60,10 @@ public class SoundPlayer implements Runnable {
             if (mIsCrashPlaying){
                 mSoundPool.play(mCrashId, 1, 1, 1, 0, 1);
                 mIsCrashPlaying = false;
+            }
+            if (mIsBGPlaying){
+                mSoundPool.play(mBGLoadId, 1, 1, 1, 0, 1);
+                mIsBGPlaying = false;
             }
         }
     }
