@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
-
+    implementation 'com.snail:antifake:1.4'
 
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
@@ -62,7 +62,6 @@ dependencies {
 
 
     def billing_version = "3.0.0"
-
     implementation "com.android.billingclient:billing:$billing_version"
 
 

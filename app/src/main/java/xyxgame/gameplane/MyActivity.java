@@ -30,6 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.snail.antifake.jni.EmulatorDetectUtil;
 
 import xyxgame.gameplane.DB.DB;
 import xyxgame.gameplane.DB.DBBack;
@@ -65,6 +66,7 @@ public class MyActivity extends Activity  {
 
 
 
+        if(EmulatorDetectUtil.isEmulator(this) )findViewById(R.id.button1).setVisibility(View.GONE);
 
 
 
@@ -156,6 +158,7 @@ public class MyActivity extends Activity  {
         }
         else{
             Log.i("Username", "there is no user");
+           // findViewById(R.id.button1).setVisibility(View.GONE);
         }
 
 

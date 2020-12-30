@@ -38,15 +38,16 @@
 
 ##Glide
 -dontwarn com.bumptech.glide.**
--keep class com.bumptech.glide.**{*;}
+##-keep class com.bumptech.glide.**{*;}
 -keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.AppGlideModule
+##-keep public class * extends com.bumptech.glide.AppGlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
   **[] $VALUES;
   public *;
 }
 
-
+-dontwarn  com.snail.antifake.jni.**
+-keep class  com.snail.antifake.deviceid.AndroidDeviceIMEIUtil.EmulatorDetectUtil$**{*;}
 
 # 混合时不使用大小写混合，混合后的类名为小写
 -dontusemixedcaseclassnames
