@@ -49,6 +49,16 @@
 -dontwarn  com.snail.antifake.jni.**
 -keep class  com.snail.antifake.deviceid.AndroidDeviceIMEIUtil.EmulatorDetectUtil$**{*;}
 
+
+#去除log输出
+-assumenosideeffects class android.util.Log{
+    public static *** v(...);
+    public static *** d(...);
+    public static *** i(...);
+    public static *** w(...);
+    public static *** e(...);
+}
+
 # 混合时不使用大小写混合，混合后的类名为小写
 -dontusemixedcaseclassnames
 
@@ -60,12 +70,7 @@
 
 #-keep class  * extends xyxgame.gameplane.Base.BaseSurfaceVIEW
 
-#去除log
--assumenosideeffects class android.util.Log {
-	public static *** d(...);
-	public static *** v(...);
-	public static *** e(...);
-}
+
 
 
  # Add this global rule
