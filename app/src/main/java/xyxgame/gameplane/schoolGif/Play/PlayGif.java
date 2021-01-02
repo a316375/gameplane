@@ -13,6 +13,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseStopBitmap;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
+import xyxgame.gameplane.schoolGif.Music.MusicUtils;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
@@ -28,6 +29,8 @@ public class PlayGif extends BaseGifObj {
     }
 
 
+
+
     @Override
     public void add_drawCanvas(Canvas canvas) {
         super.add_drawCanvas(canvas);
@@ -37,6 +40,7 @@ public class PlayGif extends BaseGifObj {
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
         gifBag=new PlayBags(obj,list);
+
 
     }
 
@@ -50,11 +54,12 @@ public class PlayGif extends BaseGifObj {
     protected void add_bags_add_new_obj_list() {
         bags.add(new PlayBags(obj,list));
 
+
     }
 
 
 
-//    private int lastX, lastY;//手指的位置
+    //    private int lastX, lastY;//手指的位置
 //    private float pointX, pointY;//飞机的位置
 //    private int pointXFix, pointYFix;//最终飞机的位置
     //按下屏幕触摸事件

@@ -13,13 +13,15 @@ import java.util.Observer;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.Model.State;
+import xyxgame.gameplane.schoolGif.Music.MusicUtils;
+import xyxgame.gameplane.schoolGif.Play.PlayGif;
 
 
 //**继承自这个类需要实现三个方法，这个类可以控制集合的自我清理+自我创建，三个方法都是加载**//
 public abstract class BaseGifObj extends View   {
 
 
-
+    public  MusicUtils music;
 
     public  GifObj obj;
     public  GifAllBitmaps allBitmaps;
@@ -46,6 +48,10 @@ public abstract class BaseGifObj extends View   {
     //**赋予图片**//
     protected abstract void lodebitmaps_list__allBitmaps_get_objow_obj_oh();
 
+    public BaseGifObj setMusic(MusicUtils music){
+        this.music=music;
+        return this;
+    }
 
 
 //    private void creatBags() {
@@ -76,7 +82,7 @@ public abstract class BaseGifObj extends View   {
     public int F5_GIf=5;
     public int Time_wait=50;
 //    int i=0;
-    int t=0;
+    public int t=0;
     private boolean ready=true;
     public void drawCanvas(Canvas canvas) {
 
@@ -91,7 +97,9 @@ public abstract class BaseGifObj extends View   {
         if (bags.size() < obj.max && t % Time_wait == 0) {
 
             add_bags_add_new_obj_list();//集合赋予图片
+            playmusic();
         }
+
         ;
 
         Iterator<BaseGifBag> remove = bags.iterator();
@@ -131,6 +139,9 @@ public abstract class BaseGifObj extends View   {
 
 
     }
+
+     public void playmusic(){};
+
     //**集合赋予图片**//
     protected abstract void add_bags_add_new_obj_list();
 

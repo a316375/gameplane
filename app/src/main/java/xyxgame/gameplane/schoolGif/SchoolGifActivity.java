@@ -60,6 +60,7 @@ public class SchoolGifActivity extends BaseActivity {
         schoolGifView.stopT();
 
 
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         FirebaseDatabase.getInstance().goOnline();
         DatabaseReference hopperRef = reference.child("info");

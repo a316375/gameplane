@@ -36,6 +36,8 @@ import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Model.Exp;
 import xyxgame.gameplane.schoolGif.Model.Level;
+import xyxgame.gameplane.schoolGif.Music.MusicPlayer;
+import xyxgame.gameplane.schoolGif.Music.MusicUtils;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.ShowList.ADList;
 import xyxgame.gameplane.schoolGif.ShowList.UIList;
@@ -77,6 +79,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public   LeiEffect leiEffect;
     public   ADList adList;
 
+    public MusicUtils musicPlayer;
 
 
 
@@ -87,6 +90,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
 
+        musicPlayer=new MusicUtils(getContext());
 
         gifBG=new GifBG(mBaseActivity, R.drawable.bg5);
         fps=new FPS();
@@ -106,7 +110,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
                 .withSize(200,200)
                 .init(level.level, level.backValue().hit,10, level.backValue().life,ShuXin.Jin);
 
-        gifPlay = new PlayGif(play,allBitmaps);
+        gifPlay = (PlayGif) new PlayGif(play,allBitmaps);
 
 
         //具体的类--赋予属性
@@ -119,7 +123,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
         //添加赋予图片资源
-        laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay).withMoney(money).withTime_wait(15);
+        laserGif = new LaserGif(laserObj,allBitmaps).with(gifPlay).withMoney(money).withTime_wait(15).setMusic(musicPlayer);
 
 
         GifObj button01=new GifObj(1, x, y)
@@ -231,8 +235,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
     @Override
     protected void onFrameDrawFinish() {
-        laserTeacher.PKResult();
-        fireTeacher.PKResult();
+        laserTeacher.PKResult();//处理碰撞
+        fireTeacher.PKResult();//火技能的燃烧
     }
 
 
@@ -262,4 +266,9 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     }
 
 
+    @Override
+    public void stopT() {
+        super.stopT();
+        musicPlayer.stop();
+    }
 }

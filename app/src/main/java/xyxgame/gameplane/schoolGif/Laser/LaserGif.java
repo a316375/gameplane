@@ -65,5 +65,12 @@ public class LaserGif extends BaseGifObj {
 
     }
 
+    @Override
+    public void playmusic() {
+        super.playmusic();
+
+        // Log.v("----","---------------");
+         music.playLaser();
+    }
 
 }
