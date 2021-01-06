@@ -59,6 +59,26 @@ public class UIAlertDialog {
 
 
 
+    public static AlertDialog showDialogLayout( Context context,int layout){
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,R.style.NoActionBar));
+        View dialogView = View.inflate(context, layout, null);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+       // alertDialog.setCancelable(false);
+       alertDialog.getWindow().setLayout(800,600);
+       alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+
+        UIHide.hideNavKey((Activity) context,alertDialog);
+
+
+        return alertDialog;
+    }
+
+
 
 
 

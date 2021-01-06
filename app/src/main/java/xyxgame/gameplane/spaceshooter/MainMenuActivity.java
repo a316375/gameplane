@@ -75,7 +75,8 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
         info = IntentUtils.getInfo(this);
 
-        musicPlayer = new MusicPlayer(this);
+        musicPlayer = new MusicPlayer(this,R.raw.bg);
+
 
 
 

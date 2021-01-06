@@ -17,6 +17,7 @@ import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.AdapterStatus;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -25,6 +26,8 @@ import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdCallback;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import xyxgame.gameplane.DB.Info;
@@ -47,6 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public Info info;
     AD mad;
+    private BaseSurfaceVIEW baseSurfaceVIEW;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,22 +81,26 @@ public abstract class BaseActivity extends AppCompatActivity {
         //Log.d("X and Y size", "X = " + point.x + ", Y = " + point.y);
 
 
-        BaseSurfaceVIEW baseSurfaceVIEW = setView();
+        baseSurfaceVIEW = setView();
         setContentView(baseSurfaceVIEW);
 
 
+        init();
 
         mad=new BaseAD(baseSurfaceVIEW);
 
         if (SaveUtils.getShared(getApplicationContext()))initAD();
 
 
+
     }
 
-
+public void init(){}//初始化
 
 
     public void initAD() {
+
+        Log.v("--ad---","AD开始初始化");
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -109,6 +117,21 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+        //----测试广告----//
+        List<String> testDeviceIds = Arrays.asList("53312714-a119-4866-9ffd-812fffbb1611");
+        RequestConfiguration configuration =
+                new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
+        MobileAds.setRequestConfiguration(configuration);
+
+
+
+
+
+
+
 
         rewardedAd = new RewardedAd(this, s
 //                "ca-app-pub-7420611722821229/7438820365"
@@ -129,7 +152,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public void onRewardedAdFailedToLoad(LoadAdError adError) {
                 // Ad failed to load.
-
+                Log.v("--AD AdError",adError.getMessage()+"----");
             }
         };
         rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
@@ -189,6 +212,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 public void onRewardedAdFailedToShow(AdError adError) {
                     // Ad failed to display.
 
+                    Log.v("--AD AdError",adError.getMessage()+"----");
 
 
                 }
@@ -301,9 +325,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
         hideNavKey(this);
         start=true;
         viewResume();
+
+        baseSurfaceVIEW.startDrawThread();
         super.onResume();
 
 
@@ -311,10 +338,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+
         start=false;
         viewPause();
-
         super.onPause();
+
 
     }
 

@@ -19,27 +19,31 @@ public class MusicPlayer  {
 
 
     Context context;
-    private final Uri myUri;
+    private Uri myUri;
     private final MediaPlayer mediaPlayer;
 
-    public MusicPlayer(Context context) {
+
+    public MusicPlayer(Context context,int ID) {
         this.context=context;
         // initialize Uri here
-        myUri = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.bg);
+        myUri = Uri.parse("android.resource://" + context.getPackageName() + "/" + ID);
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
         run();
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                // 当前播放完毕
-                run();
+            public void onCompletion(MediaPlayer mp) {
+                mediaPlayer.start();
+                mediaPlayer.setLooping(true);
+
             }
         });
 
 
-
     }
+
+
 
 
 
@@ -48,9 +52,10 @@ public class MusicPlayer  {
         try {
 
             mediaPlayer.reset();
+
             mediaPlayer.setDataSource(context, myUri);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
+            mediaPlayer.prepareAsync();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

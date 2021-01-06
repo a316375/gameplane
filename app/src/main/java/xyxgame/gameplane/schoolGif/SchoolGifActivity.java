@@ -1,8 +1,5 @@
 package xyxgame.gameplane.schoolGif;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,18 +13,20 @@ import java.util.Map;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
-import xyxgame.gameplane.DB.DB;
+import xyxgame.gameplane.Billing.SchoolGIfBilling;
+import xyxgame.gameplane.Billing.Testbilling;
 import xyxgame.gameplane.DB.Info;
+import xyxgame.gameplane.R;
+import xyxgame.gameplane.schoolGif.Music.MusicPlayer;
+
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
-import xyxgame.gameplane.schoolGif.Tool.SaveUtils;
-import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class SchoolGifActivity extends BaseActivity {
 
     SchoolGifView schoolGifView;
 
 
-
+    MusicPlayer musicUtilsBGM;
 
     @Override
     protected BaseSurfaceVIEW setView() {
@@ -37,17 +36,25 @@ public class SchoolGifActivity extends BaseActivity {
 
 
 
+
         return schoolGifView;
 
 
     }
 
+    @Override
+    public void init() {
+        musicUtilsBGM=new MusicPlayer(this,R.raw.schoolbg)  ;
 
 
+        Testbilling testbilling = new Testbilling(this, new SchoolGIfBilling(schoolGifView));
+//        testbilling.start(Testbilling.vip1);
+    }
 
     @Override
     protected void viewResume() {
         schoolGifView.startT();
+        musicUtilsBGM.onStart();
 
 
     }
@@ -58,6 +65,7 @@ public class SchoolGifActivity extends BaseActivity {
     @Override
     protected void viewPause() {
         schoolGifView.stopT();
+        musicUtilsBGM.onPause();
 
 
 

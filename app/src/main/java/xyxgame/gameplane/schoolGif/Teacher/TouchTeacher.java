@@ -9,12 +9,15 @@ import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.Base.BaseActivity;
+import xyxgame.gameplane.Billing.BillingView;
+import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseStopBitmap;
 import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
+import xyxgame.gameplane.schoolGif.Tool.UIAlertDialog;
 
 public class TouchTeacher extends View {
 
@@ -113,7 +116,7 @@ public class TouchTeacher extends View {
         if (schoolGifView.buttonGif01.bags.size()<=0) return true;
         if (schoolGifView.buttonGif01.bags.get(0).rect.contains((int) event.getX(i),(int) event.getY(i))){
          //   Log.v("-------","------O-nClickListener---obj--" +schoolGifView.buttonGif01.obj.ShuXin);
-
+          new BillingView(schoolGifView).show();
 
 
         }

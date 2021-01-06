@@ -17,6 +17,7 @@ import java.util.Map;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
+import xyxgame.gameplane.Billing.BillingView;
 import xyxgame.gameplane.DB.DB;
 import xyxgame.gameplane.DB.DBBack;
 import xyxgame.gameplane.DB.Info;
@@ -166,6 +167,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         uiList=new UIList(mBaseActivity,this);
 
 
+
         GifObj shui=new GifObj(8, x, y)
                 .withPoint(500,100)
                 .withSize(200,200)
@@ -226,6 +228,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         blastTextGif.draws(canvas);//绘制爆炸
         gifPlay.drawCanvas(canvas);
         fps.draw(canvas);
+
 
 
 
