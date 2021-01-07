@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import xyxgame.gameplane.R;
 
-public class MusicPlayer  {
+public class MusicPlayer implements MediaPlayer.OnPreparedListener  {
 
 
 
@@ -31,14 +31,7 @@ public class MusicPlayer  {
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         run();
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mediaPlayer.start();
-                mediaPlayer.setLooping(true);
 
-            }
-        });
 
 
     }
@@ -54,6 +47,7 @@ public class MusicPlayer  {
             mediaPlayer.reset();
 
             mediaPlayer.setDataSource(context, myUri);
+            mediaPlayer.setOnPreparedListener(this);
             mediaPlayer.prepareAsync();
 
         } catch (IOException e) {
@@ -69,7 +63,13 @@ public class MusicPlayer  {
     }
 
     public void onStart(){
-         mediaPlayer.start();
+
+        run();
     }
 
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
+    }
 }

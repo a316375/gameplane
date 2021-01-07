@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,8 +37,7 @@ import java.util.Map;
 
 import xyxgame.gameplane.Acache.AcacheActivity;
 import xyxgame.gameplane.Base.MVVMActivity;
-import xyxgame.gameplane.DB.DB;
-import xyxgame.gameplane.DB.DBBack;
+
 import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.GIf.GifActivity;
 import xyxgame.gameplane.GL.GLActivity;
@@ -59,6 +59,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     private Info info;
     private AlertDialog alertDialog;
     private MusicPlayer musicPlayer;
+    private FirebaseAuth instance;
     //
 
 
@@ -73,12 +74,13 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_main_menu);
 
 
+        Log.v("-----log----","启动啦");
         info = IntentUtils.getInfo(this);
 
         musicPlayer = new MusicPlayer(this,R.raw.bg);
 
 
-
+        instance = FirebaseAuth.getInstance();
 
 
         hideNavKey(this);
@@ -214,28 +216,30 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 if (info.id==null)return;
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
                 FirebaseDatabase.getInstance().goOnline();
-                final DatabaseReference hopperRef = reference.child("info").child(info.id);
+                final DatabaseReference hopperRef = reference.child(ShuXin.info_qu01).child(instance.getUid());
 
 
                 ValueEventListener listener=new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+
                         alertDialog.dismiss();
                         Info infos=  snapshot.getValue(Info.class);
                         // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
                         if (infos==null)
 
-                        {DatabaseReference hopperRef = FirebaseDatabase.getInstance().getReference().child("info");
+                        {
+                            DatabaseReference hopperRef = FirebaseDatabase.getInstance().getReference().child(ShuXin.info_qu01);
 
                         Map<String, Object> hopperUpdates = new HashMap<>();
-                        hopperUpdates.put(info.id, new Info(1,0,9999));
+                        hopperUpdates.put(FirebaseAuth.getInstance().getUid(), new Info(1,0,9999));
                         hopperRef.updateChildren(hopperUpdates);
-                         info= new Info(1,0,9999).withId(info.id);
+                         info= new Info(1,0,9999).withId(instance.getUid());
                         }
-                      else {  info=infos.withId(info.id);}
+                      else {  info=infos.withId(instance.getUid());}
 
-                        IntentUtils.startActivity(MainMenuActivity.this,SchoolGifActivity.class,info.withId(info.id));
+                        IntentUtils.startActivity(MainMenuActivity.this,SchoolGifActivity.class,info.withId(instance.getUid()));
 
                     }
 
@@ -262,7 +266,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
                 case R.id.signOut:
-                FirebaseAuth.getInstance().signOut();
+                    instance.signOut();
 
                  GoogleSignIn.getClient(this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                          .requestIdToken( ShuXin.WEB_ID)
@@ -282,6 +286,8 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         hideNavKey(this);
         super.onResume();
         musicPlayer.onStart();
+       // Log.v("-----log----","回来啦"+info.id);
+
 
     }
 

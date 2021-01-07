@@ -11,10 +11,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+
 public class DB   {
     String id;
     private  DatabaseReference myRef;
-    DBBack dbBack;
+
     public  FirebaseDatabase database;
     public ValueEventListener listener;
 
@@ -41,7 +43,7 @@ public class DB   {
 
         if (myRef==null||id==null)return;
         //执行查询操作
-        DatabaseReference hopperRef = myRef.child("info").child(id);
+        DatabaseReference hopperRef = myRef.child(ShuXin.info_qu01).child(id);
         listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -76,7 +78,7 @@ public class DB   {
 
     public void writeNewUser(   int a, int b,int c) {
         if (myRef==null)return;
-        DatabaseReference hopperRef = myRef.child("info");
+        DatabaseReference hopperRef = myRef.child(ShuXin.info_qu01);
 
         Map<String, Object> hopperUpdates = new HashMap<>();
         hopperUpdates.put(id, new Info(a,b,c));
@@ -87,7 +89,7 @@ public class DB   {
     public void upNewUser( String userId, int a, int b,int c) {
         if (myRef==null||userId==null)return;
 
-        DatabaseReference hopperRef = myRef.child("info");
+        DatabaseReference hopperRef = myRef.child(ShuXin.info_qu01);
         Map<String, Object> hopperUpdates = new HashMap<>();
         hopperUpdates.put(userId, new Info(a,b,c));
         hopperRef.updateChildren(hopperUpdates);

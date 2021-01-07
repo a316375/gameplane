@@ -5,6 +5,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.Model.Money;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 public class LaserGif extends BaseGifObj {
     PlayGif playGif;
@@ -40,7 +41,7 @@ public class LaserGif extends BaseGifObj {
 
     @Override
     protected void add_bags_add_new_obj_list() {
-
+        if (money.all<=0) return;
 
         //子弹重新定义位置
         if (playGif.bags.size()<=0||money==null)return;
@@ -50,15 +51,19 @@ public class LaserGif extends BaseGifObj {
         }
 
 
+
+
         //各个级别的子弹逻辑
         if (playGif.obj.level<=9) bags.add(new LaserBags(obj, list));
-        if (playGif.obj.level>19&&playGif.obj.level<=29){
+        if (playGif.obj.level>9&&playGif.obj.level<=39){
+
             obj.oX+=25;
             bags.add(new LaserBags(obj, list));
             obj.oX-=50;
             bags.add(new LaserBags(obj, list));
         }
-        if (playGif.obj.level>29&&playGif.obj.level<=999){
+        if (playGif.obj.level>39&&playGif.obj.level<=999999){
+
             bags.add(new LaserBags(obj, list));
             obj.oX+=25;
             bags.add(new LaserBags1(obj, list));
@@ -67,7 +72,7 @@ public class LaserGif extends BaseGifObj {
         }
 
 
-     if (money.all>0) {
+
 
          if (playGif.obj.level>0)money.all-=1;
          if (playGif.obj.level>10)money.all-=1;
@@ -75,7 +80,7 @@ public class LaserGif extends BaseGifObj {
          if (playGif.obj.level>30)money.all-=1;
          if (playGif.obj.level>40)money.all-=1;
 
-     }
+
 
 
 

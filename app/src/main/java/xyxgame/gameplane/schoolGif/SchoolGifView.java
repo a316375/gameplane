@@ -229,6 +229,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
     @Override
     protected void onFrameDrawFinish() {
+        
+
         laserTeacher.PKResult();//处理碰撞
         fireTeacher.PKResult();//火技能的燃烧
     }

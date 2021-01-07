@@ -18,6 +18,7 @@ import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Path.PathMu;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UIPaint;
+import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class ShuiEffect  {
     GifObj obj;
@@ -54,20 +55,29 @@ public class ShuiEffect  {
         }
     }
 
-    public void add(GifObj gifObj,int showTime){
-        list=allBitmaps.getlaser08(gifObj.oW,gifObj.oH);
-        shuiBag = (ShuiBag) new ShuiBag(gifObj,list).withShowTime(showTime);
 
-        shuiBag.life=gifObj.life;
-         shuiBags.add(shuiBag);
-          //这里有问题的,每次碰撞都添加到集合，导致闪烁
-        //闪烁解决：
-        Iterator<ShuiBag> iterator = shuiBags.iterator();
-        while (iterator.hasNext()){
-            ShuiBag next = iterator.next();
-            if (Rect.intersects(next.rect,shuiBag.rect))
-            if (next.time!=0||next.life<=0   ){  shuiBags.remove(next);  return;  }
-        }
+    public void add(final GifObj gifObj, final int showTime){
+
+                list=allBitmaps.getlaser08(gifObj.oW,gifObj.oH);
+                shuiBag = (ShuiBag) new ShuiBag(gifObj,list).withShowTime(showTime);
+
+                shuiBag.life=gifObj.life;
+                shuiBags.add(shuiBag);
+                //这里有问题的,每次碰撞都添加到集合，导致闪烁
+                //闪烁解决：
+
+
+                 Iterator<ShuiBag> iterator = shuiBags.iterator();
+                while (iterator.hasNext()){
+                    ShuiBag next = iterator.next();
+                    if (Rect.intersects(next.rect,shuiBag.rect))
+                        if (next.time!=0||next.life<=0   ){  shuiBags.remove(next);  return;  }
+                }
+
+
+
+
+
 
        // Log.v("--","-----"+shuiBags.size());
     }

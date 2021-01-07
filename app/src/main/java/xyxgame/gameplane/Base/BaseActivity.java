@@ -92,13 +92,32 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (SaveUtils.getShared(getApplicationContext()))initAD();
 
 
+        download_ad();
 
     }
 
+    public  void download_ad(){
+
+
+
+
+    }
 public void init(){}//初始化
 
 
     public void initAD() {
+
+
+
+
+
+
+
+
+
+
+
+
 
         Log.v("--ad---","AD开始初始化");
         MobileAds.initialize(this, new OnInitializationCompleteListener() {

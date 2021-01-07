@@ -19,17 +19,17 @@ public class IntentUtils {
 
     }
 
-   public static String info_name="info";
+
     public static void startActivity(Activity context, Class<?> activity, Info info){
 
         Intent intent = new Intent(context, activity);
-        intent.putExtra(info_name, info);
+        intent.putExtra(ShuXin.info_qu01, info);
         context.startActivity(intent);
 
     }
 
     public static Info getInfo(Activity context){
-        return  (Info)context.getIntent().getSerializableExtra(info_name);
+        return  (Info)context.getIntent().getSerializableExtra(ShuXin.info_qu01);
     }
 
 

@@ -2,6 +2,7 @@ package xyxgame.gameplane.schoolGif;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +21,7 @@ import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.Music.MusicPlayer;
 
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 public class SchoolGifActivity extends BaseActivity {
 
@@ -46,9 +48,6 @@ public class SchoolGifActivity extends BaseActivity {
     public void init() {
         musicUtilsBGM=new MusicPlayer(this,R.raw.schoolbg)  ;
 
-
-        Testbilling testbilling = new Testbilling(this, new SchoolGIfBilling(schoolGifView));
-//        testbilling.start(Testbilling.vip1);
     }
 
     @Override
@@ -71,11 +70,11 @@ public class SchoolGifActivity extends BaseActivity {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         FirebaseDatabase.getInstance().goOnline();
-        DatabaseReference hopperRef = reference.child("info");
+        DatabaseReference hopperRef = reference.child(ShuXin.info_qu01);
 
 
         Map<String, Object> hopperUpdates = new HashMap<>();
-        hopperUpdates.put( info.id, new Info(schoolGifView.level.level,schoolGifView.exp.exp,schoolGifView.money.all));
+        hopperUpdates.put( FirebaseAuth.getInstance().getUid(), new Info(schoolGifView.level.level,schoolGifView.exp.exp,schoolGifView.money.all));
 
         hopperRef.updateChildren(hopperUpdates);
         ValueEventListener listener=new ValueEventListener() {
@@ -83,7 +82,7 @@ public class SchoolGifActivity extends BaseActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Info infos=  snapshot.getValue(Info.class);
                 // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
-                 info=infos.withId(info.id);
+                 info=infos.withId(FirebaseAuth.getInstance().getUid());
             }
 
             @Override

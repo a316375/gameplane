@@ -13,5 +13,7 @@ public class ShuXin {
 
     public static String ThankYou="Thanks for your support";
     public static String NOAD="Ads will not be initialized \nAnd will not receive advertising rewards";
+    public static String info_qu01= "info";
+    public static String db_ADID= "AD";
 
 }

@@ -9,6 +9,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
@@ -16,6 +19,7 @@ public class MusicUtils  {
     private   SoundPool mSoundPool;
     Context context;
     private int mLaserId;
+    private final ExecutorService threadPool;
 
 
     public   MusicUtils (Context context) {
@@ -37,7 +41,7 @@ public class MusicUtils  {
         mLaserId = mSoundPool.load(context, R.raw.laser, 1);
         mSoundPool.setVolume(mLaserId,1,1);
 
-
+        threadPool =Executors.newFixedThreadPool(20);
 
 
     }
@@ -47,9 +51,18 @@ public class MusicUtils  {
 
 
 
+
     public   void playLaser(){
 
-         mSoundPool.play(mLaserId, 0.5f, 0.5f, 1, 0, 1);
+        threadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                  mSoundPool.play(mLaserId, 1f, 1f, 1, 0, 1);
+
+            }
+        });
+
+
 
     }
 
