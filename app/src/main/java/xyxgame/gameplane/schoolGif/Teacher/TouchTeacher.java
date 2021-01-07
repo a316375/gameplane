@@ -182,8 +182,8 @@ public class TouchTeacher extends View {
                         schoolGifView.laserGif. obj.oW=100;
                         schoolGifView.laserGif. obj.oH=150;
                         schoolGifView.laserGif. Time_wait=25;
-                        schoolGifView.laserGif. obj.speed=23;
-                        if (schoolGifView.leiEffect.open)schoolGifView.laserGif. Time_wait=15;
+                        schoolGifView.laserGif. obj.speed=25;
+                        if (schoolGifView.leiEffect.open)schoolGifView.laserGif. Time_wait=20;
                        // schoolGifView.laserGif.obj.max=10;
                         schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit;
                         schoolGifView.laserGif.obj.ShuXin= ShuXin.Shui;
@@ -217,7 +217,7 @@ public class TouchTeacher extends View {
                             schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser04(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);}
                             if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui){
                                 if (schoolGifView.leiEffect.open==false){
-                                    schoolGifView.laserGif. Time_wait=25;}else { schoolGifView.laserGif. Time_wait=15;}
+                                    schoolGifView.laserGif. Time_wait=25;}else { schoolGifView.laserGif. Time_wait=20;}
                             schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser05(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);}
                             if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo){
                                 if (schoolGifView.leiEffect.open==false){

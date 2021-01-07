@@ -1,5 +1,6 @@
 package xyxgame.gameplane.Base;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
@@ -25,6 +26,7 @@ import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdCallback;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.snail.antifake.jni.EmulatorDetectUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,13 +35,15 @@ import java.util.Map;
 import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.schoolGif.AD.AD;
 import xyxgame.gameplane.schoolGif.AD.BaseAD;
+import xyxgame.gameplane.schoolGif.Tool.FirebaseDB;
+import xyxgame.gameplane.schoolGif.Tool.FirebaseDB_I;
 import xyxgame.gameplane.schoolGif.Tool.SaveUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
 //**在此类下新建的sufcaseview 必须去实现start跟stop方法，以此来绑定生命周期**///
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements FirebaseDB_I {
 
     public Point point;
     public boolean start=true;
@@ -55,14 +59,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         hideNavKey(this);
+
         super.onCreate(savedInstanceState);
         //Membuat tampilan menjadi full screen全屏
 
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //
 //        //Membuat tampilan selalu menyala jika activity aktif
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
 
 
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);//不允许截屏
@@ -89,34 +93,26 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         mad=new BaseAD(baseSurfaceVIEW);
 
-        if (SaveUtils.getShared(getApplicationContext()))initAD();
+        if(EmulatorDetectUtil.isEmulator(this) )return;
 
-
-        download_ad();
-
-    }
-
-    public  void download_ad(){
-
+        if (SaveUtils.getShared(getApplicationContext())){
+            FirebaseDB firebaseDB=new FirebaseDB(BaseActivity.this);
+           firebaseDB.Send();}
 
 
 
     }
-public void init(){}//初始化
+
+    @Override
+    public void show_AD(String AD_ID) {
+        s=AD_ID;
+        initAD();
+    }
+
+    public void init(){}//初始化
 
 
     public void initAD() {
-
-
-
-
-
-
-
-
-
-
-
 
 
         Log.v("--ad---","AD开始初始化");
@@ -139,11 +135,11 @@ public void init(){}//初始化
 
 
 
-        //----测试广告----//
-        List<String> testDeviceIds = Arrays.asList("53312714-a119-4866-9ffd-812fffbb1611");
-        RequestConfiguration configuration =
-                new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
-        MobileAds.setRequestConfiguration(configuration);
+//        //----测试广告----//
+//        List<String> testDeviceIds = Arrays.asList("53312714-a119-4866-9ffd-812fffbb1611");
+//        RequestConfiguration configuration =
+//                new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
+//        MobileAds.setRequestConfiguration(configuration);
 
 
 
@@ -330,15 +326,27 @@ public void init(){}//初始化
 
         ;//隐藏底部
     public static void hideNavKey(Context context) {
+
+//        ((Activity) context).getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        ((Activity) context).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        ((Activity) context).getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) {
             View v = ((Activity) context).getWindow().getDecorView();
             v.setSystemUiVisibility(View.GONE);
         } else if (Build.VERSION.SDK_INT >= 19) {
             //for new api versions.
             View decorView = ((Activity) context).getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            int uiOptions =
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY|
+            View.SYSTEM_UI_FLAG_IMMERSIVE | View.SYSTEM_UI_FLAG_FULLSCREEN |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+//            int uiOptions =View.SYSTEM_UI_FLAG_FULLSCREEN
+//                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
             decorView.setSystemUiVisibility(uiOptions);
+
+
         }
     }
 

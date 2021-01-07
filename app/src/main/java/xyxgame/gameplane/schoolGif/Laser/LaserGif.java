@@ -62,13 +62,27 @@ public class LaserGif extends BaseGifObj {
             obj.oX-=50;
             bags.add(new LaserBags(obj, list));
         }
-        if (playGif.obj.level>39&&playGif.obj.level<=999999){
+        if (playGif.obj.level>39&&playGif.obj.level<=99){
 
             bags.add(new LaserBags(obj, list));
             obj.oX+=25;
             bags.add(new LaserBags1(obj, list));
             obj.oX-=50;
             bags.add(new LaserBags2(obj, list));
+        }
+        if (playGif.obj.level>99&&playGif.obj.level<=999999){
+            bags.add(new LaserBags(obj, list));
+            obj.oX+=30;
+            bags.add(new LaserBags1(obj, list));
+           // bags.add(new LaserBags(obj, list));
+            obj.oX+=30;
+            bags.add(new LaserBags(obj, list));
+            obj.oX-=30*3;
+            bags.add(new LaserBags2(obj, list));
+           // bags.add(new LaserBags(obj, list));
+            obj.oX-=30;
+            bags.add(new LaserBags(obj, list));
+
         }
 
 
