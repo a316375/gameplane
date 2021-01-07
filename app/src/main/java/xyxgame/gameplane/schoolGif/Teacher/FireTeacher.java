@@ -28,7 +28,12 @@ public class FireTeacher extends  Teacher {
     public void PKResult() {
 
 
-     if (time% (ShuXin.Speed*20) ==0)  PK(schoolGifView.xiong);
+     if (time% (ShuXin.Speed*20) ==0) {
+//         PK(schoolGifView.xiong);
+         PK(schoolGifView.gk01.xiongGifs);
+         PK(schoolGifView.gk01.xiongGifs1);
+         PK(schoolGifView.gk01.xiongGifs2);
+     }
 
         time++;
         if (time>=500)time=0;
@@ -48,7 +53,7 @@ public class FireTeacher extends  Teacher {
                 if (next.rect.intersect(objbag.rect)){
 
                     objbag.life-=next.hit;
-                   schoolGifView.blastTextGif.addBag(next.hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
+                    schoolGifView.blastTextGif.addBag(next.hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
 
                 }
             }

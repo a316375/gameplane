@@ -32,6 +32,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
 
 
+
     public BaseGifBag addState(BaseState baseState){
         this.baseState=baseState;
         return this;

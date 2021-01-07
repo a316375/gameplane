@@ -2,42 +2,24 @@ package xyxgame.gameplane.schoolGif;
 
 import android.graphics.Canvas;
 import android.view.MotionEvent;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
-import xyxgame.gameplane.Billing.BillingView;
-import xyxgame.gameplane.DB.DB;
-import xyxgame.gameplane.DB.DBBack;
-import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseBossGif;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Blast.BlastTextGif;
 import xyxgame.gameplane.schoolGif.Effect.FireEffect;
 import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
-import xyxgame.gameplane.schoolGif.Effect.ShuiBag;
 import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
-import xyxgame.gameplane.schoolGif.Enemy.XiongGIf;
+import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
+import xyxgame.gameplane.schoolGif.GKa.Gk01;
 import xyxgame.gameplane.schoolGif.Model.Exp;
 import xyxgame.gameplane.schoolGif.Model.Level;
-import xyxgame.gameplane.schoolGif.Music.MusicPlayer;
 import xyxgame.gameplane.schoolGif.Music.MusicUtils;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.ShowList.ADList;
@@ -60,7 +42,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public BaseGifObj laserGif;
     public  ButtonGif buttonGif01;
      public Button2Gif buttonGif02;
-    public  XiongGIf xiong;
+//    public XiongGif xiong;
     public  PlayGif gifPlay;
     public  TouchTeacher touchTeacher;
     public  int x;
@@ -81,7 +63,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public   ADList adList;
 
     public MusicUtils musicPlayer;
-
+    public final Gk01 gk01;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -148,14 +130,14 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 //        panGif = new PanGif(pano,allBitmaps);
 //        panGif.F5_GIf=15;
 
-        GifObj xiongo=new GifObj(2, x, y)
-                .withPoint(500,0)
-                .withSize(200,200)
-                .init(level.level, level.backEnemyValue().hit,10, new Level(100).backEnemyValue().life,ShuXin.Huo)
-               // .setShuXin(ShuXin.Huo)
-                .showRect(false);
-
-        xiong = new XiongGIf(xiongo,allBitmaps);
+//        GifObj xiongo=new GifObj(2, x, y)
+//                .withPoint(500,0)
+//                .withSize(200,200)
+//                .init(level.level, level.backEnemyValue().hit,10, new Level(100).backEnemyValue().life,ShuXin.Huo)
+//               // .setShuXin(ShuXin.Huo)
+//                .showRect(false);
+//
+//        xiong = new XiongGif(xiongo,allBitmaps);
 
 
 
@@ -190,6 +172,9 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
         adList = new ADList(mBaseActivity,this);
 
+        gk01 = new Gk01(this);
+
+
     }
 
 
@@ -202,14 +187,20 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
         gifBG.drawCanvas(canvas);
+
+
+        fireEffect.drawCanvas(canvas);
+
+//        xiong.drawCanvas(canvas);
+        gk01.drawCanvas(canvas);
+
+
         uiList.drawCanvas(canvas);
         //展示列表
         if (showlistA) listB.draws(canvas);
          adList.drawCanvas(canvas);
 
-        fireEffect.drawCanvas(canvas);
 
-        xiong.drawCanvas(canvas);
 
 
         buttonGif01.drawCanvas(canvas);

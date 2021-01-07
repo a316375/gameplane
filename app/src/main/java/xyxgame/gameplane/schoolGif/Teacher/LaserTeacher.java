@@ -32,6 +32,8 @@ public class LaserTeacher {
 
     public void  addexp(){
         schoolGifView.exp.exp+=50;
+
+        //升级攻击力
         if (schoolGifView.exp.exp>schoolGifView.level.backValue().exp-1){
             schoolGifView.exp.exp=0;
             schoolGifView.level.level++;
@@ -82,12 +84,12 @@ public class LaserTeacher {
 
                      schoolGifView.shuiEffect.remove_effcet(enemy_bag,ShuXin.Mu);
                      enemy_bag.path=new PathMu(enemy_bag);
-                    enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);}
+                 if (enemy_bag.baseState!=null)  enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);}
 
                     if (laser_bag.shuxin==ShuXin.Shui){
                         PathShui path = new PathShui(enemy_bag);
                         enemy_bag.path= path;
-                        enemy_bag.baseState.changState(State.Stop,enemy_bag,schoolGifView.allBitmaps);
+                   if (enemy_bag.baseState!=null) enemy_bag.baseState.changState(State.Stop,enemy_bag,schoolGifView.allBitmaps);
                         GifObj gifObj = new GifObj() .withPoint(enemy_bag.x, enemy_bag.y + enemy_bag.h / 3)  .withSize(enemy_bag.w, enemy_bag.h / 2) ;
                          gifObj.life=enemy_bag.life;
 
@@ -101,11 +103,17 @@ public class LaserTeacher {
                     }
 
 
+                    //敌人被击败
                     if (enemy_bag.life<=0)  {
 
+
+                        //移除水的特效
                         schoolGifView.shuiEffect.remove_effcet(enemy_bag,ShuXin.Null);
 
+                        //移除敌人
                         baseGifBag.bags.remove(enemy_bag);
+                        //奖励经验
+                        schoolGifView.exp.exp+= schoolGifView.level.level*5;
 
 
                     }
@@ -114,7 +122,10 @@ public class LaserTeacher {
         }
     }
     public void PKResult(){
-        pk(schoolGifView.xiong);
+//        pk(schoolGifView.xiong);
+        pk(schoolGifView.gk01.xiongGifs);
+        pk(schoolGifView.gk01.xiongGifs1);
+        pk(schoolGifView.gk01.xiongGifs2);
 
 
 

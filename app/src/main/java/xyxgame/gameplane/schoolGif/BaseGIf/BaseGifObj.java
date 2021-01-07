@@ -32,6 +32,9 @@ public abstract class BaseGifObj extends View   {
     public  CopyOnWriteArrayList<BaseGifBag> bags;
     private Paint paint;
 
+
+
+
     public BaseGifObj(GifObj obj, GifAllBitmaps allBitmaps) {
         super(allBitmaps.activity);
         this.obj = obj;

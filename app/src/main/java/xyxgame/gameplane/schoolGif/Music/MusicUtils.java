@@ -33,6 +33,7 @@ public class MusicUtils  {
               mSoundPool = new SoundPool(20, AudioManager.STREAM_MUSIC, 0);
         }
 
+//        mLaserId = mSoundPool.load(context, R.raw.laser, 1);
         mLaserId = mSoundPool.load(context, R.raw.laser, 1);
         mSoundPool.setVolume(mLaserId,1,1);
 

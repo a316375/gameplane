@@ -25,7 +25,7 @@ public class MusicUtilsBGM {
         this.context=context;
         uris = new ArrayList<>();
 
-        uris.add(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.schoolbg));
+        uris.add(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.schoolbg2));
 
 
         mediaPlayers = new ArrayList<>();
