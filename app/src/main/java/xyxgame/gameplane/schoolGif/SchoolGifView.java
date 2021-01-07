@@ -97,7 +97,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
         //具体的类--赋予属性
-        laserObj =new GifObj(5, x, y)
+        laserObj =new GifObj(60, x, y)
                 .withSize(50,100)
                 .withPoint(x /2, y)
                 .init(1,play.hit*5,30,100,ShuXin.Jin).showRect(false)

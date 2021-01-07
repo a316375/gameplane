@@ -50,11 +50,25 @@ public class LaserGif extends BaseGifObj {
         }
 
 
-
+        //各个级别的子弹逻辑
+        if (playGif.obj.level<=9) bags.add(new LaserBags(obj, list));
+        if (playGif.obj.level>19&&playGif.obj.level<=29){
+            obj.oX+=25;
+            bags.add(new LaserBags(obj, list));
+            obj.oX-=50;
+            bags.add(new LaserBags(obj, list));
+        }
+        if (playGif.obj.level>29&&playGif.obj.level<=999){
+            bags.add(new LaserBags(obj, list));
+            obj.oX+=25;
+            bags.add(new LaserBags1(obj, list));
+            obj.oX-=50;
+            bags.add(new LaserBags2(obj, list));
+        }
 
 
      if (money.all>0) {
-         bags.add(new LaserBags(obj, list));
+
          if (playGif.obj.level>0)money.all-=1;
          if (playGif.obj.level>10)money.all-=1;
          if (playGif.obj.level>20)money.all-=1;
@@ -62,6 +76,10 @@ public class LaserGif extends BaseGifObj {
          if (playGif.obj.level>40)money.all-=1;
 
      }
+
+
+
+
 
     }
 

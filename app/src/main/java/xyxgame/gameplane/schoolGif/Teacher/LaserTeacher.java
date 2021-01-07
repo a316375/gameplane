@@ -87,7 +87,7 @@ public class LaserTeacher {
                  if (enemy_bag.baseState!=null)  enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);}
 
                     if (laser_bag.shuxin==ShuXin.Shui){
-                        PathShui path = new PathShui(enemy_bag);
+                        PathShui path = new PathShui(enemy_bag,100+schoolGifView.level.level*3);
                         enemy_bag.path= path;
                    if (enemy_bag.baseState!=null) enemy_bag.baseState.changState(State.Stop,enemy_bag,schoolGifView.allBitmaps);
                         GifObj gifObj = new GifObj() .withPoint(enemy_bag.x, enemy_bag.y + enemy_bag.h / 3)  .withSize(enemy_bag.w, enemy_bag.h / 2) ;

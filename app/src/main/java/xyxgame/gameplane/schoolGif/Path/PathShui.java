@@ -6,8 +6,9 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 public class PathShui implements BaseGifBagPath {
     BaseGifBag baseGifBag;
 
-    public  int showTime=200;
-    public PathShui(BaseGifBag baseGifBag) {
+    public  int showTime;
+    public PathShui(BaseGifBag baseGifBag,int showTime) {
+        this.showTime=showTime;
         this.baseGifBag = baseGifBag;
     }
 

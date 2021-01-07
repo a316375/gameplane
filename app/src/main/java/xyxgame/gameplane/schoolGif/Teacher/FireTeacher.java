@@ -28,7 +28,7 @@ public class FireTeacher extends  Teacher {
     public void PKResult() {
 
 
-     if (time% (ShuXin.Speed*20) ==0) {
+     if (time% (ShuXin.Speed*15) ==0) {
 //         PK(schoolGifView.xiong);
          PK(schoolGifView.gk01.xiongGifs);
          PK(schoolGifView.gk01.xiongGifs1);
@@ -36,7 +36,7 @@ public class FireTeacher extends  Teacher {
      }
 
         time++;
-        if (time>=500)time=0;
+        if (time>=schoolGifView.level.level*2+500)time=0;
 
 
     }
