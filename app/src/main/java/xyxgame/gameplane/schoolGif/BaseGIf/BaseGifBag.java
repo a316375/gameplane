@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.Effect.FireEffect;
+import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
@@ -16,6 +17,9 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public int x,y,w,h;
     public  CopyOnWriteArrayList<Bitmap> list;
     public  CopyOnWriteArrayList<Bitmap> list_copy;//备份一下数组
+
+
+
 
     public  GifObj obj;
     public Rect rect;
@@ -30,6 +34,11 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public int shuxin ;
     public BaseState baseState;
 
+
+    public ShuiEffect shuiEffect;
+    public void setShuiEffect(ShuiEffect shuiEffect) {
+        this.shuiEffect = shuiEffect;
+    }
 
 
 

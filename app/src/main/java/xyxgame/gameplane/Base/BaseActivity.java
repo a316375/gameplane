@@ -26,6 +26,7 @@ import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdCallback;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.gyf.immersionbar.ImmersionBar;
 import com.snail.antifake.jni.EmulatorDetectUtil;
 
 import java.util.Arrays;
@@ -59,7 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         hideNavKey(this);
-
+        ImmersionBar.with(this).init();
         super.onCreate(savedInstanceState);
         //Membuat tampilan menjadi full screen全屏
 
@@ -354,6 +355,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
     protected void onResume() {
 
         hideNavKey(this);
+
         start=true;
         viewResume();
 

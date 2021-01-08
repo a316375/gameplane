@@ -2,6 +2,7 @@ package xyxgame.gameplane.schoolGif.Enemy;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
+import xyxgame.gameplane.schoolGif.Effect.Shui;
 
 public class XiongGif2 extends XiongGif {
     public XiongGif2(GifObj obj, GifAllBitmaps allBitmaps) {
@@ -15,7 +16,9 @@ public class XiongGif2 extends XiongGif {
 
     @Override
     protected void add_bags_add_new_obj_list() {
-        bags.add(new XiongBags2(obj,list).addState(new xiongState()));
+        XiongBags xiongBags = new XiongBags2(obj, list);
+        xiongBags. setShuiEffect(new Shui(allBitmaps));
+        bags.add(xiongBags.addState(new xiongState()));
 
     }
 }

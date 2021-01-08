@@ -69,6 +69,9 @@ public class FireEffect extends BaseGifObj {
     }
 
     public void add(BaseGifBag bag,int level) {
+
+        if (bags.size()>150)return;
+
         bags.add(new FireBag(obj,list).moveToXY(bag.x-10,bag.y).withHit(new Level(level).backValue().hit));
         if (level>15)  bags.add(new FireBag(obj,list).moveToXY(bag.x-10-90-new Random().nextInt(50),bag.y-90).withHit(new Level(level).backValue().hit));
         if (level>30)  bags.add(new FireBag(obj,list).moveToXY(bag.x-10+90+new Random().nextInt(50),bag.y-90).withHit(new Level(level).backValue().hit));

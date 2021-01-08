@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
+        android:resizeableActivity="true"
         android:theme="@style/NoActionBar">
 
 
@@ -32,7 +32,14 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7420611722821229~1188288542"/>
 
-
+        <!-- 适配全面屏 Android O vivo&oppo -->
+        <meta-data    android:name="android.max_aspect"    android:value="2.4" />
+        <!-- 适配刘海屏、水滴屏 Android O 小米 -->
+        <meta-data    android:name="notch.config"    android:value="portrait|landscape" />
+        <!-- 适配刘海屏、水滴屏 Android O 华为 -->
+        <meta-data    android:name="android.notch_support"    android:value="true" />
+        <!-- 适配刘海屏、水滴屏 Android P -->
+        <meta-data    android:name="android.vendor.full_screen"    android:value="true" />
 
         <activity android:name=".MyActivity"
             android:screenOrientation="nosensor">
@@ -65,6 +72,7 @@
             android:screenOrientation="nosensor"
             />
         <activity android:name=".schoolGif.SchoolGifActivity"
+
             android:screenOrientation="nosensor"
             />
     </application>

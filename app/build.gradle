@@ -12,7 +12,9 @@ android {
     }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
     defaultConfig {
+
         multiDexEnabled true
         applicationId "xyxgame.gameplane"
         minSdkVersion 16
@@ -20,6 +22,8 @@ android {
         versionCode 5
         versionName "1.05"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
     buildTypes {
         release {
@@ -66,7 +70,8 @@ dependencies {
     implementation "com.android.billingclient:billing:$billing_version"
 
 
-
+// 基础依赖包，必须要依赖
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
 
 
 

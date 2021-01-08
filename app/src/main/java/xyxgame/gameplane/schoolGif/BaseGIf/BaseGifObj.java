@@ -12,6 +12,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import xyxgame.gameplane.schoolGif.Effect.ShuiBag;
+import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Music.MusicUtils;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
@@ -35,11 +37,15 @@ public abstract class BaseGifObj extends View   {
 
 
 
+
+
     public BaseGifObj(GifObj obj, GifAllBitmaps allBitmaps) {
         super(allBitmaps.activity);
         this.obj = obj;
         this.allBitmaps = allBitmaps;
         bags=new CopyOnWriteArrayList<>();
+
+
 
         lodebitmaps_list__allBitmaps_get_objow_obj_oh();//赋予图片
         creatBags_gifbag_newxx_obj_list();//赋予路径
@@ -70,6 +76,9 @@ public abstract class BaseGifObj extends View   {
 //        bags.add(new LayerBags(obj, list) );
 //    }
 
+
+
+
 //以下是run方法
 
     public BaseGifObj withTime_wait(int Time_wait){
@@ -90,6 +99,8 @@ public abstract class BaseGifObj extends View   {
     public void drawCanvas(Canvas canvas) {
 
         add_drawCanvas(canvas);//补充绘制其他内容
+
+
         if (gifBag == null) return;
 
 
@@ -131,9 +142,14 @@ public abstract class BaseGifObj extends View   {
             next.i= next.i % next.list.size();
             next.setRect(next.x , next.y, next.x + next.w, next.y + next.h);
 
+
             canvas.drawBitmap(next.list.get(next.i), next.x, next.y, null);
             if (next.obj.showRect) canvas.drawRect(next.rect, paint);
           if (next.path!=null) next.path.drawpath();////这个是分离代码
+
+            if (next.shuiEffect!=null)next.shuiEffect.draw(canvas);
+
+
             if (t % F5_GIf == 0) next.i++;
         }
 
@@ -141,9 +157,13 @@ public abstract class BaseGifObj extends View   {
        // if (t % F5_GIf == 0) i++;
 
 
+
     }
 
-     public void playmusic(){};
+;
+
+
+    public void playmusic(){};
 
     //**集合赋予图片**//
     protected abstract void add_bags_add_new_obj_list();
