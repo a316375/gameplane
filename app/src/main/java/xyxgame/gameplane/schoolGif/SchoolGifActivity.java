@@ -75,7 +75,8 @@ public class SchoolGifActivity extends BaseActivity {
 
 
         Map<String, Object> hopperUpdates = new HashMap<>();
-        hopperUpdates.put( FirebaseAuth.getInstance().getUid(), new Info(schoolGifView.level.level,schoolGifView.exp.exp,schoolGifView.money.all));
+        hopperUpdates.put( FirebaseAuth.getInstance().getUid(),
+                new Info(schoolGifView.level.level,schoolGifView.exp.exp,schoolGifView.money.all));
 
         hopperRef.updateChildren(hopperUpdates);
         ValueEventListener listener=new ValueEventListener() {

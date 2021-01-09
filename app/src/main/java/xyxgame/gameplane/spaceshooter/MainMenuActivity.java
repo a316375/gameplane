@@ -60,6 +60,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     private AlertDialog alertDialog;
     private MusicPlayer musicPlayer;
     private FirebaseAuth instance;
+    private Info value;
     //
 
 
@@ -78,7 +79,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         info = IntentUtils.getInfo(this);
 
         musicPlayer = new MusicPlayer(this,R.raw.bg);
-
+        value = new Info(1, 0, 99999);
 
         instance = FirebaseAuth.getInstance();
 
@@ -233,9 +234,10 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                             DatabaseReference hopperRef = FirebaseDatabase.getInstance().getReference().child(ShuXin.info_qu01);
 
                         Map<String, Object> hopperUpdates = new HashMap<>();
-                        hopperUpdates.put(FirebaseAuth.getInstance().getUid(), new Info(1,0,9999));
+
+                            hopperUpdates.put(FirebaseAuth.getInstance().getUid(), value);
                         hopperRef.updateChildren(hopperUpdates);
-                         info= new Info(1,0,9999).withId(instance.getUid());
+                         info= value.withId(instance.getUid());
                         }
                       else {  info=infos.withId(instance.getUid());}
 
