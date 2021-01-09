@@ -1,5 +1,7 @@
 package xyxgame.gameplane.schoolGif.Enemy;
 
+import android.graphics.Rect;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
@@ -15,7 +17,8 @@ public class XiongBoss extends XiongGif{
 
 
         if (full>=obj.max){go=false;
-            resetWaitTime(10000);}
+//            resetWaitTime(10000);//不要出现了
+        }
         else add(obj.maXx/2-obj.oW/2);
 
     }
@@ -23,10 +26,15 @@ public class XiongBoss extends XiongGif{
     private void add(int distance_X){
 
         obj.oX+=distance_X;
-        XiongBags xiongBags = new XiongBags(obj, list);
+        XiongBags xiongBags = new XiongBossBags(obj, list);
         xiongBags.setShuiEffect(new Shui(list_shui));
         xiongBags.addState(new xiongState());
         bags.add(xiongBags);
         obj.oX-=distance_X;
+    }
+
+    @Override
+    public void initgo() {
+        go=false;
     }
 }

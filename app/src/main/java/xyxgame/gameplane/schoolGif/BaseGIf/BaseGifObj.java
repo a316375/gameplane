@@ -41,6 +41,8 @@ public abstract class BaseGifObj extends View   {
 
     public boolean go=true;
 
+    public boolean exit=false;//已经退出逻辑
+
     public BaseGifObj(GifObj obj, GifAllBitmaps allBitmaps) {
         super(allBitmaps.activity);
         this.obj = obj;
@@ -106,13 +108,15 @@ public abstract class BaseGifObj extends View   {
 
         if (gifBag == null) return;
 
+        
+        initgo();//初始化开关
 
 
         t++;
         if (t > 6000) t = 1;
        if (bags.size()==0&&ready) {add_bags_add_new_obj_list();ready=false;}//集合赋予图片
 
-        if (bags.size() < obj.max && t % Time_wait == 0  ) {
+        if (bags.size() < obj.max && t % Time_wait == 0  && exit==false) {
 
             if (go)  {
                 add_bags_add_new_obj_list();//集合赋予图片
@@ -126,6 +130,7 @@ public abstract class BaseGifObj extends View   {
 
         ;
 
+        if (bags.size()==0)return;
         Iterator<BaseGifBag> remove = bags.iterator();
         while (remove.hasNext()) {
             BaseGifBag next = remove.next();
@@ -170,7 +175,9 @@ public abstract class BaseGifObj extends View   {
 
     }
 
-;
+    public void initgo() {  }
+
+    ;
 
 
     public void playmusic(){};

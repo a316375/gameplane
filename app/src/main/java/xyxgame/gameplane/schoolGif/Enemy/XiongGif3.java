@@ -22,7 +22,7 @@ public class XiongGif3 extends XiongGif {
     protected void add_bags_add_new_obj_list() {
 
         if (full>=obj.max){go=false;
-            resetWaitTime(10000);}
+            resetWaitTime(5000);}
       else   UiThead.runInUIThread(new Runnable() {
             @Override
             public void run() {

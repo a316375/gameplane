@@ -9,6 +9,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
+import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Path.PathMu;
 import xyxgame.gameplane.schoolGif.Path.PathShui;
@@ -50,6 +51,9 @@ public class LaserTeacher {
 
     }
 
+
+
+
     private void pk(  BaseGifObj baseGifBag){
         if (baseGifBag==null||baseGifBag.bags==null)return;
 
@@ -75,7 +79,12 @@ public class LaserTeacher {
                     int add=new Random().nextInt(laser_bag.hit/10)+lei;
                    if (laser_bag.shuxin!=ShuXin.Huo)     schoolGifView.blastTextGif.addBag(laser_bag.hit+add,laser_bag.rect.left,laser_bag.rect.top);
                     laserGif.bags.remove(laser_bag);
-                    if (laser_bag.shuxin!=ShuXin.Huo)   enemy_bag.life-=laser_bag.hit+add;
+
+                    if (laser_bag.shuxin!=ShuXin.Huo)  {
+
+                        life_enemy(enemy_bag,laser_bag,add);//结算伤害
+
+                          }
 
                     addexp();
 
@@ -123,6 +132,8 @@ public class LaserTeacher {
                             //奖励经验
                             schoolGifView.exp.exp+= schoolGifView.level.level*5;
 
+                            if (enemy_bag.shuxin==ShuXin.Boss)schoolGifView.money.all+=5000;//奖励金币boss
+
 
 
 
@@ -131,11 +142,26 @@ public class LaserTeacher {
             }
         }
     }
+
+    private void life_enemy(BaseGifBag enemy_bag,BaseGifBag laser_bag,int add) {
+      if (enemy_bag.shuxin==ShuXin.Boss) {
+        laser_bag.hit=new Level(schoolGifView.level.level).backValue().hit;
+         // laser_bag.hit=10;
+          add=0;
+          schoolGifView.laserGif.obj.hit= laser_bag.hit;
+      }
+
+
+
+        enemy_bag.life-=laser_bag.hit+add;//结算伤害
+    }
+
     public void PKResult(){
 //        pk(schoolGifView.xiong);
         pk(schoolGifView.gk01.xiongGifs);
         pk(schoolGifView.gk01.xiongGifs1);
         pk(schoolGifView.gk01.xiongGifs2);
+        pk(schoolGifView.gk01.xiongBoss);
 
 
 
