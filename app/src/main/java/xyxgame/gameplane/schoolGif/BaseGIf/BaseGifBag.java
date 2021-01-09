@@ -42,9 +42,9 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
 
 
-    public BaseGifBag addState(BaseState baseState){
+    public void addState(BaseState baseState){
         this.baseState=baseState;
-        return this;
+
     }
     public BaseGifBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         path=this;

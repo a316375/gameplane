@@ -28,7 +28,7 @@ public class XiongBags extends BaseGifBag implements BaseGifBagPath {
     @Override
     public void drawpath() {
 
-        y+= ShuXin.Speed*2;
+        y+= obj.speed;
     }
 
 

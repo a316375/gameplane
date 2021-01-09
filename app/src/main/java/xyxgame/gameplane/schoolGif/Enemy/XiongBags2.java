@@ -14,7 +14,7 @@ public class XiongBags2 extends XiongBags {
     @Override
     public void drawpath() {
 
-             y+=2;
-             x+=2;
+             y+=obj.speed;
+            // x+=2;
     }
 }

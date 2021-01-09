@@ -1,23 +1,17 @@
 package xyxgame.gameplane.schoolGif.Teacher;
 
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
 
-import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Billing.BillingView;
-import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseStopBitmap;
 import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
-import xyxgame.gameplane.schoolGif.Tool.UIAlertDialog;
 
 public class TouchTeacher extends View {
 
@@ -32,6 +26,8 @@ public class TouchTeacher extends View {
     private int lastX, lastY;//手指的位置
     private float pointX, pointY;//飞机的位置
     private int pointXFix, pointYFix;//最终飞机的位置
+
+    private int shui_waitA =20, shui_waitB =10;
 
 
     @Override
@@ -181,9 +177,9 @@ public class TouchTeacher extends View {
                         schoolGifView.laserGif.F5_GIf=5;
                         schoolGifView.laserGif. obj.oW=100;
                         schoolGifView.laserGif. obj.oH=150;
-                        schoolGifView.laserGif. Time_wait=25;
+                        schoolGifView.laserGif. Time_wait= shui_waitA;
                         schoolGifView.laserGif. obj.speed=25;
-                        if (schoolGifView.leiEffect.open)schoolGifView.laserGif. Time_wait=20;
+                        if (schoolGifView.leiEffect.open)schoolGifView.laserGif. Time_wait= shui_waitB;
                        // schoolGifView.laserGif.obj.max=10;
                         schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit;
                         schoolGifView.laserGif.obj.ShuXin= ShuXin.Shui;
@@ -217,7 +213,7 @@ public class TouchTeacher extends View {
                             schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser04(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);}
                             if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui){
                                 if (schoolGifView.leiEffect.open==false){
-                                    schoolGifView.laserGif. Time_wait=25;}else { schoolGifView.laserGif. Time_wait=20;}
+                                    schoolGifView.laserGif. Time_wait=shui_waitA;}else { schoolGifView.laserGif. Time_wait=shui_waitB;}
                             schoolGifView.laserGif.list=schoolGifView.laserGif. allBitmaps.getlaser05(schoolGifView.laserGif. obj.oW,schoolGifView.laserGif. obj.oH);}
                             if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo){
                                 if (schoolGifView.leiEffect.open==false){

@@ -17,6 +17,7 @@ import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Music.MusicUtils;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
+import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
 //**继承自这个类需要实现三个方法，这个类可以控制集合的自我清理+自我创建，三个方法都是加载**//
@@ -36,14 +37,16 @@ public abstract class BaseGifObj extends View   {
 
 
 
+    public CopyOnWriteArrayList<Bitmap> list_shui;
 
-
+    public boolean go=true;
 
     public BaseGifObj(GifObj obj, GifAllBitmaps allBitmaps) {
         super(allBitmaps.activity);
         this.obj = obj;
         this.allBitmaps = allBitmaps;
         bags=new CopyOnWriteArrayList<>();
+        list_shui=list=allBitmaps.getlaser08(100,50);
 
 
 
@@ -108,11 +111,18 @@ public abstract class BaseGifObj extends View   {
         t++;
         if (t > 6000) t = 1;
        if (bags.size()==0&&ready) {add_bags_add_new_obj_list();ready=false;}//集合赋予图片
-        if (bags.size() < obj.max && t % Time_wait == 0) {
 
-            add_bags_add_new_obj_list();//集合赋予图片
-            playmusic();
+        if (bags.size() < obj.max && t % Time_wait == 0  ) {
+
+            if (go)  {
+                add_bags_add_new_obj_list();//集合赋予图片
+            playmusic();}
+
+
         }
+        if ( t % Time_wait == 0 )full++;
+
+
 
         ;
 
@@ -173,5 +183,17 @@ public abstract class BaseGifObj extends View   {
     public void add_drawCanvas(Canvas canvas){}
 
 
+    public int full=0; //设置产出回合等待时间
+    public void resetWaitTime(int time) {
+
+            UiThead.runInUIThread(new Runnable() {
+                @Override
+                public void run() {
+                    go=true;
+                    full=0;
+                }
+            },time);
+
+    }
 
 }

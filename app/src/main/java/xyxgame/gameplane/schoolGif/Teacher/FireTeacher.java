@@ -43,7 +43,7 @@ public class FireTeacher extends  Teacher {
 
     private void PK(BaseGifObj obj) {
 
-
+        if (obj==null||obj.bags==null)return;
         Iterator<BaseGifBag> iterator = effect.bags.iterator();
         while (iterator.hasNext()){
             BaseGifBag next = iterator.next();

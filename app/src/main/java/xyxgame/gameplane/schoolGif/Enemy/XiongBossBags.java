@@ -6,14 +6,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 
-public class XiongBags3 extends XiongBags {
-    public XiongBags3(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
+public class XiongBossBags extends XiongBags {
+    public XiongBossBags(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         super(obj, list);
-    }
-
-    @Override
-    public void drawpath() {
-        y+=obj.speed;
-        // x-=2;
     }
 }

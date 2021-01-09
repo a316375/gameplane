@@ -191,7 +191,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         fireEffect.drawCanvas(canvas);
 
 //        xiong.drawCanvas(canvas);
-        gk01.drawCanvas(canvas);
+      if (level.level<=15) {gk01.drawCanvas(canvas);}
+      else {gk01.drawBossCanvas(canvas);gk01.recycle();}
 
 
         uiList.drawCanvas(canvas);

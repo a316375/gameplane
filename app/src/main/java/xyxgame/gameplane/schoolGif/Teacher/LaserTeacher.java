@@ -51,6 +51,7 @@ public class LaserTeacher {
     }
 
     private void pk(  BaseGifObj baseGifBag){
+        if (baseGifBag==null||baseGifBag.bags==null)return;
 
         Iterator<BaseGifBag> iterator = laserGif.bags.iterator();
         for (Iterator<BaseGifBag> it = iterator; it.hasNext(); ) {
