@@ -11,6 +11,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.Base.BaseActivity;
 
+
+
+////****绘制伤害****/////
+
+
+
 public class BlastTextGif  {
 
 
@@ -32,6 +38,7 @@ public class BlastTextGif  {
         paint.setColor(Color.RED);
         paint.setTextSize(150);
         typeFace = Typeface.createFromAsset(baseActivity.getAssets(),"xyx.ttf");
+//        typeFace = Typeface.createFromAsset(baseActivity.getAssets(),"fzktj.ttf");
         paint.setTypeface(typeFace);
   }
 

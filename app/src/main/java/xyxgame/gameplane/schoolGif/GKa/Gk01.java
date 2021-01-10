@@ -13,6 +13,7 @@ import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGif2;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGif3;
 import xyxgame.gameplane.schoolGif.Model.Level;
+import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
@@ -43,7 +44,7 @@ public class Gk01 {
         xiongGifs1.withTime_wait(150);}
 
 
-        if (schoolGifView.level.level<=16)  {  xiongGifs2 = new XiongGif3(new GifObj(24,schoolGifView.x,schoolGifView.y)
+        if (schoolGifView.level.level<=160)  {  xiongGifs2 = new XiongGif3(new GifObj(24,schoolGifView.x,schoolGifView.y)
                 .withPoint(0,0).withSize(100,100)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
                         new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
@@ -62,7 +63,7 @@ public class Gk01 {
         GifObj init = new GifObj(1, schoolGifView.x, schoolGifView.y)
                 .withPoint(0, 0).withSize(250, 250)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
-                        new Level(16 * 10).backEnemyValue().life, ShuXin.Boss);
+                        new Level(20*100).backEnemyValue().life, ShuXin.Boss);
 
         xiongBoss = new XiongBoss(init,
                 schoolGifView.allBitmaps);
@@ -79,10 +80,9 @@ public class Gk01 {
 //        }
 
         drawBossCanvas(canvas);
-        if (xiongGifs==null||xiongGifs1==null||xiongGifs2==null)return;
-          xiongGifs.drawCanvas(canvas);
-          xiongGifs1.drawCanvas(canvas);
-          xiongGifs2.drawCanvas(canvas);
+        if (xiongGifs!=null)  xiongGifs.drawCanvas(canvas);
+        if (xiongGifs1!=null)   xiongGifs1.drawCanvas(canvas);
+        if (xiongGifs2!=null)  xiongGifs2.drawCanvas(canvas);
 
 
 
@@ -94,6 +94,12 @@ public class Gk01 {
         if (xiongBoss==null)return;
 
       xiongBoss.drawCanvas(canvas);
+  //修改状态
+    if (xiongBoss.bags!=null)
+        for (BaseGifBag enemy_bag:xiongBoss.bags){
+         if (enemy_bag.baseState!=null&&enemy_bag.state!=State.Att)
+             if (enemy_bag.y>350)
+                 enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);}
 
     }
 
@@ -102,7 +108,7 @@ public class Gk01 {
         if (xiongGifs==null||xiongGifs1==null||xiongGifs2==null)return;
                 exit(xiongGifs);
                 exit(xiongGifs1);
-                exit(xiongGifs2);
+             //   exit(xiongGifs2);
 
 
     }

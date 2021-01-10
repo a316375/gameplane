@@ -17,13 +17,13 @@ public class MVVMActivity extends BaseActivity {
     }
 
     @Override
-    protected void viewResume() {
+    public void viewResume() {
         frameSurfaceView.startT();
 
     }
 
     @Override
-    protected void viewPause() {
+    public void viewPause() {
 
         frameSurfaceView.stopT();
 

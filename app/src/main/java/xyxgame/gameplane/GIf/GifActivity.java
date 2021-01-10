@@ -27,13 +27,13 @@ public class GifActivity extends BaseActivity {
     }
 
     @Override
-    protected void viewResume() {
+    public void viewResume() {
 
         gifView.startT();
     }
 
     @Override
-    protected void viewPause() {
+    public void viewPause() {
 
         gifView.stopT();
     }

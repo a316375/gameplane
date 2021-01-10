@@ -33,6 +33,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public int showMaxtime;//时间最大值
     public int shuxin ;
     public BaseState baseState;
+    public int state=-State.Null;
 
 
     public ShuiEffect shuiEffect;
@@ -95,6 +96,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public void resetPath(){
         path=this;
         list=list_copy;
+        state=State.Null;
     }
 
 

@@ -15,6 +15,7 @@ public class BillingView  {
     SchoolGifView schoolGifView;
     private final Testbilling testbilling;
 
+
     public BillingView(SchoolGifView schoolGifView) {
         this.schoolGifView = schoolGifView;
         testbilling = new Testbilling(schoolGifView.mBaseActivity, new SchoolGIfBilling(schoolGifView));

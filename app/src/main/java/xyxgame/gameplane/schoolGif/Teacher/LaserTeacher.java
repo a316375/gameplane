@@ -1,6 +1,7 @@
 package xyxgame.gameplane.schoolGif.Teacher;
 
 import android.graphics.Rect;
+import android.util.Log;
 
 import java.util.Iterator;
 import java.util.Random;
@@ -28,28 +29,16 @@ public class LaserTeacher {
         laserGif = schoolGifView.laserGif;
     }
 
-
-
-    public void  addexp(){
-        schoolGifView.exp.exp+=50;
-
-        //升级攻击力
-        if (schoolGifView.exp.exp>schoolGifView.level.backValue().exp-1){
-            schoolGifView.exp.exp=0;
-            schoolGifView.level.level++;
-            schoolGifView.gifPlay.obj.level=schoolGifView.level.level;
-            schoolGifView.gifPlay.obj.hit=schoolGifView.level.backValue().hit;
-
-
-           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
-           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Mu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
-           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*1;
-           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
-           if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Tu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
-        }
-
+    public void PKResult(){
+//        pk(schoolGifView.xiong);
+        pk(schoolGifView.gk01.xiongGifs);
+        pk(schoolGifView.gk01.xiongGifs1);
+        pk(schoolGifView.gk01.xiongGifs2);
+        pk(schoolGifView.gk01.xiongBoss);
 
     }
+
+
 
 
 
@@ -63,108 +52,153 @@ public class LaserTeacher {
 
             for (Iterator<BaseGifBag> iter = baseGifBag.bags.iterator(); iter.hasNext(); ) {
                 final BaseGifBag enemy_bag = iter.next();
-                if (Rect.intersects(laser_bag.rect,enemy_bag.rect)){
-
-                    int lei=0;
-//                    if (bag.shuxin==ShuXin.Tu)return;
-                    if (schoolGifView.leiEffect.open==true&&laser_bag.shuxin!=ShuXin.Huo){
-                        schoolGifView.leiEffect.add_leiBag(enemy_bag,schoolGifView.gifPlay.obj.level);
-                        lei=laser_bag.hit*5;
-                      if (laser_bag.shuxin==ShuXin.Jin) schoolGifView.money.all-=30;
-                      if (laser_bag.shuxin==ShuXin.Mu) schoolGifView.money.all-=20;
-                      if (laser_bag.shuxin==ShuXin.Shui) schoolGifView.money.all-=10;
-
-                    }
-
-                    int add=new Random().nextInt(laser_bag.hit/10)+lei;
-                   if (laser_bag.shuxin!=ShuXin.Huo)     schoolGifView.blastTextGif.addBag(laser_bag.hit+add,laser_bag.rect.left,laser_bag.rect.top);
-                    laserGif.bags.remove(laser_bag);
-
-                    if (laser_bag.shuxin!=ShuXin.Huo)  {
-
-                        life_enemy(enemy_bag,laser_bag,add);//结算伤害
-
-                          }
-
-                    addexp();
-
-
-                    if (laser_bag.shuxin==ShuXin.Mu){
-                    if (enemy_bag.shuiEffect!=null)   enemy_bag.shuiEffect.stop_shui();
-//                     schoolGifView.shuiEffect.remove_effcet(enemy_bag,ShuXin.Mu);
-                     enemy_bag.path=new PathMu(enemy_bag);
-                 if (enemy_bag.baseState!=null)  enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);}
-
-                    if (laser_bag.shuxin==ShuXin.Shui){
-//                        if (enemy_bag.life<=0)return;
-                        PathShui path = new PathShui(enemy_bag,100+schoolGifView.level.level*3);
-                        enemy_bag.path= path;
-                   if (enemy_bag.baseState!=null) enemy_bag.baseState.changState(State.Stop,enemy_bag,schoolGifView.allBitmaps);
-                        GifObj gifObj = new GifObj() .withPoint(enemy_bag.x, enemy_bag.y + enemy_bag.h / 3)  .withSize(enemy_bag.w, enemy_bag.h / 2) ;
-                         gifObj.life=enemy_bag.life;
-
-//                           schoolGifView.shuiEffect.add(enemy_bag, path.showTime);
-//                        baseGifBag.add_shui_bags(enemy_bag,path.showTime);
-
-                        if (enemy_bag.shuiEffect!=null) {
-                            enemy_bag.shuiEffect.reset_time();
-                            enemy_bag.shuiEffect.add(enemy_bag,path.showTime);
-                        }
-
-
-                    }
-
-                    if (laser_bag.shuxin==ShuXin.Huo){
-
-                        schoolGifView.fireEffect.add(laser_bag,schoolGifView.gifPlay.obj.level);
-                    }
-
-
-                    //敌人被击败
-                    if (enemy_bag.life<=0)  {
-
-                      //  if (enemy_bag.shuiEffect!=null)  enemy_bag.shuiEffect.stop_shui();
-
-                            //移除水的特效
-//                            schoolGifView.shuiEffect.remove_effcet(enemy_bag, ShuXin.Null);
-                            //移除敌人
-                            baseGifBag.bags.remove(enemy_bag);
-                            //奖励经验
-                            schoolGifView.exp.exp+= schoolGifView.level.level*5;
-
-                            if (enemy_bag.shuxin==ShuXin.Boss)schoolGifView.money.all+=5000;//奖励金币boss
-
-
-
-
-                    }
+                if (Rect.intersects(laser_bag.rect,enemy_bag.rect)) {
+                    startPK(baseGifBag, laser_bag, enemy_bag);//开始pk
                 }
             }
         }
     }
 
-    private void life_enemy(BaseGifBag enemy_bag,BaseGifBag laser_bag,int add) {
-      if (enemy_bag.shuxin==ShuXin.Boss) {
-        laser_bag.hit=new Level(schoolGifView.level.level).backValue().hit;
-         // laser_bag.hit=10;
-          add=0;
-          schoolGifView.laserGif.obj.hit= laser_bag.hit;
-      }
+    private void startPK(BaseGifObj baseGifBag, BaseGifBag laser_bag, BaseGifBag enemy_bag) {
+        int lei=0;
+
+        lei = addlei_hit(laser_bag, enemy_bag, lei);//处理雷击伤害+扣除金币
 
 
+        laserGif.bags.remove(laser_bag);//移除子弹
+        addexp();//添加经验
 
-        enemy_bag.life-=laser_bag.hit+add;//结算伤害
+
+        int add_hit=new Random().nextInt(laser_bag.hit/10)+lei;//初始伤害
+        if (laser_bag.shuxin!=ShuXin.Huo)  {
+
+          add_hit=  life_enemy(enemy_bag,laser_bag,add_hit);//计算伤害
+
+              }
+        enemy_bag.life-=add_hit;//结算伤害
+        drawHit_Text(laser_bag, add_hit);//绘制伤害
+        Log.v("-----","-----"+enemy_bag.life);
+
+
+        addMuPath(laser_bag, enemy_bag);//添加木属性的怪物路径
+        addShuiPath_Effct(laser_bag, enemy_bag);//添加水属性的怪物路径+水特效
+        addFireEffect(laser_bag);//添加火特效
+         //敌人被击败
+        life_die(baseGifBag, enemy_bag);
     }
 
-    public void PKResult(){
-//        pk(schoolGifView.xiong);
-        pk(schoolGifView.gk01.xiongGifs);
-        pk(schoolGifView.gk01.xiongGifs1);
-        pk(schoolGifView.gk01.xiongGifs2);
-        pk(schoolGifView.gk01.xiongBoss);
+    private void life_die(BaseGifObj baseGifBag, BaseGifBag enemy_bag) {
+        if (enemy_bag.life<=0)  {
+
+          //  if (enemy_bag.shuiEffect!=null)  enemy_bag.shuiEffect.stop_shui();
+
+                //移除水的特效
+//                            schoolGifView.shuiEffect.remove_effcet(enemy_bag, ShuXin.Null);
+                //移除敌人
+                baseGifBag.bags.remove(enemy_bag);
+                //奖励经验
+                schoolGifView.exp.exp+= schoolGifView.level.level*5;
+
+                if (enemy_bag.shuxin== ShuXin.Boss)schoolGifView.money.all+=5000;//奖励金币boss
+
+        }
+    }
+
+    private void addFireEffect(BaseGifBag laser_bag) {
+        if (laser_bag.shuxin== ShuXin.Huo){
+
+            schoolGifView.fireEffect.add(laser_bag,schoolGifView.gifPlay.obj.level);
+        }
+    }
+
+    private void addShuiPath_Effct(BaseGifBag laser_bag, BaseGifBag enemy_bag) {
+        if (laser_bag.shuxin== ShuXin.Shui&&enemy_bag.shuxin!=ShuXin.Boss){
+//
+            PathShui path = new PathShui(enemy_bag,100+schoolGifView.level.level*3);
+            enemy_bag.path= path;
+       if (enemy_bag.baseState!=null&&enemy_bag.state!= State.Stop) enemy_bag.baseState.changState(State.Stop,enemy_bag,schoolGifView.allBitmaps);
+            GifObj gifObj = new GifObj() .withPoint(enemy_bag.x, enemy_bag.y + enemy_bag.h / 3)  .withSize(enemy_bag.w, enemy_bag.h / 2) ;
+             gifObj.life=enemy_bag.life;
 
 
 
+            if (enemy_bag.shuiEffect!=null) {
+                enemy_bag.shuiEffect.reset_time();
+                enemy_bag.shuiEffect.add(enemy_bag,path.showTime);
+            }
+
+
+        }
+    }
+
+    private void addMuPath(BaseGifBag laser_bag, BaseGifBag enemy_bag) {
+        if (laser_bag.shuxin== ShuXin.Mu){
+        if (enemy_bag.shuiEffect!=null)   enemy_bag.shuiEffect.stop_shui();
+//
+         enemy_bag.path=new PathMu(enemy_bag);
+     if (enemy_bag.baseState!=null&&enemy_bag.state!= State.Att)  enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);}
+    }
+
+    private void drawHit_Text(BaseGifBag laser_bag, int add_hit) {
+        if (laser_bag.shuxin!= ShuXin.Huo)     schoolGifView.blastTextGif.addBag( add_hit,laser_bag.rect.left,laser_bag.rect.top);
+    }
+
+    private int addlei_hit(BaseGifBag laser_bag, BaseGifBag enemy_bag, int lei) {
+        if (schoolGifView.leiEffect.open==true&&laser_bag.shuxin!= ShuXin.Huo){
+            schoolGifView.leiEffect.add_leiBag(enemy_bag,schoolGifView.gifPlay.obj.level);
+            lei=laser_bag.hit*5;
+            lostMoney(laser_bag);
+
+        }
+        return lei;
+    }
+
+    private void lostMoney(BaseGifBag laser_bag) {
+        if (laser_bag.shuxin== ShuXin.Jin) schoolGifView.money.all-=30;
+        if (laser_bag.shuxin==ShuXin.Mu) schoolGifView.money.all-=20;
+        if (laser_bag.shuxin==ShuXin.Shui) schoolGifView.money.all-=10;
+    }
+    private void addMoney(BaseGifBag laser_bag) {
+        if (schoolGifView.leiEffect.open==true){
+        if (laser_bag.shuxin== ShuXin.Jin) schoolGifView.money.all+=35;
+        if (laser_bag.shuxin==ShuXin.Mu) schoolGifView.money.all+=25;
+        if (laser_bag.shuxin==ShuXin.Shui) schoolGifView.money.all+=15;
+        }
+    }
+
+    private int life_enemy(BaseGifBag enemy_bag,BaseGifBag laser_bag,int add_hit) {
+      if (enemy_bag.shuxin==ShuXin.Boss) {
+
+          addMoney(laser_bag);
+        laser_bag.hit=schoolGifView.laserGif.obj.hit;
+         // laser_bag.hit=10;
+          add_hit=schoolGifView.laserGif.obj.hit;
+         // schoolGifView.laserGif.obj.hit= laser_bag.hit;
+      }
+
+      return add_hit;
+
+
+
+    }
+
+    public void  addexp(){
+        schoolGifView.exp.exp+=50;
+
+        //升级攻击力
+        if (schoolGifView.exp.exp>schoolGifView.level.backValue().exp-1){
+            schoolGifView.exp.exp=0;
+            schoolGifView.level.level++;
+            schoolGifView.gifPlay.obj.level=schoolGifView.level.level;
+            schoolGifView.gifPlay.obj.hit=schoolGifView.level.backValue().hit;
+
+
+            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
+            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Mu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
+            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*1;
+            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
+            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Tu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
+        }
 
 
     }

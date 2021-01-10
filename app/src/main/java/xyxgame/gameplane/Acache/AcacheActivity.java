@@ -55,12 +55,12 @@ public class AcacheActivity extends BaseActivity {
     }
 
     @Override
-    protected void viewResume() {
+    public void viewResume() {
 
     }
 
     @Override
-    protected void viewPause() {
+    public void viewPause() {
 
     }
 

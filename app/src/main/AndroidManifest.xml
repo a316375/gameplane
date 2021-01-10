@@ -75,6 +75,7 @@
 
             android:screenOrientation="nosensor"
             />
+
     </application>
 
 </manifest>

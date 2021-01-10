@@ -2,6 +2,7 @@ package xyxgame.gameplane.Billing;
 
 import android.app.Activity;
 
+import android.app.AlertDialog;
 import android.util.Log;
 
 import com.android.billingclient.api.BillingClient;
@@ -19,6 +20,9 @@ import com.android.billingclient.api.SkuDetailsResponseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyxgame.gameplane.Base.BaseActivity;
+import xyxgame.gameplane.schoolGif.Tool.UIAlertDialog;
+
 public class Testbilling {
 
     private PurchasesUpdatedListener purchasesUpdatedListener = new PurchasesUpdatedListener() {
@@ -32,9 +36,13 @@ public class Testbilling {
             } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
                 // Handle an error caused by a user cancelling the purchase flow.
                billing.Cance();
+
+
             } else {
                 // Handle any other error codes.
                billing.Error();
+
+
 
             }
         }
@@ -44,6 +52,7 @@ public class Testbilling {
     private Billing billing;
 
     public static String vip1="vip01",vip2="vip5";
+
 
     void handlePurchase(final Purchase purchase) {
         // Purchase retrieved from BillingClient#queryPurchases or your PurchasesUpdatedListener.
@@ -65,6 +74,7 @@ public class Testbilling {
                     // Handle the success of the consume operation.
                     billing.OK(purchase.getSku());
 
+
                 }
             }
         };
@@ -73,7 +83,7 @@ public class Testbilling {
     }
 
      Activity activity;
-    public Testbilling(Activity ativity, Billing billing) {
+    public Testbilling( Activity ativity, Billing billing) {
        this.activity=ativity;
        this.billing=billing;
 
@@ -120,6 +130,7 @@ public class Testbilling {
                                                         .build();
                                                 //textView.setText(skuDetailsList.get(0)+"\n" +skuDetailsList.get(1)+"\n"+ skuDetailsList.get(2)+"\n"+ skuDetailsList.get(3)+"\n");
                                                 int responseCode = billingClient.launchBillingFlow(activity, billingFlowParams).getResponseCode();
+
 
                                             }
                                         }

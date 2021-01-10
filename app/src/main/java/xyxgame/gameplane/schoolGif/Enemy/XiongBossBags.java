@@ -6,6 +6,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
+import xyxgame.gameplane.schoolGif.Model.State;
 
 public class XiongBossBags extends XiongBags implements BaseGifBagPath {
     public XiongBossBags(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
@@ -22,6 +23,8 @@ public class XiongBossBags extends XiongBags implements BaseGifBagPath {
     @Override
     public void setRect(int x, int y, int w, int h) {
         if (y<=450)  rect.set(-100, -100, -100, -100);//不可攻击
-        if (y>450)   rect.set(x+this.w/5, y, w-this.w/5, h-this.h/5);
+        if (y>450)  { rect.set(x+this.w/5, y, w-this.w/5, h-this.h/5);
+
+        }
     }
 }

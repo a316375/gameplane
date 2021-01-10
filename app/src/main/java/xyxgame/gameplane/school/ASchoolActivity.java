@@ -33,12 +33,12 @@ public class ASchoolActivity extends BaseActivity {
     }
 
     @Override
-    protected void viewResume() {
+    public void viewResume() {
         roomA.startT();
     }
 
     @Override
-    protected void viewPause() {
+    public void viewPause() {
         roomA.stopT();
 
     }

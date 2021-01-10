@@ -52,7 +52,7 @@ public class SchoolGifActivity extends BaseActivity {
     }
 
     @Override
-    protected void viewResume() {
+    public void viewResume() {
         schoolGifView.startT();
         musicUtilsBGM.onStart();
 
@@ -63,7 +63,7 @@ public class SchoolGifActivity extends BaseActivity {
 
 
     @Override
-    protected void viewPause() {
+    public void viewPause() {
         schoolGifView.stopT();
         musicUtilsBGM.onPause();
 
