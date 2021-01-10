@@ -18,4 +18,5 @@ public class SaveUtils {
        SharedPreferences share = activity.getSharedPreferences(fileName, MODE_PRIVATE);//实例化
        return share.getBoolean("ad",true);
     }
+
 }

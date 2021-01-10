@@ -60,14 +60,17 @@ public class LaserTeacher {
     }
 
     private void startPK(BaseGifObj baseGifBag, BaseGifBag laser_bag, BaseGifBag enemy_bag) {
-        int lei=0;
 
-        lei = addlei_hit(laser_bag, enemy_bag, lei);//处理雷击伤害+扣除金币
 
 
         laserGif.bags.remove(laser_bag);//移除子弹
         addexp();//添加经验
 
+
+
+        int lei=0;
+
+        lei = addlei_hit(laser_bag, enemy_bag, lei);//处理雷击伤害+扣除金币
 
         int add_hit=new Random().nextInt(laser_bag.hit/10)+lei;//初始伤害
         if (laser_bag.shuxin!=ShuXin.Huo)  {
@@ -77,7 +80,7 @@ public class LaserTeacher {
               }
         enemy_bag.life-=add_hit;//结算伤害
         drawHit_Text(laser_bag, add_hit);//绘制伤害
-        Log.v("-----","-----"+enemy_bag.life);
+        //Log.v("-----","-----"+enemy_bag.life);
 
 
         addMuPath(laser_bag, enemy_bag);//添加木属性的怪物路径
@@ -149,7 +152,7 @@ public class LaserTeacher {
             lei=laser_bag.hit*5;
             lostMoney(laser_bag);
 
-        }
+        }else  lei=laser_bag.hit;
         return lei;
     }
 

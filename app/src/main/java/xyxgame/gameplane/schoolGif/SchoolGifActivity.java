@@ -79,20 +79,20 @@ public class SchoolGifActivity extends BaseActivity {
                 new Info(schoolGifView.level.level,schoolGifView.exp.exp,schoolGifView.money.all));
 
         hopperRef.updateChildren(hopperUpdates);
-        ValueEventListener listener=new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Info infos=  snapshot.getValue(Info.class);
-                // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
-                 info=infos.withId(FirebaseAuth.getInstance().getUid());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        hopperRef.addListenerForSingleValueEvent(listener);
+//        ValueEventListener listener=new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Info infos=  snapshot.getValue(Info.class);
+//                // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
+//                 info=infos.withId(FirebaseAuth.getInstance().getUid());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        };
+//        hopperRef.addListenerForSingleValueEvent(listener);
 
 
 
