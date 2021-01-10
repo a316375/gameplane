@@ -18,9 +18,9 @@ public class PathMu implements BaseGifBagPath {
         {
             j ++;
             if (j >100)baseGifBag.resetPath();
-            if (j  >20) baseGifBag.y+=2;
-            else    baseGifBag.y-=2;
-            if (baseGifBag.y<20)baseGifBag.y=20;
+//            if (j  >20) baseGifBag.y+=2;
+//            else    baseGifBag.y-=2;
+//            if (baseGifBag.y<20)baseGifBag.y=20;
 
         }
 

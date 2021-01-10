@@ -20,6 +20,13 @@ public class UIPaint {
       if (baseActivity!=null) paint.setTypeface(Typeface.createFromAsset(baseActivity.getAssets(),"xyx.ttf"));
     }
 
+
+    public Paint paint(){
+        paint.setStyle(Paint.Style.STROKE);  // 填充模式 - 所有
+        paint.setColor(Color.BLUE);//设置画笔颜色
+        return paint;
+    }
+
     public Paint paint1(){
         paint.setColor(Color.YELLOW);//设置画笔颜色
         return paint;

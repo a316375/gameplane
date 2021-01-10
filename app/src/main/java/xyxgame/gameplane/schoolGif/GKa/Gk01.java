@@ -44,7 +44,7 @@ public class Gk01 {
         xiongGifs1.withTime_wait(150);}
 
 
-        if (schoolGifView.level.level<=160)  {  xiongGifs2 = new XiongGif3(new GifObj(24,schoolGifView.x,schoolGifView.y)
+        if (schoolGifView.level.level<=16)  {  xiongGifs2 = new XiongGif3(new GifObj(24,schoolGifView.x,schoolGifView.y)
                 .withPoint(0,0).withSize(100,100)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
                         new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
@@ -108,7 +108,7 @@ public class Gk01 {
         if (xiongGifs==null||xiongGifs1==null||xiongGifs2==null)return;
                 exit(xiongGifs);
                 exit(xiongGifs1);
-             //   exit(xiongGifs2);
+               exit(xiongGifs2);
 
 
     }

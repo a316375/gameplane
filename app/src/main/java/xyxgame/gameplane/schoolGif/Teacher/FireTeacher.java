@@ -5,7 +5,6 @@ import java.util.Iterator;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.Effect.FireEffect;
-import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
@@ -34,6 +33,7 @@ public class FireTeacher extends  Teacher {
          PK(schoolGifView.gk01.xiongGifs1);
          PK(schoolGifView.gk01.xiongGifs2);
          PK(schoolGifView.gk01.xiongBoss);
+         PK(schoolGifView.gk02.xiongGifs);
      }
 
         time++;

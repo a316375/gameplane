@@ -17,6 +17,7 @@ import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.GKa.Gk01;
+import xyxgame.gameplane.schoolGif.GKa.Gk02;
 import xyxgame.gameplane.schoolGif.Model.Exp;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Music.MusicUtils;
@@ -63,6 +64,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
     public MusicUtils musicPlayer;
     public final Gk01 gk01;
+    public final Gk02 gk02;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -172,6 +174,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         adList = new ADList(mBaseActivity,this);
 
         gk01 = new Gk01(this);
+        gk02 = new Gk02(this);
 
 
     }
@@ -191,10 +194,10 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         fireEffect.drawCanvas(canvas);
 
 //        xiong.drawCanvas(canvas);
-      if (level.level>=16) {gk01.exit();}
+      if (level.level>=16) {gk01.exit();gk02.initGIf();}
         gk01.drawCanvas(canvas);
 
-
+        gk02.drawCanvas(canvas);
 
         uiList.drawCanvas(canvas);
         //展示列表

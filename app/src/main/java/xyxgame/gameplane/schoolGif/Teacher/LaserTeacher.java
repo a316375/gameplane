@@ -1,7 +1,6 @@
 package xyxgame.gameplane.schoolGif.Teacher;
 
 import android.graphics.Rect;
-import android.util.Log;
 
 import java.util.Iterator;
 import java.util.Random;
@@ -9,8 +8,6 @@ import java.util.Random;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Effect.Shui;
-import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Path.PathMu;
 import xyxgame.gameplane.schoolGif.Path.PathShui;
@@ -35,6 +32,7 @@ public class LaserTeacher {
         pk(schoolGifView.gk01.xiongGifs1);
         pk(schoolGifView.gk01.xiongGifs2);
         pk(schoolGifView.gk01.xiongBoss);
+        pk(schoolGifView.gk02.xiongGifs);
 
     }
 
