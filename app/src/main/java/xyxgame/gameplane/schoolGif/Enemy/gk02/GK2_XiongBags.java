@@ -6,10 +6,10 @@ import android.graphics.PathMeasure;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.XiongBags;
-import xyxgame.gameplane.schoolGif.Tool.UIPaint;
+
 
 public class GK2_XiongBags extends XiongBags {
 

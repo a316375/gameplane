@@ -99,7 +99,7 @@ public class LaserTeacher {
                 baseGifBag.bags.remove(enemy_bag);
                 //奖励经验
                 schoolGifView.exp.exp+= schoolGifView.level.level*5;
-
+                schoolGifView.money.all+=2;
                 if (enemy_bag.shuxin== ShuXin.Boss)schoolGifView.money.all+=5000;//奖励金币boss
 
         }
