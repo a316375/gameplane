@@ -27,17 +27,18 @@ public class FireTeacher extends  Teacher {
     public void PKResult() {
 
 
-     if (time% (ShuXin.Speed*15) ==0) {
+      if (time% 3 ==0) {
 //         PK(schoolGifView.xiong);
          PK(schoolGifView.gk01.xiongGifs);
          PK(schoolGifView.gk01.xiongGifs1);
          PK(schoolGifView.gk01.xiongGifs2);
          PK(schoolGifView.gk01.xiongBoss);
          PK(schoolGifView.gk02.xiongGifs);
+         PK(schoolGifView.gk02.xiongGifs2);
      }
 
         time++;
-        if (time>=schoolGifView.level.level*2+500)time=0;
+        if (time>=500)time=0;//防止int溢出
 
 
     }
@@ -51,8 +52,13 @@ public class FireTeacher extends  Teacher {
             Iterator<BaseGifBag> iterator1 = obj.bags.iterator();
             while (iterator1.hasNext()){
                 BaseGifBag objbag = iterator1.next();
+                objbag.FireTime++;
+
+                if (objbag.FireTime>1500)objbag.FireTime=1;
+                if (objbag.FireTime% (ShuXin.Speed*10)==0)
                 if (next.rect.intersect(objbag.rect)){
 
+                    next.showtime=0;//添加持续时间
                     objbag.life-=next.hit;
                     schoolGifView.blastTextGif.addBag(next.hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
 

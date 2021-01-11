@@ -70,7 +70,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
 
 
-
+    public int FireTime=0;
     public  BaseGifBagPath path;
 
     public void setRect(int x,int y,int w,int h){

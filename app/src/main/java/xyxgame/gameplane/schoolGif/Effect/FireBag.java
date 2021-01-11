@@ -20,6 +20,6 @@ public class FireBag extends BaseGifBag {
     @Override
     public void drawpath() {
 
-       // y-= ShuXin.Speed;
+        y+= ShuXin.Speed;
     }
 }

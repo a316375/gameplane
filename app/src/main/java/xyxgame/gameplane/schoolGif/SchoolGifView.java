@@ -86,7 +86,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         y = mBaseActivity.point.y;
 
 
-        level = new Level(mBaseActivity.info.level);
+//        level = new Level(mBaseActivity.info.level);//网络
+        level = new Level(5);
         exp = new Exp(mBaseActivity.info.exp);
 
         GifObj play=new GifObj(1, x, y)

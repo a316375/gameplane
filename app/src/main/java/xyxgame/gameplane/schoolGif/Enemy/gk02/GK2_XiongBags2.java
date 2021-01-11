@@ -12,6 +12,7 @@ import xyxgame.gameplane.schoolGif.Enemy.XiongBags;
 public class GK2_XiongBags2 extends XiongBags {
 
     private Path path;
+    private PathMeasure pm;
 
     public GK2_XiongBags2(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         super(obj, list);
@@ -27,7 +28,7 @@ public class GK2_XiongBags2 extends XiongBags {
 
     @Override
     public void drawpath() {
-        PathMeasure pm = new PathMeasure(path, false);
+       if (pm==null)pm = new PathMeasure(path, false);
         float fSegmentLen = pm.getLength() / 200;//we'll get 20 points from path to animate the circle
         float afP[] = {0f, 0f};
 

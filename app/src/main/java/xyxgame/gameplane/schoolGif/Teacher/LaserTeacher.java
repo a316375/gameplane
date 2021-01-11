@@ -33,6 +33,7 @@ public class LaserTeacher {
         pk(schoolGifView.gk01.xiongGifs2);
         pk(schoolGifView.gk01.xiongBoss);
         pk(schoolGifView.gk02.xiongGifs);
+        pk(schoolGifView.gk02.xiongGifs2);
 
     }
 
@@ -101,6 +102,8 @@ public class LaserTeacher {
                 schoolGifView.exp.exp+= schoolGifView.level.level*5;
                 schoolGifView.money.all+=2;
                 if (enemy_bag.shuxin== ShuXin.Boss)schoolGifView.money.all+=5000;//奖励金币boss
+
+            if (enemy_bag.shuxin==ShuXin.Huo) addFireEffect(enemy_bag);//火属性死亡后添加火特效
 
         }
     }
