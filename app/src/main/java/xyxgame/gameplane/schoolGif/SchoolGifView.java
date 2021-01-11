@@ -16,6 +16,7 @@ import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
 
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
+import xyxgame.gameplane.schoolGif.Effect.die_shui.DieShui;
 import xyxgame.gameplane.schoolGif.GKa.Gk01;
 import xyxgame.gameplane.schoolGif.GKa.Gk02;
 import xyxgame.gameplane.schoolGif.Model.Exp;
@@ -24,6 +25,7 @@ import xyxgame.gameplane.schoolGif.Music.MusicUtils;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.ShowList.ADList;
 import xyxgame.gameplane.schoolGif.ShowList.UIList;
+import xyxgame.gameplane.schoolGif.Teacher.DieShuiTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.FireTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.TouchTeacher;
@@ -66,6 +68,9 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public final Gk01 gk01;
     public final Gk02 gk02;
 
+    public DieShui dieShui;
+    private final DieShuiTeacher dieShuiTeacher;
+
 
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
@@ -87,7 +92,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
 //        level = new Level(mBaseActivity.info.level);//网络
-        level = new Level(5);
+        level = new Level(15);
         exp = new Exp(mBaseActivity.info.exp);
 
         GifObj play=new GifObj(1, x, y)
@@ -152,12 +157,13 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
 
-        GifObj shui=new GifObj(8, x, y)
-                .withPoint(500,100)
-                .withSize(200,200)
-                .init(level.level, level.backEnemyValue().hit,10, level.backEnemyValue().life,ShuXin.Huo)
+        GifObj shui=new GifObj(80, x, y)
+                .withPoint(500,1000)
+                .withSize(100,100)
+                .init(level.level, level.backEnemyValue().hit,10, level.backEnemyValue().life,ShuXin.Shui)
                 // .setShuXin(ShuXin.Huo)
-                .showRect(false);
+                .showRect(true);
+        dieShui=new DieShui(shui,allBitmaps);
 //        shuiEffect = new ShuiEffect(shui,allBitmaps);
 
 
@@ -170,6 +176,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         touchTeacher = new TouchTeacher(this);
         laserTeacher = new LaserTeacher(this);
         fireTeacher = new FireTeacher(this);
+        dieShuiTeacher = new DieShuiTeacher(this);
+
 
 
         adList = new ADList(mBaseActivity,this);
@@ -200,6 +208,10 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
         gk02.drawCanvas(canvas);
 
+
+
+
+        dieShui.drawCanvas(canvas);
         uiList.drawCanvas(canvas);
         //展示列表
         if (showlistA) listB.draws(canvas);
@@ -238,6 +250,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
         laserTeacher.PKResult();//处理碰撞
         fireTeacher.PKResult();//火技能的燃烧
+        dieShuiTeacher.PKResult();//水属性敌方死亡后产物碰撞
     }
 
 

@@ -34,6 +34,7 @@ public class LaserTeacher {
         pk(schoolGifView.gk01.xiongBoss);
         pk(schoolGifView.gk02.xiongGifs);
         pk(schoolGifView.gk02.xiongGifs2);
+        pk(schoolGifView.gk02.shuiGif);
 
     }
 
@@ -91,7 +92,7 @@ public class LaserTeacher {
 
     private void life_die(BaseGifObj baseGifBag, BaseGifBag enemy_bag) {
         if (enemy_bag.life<=0)  {
-
+            if (enemy_bag.shuxin==ShuXin.Shui) addDieShuiEffect(enemy_bag);//水属性死亡后添加die特效
           //  if (enemy_bag.shuiEffect!=null)  enemy_bag.shuiEffect.stop_shui();
 
                 //移除水的特效
@@ -105,7 +106,12 @@ public class LaserTeacher {
 
             if (enemy_bag.shuxin==ShuXin.Huo) addFireEffect(enemy_bag);//火属性死亡后添加火特效
 
+
         }
+    }
+
+    private void addDieShuiEffect(BaseGifBag enemy_bag) {
+        schoolGifView.dieShui.add(enemy_bag);
     }
 
     private void addFireEffect(BaseGifBag laser_bag) {

@@ -29,190 +29,252 @@ public class GifAllBitmaps {
     BaseActivity activity;
 
 
+    public CopyOnWriteArrayList<Bitmap> getfire(int width, int height) {
 
-    public  CopyOnWriteArrayList<Bitmap> getfire(int width,int height){
-
-        return getbitmaps(width,height,activity, R.drawable.fire_effect);
-    }
-
-
-
-    public  CopyOnWriteArrayList<Bitmap> getlei(int width,int height){
-
-        return getbitmaps(width,height,activity, R.drawable.lei);
+        return getbitmaps(width, height, activity, R.drawable.fire_effect);
     }
 
-    public  CopyOnWriteArrayList<Bitmap> getbutton2(int width,int height){
+    public CopyOnWriteArrayList<Bitmap> getxiong_boss_bg(int width, int height) {
 
-        return getbitmaps(width,height,activity, R.drawable.button02);
-    }
-
-     
-    public  CopyOnWriteArrayList<Bitmap> getxue(int width,int height){
-        
-        return getbitmaps(width,height,activity, R.drawable.gif_xue);
+        return getbitmaps(width, height, activity, R.drawable.xiong_bossbg);
     }
 
-    public  CopyOnWriteArrayList<Bitmap> getPan(int width,int height){
+    public CopyOnWriteArrayList<Bitmap> getdie_shui_enemy(int width, int height) {
 
-        return getbitmaps( width, height,activity, R.drawable.pan);
+        return getbitmaps(width, height, activity, R.drawable.die_shui_enemy);
     }
 
-    public  CopyOnWriteArrayList<Bitmap> getxiong8Move(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.em_xiong_08move);
+    public CopyOnWriteArrayList<Bitmap> getshui_enemy_08att(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.shui_enemy08_att);
     }
-    public  CopyOnWriteArrayList<Bitmap> getxiong8stop(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.em_xiong_08stop);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getxiong8attker(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.em_xiong_08attker);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getxiong4Move(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.em_xiong_04move);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getxiong4stop(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.em_xiong_04stop);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getxiong4attker(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.em_xiong_04attker);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getplay_bg(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.play_bg);
-    } public  CopyOnWriteArrayList<Bitmap> getfb01(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb01);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb02(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb02);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb03(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb03);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb04(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb04);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb05(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb05);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb06(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb06);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb07(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb07);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb08(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb08);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb09(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb09);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb10(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb10);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb11(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb11);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getfb12(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.fb12);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser01(int width,int height){
-        
-        return getbitmaps( width, height,activity, R.drawable.laser01);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser02(int width,int height){
-        
-        return getbitmaps( width, height,activity, R.drawable.laser02);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser03(int width,int height){
-        
-        return getbitmaps( width, height,activity, R.drawable.laser03);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser04(int width,int height){
-        
-        return getbitmaps( width, height,activity, R.drawable.laser04);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser05(int width,int height){
-        
-        return getbitmaps( width, height,activity, R.drawable.laser05);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser06(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.laser06);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser07(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.laser07);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser08(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.laser08);
-    }
-    public  CopyOnWriteArrayList<Bitmap> getlaser09(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.laser09);
+
+    public CopyOnWriteArrayList<Bitmap> getshui_enemy_08move(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.shui_enemy08_move);
     }
 
 
-    public  CopyOnWriteArrayList<Bitmap> getniu(int width,int height){
-        return getbitmaps( width, height,activity, R.drawable.gif_niu);
+    public CopyOnWriteArrayList<Bitmap> getlei(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.lei);
     }
 
-    public  CopyOnWriteArrayList<Bitmap> getyu1(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu0);
-    } public  CopyOnWriteArrayList<Bitmap> getyu2(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu1);
-    } public  CopyOnWriteArrayList<Bitmap> getyu3(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu2);
-    } public  CopyOnWriteArrayList<Bitmap> getyu4(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu3);
-    } public  CopyOnWriteArrayList<Bitmap> getyu5(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu4);
-    } public  CopyOnWriteArrayList<Bitmap> getyu6(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu5);
-    } public  CopyOnWriteArrayList<Bitmap> getyu7(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu6);
-    } public  CopyOnWriteArrayList<Bitmap> getyu8(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu7);
-    } public  CopyOnWriteArrayList<Bitmap> getyu9(int width,int height){
-         
-        return getbitmaps( width, height,activity, R.drawable.gif_yu8);
+    public CopyOnWriteArrayList<Bitmap> getbutton2(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.button02);
     }
 
 
-    private   CopyOnWriteArrayList<Bitmap> getbitmaps(final int width, final int height, BaseActivity activity, int draw){
+    public CopyOnWriteArrayList<Bitmap> getxue(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_xue);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getPan(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.pan);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getxiong8Move(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.em_xiong_08move);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getxiong8stop(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.em_xiong_08stop);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getxiong8attker(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.em_xiong_08attker);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getxiong4Move(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.em_xiong_04move);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getxiong4stop(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.em_xiong_04stop);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getxiong4attker(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.em_xiong_04attker);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getplay_bg(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.play_bg);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb01(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb01);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb02(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb02);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb03(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb03);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb04(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb04);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb05(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb05);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb06(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb06);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb07(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb07);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb08(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb08);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb09(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb09);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb10(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb10);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb11(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb11);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getfb12(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.fb12);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser01(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser01);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser02(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser02);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser03(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser03);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser04(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser04);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser05(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser05);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser06(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser06);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser07(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser07);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser08(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser08);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getlaser09(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser09);
+    }
 
 
-        final CopyOnWriteArrayList<Bitmap> bitmaps=new CopyOnWriteArrayList<>();
-         Glide.with(activity)
+    public CopyOnWriteArrayList<Bitmap> getniu(int width, int height) {
+        return getbitmaps(width, height, activity, R.drawable.gif_niu);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu1(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu0);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu2(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu1);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu3(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu2);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu4(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu3);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu5(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu4);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu6(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu5);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu7(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu6);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu8(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu7);
+    }
+
+    public CopyOnWriteArrayList<Bitmap> getyu9(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.gif_yu8);
+    }
+
+
+    private CopyOnWriteArrayList<Bitmap> getbitmaps(final int width, final int height, BaseActivity activity, int draw) {
+
+
+        final CopyOnWriteArrayList<Bitmap> bitmaps = new CopyOnWriteArrayList<>();
+        Glide.with(activity)
                 .asGif()
 //                 .override(200,200)
-                .load(draw).into(new CustomTarget<GifDrawable>(){
+                .load(draw).into(new CustomTarget<GifDrawable>() {
             @Override
             public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
                 try {
@@ -229,7 +291,7 @@ public class GifAllBitmaps {
                         standardGifDecoder.advance();
                         Bitmap nextFrame = standardGifDecoder.getNextFrame();
 //                        bitmaps.add(zoomImg(nextFrame,width,height));
-                        bitmaps.add(Bitmap.createScaledBitmap(nextFrame,width,height,false));
+                        bitmaps.add(Bitmap.createScaledBitmap(nextFrame, width, height, false));
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -242,12 +304,13 @@ public class GifAllBitmaps {
 
             }
         });
-         return bitmaps;
-    };
+        return bitmaps;
+    }
+
+    ;
 
 
-
-    public  Bitmap zoomImg(Bitmap bm, int newWidth, int newHeight) {
+    public Bitmap zoomImg(Bitmap bm, int newWidth, int newHeight) {
         Bitmap newbm = null;
         if (bm != null) {
             // 获得图片的宽高

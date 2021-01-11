@@ -35,6 +35,7 @@ public class FireTeacher extends  Teacher {
          PK(schoolGifView.gk01.xiongBoss);
          PK(schoolGifView.gk02.xiongGifs);
          PK(schoolGifView.gk02.xiongGifs2);
+         PK(schoolGifView.gk02.shuiGif);
      }
 
         time++;
