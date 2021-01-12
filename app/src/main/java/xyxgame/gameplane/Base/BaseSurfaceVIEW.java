@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -18,7 +19,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 //**此类被继承的时候必须去Activity的生命周期里边调用onstart 跟 onstop，否则会出错**//
 public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHolder.Callback{
-    public static final int DEFAULT_FRAME_DURATION_MILLISECOND =1000;
+    public static final int DEFAULT_FRAME_DURATION_MILLISECOND =1000;//1秒操作
     //用于计算帧数据的线程
     private HandlerThread handlerThread;
     private Handler handler;
@@ -152,7 +153,12 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
                 w.lock();
                 try {
 
+
+                    if (frame_Time>=360)frame_Time=0;
                     onFrameDraw();
+                    frame_Time++;
+                   // Log.d("------", "run: "+frame_Time+"---"+frame_Time%300);
+
                 }finally {
                     w.unlock();
                 }
@@ -164,6 +170,8 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
         }
     }
+
+    public volatile int frame_Time=0;//计时器...最大为360秒
 
     protected abstract void onFrameDrawFinish();
 

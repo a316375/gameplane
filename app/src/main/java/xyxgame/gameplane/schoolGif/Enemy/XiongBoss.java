@@ -1,13 +1,9 @@
 package xyxgame.gameplane.schoolGif.Enemy;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Rect;
 
-import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
@@ -26,11 +22,7 @@ private CopyOnWriteArrayList<Bitmap> bg_list;//添加光环背景
     protected void add_bags_add_new_obj_list() {
         // setWaitTime(60000);
 
-
-        if (full>=obj.max){go=false;
-//            resetWaitTime(10000);//不要出现了
-        }
-        else add(obj.maXx/2-obj.oW/2);
+            add(obj.maXx/2-obj.oW/2);
 
     }
 
@@ -53,10 +45,7 @@ private CopyOnWriteArrayList<Bitmap> bg_list;//添加光环背景
 
     }
 
-    @Override
-    public void initgo() {
-        go=false;
-    }
+
 
 
 

@@ -6,9 +6,12 @@ import xyxgame.gameplane.schoolGif.Effect.Shui;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class XiongGif3 extends XiongGif {
+
     public XiongGif3(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
+        x=obj.maXx/2-obj.oW/2+obj.maXx*2/8;
     }
+
 
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
@@ -21,20 +24,15 @@ public class XiongGif3 extends XiongGif {
     @Override
     protected void add_bags_add_new_obj_list() {
 
-        if (full>=obj.max){go=false;
-            resetWaitTime(5000);}
-      else   UiThead.runInUIThread(new Runnable() {
-            @Override
-            public void run() {
 
-                add(obj.maXx/2-obj.oW/2+obj.maXx*2/8);
-                add(obj.maXx/2-obj.oW/2+obj.maXx*3/8);
 
-                add(obj.maXx/2-obj.oW/2-obj.maXx*2/8);
-                add(obj.maXx/2-obj.oW/2-obj.maXx*3/8);
+                add(x);
+//                add(obj.maXx/2-obj.oW/2+obj.maXx*3/8);
+//
+//                add(obj.maXx/2-obj.oW/2-obj.maXx*2/8);
+//                add(obj.maXx/2-obj.oW/2-obj.maXx*3/8);
 
-            }
-        }, 400);
+
 
 
 

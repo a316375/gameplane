@@ -77,6 +77,7 @@ public class DieShuiBags extends BaseGifBag {
 
     }
 
+    //延时生效矩形，否则被立即消除，是个问题
     public int time=0,maxtime=20;
     @Override
     public void setRect(int x, int y, int w, int h) {

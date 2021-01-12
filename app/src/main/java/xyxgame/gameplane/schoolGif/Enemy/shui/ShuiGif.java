@@ -4,17 +4,16 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
-import xyxgame.gameplane.schoolGif.Enemy.xiongState;
 
 public class ShuiGif extends BaseGifObj {
     public ShuiGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
+
     }
 
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
-        ShuiBag shuiBag = new ShuiBag(obj, list);
-       // shuiBag.addState(new xiongState());
+         ShuiBag shuiBag = new ShuiBag(obj, list);
         shuiBag.setShuiEffect(new Shui(list_shui));
         gifBag =shuiBag ;
     }
@@ -27,9 +26,14 @@ public class ShuiGif extends BaseGifObj {
 
     @Override
     protected void add_bags_add_new_obj_list() {
+
+        add();
+    }
+
+    private void add() {
         ShuiBag shuiBag = new ShuiBag(obj, list);
         shuiBag.setShuiEffect(new Shui(list_shui));
-       // shuiBag.addState(new xiongState());
+        // shuiBag.addState(new xiongState());
         bags.add(shuiBag);
     }
 

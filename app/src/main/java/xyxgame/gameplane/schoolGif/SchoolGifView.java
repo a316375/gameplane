@@ -17,6 +17,7 @@ import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Effect.die_shui.DieShui;
+import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
 import xyxgame.gameplane.schoolGif.GKa.Gk01;
 import xyxgame.gameplane.schoolGif.GKa.Gk02;
 import xyxgame.gameplane.schoolGif.Model.Exp;
@@ -34,6 +35,14 @@ import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
 
+
+/**绘制完对象后，你需要在SchoolGifView添加resethuihe(波段出现的敌人重载时间)
+ *Teacher包下除了Teacher跟TouchTeacher的其他Teacher添加pk处理碰撞响应
+ *
+ *
+ *
+ *
+ * **/
 public class SchoolGifView extends BaseSurfaceVIEW  {
 
    public BaseActivity mBaseActivity;
@@ -162,7 +171,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
                 .withSize(100,100)
                 .init(level.level, level.backEnemyValue().hit,10, level.backEnemyValue().life,ShuXin.Shui)
                 // .setShuXin(ShuXin.Huo)
-                .showRect(true);
+                .showRect(false);
         dieShui=new DieShui(shui,allBitmaps);
 //        shuiEffect = new ShuiEffect(shui,allBitmaps);
 
@@ -256,8 +265,30 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
     @Override
     protected void onFrameDraw() {
+        if (frame_Time%5==0){
+            resethuihe(laserGif);}
+        if (frame_Time%30==0){
+
+           // resethuihe(gk01.xiongGifs);
+            resethuihe(gk01.xiongGifs1);
+            resethuihe(gk01.xiongGifs2);
+            resethuihe( gk01.xiongGifs3);
+            resethuihe( gk01.xiongGifs4);
+            resethuihe( gk01.xiongGifs5);
+            resethuihe( gk01.xiongGifs6);
+            resethuihe( gk01.xiongGifs7);
+
+            resethuihe(gk02.shuiGif);
+            resethuihe( gk02.xiongGifs);
+            resethuihe( gk02.xiongGifs2);
 
 
+        }
+
+    }
+
+    private void resethuihe(BaseGifObj gifObj) {
+       if (gifObj!=null)gifObj.resetHuiHeTime();
     }
 
 
@@ -285,4 +316,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         super.stopT();
         musicPlayer.stop();
     }
+
+
+
 }

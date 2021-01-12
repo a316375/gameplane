@@ -20,46 +20,88 @@ import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class Gk01 {
 
-    public XiongGif xiongGifs;
-    public XiongGif2 xiongGifs1;
+    //public XiongGif xiongGifs;
+    public XiongGif3 xiongGifs1;
     public XiongGif3 xiongGifs2;
+    public XiongGif3 xiongGifs3;
+    public XiongGif3 xiongGifs4;
+    public XiongGif3 xiongGifs5;
+    public XiongGif3 xiongGifs6;
+    public XiongGif3 xiongGifs7;
     public XiongBoss xiongBoss;
     SchoolGifView schoolGifView;
 
 
     public Gk01(SchoolGifView schoolGifView) {
         this.schoolGifView=schoolGifView;
-        if (schoolGifView.level.level<=16){  xiongGifs = new XiongGif(new GifObj(3,schoolGifView.x,schoolGifView.y)
-                .withPoint(0,0).withSize(200,200)
-                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
-                        new Level(schoolGifView.level.level).backEnemyValue().life, ShuXin.Huo),
-                schoolGifView.allBitmaps);
-        xiongGifs.withTime_wait(100);}
+//        if (schoolGifView.level.level<=16){  xiongGifs = new XiongGif(new GifObj(3,schoolGifView.x,schoolGifView.y)
+//                .withPoint(0,0).withSize(200,200)
+//                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
+//                        new Level(schoolGifView.level.level).backEnemyValue().life, ShuXin.Huo),
+//                schoolGifView.allBitmaps);
+//        xiongGifs.withTime_wait(100);}
 
-        if (schoolGifView.level.level<=16)   {  xiongGifs1 = new XiongGif2(new GifObj(4,schoolGifView.x,schoolGifView.y)
+        if (schoolGifView.level.level<=16)   {  xiongGifs1 = (XiongGif3) new XiongGif3(new GifObj(4,schoolGifView.x,schoolGifView.y)
                 .withPoint(0,0).withSize(150,150)
                   .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
                           new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
-                  schoolGifView.allBitmaps);
-        xiongGifs1.withTime_wait(150);}
+                  schoolGifView.allBitmaps).withx(schoolGifView.x/2-150/2+schoolGifView.x*1/8);
+        xiongGifs1.withTime_wait(80);}
 
 
-        if (schoolGifView.level.level<=16)  {  xiongGifs2 = new XiongGif3(new GifObj(24,schoolGifView.x,schoolGifView.y)
+        if (schoolGifView.level.level<=16)  {  xiongGifs2 = new XiongGif3(new GifObj(9,schoolGifView.x,schoolGifView.y)
                 .withPoint(0,0).withSize(100,100)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
                         new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
                 schoolGifView.allBitmaps);
         xiongGifs2.withTime_wait(30);}
 
-        if (schoolGifView.level.level>=16&&schoolGifView.level.level<=19)initBoss(schoolGifView);
+        if (schoolGifView.level.level<=16)  {  xiongGifs3 = (XiongGif3) new XiongGif3(new GifObj(9,schoolGifView.x,schoolGifView.y)
+                .withPoint(0,0).withSize(100,100)
+                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
+                        new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
+                schoolGifView.allBitmaps).withx(schoolGifView.x/2-100/2+schoolGifView.x*3/8);
+            xiongGifs3.withTime_wait(30);}
+
+
+
+        if (schoolGifView.level.level<=16)  {  xiongGifs4 = (XiongGif3) new XiongGif3(new GifObj(9,schoolGifView.x,schoolGifView.y)
+                .withPoint(0,0).withSize(100,100)
+                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
+                        new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
+                schoolGifView.allBitmaps).withx(schoolGifView.x/2-100/2-schoolGifView.x*3/8);
+            xiongGifs4.withTime_wait(30);}
+        if (schoolGifView.level.level<=16)  {  xiongGifs5 = (XiongGif3) new XiongGif3(new GifObj(9,schoolGifView.x,schoolGifView.y)
+                .withPoint(0,0).withSize(100,100)
+                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
+                        new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
+                schoolGifView.allBitmaps).withx(schoolGifView.x/2-100/2-schoolGifView.x*2/8);
+            xiongGifs5.withTime_wait(30);}
+
+        if (schoolGifView.level.level<=16)   {
+            xiongGifs6 = (XiongGif3) new XiongGif3(new GifObj(4,schoolGifView.x,schoolGifView.y)
+                .withPoint(0,0).withSize(150,150)
+                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit,3,
+                        new Level(schoolGifView.level.level/2).backEnemyValue().life,ShuXin.Huo),
+                schoolGifView.allBitmaps).withx(schoolGifView.x/2-150/2-schoolGifView.x*1/8);
+            xiongGifs6.withTime_wait(80);}
+        if (schoolGifView.level.level<=16)   {  xiongGifs7 = (XiongGif3) new XiongGif3(new GifObj(2,schoolGifView.x,schoolGifView.y)
+                .withPoint(0,0).withSize(200,200)
+                .init(schoolGifView.level.level*2, schoolGifView.level.backEnemyValue().hit,3,
+                        new Level(schoolGifView.level.level*2).backEnemyValue().life,ShuXin.Huo),
+                schoolGifView.allBitmaps).withx(schoolGifView.x/2-200/2);
+            xiongGifs7.withTime_wait(130);}
+
+       if (schoolGifView.level.level>=16&&schoolGifView.level.level<=19)
+            initBoss(schoolGifView);
 
 
 
 
     }
 
-    private void initBoss(SchoolGifView schoolGifView) {
-
+    public void initBoss(SchoolGifView schoolGifView) {
+        if (xiongBoss==null){
         GifObj init = new GifObj(1, schoolGifView.x, schoolGifView.y)
                 .withPoint(0, 0).withSize(250, 250)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
@@ -67,6 +109,7 @@ public class Gk01 {
 
         xiongBoss = new XiongBoss(init,
                 schoolGifView.allBitmaps);
+        }
 
     }
 
@@ -80,9 +123,14 @@ public class Gk01 {
 //        }
 
         drawBossCanvas(canvas);
-        if (xiongGifs!=null)  xiongGifs.drawCanvas(canvas);
+    //    if (xiongGifs!=null)  xiongGifs.drawCanvas(canvas);
         if (xiongGifs1!=null)   xiongGifs1.drawCanvas(canvas);
         if (xiongGifs2!=null)  xiongGifs2.drawCanvas(canvas);
+        if (xiongGifs3!=null)  xiongGifs3.drawCanvas(canvas);
+        if (xiongGifs4!=null)  xiongGifs4.drawCanvas(canvas);
+        if (xiongGifs5!=null)  xiongGifs5.drawCanvas(canvas);
+        if (xiongGifs6!=null)  xiongGifs6.drawCanvas(canvas);
+        if (xiongGifs7!=null)  xiongGifs7.drawCanvas(canvas);
 
 
 
@@ -105,10 +153,12 @@ public class Gk01 {
 
 
     public void exit(){
-        if (xiongGifs==null||xiongGifs1==null||xiongGifs2==null)return;
-                exit(xiongGifs);
-                exit(xiongGifs1);
-               exit(xiongGifs2);
+        initBoss(schoolGifView);/////////触发退出后召回一个boss
+//        if (xiongGifs==null||xiongGifs1==null||xiongGifs2==null)return;
+//                exit(xiongGifs);
+//                exit(xiongGifs1);
+          if(xiongGifs7==null) return;
+              exit(xiongGifs7);
 
 
     }
@@ -117,7 +167,7 @@ public class Gk01 {
 
 
     private void exit(  BaseGifObj baseGifBag){
-        if (xiongBoss==null)  initBoss(schoolGifView);/////////触发退出后召回一个boss
+
         if (baseGifBag!=null)  baseGifBag.exit=true;
         if (baseGifBag.bags==null)return;
         for (BaseGifBag bag:baseGifBag.bags){

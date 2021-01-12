@@ -15,7 +15,7 @@ public class ShuiBag extends BaseGifBag {
 
     @Override
     public void drawpath() {
-        y+=2;
+        y+=10;
 
     }
 

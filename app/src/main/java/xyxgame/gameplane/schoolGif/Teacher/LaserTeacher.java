@@ -28,9 +28,14 @@ public class LaserTeacher {
 
     public void PKResult(){
 //        pk(schoolGifView.xiong);
-        pk(schoolGifView.gk01.xiongGifs);
+       // pk(schoolGifView.gk01.xiongGifs);
         pk(schoolGifView.gk01.xiongGifs1);
         pk(schoolGifView.gk01.xiongGifs2);
+        pk(schoolGifView.gk01.xiongGifs3);
+        pk(schoolGifView.gk01.xiongGifs4);
+        pk(schoolGifView.gk01.xiongGifs5);
+        pk(schoolGifView.gk01.xiongGifs6);
+        pk(schoolGifView.gk01.xiongGifs7);
         pk(schoolGifView.gk01.xiongBoss);
         pk(schoolGifView.gk02.xiongGifs);
         pk(schoolGifView.gk02.xiongGifs2);
@@ -156,7 +161,7 @@ public class LaserTeacher {
     private int addlei_hit(BaseGifBag laser_bag, BaseGifBag enemy_bag, int lei) {
         if (schoolGifView.leiEffect.open==true&&laser_bag.shuxin!= ShuXin.Huo){
             schoolGifView.leiEffect.add_leiBag(enemy_bag,schoolGifView.gifPlay.obj.level);
-            lei=laser_bag.hit*5;
+            lei=laser_bag.hit*2;
             lostMoney(laser_bag);
 
         }else  lei=laser_bag.hit;

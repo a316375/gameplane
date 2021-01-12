@@ -21,16 +21,11 @@ public class XiongGif2 extends XiongGif {
     @Override
     protected void add_bags_add_new_obj_list() {
 
-        if (full>=obj.max){go=false;
-            resetWaitTime(10000);}
-      else   UiThead.runInUIThread(new Runnable() {
-            @Override
-            public void run() {
-                add(obj.maXx/2-obj.oW/2+obj.maXx*1/8);
-                add(obj.maXx/2-obj.oW/2-obj.maXx*1/8);
 
-            }
-        }, 200);
+                add(obj.maXx/2-obj.oW/2+obj.maXx*1/8);
+              //  add(obj.maXx/2-obj.oW/2-obj.maXx*1/8);
+
+
 
 
 

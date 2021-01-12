@@ -5,14 +5,23 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
 
-public class XiongGif extends BaseGifObj {
+/***
+ * 普通无限循环可以使用这个类，用于波数循环有bug
+ * 这个类用于回合出现波数第一次会多出1个，建议用XiongGif3来实现***/
+public abstract class XiongGif extends BaseGifObj {
+
+
+    int x=0;
     public XiongGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
         F5_GIf=10;
         Time_wait=100;
 
     }
-
+    public BaseGifObj withx(int x){
+        this.x=x;
+        return this;
+    }
 
     @Override
     protected void creatBags_gifbag_newxx_obj_list() {
@@ -41,10 +50,7 @@ public class XiongGif extends BaseGifObj {
     protected void add_bags_add_new_obj_list() {
        // setWaitTime(60000);
 
-
-        if (full>=obj.max){go=false;
-            resetWaitTime(10000);}
-       else add(obj.maXx/2-obj.oW/2);
+ add(obj.maXx/2-obj.oW/2);
 
     }
 

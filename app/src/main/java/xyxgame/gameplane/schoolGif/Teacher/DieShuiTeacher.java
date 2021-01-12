@@ -24,9 +24,14 @@ public class DieShuiTeacher extends Teacher{
     @Override
     public void PKResult() {
 
-        PK(schoolGifView.gk01.xiongGifs);
+       // PK(schoolGifView.gk01.xiongGifs);
         PK(schoolGifView.gk01.xiongGifs1);
         PK(schoolGifView.gk01.xiongGifs2);
+        PK(schoolGifView.gk01.xiongGifs3);
+        PK(schoolGifView.gk01.xiongGifs4);
+        PK(schoolGifView.gk01.xiongGifs5);
+        PK(schoolGifView.gk01.xiongGifs6);
+        PK(schoolGifView.gk01.xiongGifs7);
         PK(schoolGifView.gk01.xiongBoss);
         PK(schoolGifView.gk02.xiongGifs);
         PK(schoolGifView.gk02.xiongGifs2);

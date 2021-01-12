@@ -28,13 +28,13 @@ public class Gk02 {
 
     initGIf();
 
-    shuiGif=new ShuiGif( new GifObj(10, schoolGifView.x, schoolGifView.y)
-            .withPoint(schoolGifView.x/2, 0).withSize(250, 250)
-            .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
-                    new Level(20).backEnemyValue().life, ShuXin.Shui)
-            .showRect(true),
+    shuiGif=new ShuiGif( new GifObj(5, schoolGifView.x, schoolGifView.y)
+            .withPoint(schoolGifView.x/2-250/2, 0).withSize(250, 250)
+            .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 2,
+                    new Level(1).backEnemyValue().life, ShuXin.Shui)
+            .showRect(false),
             schoolGifView.allBitmaps);
-    shuiGif.withTime_wait(150);
+    shuiGif.withTime_wait(30);
 
 
 
@@ -43,7 +43,7 @@ public class Gk02 {
     public void initGIf() {
         if (schoolGifView.level.level >= 16) {
             if (xiongGifs == null) {
-                xiongGifs = new GK2_XiongGif(new GifObj(250, schoolGifView.x, schoolGifView.y)
+                xiongGifs = new GK2_XiongGif(new GifObj(25, schoolGifView.x, schoolGifView.y)
                         .withPoint(schoolGifView.x, 500).withSize(150, 150)
                         .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
                                 new Level(20).backEnemyValue().life, ShuXin.Huo),
@@ -53,7 +53,7 @@ public class Gk02 {
             }
 
             if (xiongGifs2 == null) {
-                xiongGifs2 = new GK2_XiongGif2(new GifObj(250, schoolGifView.x, schoolGifView.y)
+                xiongGifs2 = new GK2_XiongGif2(new GifObj(25, schoolGifView.x, schoolGifView.y)
                         .withPoint(-150+5, 500-50).withSize(150, 150)
                         .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
                                 new Level(20).backEnemyValue().life, ShuXin.Huo),
