@@ -6,7 +6,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
 
 /***
- * 普通无限循环可以使用这个类，用于波数循环有bug
+ *  用于波数循环有bug,待修复
  * 这个类用于回合出现波数第一次会多出1个，建议用XiongGif3来实现***/
 public abstract class XiongGif extends BaseGifObj {
 

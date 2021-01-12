@@ -67,6 +67,7 @@ public class FireTeacher extends  Teacher {
                     next.showtime=0;//添加持续时间
                     objbag.life-=next.hit;
                     schoolGifView.blastTextGif.addBag(next.hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
+                    if (objbag.life<=0)objbag.isDie=true;
 
                 }
             }

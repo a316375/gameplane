@@ -14,6 +14,7 @@ import xyxgame.gameplane.schoolGif.Enemy.XiongGif2;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGif3;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
+import xyxgame.gameplane.schoolGif.Path.exitPath;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
@@ -157,8 +158,8 @@ public class Gk01 {
 //        if (xiongGifs==null||xiongGifs1==null||xiongGifs2==null)return;
 //                exit(xiongGifs);
 //                exit(xiongGifs1);
-          if(xiongGifs7==null) return;
-              exit(xiongGifs7);
+
+              xiongGifs7.Exit(xiongGifs7);
 
 
     }
@@ -166,45 +167,10 @@ public class Gk01 {
 
 
 
-    private void exit(  BaseGifObj baseGifBag){
-
-        if (baseGifBag!=null)  baseGifBag.exit=true;
-        if (baseGifBag.bags==null)return;
-        for (BaseGifBag bag:baseGifBag.bags){
-            bag.path=new exitPath(bag);
-        }
-
-
-    }
 
 
 
-    class exitPath implements BaseGifBagPath{
-        BaseGifBag baseGifBag;
 
-        public exitPath(BaseGifBag baseGifBag) {
-            this.baseGifBag = baseGifBag;
-        }
-
-        @Override
-        public void drawpath() {
-
-            if (baseGifBag.shuxin==ShuXin.Boss){
-                baseGifBag.y-=5;
-                if (baseGifBag.y<=10) baseGifBag.y-=35;
-            }
-            else {
-                if (baseGifBag.x < baseGifBag.obj.maXx / 2) {
-                    baseGifBag.x -= 5;
-                    baseGifBag.y += 5;
-                } else {
-                    baseGifBag.x += 5;
-                    baseGifBag.y += 5;
-                }
-
-            }
-        }
-    }
 
 
 }

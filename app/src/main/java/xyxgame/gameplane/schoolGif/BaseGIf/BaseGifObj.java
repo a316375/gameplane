@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.Music.MusicUtils;
+import xyxgame.gameplane.schoolGif.Path.exitPath;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
@@ -147,6 +148,7 @@ public abstract class BaseGifObj extends View {
 
 
         if (bags.size() == 0) return;
+        //出界移除
         Iterator<BaseGifBag> remove = bags.iterator();
         while (remove.hasNext()) {
             BaseGifBag next = remove.next();
@@ -166,6 +168,7 @@ public abstract class BaseGifObj extends View {
             paint.setColor(Color.RED);
         }
 
+        //赋予矩阵，绘制动画
         Iterator<BaseGifBag> iterator = bags.iterator();
         while (iterator.hasNext()) {
             BaseGifBag next = iterator.next();
@@ -184,12 +187,15 @@ public abstract class BaseGifObj extends View {
             if (t % F5_GIf == 0) next.i++;
         }
 
+        
+        After_draw();
 
         // if (t % F5_GIf == 0) i++;
 
 
     }
 
+    public  void After_draw(){};
 
 
     ;
@@ -218,5 +224,15 @@ public abstract class BaseGifObj extends View {
 
     }
 
+    public void Exit(  BaseGifObj baseGifBag){
+        if(baseGifBag==null) return;
+        if (baseGifBag!=null)  baseGifBag.exit=true;
+        if (baseGifBag.bags==null)return;
+        for (BaseGifBag bag:baseGifBag.bags){
+            bag.path=new exitPath(bag);
+        }
+
+
+    }
 
 }

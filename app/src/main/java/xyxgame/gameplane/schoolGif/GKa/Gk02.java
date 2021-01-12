@@ -22,26 +22,32 @@ public class Gk02 {
     public ShuiGif shuiGif;
 
 
-    public Gk02(SchoolGifView schoolGifView) {
-        this.schoolGifView=schoolGifView;
+    public Gk02(  SchoolGifView schoolGifView) {
+
+        this.schoolGifView = schoolGifView;
 
 
-    initGIf();
+        initGIf();
 
-    shuiGif=new ShuiGif( new GifObj(5, schoolGifView.x, schoolGifView.y)
-            .withPoint(schoolGifView.x/2-250/2, 0).withSize(250, 250)
-            .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 2,
-                    new Level(1).backEnemyValue().life, ShuXin.Shui)
-            .showRect(false),
-            schoolGifView.allBitmaps);
-    shuiGif.withTime_wait(30);
-
+        if (schoolGifView.level.level >= 16){
+            initShuiGIf( );
+        }
 
 
     }
 
+    public void initShuiGIf( ) {
+   if (shuiGif==null)   { shuiGif = new ShuiGif(new GifObj(5, schoolGifView.x, schoolGifView.y)
+                .withPoint(schoolGifView.x / 2 - 250 / 2, 0).withSize(250, 250)
+                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 2,
+                        new Level(1).backEnemyValue().life, ShuXin.Shui)
+                .showRect(false),
+                schoolGifView.allBitmaps);
+        shuiGif.withTime_wait(30);}
+    }
+
     public void initGIf() {
-        if (schoolGifView.level.level >= 16) {
+        if (schoolGifView.level.level>=16&&schoolGifView.level.level<=19) {
             if (xiongGifs == null) {
                 xiongGifs = new GK2_XiongGif(new GifObj(25, schoolGifView.x, schoolGifView.y)
                         .withPoint(schoolGifView.x, 500).withSize(150, 150)
@@ -72,6 +78,9 @@ public class Gk02 {
 //        for (BaseGifBag bgb:xiongGifs2.bags ) {
 //            bgb.path=new PathTest(bgb,2);
 //        }
+
+
+
 
 
         if (xiongGifs !=null)  xiongGifs.drawCanvas(canvas);

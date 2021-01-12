@@ -3,10 +3,13 @@ package xyxgame.gameplane.schoolGif;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
+import java.util.Iterator;
+
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
@@ -17,6 +20,7 @@ import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Effect.die_shui.DieShui;
+import xyxgame.gameplane.schoolGif.Enemy.XiongBoss;
 import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
 import xyxgame.gameplane.schoolGif.GKa.Gk01;
 import xyxgame.gameplane.schoolGif.GKa.Gk02;
@@ -84,7 +88,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
         this.mBaseActivity=mBaseActivity;
-        money=new Money(mBaseActivity.info.money);
+
+
 
 
 
@@ -101,8 +106,10 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
 //        level = new Level(mBaseActivity.info.level);//网络
-        level = new Level(15);
+        level = new Level(1);
         exp = new Exp(mBaseActivity.info.exp);
+//        money=new Money(mBaseActivity.info.money);
+        money=new Money(19999);
 
         GifObj play=new GifObj(1, x, y)
                 .withPoint(x /2-100, y -400)
@@ -212,7 +219,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         fireEffect.drawCanvas(canvas);
 
 //        xiong.drawCanvas(canvas);
-      if (level.level>=16) {gk01.exit();gk02.initGIf();}
+      if (level.level>=16) {gk01.exit();gk02.initGIf();gk02.initShuiGIf();}
         gk01.drawCanvas(canvas);
 
         gk02.drawCanvas(canvas);
@@ -260,6 +267,31 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         laserTeacher.PKResult();//处理碰撞
         fireTeacher.PKResult();//火技能的燃烧
         dieShuiTeacher.PKResult();//水属性敌方死亡后产物碰撞
+
+
+
+        removeDie(gk01.xiongBoss);//移除Boss死亡
+
+
+    }
+
+    private void removeDie(XiongBoss xiongBoss) {
+        if (xiongBoss==null||xiongBoss.bags.size()==0)return;
+        Iterator<BaseGifBag> iterator = xiongBoss.bags.iterator();
+        for (Iterator<BaseGifBag> it = iterator; it.hasNext(); ) {
+            BaseGifBag baseGifBag = it.next();
+            if (baseGifBag.isDie){
+                gk01.xiongGifs1.Exit(gk01.xiongGifs1);
+                gk01.xiongGifs2.Exit(gk01.xiongGifs2);
+                gk01.xiongGifs3.Exit(gk01.xiongGifs3);
+                gk01.xiongGifs4.Exit(gk01.xiongGifs4);
+                gk01.xiongGifs5.Exit(gk01.xiongGifs5);
+                gk01.xiongGifs6.Exit(gk01.xiongGifs6);
+                gk02.xiongGifs.Exit(gk02.xiongGifs);
+                gk02.xiongGifs2.Exit(gk02.xiongGifs2);
+                xiongBoss.bags.remove(baseGifBag);}
+        }
+
     }
 
 
@@ -269,7 +301,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
             resethuihe(laserGif);}
         if (frame_Time%30==0){
 
-           // resethuihe(gk01.xiongGifs);
+
             resethuihe(gk01.xiongGifs1);
             resethuihe(gk01.xiongGifs2);
             resethuihe( gk01.xiongGifs3);

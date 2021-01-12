@@ -35,6 +35,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public BaseState baseState;
     public int state=-State.Null;
 
+    public boolean isDie=false;
 
     public ShuiEffect shuiEffect;
     public void setShuiEffect(ShuiEffect shuiEffect) {

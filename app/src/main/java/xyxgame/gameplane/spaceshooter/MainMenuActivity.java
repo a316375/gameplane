@@ -79,7 +79,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         info = IntentUtils.getInfo(this);
 
         musicPlayer = new MusicPlayer(this,R.raw.bg);
-        value = new Info(1, 0, 99999);
+        value = new Info(1, 0, 19999);
 
         instance = FirebaseAuth.getInstance();
 

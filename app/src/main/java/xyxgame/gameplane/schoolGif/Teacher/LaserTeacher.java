@@ -102,8 +102,7 @@ public class LaserTeacher {
 
                 //移除水的特效
 //                            schoolGifView.shuiEffect.remove_effcet(enemy_bag, ShuXin.Null);
-                //移除敌人
-                baseGifBag.bags.remove(enemy_bag);
+
                 //奖励经验
                 schoolGifView.exp.exp+= schoolGifView.level.level*5;
                 schoolGifView.money.all+=2;
@@ -111,6 +110,10 @@ public class LaserTeacher {
 
             if (enemy_bag.shuxin==ShuXin.Huo) addFireEffect(enemy_bag);//火属性死亡后添加火特效
 
+
+
+            if (enemy_bag.shuxin!=ShuXin.Boss)baseGifBag.bags.remove(enemy_bag);//不是boss则直接移除
+            else enemy_bag.isDie=true;//标记Boss死亡
 
         }
     }
