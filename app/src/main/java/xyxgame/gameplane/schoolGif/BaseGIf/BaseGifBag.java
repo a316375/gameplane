@@ -1,12 +1,12 @@
 package xyxgame.gameplane.schoolGif.BaseGIf;
 
 import android.graphics.Bitmap;
+import android.graphics.Path;
 import android.graphics.Rect;
 
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import xyxgame.gameplane.schoolGif.Effect.FireEffect;
 import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
@@ -50,6 +50,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     }
     public BaseGifBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         path=this;
+
         this.shuxin=obj.ShuXin;
 
         this.list_copy=list;

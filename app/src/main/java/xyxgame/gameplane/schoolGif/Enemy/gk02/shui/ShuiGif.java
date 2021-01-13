@@ -1,4 +1,4 @@
-package xyxgame.gameplane.schoolGif.Enemy.shui;
+package xyxgame.gameplane.schoolGif.Enemy.gk02.shui;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;

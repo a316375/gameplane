@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 import xyxgame.gameplane.Base.BaseActivity;
 import xyxgame.gameplane.Base.BaseSurfaceVIEW;
+import xyxgame.gameplane.Billing.BillingView;
 import xyxgame.gameplane.GL.FPS;
 import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
@@ -20,8 +21,7 @@ import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
 import xyxgame.gameplane.schoolGif.Effect.die_shui.DieShui;
-import xyxgame.gameplane.schoolGif.Enemy.XiongBoss;
-import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongBoss;
 import xyxgame.gameplane.schoolGif.GKa.Gk01;
 import xyxgame.gameplane.schoolGif.GKa.Gk02;
 import xyxgame.gameplane.schoolGif.Model.Exp;
@@ -38,6 +38,7 @@ import xyxgame.gameplane.schoolGif.Model.Money;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
+import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
 /**绘制完对象后，你需要在SchoolGifView添加resethuihe(波段出现的敌人重载时间)
@@ -83,6 +84,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
     public DieShui dieShui;
     private final DieShuiTeacher dieShuiTeacher;
+    public   BillingView billingView;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -90,7 +92,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         this.mBaseActivity=mBaseActivity;
 
 
-
+        billingView = new BillingView(this);
 
 
         musicPlayer=new MusicUtils(getContext());
@@ -106,7 +108,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
 //        level = new Level(mBaseActivity.info.level);//网络
-        level = new Level(1);
+        level = new Level(16);
         exp = new Exp(mBaseActivity.info.exp);
 //        money=new Money(mBaseActivity.info.money);
         money=new Money(19999);
@@ -260,9 +262,23 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
     }
 
+
+
+    boolean showBillingview=false;
+    boolean showOneTime=true;
+
     @Override
     protected void onFrameDrawFinish() {
-        
+
+        if (money.all<=0)showBillingview=true;
+
+        if (showBillingview&&showOneTime)  UiThead.runInUIThread(new Runnable() {
+            @Override
+            public void run() {
+                showOneTime=false;
+                billingView.show();
+            }
+        });
 
         laserTeacher.PKResult();//处理碰撞
         fireTeacher.PKResult();//火技能的燃烧
@@ -299,7 +315,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     protected void onFrameDraw() {
         if (frame_Time%5==0){
             resethuihe(laserGif);}
-        if (frame_Time%30==0){
+        if (frame_Time%25==0){
 
 
             resethuihe(gk01.xiongGifs1);

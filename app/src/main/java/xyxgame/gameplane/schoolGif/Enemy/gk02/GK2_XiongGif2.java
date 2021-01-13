@@ -5,8 +5,8 @@ import android.graphics.Canvas;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
-import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
-import xyxgame.gameplane.schoolGif.Enemy.xiongState;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongGif;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.xiongState;
 
 public class GK2_XiongGif2 extends XiongGif {
    // private Path path;

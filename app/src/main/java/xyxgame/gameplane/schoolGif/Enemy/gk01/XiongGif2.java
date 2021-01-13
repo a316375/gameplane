@@ -1,9 +1,8 @@
-package xyxgame.gameplane.schoolGif.Enemy;
+package xyxgame.gameplane.schoolGif.Enemy.gk01;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
-import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class XiongGif2 extends XiongGif {
     public XiongGif2(GifObj obj, GifAllBitmaps allBitmaps) {

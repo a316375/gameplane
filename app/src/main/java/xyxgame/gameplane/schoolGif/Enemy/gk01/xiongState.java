@@ -1,4 +1,4 @@
-package xyxgame.gameplane.schoolGif.Enemy;
+package xyxgame.gameplane.schoolGif.Enemy.gk01;
 
 import android.graphics.Bitmap;
 import android.util.Log;

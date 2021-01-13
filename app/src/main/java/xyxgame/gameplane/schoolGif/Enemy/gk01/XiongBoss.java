@@ -1,7 +1,6 @@
-package xyxgame.gameplane.schoolGif.Enemy;
+package xyxgame.gameplane.schoolGif.Enemy.gk01;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;

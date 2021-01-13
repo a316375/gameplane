@@ -1,4 +1,4 @@
-package xyxgame.gameplane.schoolGif.Enemy;
+package xyxgame.gameplane.schoolGif.Enemy.gk01;
 
 import android.graphics.Bitmap;
 
@@ -6,7 +6,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Model.State;
 
 public class XiongBossBags extends XiongBags implements BaseGifBagPath {
     public XiongBossBags(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {

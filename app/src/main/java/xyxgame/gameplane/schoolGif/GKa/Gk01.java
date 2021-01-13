@@ -2,22 +2,14 @@ package xyxgame.gameplane.schoolGif.GKa;
 
 import android.graphics.Canvas;
 
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBagPath;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Enemy.XiongBoss;
-import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
-import xyxgame.gameplane.schoolGif.Enemy.XiongGif2;
-import xyxgame.gameplane.schoolGif.Enemy.XiongGif3;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongBoss;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongGif3;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
-import xyxgame.gameplane.schoolGif.Path.exitPath;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
-import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 public class Gk01 {
 

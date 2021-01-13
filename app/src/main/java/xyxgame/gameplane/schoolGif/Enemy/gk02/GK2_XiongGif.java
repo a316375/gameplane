@@ -1,17 +1,12 @@
 package xyxgame.gameplane.schoolGif.Enemy.gk02;
 
 import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
-import xyxgame.gameplane.schoolGif.Enemy.XiongBags;
-import xyxgame.gameplane.schoolGif.Enemy.XiongGif;
-import xyxgame.gameplane.schoolGif.Enemy.xiongState;
-import xyxgame.gameplane.schoolGif.Tool.UIPaint;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongGif;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.xiongState;
 
 public class GK2_XiongGif extends XiongGif {
    // private Path path;

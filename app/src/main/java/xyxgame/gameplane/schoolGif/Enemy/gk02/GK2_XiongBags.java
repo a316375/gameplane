@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Enemy.XiongBags;
+import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongBags;
 
 
 public class GK2_XiongBags extends XiongBags {

@@ -62,6 +62,7 @@ public class UIAlertDialog {
     public static AlertDialog showDialogLayout( Context context,int layout){
 
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context,R.style.NoActionBar));
         View dialogView = View.inflate(context, layout, null);
 
@@ -81,8 +82,8 @@ public class UIAlertDialog {
 
 
 
-
-
-
-
 }
+
+
+
+

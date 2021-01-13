@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.gk02.GK2_XiongGif;
 import xyxgame.gameplane.schoolGif.Enemy.gk02.GK2_XiongGif2;
-import xyxgame.gameplane.schoolGif.Enemy.shui.ShuiGif;
+import xyxgame.gameplane.schoolGif.Enemy.gk02.shui.ShuiGif;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
@@ -37,8 +37,9 @@ public class Gk02 {
     }
 
     public void initShuiGIf( ) {
-   if (shuiGif==null)   { shuiGif = new ShuiGif(new GifObj(5, schoolGifView.x, schoolGifView.y)
-                .withPoint(schoolGifView.x / 2 - 250 / 2, 0).withSize(250, 250)
+   if (shuiGif==null)   { shuiGif = new ShuiGif(new GifObj(35, schoolGifView.x, schoolGifView.y)
+//                .withPoint(schoolGifView.x / 2 - 250 / 2, 0).withSize(250, 250)
+                .withPoint(-250+5, schoolGifView.y / 2).withSize(250, 250)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 2,
                         new Level(1).backEnemyValue().life, ShuXin.Shui)
                 .showRect(false),
@@ -78,9 +79,6 @@ public class Gk02 {
 //        for (BaseGifBag bgb:xiongGifs2.bags ) {
 //            bgb.path=new PathTest(bgb,2);
 //        }
-
-
-
 
 
         if (xiongGifs !=null)  xiongGifs.drawCanvas(canvas);
