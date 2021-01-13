@@ -5,4 +5,5 @@ public interface AD {
     void reload();
     void exit();
     void FinishOK();
+    void ADFaid();
 }

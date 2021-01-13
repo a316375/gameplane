@@ -49,6 +49,8 @@ public class GifObj {
         return this;
     }
 
+
+
     public GifObj setSpeed(int speed){this.speed=speed;return this;};
     public GifObj setShuXin(int ShuXin){this.ShuXin=ShuXin;return this;};
     public GifObj init(int level, int hit, int speed, int life, int ShuXin) {

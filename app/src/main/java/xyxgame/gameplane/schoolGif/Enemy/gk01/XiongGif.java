@@ -11,7 +11,7 @@ import xyxgame.gameplane.schoolGif.Effect.Shui;
 public abstract class XiongGif extends BaseGifObj {
 
 
-    int x=0;
+    public  int move_X =0;//移动距离。对象产生时候，x的偏移值，在add方法中
     public XiongGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
         F5_GIf=10;
@@ -19,7 +19,7 @@ public abstract class XiongGif extends BaseGifObj {
 
     }
     public BaseGifObj withx(int x){
-        this.x=x;
+        this.move_X =x;
         return this;
     }
 

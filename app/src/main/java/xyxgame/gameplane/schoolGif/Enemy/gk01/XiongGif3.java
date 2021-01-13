@@ -8,7 +8,7 @@ public class XiongGif3 extends XiongGif {
 
     public XiongGif3(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
-        x=obj.maXx/2-obj.oW/2+obj.maXx*2/8;
+        move_X =obj.maXx/2-obj.oW/2+obj.maXx*2/8;
     }
 
 
@@ -25,7 +25,7 @@ public class XiongGif3 extends XiongGif {
 
 
 
-                add(x);
+                add(move_X);
 //                add(obj.maXx/2-obj.oW/2+obj.maXx*3/8);
 //
 //                add(obj.maXx/2-obj.oW/2-obj.maXx*2/8);
@@ -38,7 +38,7 @@ public class XiongGif3 extends XiongGif {
 
     }
 
-    private void add(int distance_X){
+    public void add(int distance_X){
         obj.oX+=distance_X;
         XiongBags xiongBags = new XiongBags3(obj, list);
         xiongBags.setShuiEffect(new Shui(list_shui));

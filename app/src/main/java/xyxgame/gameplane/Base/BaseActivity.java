@@ -1,6 +1,5 @@
 package xyxgame.gameplane.Base;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
@@ -18,7 +17,6 @@ import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.AdapterStatus;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -29,8 +27,6 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.gyf.immersionbar.ImmersionBar;
 import com.snail.antifake.jni.EmulatorDetectUtil;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 import xyxgame.gameplane.DB.Info;
@@ -54,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
     String s = ShuXin.id;//测试id
 
     public Info info;
-    AD mad;
+    AD myAD;
     private BaseSurfaceVIEW baseSurfaceVIEW;
 
     @Override
@@ -92,7 +88,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
 
         init();
 
-        mad=new BaseAD(baseSurfaceVIEW);
+        myAD =new BaseAD(baseSurfaceVIEW);
 
         if(EmulatorDetectUtil.isEmulator(this) )return;
 
@@ -161,14 +157,15 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
             public void onRewardedAdLoaded() {
                 // Ad successfully loaded.
 
-               mad.coming();
+               myAD.coming();
 
             }
 
             @Override
             public void onRewardedAdFailedToLoad(LoadAdError adError) {
                 // Ad failed to load.
-                Log.v("--AD AdError",adError.getMessage()+"----");
+                Log.v("--AD AdError",adError.getMessage()+"----"+adError.getCode());
+               if (adError.getCode()==3)myAD.ADFaid();
             }
         };
         rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
@@ -192,7 +189,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
 
                     start=true;
 
-                    mad.exit();
+                    myAD.exit();
 
 
                     if (!AD_FINISHED)
@@ -200,7 +197,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
                         @Override
                         public void run() {
                             rewardedAd = createAndLoadRewardedAd();//关闭时候重新加载新的
-                            mad.reload();
+                            myAD.reload();
                         }
                     }, ShuXin.ADTime);
 
@@ -218,7 +215,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Firebase
                     // User earned reward.
 
 
-                    mad.FinishOK();
+                    myAD.FinishOK();
                     AD_FINISHED=true;
 
 

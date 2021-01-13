@@ -108,7 +108,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
 //        level = new Level(mBaseActivity.info.level);//网络
-        level = new Level(16);
+        level = new Level(19);
         exp = new Exp(mBaseActivity.info.exp);
 //        money=new Money(mBaseActivity.info.money);
         money=new Money(19999);
@@ -222,6 +222,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 //        xiong.drawCanvas(canvas);
       if (level.level>=16) {gk01.exit();gk02.initGIf();gk02.initShuiGIf();}
+
+
         gk01.drawCanvas(canvas);
 
         gk02.drawCanvas(canvas);
@@ -305,6 +307,9 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
                 gk01.xiongGifs6.Exit(gk01.xiongGifs6);
                 gk02.xiongGifs.Exit(gk02.xiongGifs);
                 gk02.xiongGifs2.Exit(gk02.xiongGifs2);
+                gk02.shuiGif.Exit(gk02.shuiGif);
+                gk02.initUpXiongGIf();
+
                 xiongBoss.bags.remove(baseGifBag);}
         }
 
@@ -329,6 +334,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
             resethuihe(gk02.shuiGif);
             resethuihe( gk02.xiongGifs);
             resethuihe( gk02.xiongGifs2);
+            resethuihe( gk02.upXiongGif);
 
 
         }
@@ -366,5 +372,9 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     }
 
 
-
+    @Override
+    public void ADLoadFaid() {
+        super.ADLoadFaid();
+        money.all+=5000;//不能无限制添加，应该设置广告展示次数
+    }
 }

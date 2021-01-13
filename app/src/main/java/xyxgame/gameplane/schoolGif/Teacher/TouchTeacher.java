@@ -201,6 +201,7 @@ public class TouchTeacher extends View {
                     }
                     if (baseStopBitmap.num==ShuXin.Tu){
                         schoolGifView.leiEffect.open=!schoolGifView.leiEffect.open;
+                        schoolGifView.gifPlay.lei_Open=!schoolGifView.gifPlay.lei_Open;//声音特效
 
                             if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin){
 

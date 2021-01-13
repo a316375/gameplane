@@ -20,7 +20,7 @@ import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 public class PlayGif extends BaseGifObj {
 
-
+    public  boolean lei_Open=false;
     public PlayGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
         F5_GIf=10;

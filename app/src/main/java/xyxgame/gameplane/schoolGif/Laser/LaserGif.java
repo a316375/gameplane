@@ -106,8 +106,9 @@ public class LaserGif extends BaseGifObj {
     public void playmusic() {
         super.playmusic();
 
-        // Log.v("----","---------------");
-         music.playLaser();
+        // Log.v("----","------雷打开---------");
+     if (playGif.lei_Open)    music.playLaser2();
+     else music.playLaser();
     }
 
 }

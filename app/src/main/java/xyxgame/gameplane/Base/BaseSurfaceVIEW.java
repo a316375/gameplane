@@ -1,19 +1,14 @@
 package xyxgame.gameplane.Base;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 
@@ -30,6 +25,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
     public boolean isAlive;
 
     public boolean showAD=false;
+
 
 
 
@@ -95,6 +91,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
     }
 
+
     protected abstract void onThreadDraw(Canvas canvas);
     private ThreadRunable runable;
     private class ThreadRunable implements Runnable{
@@ -124,6 +121,7 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
                     try {
                         //4.一帧绘制结束
                         onFrameDrawFinish();
+
                     }finally {
                         r.unlock();
                         //3.将帧数据提交
@@ -184,4 +182,5 @@ public abstract class BaseSurfaceVIEW extends SurfaceView implements SurfaceHold
 
 
    public void ADFinish(){}
+   public void ADLoadFaid(){}
 }

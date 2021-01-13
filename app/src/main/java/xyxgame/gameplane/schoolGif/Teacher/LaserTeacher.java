@@ -29,17 +29,18 @@ public class LaserTeacher {
     public void PKResult(){
 //        pk(schoolGifView.xiong);
        // pk(schoolGifView.gk01.xiongGifs);
-        pk(schoolGifView.gk01.xiongGifs1);
-        pk(schoolGifView.gk01.xiongGifs2);
-        pk(schoolGifView.gk01.xiongGifs3);
-        pk(schoolGifView.gk01.xiongGifs4);
-        pk(schoolGifView.gk01.xiongGifs5);
-        pk(schoolGifView.gk01.xiongGifs6);
-        pk(schoolGifView.gk01.xiongGifs7);
-        pk(schoolGifView.gk01.xiongBoss);
-        pk(schoolGifView.gk02.xiongGifs);
-        pk(schoolGifView.gk02.xiongGifs2);
-        pk(schoolGifView.gk02.shuiGif);
+        PK(schoolGifView.gk01.xiongGifs1);
+        PK(schoolGifView.gk01.xiongGifs2);
+        PK(schoolGifView.gk01.xiongGifs3);
+        PK(schoolGifView.gk01.xiongGifs4);
+        PK(schoolGifView.gk01.xiongGifs5);
+        PK(schoolGifView.gk01.xiongGifs6);
+        PK(schoolGifView.gk01.xiongGifs7);
+        PK(schoolGifView.gk01.xiongBoss);
+        PK(schoolGifView.gk02.xiongGifs);
+        PK(schoolGifView.gk02.xiongGifs2);
+        PK(schoolGifView.gk02.shuiGif);
+        PK(schoolGifView.gk02.upXiongGif);
 
     }
 
@@ -48,7 +49,7 @@ public class LaserTeacher {
 
 
 
-    private void pk(  BaseGifObj baseGifBag){
+    private void PK(BaseGifObj baseGifBag){
         if (baseGifBag==null||baseGifBag.bags==null)return;
 
         Iterator<BaseGifBag> iterator = laserGif.bags.iterator();

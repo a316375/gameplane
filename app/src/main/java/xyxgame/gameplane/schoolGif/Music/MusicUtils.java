@@ -18,7 +18,7 @@ import xyxgame.gameplane.schoolGif.Tool.UiThead;
 public class MusicUtils  {
     private   SoundPool mSoundPool;
     Context context;
-    private int mLaserId;
+    private int mLaserId,mLaserId2;
     private final ExecutorService threadPool;
 
 
@@ -37,9 +37,9 @@ public class MusicUtils  {
               mSoundPool = new SoundPool(20, AudioManager.STREAM_MUSIC, 0);
         }
 
-//        mLaserId = mSoundPool.load(context, R.raw.laser, 1);
-        mLaserId = mSoundPool.load(context, R.raw.laser, 1);
-        mSoundPool.setVolume(mLaserId,1,1);
+        mLaserId = mSoundPool.load(context, R.raw.laser_1, 1);
+        mLaserId2 = mSoundPool.load(context, R.raw.laser, 1);
+//        mSoundPool.setVolume(mLaserId,1,1);
 
         threadPool =Executors.newFixedThreadPool(20);
 
@@ -62,6 +62,18 @@ public class MusicUtils  {
             }
         });
 
+
+    }
+
+    public   void playLaser2(){
+
+        threadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                mSoundPool.play(mLaserId2, 1f, 1f, 1, 0, 1);
+
+            }
+        });
 
 
     }

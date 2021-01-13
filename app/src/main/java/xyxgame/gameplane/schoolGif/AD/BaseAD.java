@@ -31,4 +31,9 @@ public class BaseAD implements AD {
 //        schoolGifView.adList.clear();
         baseSurfaceVIEW.ADFinish();
     }
+
+    @Override
+    public void ADFaid() {
+        baseSurfaceVIEW.ADLoadFaid();
+    }
 }

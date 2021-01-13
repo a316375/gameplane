@@ -43,6 +43,13 @@ public class GifAllBitmaps {
 
         return getbitmaps(width, height, activity, R.drawable.die_shui_enemy);
     }
+    public CopyOnWriteArrayList<Bitmap> getupxiong08_att(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.boss_upxiong08_att);
+    }  public CopyOnWriteArrayList<Bitmap> getupxiong08_move(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.boss_upxiong08_move);
+    }
 
     public CopyOnWriteArrayList<Bitmap> getshui_enemy_08att(int width, int height) {
 
