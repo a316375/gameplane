@@ -113,7 +113,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 //        level = new Level(mBaseActivity.info.level);//网络
         level = new Level(mBaseActivity.info.level);
-        level = new Level(1);
+//        level = new Level(1);
      if (TimeUitil.isOneDay(getContext())==false)
          Level_share.savaFistlevel(getContext(),mBaseActivity.info.level);//储存一下今天的等级初始值
      //   else level.level=level.Max_Level_day(getContext());
@@ -389,6 +389,6 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     @Override
     public void ADLoadFaid() {
         super.ADLoadFaid(); 
-        money.all+=5000;//不能无限制添加，应该设置广告展示次数
+        money.all+=1000;//不能无限制添加，应该设置广告展示次数
     }
 }

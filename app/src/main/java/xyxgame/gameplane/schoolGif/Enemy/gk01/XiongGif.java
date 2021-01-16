@@ -1,5 +1,9 @@
 package xyxgame.gameplane.schoolGif.Enemy.gk01;
 
+import android.graphics.Bitmap;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
@@ -33,10 +37,9 @@ public abstract class XiongGif extends BaseGifObj {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
-      list=allBitmaps.getxiong8Move(obj.oW,obj.oH);
-
+        return allBitmaps.getxiong8Move(obj.oW,obj.oH);
     }
 
 

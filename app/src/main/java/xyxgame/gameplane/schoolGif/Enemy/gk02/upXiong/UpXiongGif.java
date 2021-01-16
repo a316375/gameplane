@@ -1,5 +1,9 @@
 package xyxgame.gameplane.schoolGif.Enemy.gk02.upXiong;
 
+import android.graphics.Bitmap;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
@@ -15,9 +19,10 @@ public class UpXiongGif extends XiongGif3 {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
         super.lodebitmaps_list__allBitmaps_get_objow_obj_oh();
         list=allBitmaps.getupxiong08_move(obj.oW,obj.oH);
+        return null;
     }
 
     @Override

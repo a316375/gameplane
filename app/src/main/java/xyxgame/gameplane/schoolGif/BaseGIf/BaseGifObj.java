@@ -44,7 +44,7 @@ public abstract class BaseGifObj extends View {
         list_shui = list = allBitmaps.getlaser08(100, 50);
 
 
-        lodebitmaps_list__allBitmaps_get_objow_obj_oh();//赋予图片
+        list=lodebitmaps_list__allBitmaps_get_objow_obj_oh();//赋予图片
 
 
         UiThead.runInUIThread(new Runnable() {
@@ -63,7 +63,7 @@ public abstract class BaseGifObj extends View {
     protected abstract void creatBags_gifbag_newxx_obj_list();
 
     //**赋予图片**//
-    protected abstract void lodebitmaps_list__allBitmaps_get_objow_obj_oh();
+    protected abstract CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh();
 
     public BaseGifObj setMusic(MusicUtils music) {
         this.music = music;
@@ -185,6 +185,7 @@ public abstract class BaseGifObj extends View {
 //            if (next.obj.showRect)
                 canvas.drawRect(next.rect, paint);
             if (next.path != null) next.path.drawpath();////这个是分离代码
+
 
             if (next.shuiEffect != null) next.shuiEffect.draw(canvas);
 

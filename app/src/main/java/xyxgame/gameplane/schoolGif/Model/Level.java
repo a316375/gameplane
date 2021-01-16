@@ -18,6 +18,7 @@ public class Level {
       //每天等级上限
       public int Max_Level_day(Context context){
         return Level_share.getFistlevel(context)+19;
+//        return Level_share.getFistlevel(context)+5;
       }
 
 
@@ -28,7 +29,7 @@ public class Level {
       }
     //返回攻击力*10，等级*100，需要经验值*500--敌人数值
     public value backEnemyValue(){
-        return new value(level*50,level*800,level*1500);
+        return new value(level*50,level*200,level*2000);
     }
 
 

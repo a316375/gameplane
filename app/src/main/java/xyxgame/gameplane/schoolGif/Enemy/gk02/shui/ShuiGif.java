@@ -1,5 +1,9 @@
 package xyxgame.gameplane.schoolGif.Enemy.gk02.shui;
 
+import android.graphics.Bitmap;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
@@ -20,9 +24,10 @@ public class ShuiGif extends BaseGifObj {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-        list = allBitmaps.getshui_enemy_08move(obj.oW, obj.oH);
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
+
+        return allBitmaps.getshui_enemy_08move(obj.oW, obj.oH);
     }
 
     @Override

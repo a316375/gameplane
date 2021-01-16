@@ -1,22 +1,13 @@
 package xyxgame.gameplane.schoolGif.Play;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.util.Log;
-import android.view.MotionEvent;
 
-import androidx.core.view.MotionEventCompat;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-import java.util.ArrayList;
-
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
-import xyxgame.gameplane.schoolGif.BaseGIf.BaseStopBitmap;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Music.MusicUtils;
-import xyxgame.gameplane.schoolGif.SchoolGifView;
-import xyxgame.gameplane.schoolGif.ShowList.ListB;
-import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 public class PlayGif extends BaseGifObj {
 
@@ -45,9 +36,10 @@ public class PlayGif extends BaseGifObj {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-        list=allBitmaps.getyu2(obj.oW,obj.oH);
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
+
+        return allBitmaps.getyu2(obj.oW,obj.oH);
     }
 
     @Override

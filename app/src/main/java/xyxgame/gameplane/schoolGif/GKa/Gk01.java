@@ -100,7 +100,7 @@ public class Gk01 {
         GifObj init = new GifObj(1, schoolGifView.x, schoolGifView.y)
                 .withPoint(0, 0).withSize(250, 250)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
-                        new Level(20*100).backEnemyValue().life, ShuXin.Boss);
+                        new Level(20*20).backEnemyValue().life, ShuXin.Boss);
 
         xiongBoss = new XiongBoss(init,
                 schoolGifView.allBitmaps);

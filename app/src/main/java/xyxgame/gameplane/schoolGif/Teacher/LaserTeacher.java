@@ -3,7 +3,6 @@ package xyxgame.gameplane.schoolGif.Teacher;
 import android.graphics.Rect;
 
 import java.util.Iterator;
-import java.util.Random;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
@@ -61,6 +60,8 @@ public class LaserTeacher {
 
             for (Iterator<BaseGifBag> iter = baseGifBag.bags.iterator(); iter.hasNext(); ) {
                 final BaseGifBag enemy_bag = iter.next();
+                //enemy_bag.startA1(schoolGifView,baseGifBag);//被火烧的时候，绘制伤害 优先于子弹碰撞
+
                 if (Rect.intersects(laser_bag.rect,enemy_bag.rect)) {
                     startPK(baseGifBag, laser_bag, enemy_bag);//开始pk
                 }
@@ -78,7 +79,9 @@ public class LaserTeacher {
         enemy_bag.startF(schoolGifView,laser_bag);//绘制木路径
         enemy_bag.startG(schoolGifView,laser_bag);//绘制水攻特效
         enemy_bag.startH(schoolGifView,laser_bag);//绘制火攻特效
-        enemy_bag.startI(schoolGifView);//死亡经验奖励
+
+
+         enemy_bag.startI(schoolGifView);//死亡经验奖励
         enemy_bag.startJ(schoolGifView);//死亡移除特效/产出特效
         enemy_bag.startK(enemy_obj);//移除对象或者标记死亡--Boss需要额外设置
 

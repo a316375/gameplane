@@ -1,16 +1,15 @@
 package xyxgame.gameplane.schoolGif.Effect;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import java.util.Iterator;
-import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
-import xyxgame.gameplane.schoolGif.Model.Level;
-import xyxgame.gameplane.schoolGif.Tool.UIPaint;
 
 public class LeiEffect extends BaseGifObj {
 
@@ -31,9 +30,10 @@ public class LeiEffect extends BaseGifObj {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-        list=allBitmaps.getlei(obj.oW/2,obj.oH/2);
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
+
+        return allBitmaps.getlei(obj.oW/2,obj.oH/2);
     }
 
     @Override

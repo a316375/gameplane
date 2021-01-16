@@ -1,5 +1,9 @@
 package xyxgame.gameplane.schoolGif.Button;
 
+import android.graphics.Bitmap;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
@@ -16,10 +20,9 @@ public class ButtonGif extends BaseGifObj {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-      list=allBitmaps.getfb01(obj.oW,obj.oH);
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
-
+        return allBitmaps.getfb01(obj.oW,obj.oH);
     }
 
     @Override

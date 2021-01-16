@@ -1,11 +1,14 @@
 package xyxgame.gameplane.schoolGif.Enemy.gk02.shui;
 
+import android.graphics.Bitmap;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.Shui;
 import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongBags;
 import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongBoss;
-import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongBossBags;
 import xyxgame.gameplane.schoolGif.Enemy.gk01.xiongState;
 
 public class ShuiGifBoss extends XiongBoss {
@@ -17,8 +20,9 @@ public class ShuiGifBoss extends XiongBoss {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
         list=allBitmaps.getupxiong08_move(obj.oW,obj.oH);
+        return null;
     }
 
     public void add(int distance_X){

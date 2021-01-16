@@ -6,6 +6,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.util.Log;
 
+import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -136,25 +137,19 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
                     schoolGifView.uiList.exp=tomorrow;
                 }
             },3000);
-            return;}
+             }
+        else {
 
         schoolGifView.exp.exp+=1;
 
         //升级攻击力
-        if (schoolGifView.exp.exp>schoolGifView.level.backValue().exp-1){
-            schoolGifView.exp.exp=0;
+        if (schoolGifView.exp.exp>schoolGifView.level.backValue().exp-1) {
+            schoolGifView.exp.exp = 0;
             schoolGifView.level.level++;
-            schoolGifView.laserGif.obj.level=schoolGifView.level.level;
-            schoolGifView.laserGif.obj.hit=new Level(schoolGifView.level.level).backValue().hit;
+            schoolGifView.laserGif.obj.level = schoolGifView.level.level;
+            schoolGifView.laserGif.obj.hit = new Level(schoolGifView.level.level).backValue().hit;
+        }
 
-
-
-
-//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
-//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Mu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
-//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*1;
-//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
-//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Tu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
         }
 
 
@@ -167,7 +162,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     public int startD( BaseGifBag laser_bag){
         int lose=laser_bag.hit;
         life-=lose;
-        Log.d("UP---", "life="+ life);
+       // Log.d("UP---", "life="+ life);
         return lose;
     };
     /**绘制扣血动画**/
@@ -265,4 +260,34 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
 
 
+
+
+    /**火技能特效伤害**/
+
+//    public   void startA1(SchoolGifView schoolGifView, BaseGifObj gifObj){
+//
+//        Iterator<BaseGifBag> iterator = schoolGifView.fireEffect.bags.iterator();//拿到火特效集合
+//        while (iterator.hasNext()){
+//            BaseGifBag next = iterator.next();//例遍火特效
+//
+//            if (next.rect.intersect(this.rect)) {
+////                next.showMaxtime=1000;
+//                   next.showtime=0;//火特效重载时间为0，延长火燃烧
+//
+//                    life-=new Level(schoolGifView.level.level).backValue().hit;
+//                    // Log.d("--------", "life---"+life);
+//                    schoolGifView.blastTextGif.addBag(new Level(schoolGifView.level.level).backValue().hit,
+//                            this.rect.left+this.w/2, this.rect.top+this.h/2);
+//
+//                    if (this.life<0){
+//                        this.isDie=true;
+//                        if (this.shuxin==ShuXin.Shui)  schoolGifView.dieShui.add(this);;//添加死亡水特效
+//                        if (this.shuxin==ShuXin.Huo)  schoolGifView.fireEffect.add(this,schoolGifView.gifPlay.obj.level);;//添加死亡火特效
+//                        if (this.shuxin!=ShuXin.Boss)gifObj.bags.remove(this);//移除普通怪
+//                    }
+//
+//            }
+//
+//        }
+//    };
 }

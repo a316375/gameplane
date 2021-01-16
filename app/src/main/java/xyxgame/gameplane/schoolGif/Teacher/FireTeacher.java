@@ -6,6 +6,7 @@ import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.FireEffect;
+import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
 import xyxgame.gameplane.schoolGif.Path.PathShui;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
@@ -32,7 +33,7 @@ public class FireTeacher extends  Teacher {
 
       if (time% 5==0) {
 //         PK(schoolGifView.xiong);
-      //   PK(schoolGifView.gk01.xiongGifs);
+//         PK(schoolGifView.gk01.xiongGifs);
          PK(schoolGifView.gk01.xiongGifs1);
          PK(schoolGifView.gk01.xiongGifs2);
          PK(schoolGifView.gk01.xiongGifs3);
@@ -69,10 +70,14 @@ public class FireTeacher extends  Teacher {
                 if (objbag.FireTime>1500)objbag.FireTime=1;
 
                 if (next.rect.intersect(objbag.rect)){
+                    next.showtime=0;//添加持续时间,如果火特效被碰撞
+
+
+
                     if (objbag.FireTime% (ShuXin.Speed*10)==0){
-                    next.showtime=0;//添加持续时间
-                    objbag.life-=next.hit;
-                    schoolGifView.blastTextGif.addBag(next.hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
+
+                    objbag.life-=new Level(schoolGifView.level.level).backValue().hit;
+                    schoolGifView.blastTextGif.addBag(new Level(schoolGifView.level.level).backValue().hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
                     }
                     if (objbag.life<=0){
                         objbag.isDie=true;

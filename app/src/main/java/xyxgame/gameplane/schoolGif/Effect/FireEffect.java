@@ -1,19 +1,17 @@
 package xyxgame.gameplane.schoolGif.Effect;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.renderscript.BaseObj;
 
 import java.util.Iterator;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-import xyxgame.gameplane.R;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifAllBitmaps;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Model.Level;
-import xyxgame.gameplane.schoolGif.Tool.UIPaint;
 
 public class FireEffect extends BaseGifObj {
 
@@ -34,9 +32,10 @@ public class FireEffect extends BaseGifObj {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-        list=allBitmaps.getfire(obj.oW,obj.oH);
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
+
+        return allBitmaps.getfire(obj.oW,obj.oH);
     }
 
     @Override

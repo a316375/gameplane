@@ -1,6 +1,8 @@
 package xyxgame.gameplane.schoolGif.Effect.die_shui;
 
-import android.util.Log;
+import android.graphics.Bitmap;
+
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
@@ -23,9 +25,10 @@ public class DieShui extends BaseGifObj {
     }
 
     @Override
-    protected void lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
-        list=allBitmaps.getdie_shui_enemy(obj.oW,obj.oH);
+    protected CopyOnWriteArrayList<Bitmap> lodebitmaps_list__allBitmaps_get_objow_obj_oh() {
 
+
+        return allBitmaps.getdie_shui_enemy(obj.oW,obj.oH);
     }
 
     @Override
