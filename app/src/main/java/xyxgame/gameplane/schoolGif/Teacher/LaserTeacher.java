@@ -68,15 +68,21 @@ public class LaserTeacher {
         }
     }
 
-    private void startPK(BaseGifObj enemy_obg, BaseGifBag laser_bag, BaseGifBag enemy_bag) {
+    private void startPK(BaseGifObj enemy_obj, BaseGifBag laser_bag, BaseGifBag enemy_bag) {
 
         enemy_bag.startA(laserGif.bags,laser_bag);//移除子弹
         enemy_bag.startB(schoolGifView);//添加经验
         enemy_bag.startC(schoolGifView);//扣除金币
-        int lose_life = enemy_bag.startD(enemy_bag,laser_bag);//计算伤害
-        enemy_bag.startE(schoolGifView,lose_life,enemy_bag);//绘制扣血动画
-        enemy_bag.startF();
-        enemy_bag.startG();
+        int lose_life = enemy_bag.startD(laser_bag);//计算伤害
+        enemy_bag.startE(schoolGifView,lose_life);//绘制扣血动画
+        enemy_bag.startF(schoolGifView,laser_bag);//绘制木路径
+        enemy_bag.startG(schoolGifView,laser_bag);//绘制水攻特效
+        enemy_bag.startH(schoolGifView,laser_bag);//绘制火攻特效
+        enemy_bag.startI(schoolGifView);//死亡经验奖励
+        enemy_bag.startJ(schoolGifView);//死亡移除特效/产出特效
+        enemy_bag.startK(enemy_obj);//移除对象或者标记死亡--Boss需要额外设置
+
+
 
 
 
@@ -94,11 +100,11 @@ public class LaserTeacher {
         //Log.v("-----","-----"+enemy_bag.life);
 
 
-        addMuPath(laser_bag, enemy_bag);//添加木属性的怪物路径
-        addShuiPath_Effct(laser_bag, enemy_bag);//添加水属性的怪物路径+水特效
-        addFireEffect(laser_bag);//添加火特效
+//        addMuPath(laser_bag, enemy_bag);//添加木属性的怪物路径
+//        addShuiPath_Effct(laser_bag, enemy_bag);//添加水属性的怪物路径+水特效
+//        addFireEffect(laser_bag);//添加火特效
          //敌人被击败
-        life_die(enemy_obg, enemy_bag);
+//        life_die(enemy_obg, enemy_baj);
     }
 
     private void life_die(BaseGifObj enemy_obg, BaseGifBag enemy_bag) {
@@ -231,11 +237,11 @@ public class LaserTeacher {
             schoolGifView.gifPlay.obj.hit=schoolGifView.level.backValue().hit;
 
 
-            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
-            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Mu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
-            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*1;
-            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
-            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Tu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Mu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*1;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Tu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
         }
 
 

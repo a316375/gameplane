@@ -89,6 +89,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public   BillingView billingView;
 
 
+
+
     public SchoolGifView(BaseActivity mBaseActivity) {
         super(mBaseActivity);
         this.mBaseActivity=mBaseActivity;

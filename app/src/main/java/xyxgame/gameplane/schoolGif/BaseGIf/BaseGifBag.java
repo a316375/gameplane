@@ -4,12 +4,16 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.util.Log;
 
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
+import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.State;
+import xyxgame.gameplane.schoolGif.Path.PathMu;
+import xyxgame.gameplane.schoolGif.Path.PathShui;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
@@ -141,7 +145,9 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
             schoolGifView.exp.exp=0;
             schoolGifView.level.level++;
             schoolGifView.laserGif.obj.level=schoolGifView.level.level;
-            schoolGifView.laserGif.obj.hit=schoolGifView.level.backValue().hit;
+            schoolGifView.laserGif.obj.hit=new Level(schoolGifView.level.level).backValue().hit;
+
+
 
 
 //            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
@@ -158,17 +164,99 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         schoolGifView.money.all-=1;
     };
     /**计算伤害**/
-    public int startD(BaseGifBag enemy_bag,BaseGifBag laser_bag){
+    public int startD( BaseGifBag laser_bag){
         int lose=laser_bag.hit;
-        enemy_bag.life-=lose;
+        life-=lose;
+        Log.d("UP---", "life="+ life);
         return lose;
     };
     /**绘制扣血动画**/
-    public void startE(SchoolGifView schoolGifView, int lose_life,BaseGifBag enemy_bag){
-          schoolGifView.blastTextGif.addBag( lose_life,enemy_bag.rect.left+enemy_bag.w/2,enemy_bag.rect.top+enemy_bag.h/2);
+    public void startE(SchoolGifView schoolGifView, int lose_life ){
+          schoolGifView.blastTextGif.addBag( lose_life, rect.left+ w/2, rect.top+ h/2);
     };
-    public void startF(){};
-    public void startG(){};
+
+    /**绘制木路径**/
+    public void startF(SchoolGifView schoolGifView,BaseGifBag laser_bag){
+
+            if (laser_bag.shuxin== ShuXin.Mu){
+                if ( shuiEffect!=null)   shuiEffect.stop_shui();
+//
+                this.path=new PathMu(this);
+                if ( baseState!=null&& state!= State.Att)
+                     baseState.changState(State.Att,this,schoolGifView.allBitmaps);
+            }
+
+    };
+
+
+    /**绘制水特效**/
+    public void startG(SchoolGifView schoolGifView,BaseGifBag laser_bag){
+        if (laser_bag.shuxin== ShuXin.Shui&& shuxin!=ShuXin.Boss){
+//
+            PathShui path = new PathShui(this,100+schoolGifView.level.level*3);
+            this.path= path;
+            if (this.baseState!=null&&this.state!= State.Stop)
+                this.baseState.changState(State.Stop,this,schoolGifView.allBitmaps);
+            GifObj gifObj = new GifObj() .withPoint(this.x, this.y + this.h / 3)  .withSize(this.w, this.h / 2) ;
+            gifObj.life=this.life;
+
+            if (this.shuiEffect!=null) {
+                this.shuiEffect.reset_time();
+                this.shuiEffect.add(this,path.showTime);
+            }
+
+
+        }
+    };
+
+    /**绘制火攻特效**/
+    public void startH(SchoolGifView schoolGifView, BaseGifBag laser_bag){{
+        if (laser_bag.shuxin== ShuXin.Huo){
+            schoolGifView.fireEffect.add(laser_bag,schoolGifView.level.level);
+        }
+    }};
+
+    /**死亡奖励经验**/
+    public void startI(SchoolGifView schoolGifView){
+        if (this.life<=0) {
+            if (!isMaxLevel_Boolean(schoolGifView))
+                schoolGifView.exp.exp += 1;
+
+            schoolGifView.money.all += 5;
+            if (this.shuxin == ShuXin.Boss) schoolGifView.money.all += 2000;//奖励金币boss
+        }
+    };
+
+    /**敌人死亡特效移除**/
+    public void startJ(SchoolGifView schoolGifView){
+        if (this.life<=0)  {
+            if (this.shuxin==ShuXin.Shui)  schoolGifView.dieShui.add(this);;//水属性死亡后添加die特效
+            //  if (enemy_bag.shuiEffect!=null)  enemy_bag.shuiEffect.stop_shui();
+
+            //移除水的特效
+//                            schoolGifView.shuiEffect.remove_effcet(enemy_bag, ShuXin.Null);
+
+
+            if (this.shuxin== ShuXin.Huo){
+
+                schoolGifView.fireEffect.add(this,schoolGifView.level.level);
+            }//火属性死亡后添加火特效
+
+
+
+
+
+        }
+    };
+
+    /**移除对象**/
+    public void startK(BaseGifObj enemy_obj){
+        if (this.life<=0) {
+            if (this.shuxin != ShuXin.Boss) enemy_obj.bags.remove(this);//不是boss则直接移除
+            else this.isDie = true;//标记Boss死亡
+        }
+    };
+
 
     private String today="WILL NOT  UPGRADE  TODAY",tomorrow="COME BACK TOMORROW";
     private boolean isMaxLevel_Boolean(final SchoolGifView schoolGifView) {
