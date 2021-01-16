@@ -31,7 +31,11 @@ public class UpXiongGif extends XiongGif3 {
 
     @Override
     protected void add_bags_add_new_obj_list() {
+
+
         add(move_X);
+        add(move_X-obj.maXx/3);
+        add(move_X+obj.maXx/3);
     }
 
     public void add(int distance_X){

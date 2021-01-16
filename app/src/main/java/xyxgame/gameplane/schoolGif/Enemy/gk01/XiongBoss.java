@@ -13,7 +13,7 @@ import xyxgame.gameplane.schoolGif.Effect.Shui;
 public class XiongBoss extends XiongGif{
 
 public boolean die=false;
-private CopyOnWriteArrayList<Bitmap> bg_list;//添加光环背景
+    public CopyOnWriteArrayList<Bitmap> bg_list;//添加光环背景
     public XiongBoss(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
         bg_list=allBitmaps.getxiong_boss_bg(obj.oW,obj.oH);
@@ -39,7 +39,7 @@ private CopyOnWriteArrayList<Bitmap> bg_list;//添加光环背景
 
     }
 
-    private void add(int distance_X){
+    public void add(int distance_X){
 
 
         obj.oX+=distance_X;

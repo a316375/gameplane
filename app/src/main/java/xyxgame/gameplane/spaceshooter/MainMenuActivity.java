@@ -49,6 +49,7 @@ import xyxgame.gameplane.schoolGif.SchoolGifActivity;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 import xyxgame.gameplane.schoolGif.Tool.SaveUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.TimeUitil;
 import xyxgame.gameplane.schoolGif.Tool.UIAlertDialog;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
@@ -68,11 +69,10 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_main_menu);
+
 
 
         Log.v("-----log----","启动啦");
@@ -225,7 +225,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                        alertDialog.dismiss();
+                        if (alertDialog.isShowing())  alertDialog.dismiss();
                         Info infos=  snapshot.getValue(Info.class);
                         // Toast.makeText(mBaseActivity,"--提交成功--",Toast.LENGTH_LONG).show();
                         if (infos==null)

@@ -36,6 +36,7 @@ import com.snail.antifake.jni.EmulatorDetectUtil;
 import xyxgame.gameplane.DB.Info;
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.TimeUitil;
 import xyxgame.gameplane.schoolGif.Tool.UIHide;
 import xyxgame.gameplane.spaceshooter.MainMenuActivity;
 
@@ -143,6 +144,7 @@ public class MyActivity extends Activity  {
 
     private void updateUI(@Nullable FirebaseUser user) {
         // No-op
+
 
 
         if(user!=null){

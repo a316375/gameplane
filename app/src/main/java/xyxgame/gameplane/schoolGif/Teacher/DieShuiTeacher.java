@@ -37,6 +37,8 @@ public class DieShuiTeacher extends Teacher{
         PK(schoolGifView.gk02.xiongGifs2);
         PK(schoolGifView.gk02.shuiGif);
         PK(schoolGifView.gk02.upXiongGif);
+        PK(schoolGifView.gk02.shuiGif2);
+        PK(schoolGifView.gk02.shuiGifBoss);
     }
     private void PK(BaseGifObj obj) {
 

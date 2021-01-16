@@ -23,6 +23,7 @@ import xyxgame.gameplane.schoolGif.Music.MusicPlayer;
 
 import xyxgame.gameplane.schoolGif.Tool.IntentUtils;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.TimeUitil;
 
 public class SchoolGifActivity extends BaseActivity {
 
@@ -48,7 +49,7 @@ public class SchoolGifActivity extends BaseActivity {
     @Override
     public void init() {
         musicUtilsBGM=new MusicPlayer(this,R.raw.schoolbg)  ;
-
+        TimeUitil.save(this);//储存时间
     }
 
     @Override

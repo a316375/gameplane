@@ -177,11 +177,24 @@ public abstract class BaseGifObj extends View {
             next.setRect(next.x, next.y, next.x + next.w, next.y + next.h);
 
 
-            canvas.drawBitmap(next.list.get(next.i), next.x, next.y, null);
-            if (next.obj.showRect) canvas.drawRect(next.rect, paint);
+//            canvas.drawBitmap(next.list.get(next.i), next.x, next.y, null);//初始代码
+           // next.matrix.postTranslate(next.x,next.y);
+            next.matrix.setRotate(next.matrix_degress, obj.oW / 2, obj.oH /2);//围绕中点
+            next.matrix.postTranslate(next.x,next.y);
+            canvas.drawBitmap(next.list.get(next.i), next.matrix,null);//优化旋转代码
+//            if (next.obj.showRect)
+                canvas.drawRect(next.rect, paint);
             if (next.path != null) next.path.drawpath();////这个是分离代码
 
             if (next.shuiEffect != null) next.shuiEffect.draw(canvas);
+
+//            next.startA();//A阶段
+//            next.startB();//A阶段
+//            next.startC();//A阶段
+//            next.startD();//A阶段
+//            next.startE();//A阶段
+//            next.startF();//A阶段
+//            next.startG();//A阶段
 
 
             if (t % F5_GIf == 0) next.i++;

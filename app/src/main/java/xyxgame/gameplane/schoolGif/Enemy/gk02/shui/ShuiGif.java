@@ -8,6 +8,7 @@ import xyxgame.gameplane.schoolGif.Effect.Shui;
 public class ShuiGif extends BaseGifObj {
     public ShuiGif(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
+        Time_wait=30;
 
     }
 
@@ -30,7 +31,7 @@ public class ShuiGif extends BaseGifObj {
         add();
     }
 
-    private void add() {
+    public void add() {
         ShuiBag shuiBag = new ShuiBag(obj, list);
         shuiBag.setShuiEffect(new Shui(list_shui));
         // shuiBag.addState(new xiongState());

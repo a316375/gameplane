@@ -13,6 +13,7 @@ import xyxgame.gameplane.schoolGif.Path.PathMu;
 import xyxgame.gameplane.schoolGif.Path.PathShui;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
 //**处理laser的老师，注意，只能处理集合，本身不能创建对象，可以调用别的地方的对象集合**//
@@ -41,6 +42,8 @@ public class LaserTeacher {
         PK(schoolGifView.gk02.xiongGifs2);
         PK(schoolGifView.gk02.shuiGif);
         PK(schoolGifView.gk02.upXiongGif);
+        PK(schoolGifView.gk02.shuiGif2);
+        PK(schoolGifView.gk02.shuiGifBoss);
 
     }
 
@@ -65,27 +68,29 @@ public class LaserTeacher {
         }
     }
 
-    private void startPK(BaseGifObj baseGifBag, BaseGifBag laser_bag, BaseGifBag enemy_bag) {
+    private void startPK(BaseGifObj enemy_obg, BaseGifBag laser_bag, BaseGifBag enemy_bag) {
+
+        enemy_bag.startA(laserGif.bags,laser_bag);//移除子弹
+        enemy_bag.startB(schoolGifView);//添加经验
+        enemy_bag.startC(schoolGifView);//扣除金币
+        int lose_life = enemy_bag.startD(enemy_bag,laser_bag);//计算伤害
+        enemy_bag.startE(schoolGifView,lose_life,enemy_bag);//绘制扣血动画
+        enemy_bag.startF();
+        enemy_bag.startG();
 
 
 
-        laserGif.bags.remove(laser_bag);//移除子弹
-        addexp();//添加经验
-
-
-
-        int lei=0;
-
-        lei = addlei_hit(laser_bag, enemy_bag, lei);//处理雷击伤害+扣除金币
-
-        int add_hit=new Random().nextInt(laser_bag.hit/10)+lei;//初始伤害
-        if (laser_bag.shuxin!=ShuXin.Huo)  {
-
-          add_hit=  life_enemy(enemy_bag,laser_bag,add_hit);//计算伤害
-
-              }
-        enemy_bag.life-=add_hit;//结算伤害
-        drawHit_Text(laser_bag, add_hit);//绘制伤害
+//        int lei  = addlei_hit(laser_bag, enemy_bag, 0);//处理雷击伤害+扣除金币
+//
+//        int add_hit=new Random().nextInt(laser_bag.hit/10)+lei;//初始伤害
+//        if (laser_bag.shuxin!=ShuXin.Huo)  {
+//
+//          add_hit=  life_enemy(enemy_bag,laser_bag,add_hit);//计算伤害
+//
+//              }
+//        enemy_bag.life-=add_hit;//结算伤害
+//
+//        drawHit_Text(laser_bag, add_hit);//绘制伤害
         //Log.v("-----","-----"+enemy_bag.life);
 
 
@@ -93,10 +98,10 @@ public class LaserTeacher {
         addShuiPath_Effct(laser_bag, enemy_bag);//添加水属性的怪物路径+水特效
         addFireEffect(laser_bag);//添加火特效
          //敌人被击败
-        life_die(baseGifBag, enemy_bag);
+        life_die(enemy_obg, enemy_bag);
     }
 
-    private void life_die(BaseGifObj baseGifBag, BaseGifBag enemy_bag) {
+    private void life_die(BaseGifObj enemy_obg, BaseGifBag enemy_bag) {
         if (enemy_bag.life<=0)  {
             if (enemy_bag.shuxin==ShuXin.Shui) addDieShuiEffect(enemy_bag);//水属性死亡后添加die特效
           //  if (enemy_bag.shuiEffect!=null)  enemy_bag.shuiEffect.stop_shui();
@@ -105,18 +110,22 @@ public class LaserTeacher {
 //                            schoolGifView.shuiEffect.remove_effcet(enemy_bag, ShuXin.Null);
 
                 //奖励经验
-                schoolGifView.exp.exp+= schoolGifView.level.level*5;
+            if (!isMaxLevel_Boolean())   schoolGifView.exp.exp+= schoolGifView.level.level*5;
                 schoolGifView.money.all+=2;
-                if (enemy_bag.shuxin== ShuXin.Boss)schoolGifView.money.all+=5000;//奖励金币boss
+                if (enemy_bag.shuxin== ShuXin.Boss)schoolGifView.money.all+=2000;//奖励金币boss
 
             if (enemy_bag.shuxin==ShuXin.Huo) addFireEffect(enemy_bag);//火属性死亡后添加火特效
 
 
 
-            if (enemy_bag.shuxin!=ShuXin.Boss)baseGifBag.bags.remove(enemy_bag);//不是boss则直接移除
+            if (enemy_bag.shuxin!=ShuXin.Boss)enemy_obg.bags.remove(enemy_bag);//不是boss则直接移除
             else enemy_bag.isDie=true;//标记Boss死亡
 
         }
+    }
+
+    private boolean isMaxLevel_Boolean() {
+        return schoolGifView.level.level >= schoolGifView.level.Max_Level_day(schoolGifView.getContext());
     }
 
     private void addDieShuiEffect(BaseGifBag enemy_bag) {
@@ -135,11 +144,10 @@ public class LaserTeacher {
 //
             PathShui path = new PathShui(enemy_bag,100+schoolGifView.level.level*3);
             enemy_bag.path= path;
-       if (enemy_bag.baseState!=null&&enemy_bag.state!= State.Stop) enemy_bag.baseState.changState(State.Stop,enemy_bag,schoolGifView.allBitmaps);
+       if (enemy_bag.baseState!=null&&enemy_bag.state!= State.Stop)
+           enemy_bag.baseState.changState(State.Stop,enemy_bag,schoolGifView.allBitmaps);
             GifObj gifObj = new GifObj() .withPoint(enemy_bag.x, enemy_bag.y + enemy_bag.h / 3)  .withSize(enemy_bag.w, enemy_bag.h / 2) ;
              gifObj.life=enemy_bag.life;
-
-
 
             if (enemy_bag.shuiEffect!=null) {
                 enemy_bag.shuiEffect.reset_time();
@@ -155,7 +163,9 @@ public class LaserTeacher {
         if (enemy_bag.shuiEffect!=null)   enemy_bag.shuiEffect.stop_shui();
 //
          enemy_bag.path=new PathMu(enemy_bag);
-     if (enemy_bag.baseState!=null&&enemy_bag.state!= State.Att)  enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);}
+     if (enemy_bag.baseState!=null&&enemy_bag.state!= State.Att)
+         enemy_bag.baseState.changState(State.Att,enemy_bag,schoolGifView.allBitmaps);
+        }
     }
 
     private void drawHit_Text(BaseGifBag laser_bag, int add_hit) {
@@ -197,11 +207,20 @@ public class LaserTeacher {
 
       return add_hit;
 
-
-
     }
 
-    public void  addexp(){
+    private String today="WILL NOT  UPGRADE  TODAY",tomorrow="COME BACK TOMORROW";
+    public void  addexp(final SchoolGifView schoolGifView){
+        if (isMaxLevel_Boolean()){
+           if (!schoolGifView.uiList.exp.equals( tomorrow))schoolGifView.uiList.exp=today;
+            if (schoolGifView.uiList.exp.equals( today))  UiThead.runInUIThread(new Runnable() {
+                @Override
+                public void run() {
+                    schoolGifView.uiList.exp=tomorrow;
+                }
+            },3000);
+            return;}
+
         schoolGifView.exp.exp+=50;
 
         //升级攻击力

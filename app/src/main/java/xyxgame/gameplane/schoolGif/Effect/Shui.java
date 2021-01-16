@@ -72,7 +72,8 @@ public class Shui implements ShuiEffect{
 
     @Override
     public void stop_shui() {
-       ok=false;
+      // ok=false;
+        Maxtime=-1;
 
 
     }

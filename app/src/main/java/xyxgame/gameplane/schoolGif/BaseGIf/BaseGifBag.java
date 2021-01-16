@@ -1,6 +1,7 @@
 package xyxgame.gameplane.schoolGif.BaseGIf;
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.Rect;
 
@@ -9,7 +10,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import xyxgame.gameplane.schoolGif.Effect.ShuiEffect;
 import xyxgame.gameplane.schoolGif.Model.State;
+import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
+import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
 /**继承自这个类需要实现路径的绘制，不绘制默认静止，此时obj的max应该为最大为1**/
@@ -48,8 +51,12 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         this.baseState=baseState;
 
     }
+
+    public Matrix matrix;
+    public int matrix_degress=0;
     public BaseGifBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {
         path=this;
+        matrix=new Matrix();
 
         this.shuxin=obj.ShuXin;
 
@@ -68,6 +75,10 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         rect=new Rect(x,y,x+w,y+h);
 
         showMaxtime=ShuXin.Speed*50+new Random().nextInt(50);
+
+
+//        matrix.setRotate(90);
+
     }
 
 
@@ -106,6 +117,64 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         this.hit=hit;
         return this;
     };
+
+    /**移除子弹**/
+    public void startA(CopyOnWriteArrayList<BaseGifBag> laser_bags, BaseGifBag laser_bag){
+        laser_bags.remove(laser_bag);
+    };
+    /**增加经验**/
+    public void startB(final SchoolGifView schoolGifView){
+        if (isMaxLevel_Boolean(schoolGifView)){
+            if (!schoolGifView.uiList.exp.equals( tomorrow))schoolGifView.uiList.exp=today;
+            if (schoolGifView.uiList.exp.equals( today))  UiThead.runInUIThread(new Runnable() {
+                @Override
+                public void run() {
+                    schoolGifView.uiList.exp=tomorrow;
+                }
+            },3000);
+            return;}
+
+        schoolGifView.exp.exp+=1;
+
+        //升级攻击力
+        if (schoolGifView.exp.exp>schoolGifView.level.backValue().exp-1){
+            schoolGifView.exp.exp=0;
+            schoolGifView.level.level++;
+            schoolGifView.laserGif.obj.level=schoolGifView.level.level;
+            schoolGifView.laserGif.obj.hit=schoolGifView.level.backValue().hit;
+
+
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Jin)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*5;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Mu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*2;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Shui)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*1;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Huo)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*4;
+//            if (schoolGifView.laserGif.obj.ShuXin== ShuXin.Tu)schoolGifView.laserGif. obj.hit=schoolGifView.gifPlay. obj.hit*3;
+        }
+
+
+    };
+    /**扣除金币**/
+    public void startC(SchoolGifView schoolGifView){
+        schoolGifView.money.all-=1;
+    };
+    /**计算伤害**/
+    public int startD(BaseGifBag enemy_bag,BaseGifBag laser_bag){
+        int lose=laser_bag.hit;
+        enemy_bag.life-=lose;
+        return lose;
+    };
+    /**绘制扣血动画**/
+    public void startE(SchoolGifView schoolGifView, int lose_life,BaseGifBag enemy_bag){
+          schoolGifView.blastTextGif.addBag( lose_life,enemy_bag.rect.left+enemy_bag.w/2,enemy_bag.rect.top+enemy_bag.h/2);
+    };
+    public void startF(){};
+    public void startG(){};
+
+    private String today="WILL NOT  UPGRADE  TODAY",tomorrow="COME BACK TOMORROW";
+    private boolean isMaxLevel_Boolean(final SchoolGifView schoolGifView) {
+        return schoolGifView.level.level >= schoolGifView.level.Max_Level_day(schoolGifView.getContext());
+    }
+
 
 
 }

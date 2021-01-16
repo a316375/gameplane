@@ -26,6 +26,7 @@ import xyxgame.gameplane.schoolGif.GKa.Gk01;
 import xyxgame.gameplane.schoolGif.GKa.Gk02;
 import xyxgame.gameplane.schoolGif.Model.Exp;
 import xyxgame.gameplane.schoolGif.Model.Level;
+import xyxgame.gameplane.schoolGif.Model.Level_share;
 import xyxgame.gameplane.schoolGif.Music.MusicUtils;
 import xyxgame.gameplane.schoolGif.Play.PlayGif;
 import xyxgame.gameplane.schoolGif.ShowList.ADList;
@@ -38,6 +39,7 @@ import xyxgame.gameplane.schoolGif.Model.Money;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 import xyxgame.gameplane.schoolGif.Laser.LaserGif;
 import xyxgame.gameplane.schoolGif.ShowList.ListB;
+import xyxgame.gameplane.schoolGif.Tool.TimeUitil;
 import xyxgame.gameplane.schoolGif.Tool.UiThead;
 
 
@@ -66,7 +68,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public ListB listB;
 
     //    public  PanGif panGif;
-    private  LaserTeacher laserTeacher;
+    public  LaserTeacher laserTeacher;
     public  BlastTextGif blastTextGif;
     public UIList uiList;
     public Money money;
@@ -108,10 +110,17 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
 //        level = new Level(mBaseActivity.info.level);//网络
-        level = new Level(19);
+        level = new Level(mBaseActivity.info.level);
+        level = new Level(1);
+     if (TimeUitil.isOneDay(getContext())==false)
+         Level_share.savaFistlevel(getContext(),mBaseActivity.info.level);//储存一下今天的等级初始值
+     //   else level.level=level.Max_Level_day(getContext());
+//        else {TimeUitil.save(getContext());}
+        //TimeUitil.test(getContext());
         exp = new Exp(mBaseActivity.info.exp);
 //        money=new Money(mBaseActivity.info.money);
         money=new Money(19999);
+
 
         GifObj play=new GifObj(1, x, y)
                 .withPoint(x /2-100, y -400)
@@ -125,7 +134,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         laserObj =new GifObj(60, x, y)
                 .withSize(50,100)
                 .withPoint(x /2, y)
-                .init(1,play.hit*5,30,100,ShuXin.Jin).showRect(false)
+                .init(level.level,level.backValue().hit,TouchTeacher.jin_waitA,100,ShuXin.Jin).showRect(false)
                ;
 
 
@@ -289,6 +298,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
 
         removeDie(gk01.xiongBoss);//移除Boss死亡
+        removeDie(gk02.shuiGifBoss);//移除Boss死亡
 
 
     }
@@ -299,16 +309,16 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         for (Iterator<BaseGifBag> it = iterator; it.hasNext(); ) {
             BaseGifBag baseGifBag = it.next();
             if (baseGifBag.isDie){
-                gk01.xiongGifs1.Exit(gk01.xiongGifs1);
-                gk01.xiongGifs2.Exit(gk01.xiongGifs2);
-                gk01.xiongGifs3.Exit(gk01.xiongGifs3);
-                gk01.xiongGifs4.Exit(gk01.xiongGifs4);
-                gk01.xiongGifs5.Exit(gk01.xiongGifs5);
-                gk01.xiongGifs6.Exit(gk01.xiongGifs6);
-                gk02.xiongGifs.Exit(gk02.xiongGifs);
-                gk02.xiongGifs2.Exit(gk02.xiongGifs2);
-                gk02.shuiGif.Exit(gk02.shuiGif);
-                gk02.initUpXiongGIf();
+               if (gk01.xiongGifs1!=null)   gk01.xiongGifs1.Exit(gk01.xiongGifs1);
+                if (gk01.xiongGifs2!=null)  gk01.xiongGifs2.Exit(gk01.xiongGifs2);
+                if (gk01.xiongGifs3!=null)    gk01.xiongGifs3.Exit(gk01.xiongGifs3);
+                if (gk01.xiongGifs4!=null)    gk01.xiongGifs4.Exit(gk01.xiongGifs4);
+                if (gk01.xiongGifs5!=null)    gk01.xiongGifs5.Exit(gk01.xiongGifs5);
+                if (gk01.xiongGifs6!=null)     gk01.xiongGifs6.Exit(gk01.xiongGifs6);
+                if (gk02.xiongGifs!=null)     gk02.xiongGifs.Exit(gk02.xiongGifs);
+                if (gk02.xiongGifs2!=null)      gk02.xiongGifs2.Exit(gk02.xiongGifs2);
+                if (gk02.shuiGif!=null)     gk02.shuiGif.Exit(gk02.shuiGif);
+               // gk02.initUpXiongGIf();
 
                 xiongBoss.bags.remove(baseGifBag);}
         }
@@ -335,6 +345,8 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
             resethuihe( gk02.xiongGifs);
             resethuihe( gk02.xiongGifs2);
             resethuihe( gk02.upXiongGif);
+            resethuihe( gk02.shuiGif2);
+            resethuihe( gk02.shuiGifBoss);
 
 
         }
@@ -374,7 +386,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
     @Override
     public void ADLoadFaid() {
-        super.ADLoadFaid();
+        super.ADLoadFaid(); 
         money.all+=5000;//不能无限制添加，应该设置广告展示次数
     }
 }

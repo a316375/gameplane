@@ -6,6 +6,8 @@ import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.gk02.GK2_XiongGif;
 import xyxgame.gameplane.schoolGif.Enemy.gk02.GK2_XiongGif2;
 import xyxgame.gameplane.schoolGif.Enemy.gk02.shui.ShuiGif;
+import xyxgame.gameplane.schoolGif.Enemy.gk02.shui.ShuiGif2;
+import xyxgame.gameplane.schoolGif.Enemy.gk02.shui.ShuiGifBoss;
 import xyxgame.gameplane.schoolGif.Enemy.gk02.upXiong.UpXiongGif;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
@@ -22,6 +24,8 @@ public class Gk02 {
 
     public ShuiGif shuiGif;
     public UpXiongGif upXiongGif;
+    public ShuiGif2 shuiGif2;
+    public ShuiGifBoss shuiGifBoss;
 
 
     public Gk02(  SchoolGifView schoolGifView) {
@@ -35,13 +39,13 @@ public class Gk02 {
             initShuiGIf( );
         }
 
-        if (schoolGifView.level.level >= 20)   initUpXiongGIf();
+        if (schoolGifView.level.level >= 21)   initUpXiongGIf();
 
     }
 
     public void initShuiGIf( ) {
 
-        if (schoolGifView.level.level>=16&&schoolGifView.level.level<=19)
+        if (schoolGifView.level.level>=16&&schoolGifView.level.level<=20)
    if (shuiGif==null)   { shuiGif = new ShuiGif(new GifObj(35, schoolGifView.x, schoolGifView.y)
 //                .withPoint(schoolGifView.x / 2 - 250 / 2, 0).withSize(250, 250)
                 .withPoint(-250+5, schoolGifView.y / 2).withSize(250, 250)
@@ -49,29 +53,55 @@ public class Gk02 {
                         new Level(1).backEnemyValue().life, ShuXin.Shui)
                 .showRect(false),
                 schoolGifView.allBitmaps);
-        shuiGif.withTime_wait(30);}
+        }
     }
 
 
+    public void initShuiGif2(){
+        if (shuiGif2==null)   {
+            shuiGif2 = new ShuiGif2(new GifObj(35, schoolGifView.x, schoolGifView.y)
+//                .withPoint(schoolGifView.x / 2 - 250 / 2, 0).withSize(250, 250)
+                    .withPoint(0, -240).withSize(250, 250)
+                    .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
+                            new Level(2).backEnemyValue().life, ShuXin.Shui)
+                    .showRect(false),
+                    schoolGifView.allBitmaps);
+
+            //shuiGif2.withTime_wait(50);
+        }
+
+        if (shuiGifBoss==null)     shuiGifBoss = new ShuiGifBoss(new GifObj(1, schoolGifView.x, schoolGifView.y)
+//                .withPoint(schoolGifView.x / 2 - 250 / 2, 0).withSize(250, 250)
+                .withPoint(0, -240).withSize(250, 250)
+                .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
+                        schoolGifView.laserGif.obj.hit*60, ShuXin.Boss)
+                .showRect(false),
+                schoolGifView.allBitmaps);
+    }
 
     public void initUpXiongGIf( ) {
+        schoolGifView.gifBG.updataBG(2);
+
+        initShuiGif2();
+
         if (schoolGifView.level.level>=20)
         if (upXiongGif==null)   { upXiongGif = new UpXiongGif(new GifObj(35, schoolGifView.x, schoolGifView.y)
 //                .withPoint(schoolGifView.x / 2 - 250 / 2, 0).withSize(250, 250)
-                .withPoint( 0, -240).withSize(250, 250)
+                .withPoint( 0, -140).withSize(150, 150)
                 .init(schoolGifView.level.level, schoolGifView.level.backEnemyValue().hit, 3,
                         new Level(40).backEnemyValue().life, ShuXin.Jin)
                 .showRect(false),
                 schoolGifView.allBitmaps);
 
-            upXiongGif.withTime_wait(100);}
+            upXiongGif.withTime_wait(100);
+         }
     }
 
 
 
 
     public void initGIf() {
-        if (schoolGifView.level.level>=16&&schoolGifView.level.level<=19) {
+        if (schoolGifView.level.level>=16&&schoolGifView.level.level<=20) {
             if (xiongGifs == null) {
                 xiongGifs = new GK2_XiongGif(new GifObj(25, schoolGifView.x, schoolGifView.y)
                         .withPoint(schoolGifView.x, 500).withSize(150, 150)
@@ -109,8 +139,8 @@ public class Gk02 {
         if (shuiGif!=null)shuiGif.drawCanvas(canvas);
         if (upXiongGif!=null)upXiongGif.drawCanvas(canvas);
 
-
-
+        if (shuiGif2!=null)shuiGif2.drawCanvas(canvas);
+        if (shuiGifBoss!=null) shuiGifBoss.drawCanvas(canvas);
 
     }
 

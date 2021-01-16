@@ -1,5 +1,6 @@
 package xyxgame.gameplane.schoolGif.Model;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -13,9 +14,17 @@ public class Level {
           this.level=level;
 
       }
+
+      //每天等级上限
+      public int Max_Level_day(Context context){
+        return Level_share.getFistlevel(context)+19;
+      }
+
+
+
    //返回攻击力*10，等级*100，需要经验值*500---玩家
     public value backValue(){
-        return new value(level*10,level*100,level*500);
+        return new value(level*10,level*100,20);
       }
     //返回攻击力*10，等级*100，需要经验值*500--敌人数值
     public value backEnemyValue(){
@@ -36,6 +45,8 @@ public class Level {
 
 
     }
+
+
 
 }
 

@@ -4,7 +4,10 @@ import java.util.Iterator;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
+import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.FireEffect;
+import xyxgame.gameplane.schoolGif.Model.State;
+import xyxgame.gameplane.schoolGif.Path.PathShui;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
@@ -27,7 +30,7 @@ public class FireTeacher extends  Teacher {
     public void PKResult() {
 
 
-      if (time% 3 ==0) {
+      if (time% 5==0) {
 //         PK(schoolGifView.xiong);
       //   PK(schoolGifView.gk01.xiongGifs);
          PK(schoolGifView.gk01.xiongGifs1);
@@ -42,6 +45,8 @@ public class FireTeacher extends  Teacher {
          PK(schoolGifView.gk02.xiongGifs2);
          PK(schoolGifView.gk02.shuiGif);
           PK(schoolGifView.gk02.upXiongGif);
+          PK(schoolGifView.gk02.shuiGif2);
+          PK(schoolGifView.gk02.shuiGifBoss);
      }
 
         time++;
@@ -50,25 +55,32 @@ public class FireTeacher extends  Teacher {
 
     }
 
-    private void PK(BaseGifObj obj) {
+    private void PK(BaseGifObj enemy_obj) {
 
-        if (obj==null||obj.bags==null)return;
+        if (enemy_obj==null||enemy_obj.bags==null)return;
         Iterator<BaseGifBag> iterator = effect.bags.iterator();
         while (iterator.hasNext()){
             BaseGifBag next = iterator.next();
-            Iterator<BaseGifBag> iterator1 = obj.bags.iterator();
+            Iterator<BaseGifBag> iterator1 = enemy_obj.bags.iterator();
             while (iterator1.hasNext()){
                 BaseGifBag objbag = iterator1.next();
                 objbag.FireTime++;
 
                 if (objbag.FireTime>1500)objbag.FireTime=1;
-                if (objbag.FireTime% (ShuXin.Speed*10)==0)
-                if (next.rect.intersect(objbag.rect)){
 
+                if (next.rect.intersect(objbag.rect)){
+                    if (objbag.FireTime% (ShuXin.Speed*10)==0){
                     next.showtime=0;//添加持续时间
                     objbag.life-=next.hit;
                     schoolGifView.blastTextGif.addBag(next.hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
-                    if (objbag.life<=0)objbag.isDie=true;
+                    }
+                    if (objbag.life<=0){
+                        objbag.isDie=true;
+                        if (objbag.shuxin==ShuXin.Shui)  schoolGifView.dieShui.add(objbag);;//添加死亡水特效
+                        if (objbag.shuxin==ShuXin.Huo)  schoolGifView.fireEffect.add(objbag,schoolGifView.gifPlay.obj.level);;//添加死亡火特效
+                        if (objbag.shuxin!=ShuXin.Boss)enemy_obj.bags.remove(objbag);//移除普通怪
+
+                    }
 
 
                 }
@@ -77,4 +89,10 @@ public class FireTeacher extends  Teacher {
 
 
     }
+
+
+
+
+
+
 }
