@@ -1,14 +1,13 @@
 package xyxgame.gameplane.schoolGif.Teacher;
 
+import android.util.Log;
+
 import java.util.Iterator;
 
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
-import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Effect.FireEffect;
 import xyxgame.gameplane.schoolGif.Model.Level;
-import xyxgame.gameplane.schoolGif.Model.State;
-import xyxgame.gameplane.schoolGif.Path.PathShui;
 import xyxgame.gameplane.schoolGif.SchoolGifView;
 import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
@@ -26,12 +25,12 @@ public class FireTeacher extends  Teacher {
 
 
 
-    int time=0;
+
     @Override
     public void PKResult() {
 
 
-      if (time% 5==0) {
+
 //         PK(schoolGifView.xiong);
 //         PK(schoolGifView.gk01.xiongGifs);
          PK(schoolGifView.gk01.xiongGifs1);
@@ -47,11 +46,7 @@ public class FireTeacher extends  Teacher {
          PK(schoolGifView.gk02.shuiGif);
           PK(schoolGifView.gk02.upXiongGif);
           PK(schoolGifView.gk02.shuiGif2);
-          PK(schoolGifView.gk02.shuiGifBoss);
-     }
-
-        time++;
-        if (time>=500)time=0;//防止int溢出
+        //  PK(schoolGifView.gk02.upxiongGifBoss);
 
 
     }
@@ -59,33 +54,36 @@ public class FireTeacher extends  Teacher {
     private void PK(BaseGifObj enemy_obj) {
 
         if (enemy_obj==null||enemy_obj.bags==null)return;
-        Iterator<BaseGifBag> iterator = effect.bags.iterator();
-        while (iterator.hasNext()){
-            BaseGifBag next = iterator.next();
-            Iterator<BaseGifBag> iterator1 = enemy_obj.bags.iterator();
-            while (iterator1.hasNext()){
-                BaseGifBag objbag = iterator1.next();
-                objbag.FireTime++;
-
-                if (objbag.FireTime>1500)objbag.FireTime=1;
-
-                if (next.rect.intersect(objbag.rect)){
-                    next.showtime=0;//添加持续时间,如果火特效被碰撞
+        Iterator<BaseGifBag> fireiterator = effect.bags.iterator();
+        while (fireiterator.hasNext()){
+            BaseGifBag firebag = fireiterator.next();
+//            firebag.FireTime++;
+//            if (firebag.FireTime>1500)firebag.FireTime=1;
+            Iterator<BaseGifBag> enemybag = enemy_obj.bags.iterator();
+            while (enemybag.hasNext()){
+                BaseGifBag enemy_bag = enemybag.next();
 
 
 
-                    if (objbag.FireTime% (ShuXin.Speed*10)==0){
 
-                    objbag.life-=new Level(schoolGifView.level.level).backValue().hit;
-                    schoolGifView.blastTextGif.addBag(new Level(schoolGifView.level.level).backValue().hit,next.rect.left+next.w/2,next.rect.top+next.h/2);
-                    }
-                    if (objbag.life<=0){
-                        objbag.isDie=true;
-                        if (objbag.shuxin==ShuXin.Shui)  schoolGifView.dieShui.add(objbag);;//添加死亡水特效
-                        if (objbag.shuxin==ShuXin.Huo)  schoolGifView.fireEffect.add(objbag,schoolGifView.gifPlay.obj.level);;//添加死亡火特效
-                        if (objbag.shuxin!=ShuXin.Boss)enemy_obj.bags.remove(objbag);//移除普通怪
+                if (firebag.rect.intersect(enemy_bag.rect)){
+                    firebag.showtime=0;//添加持续时间,如果火特效被碰撞
+//                    Log.d("-------", "PK: "+firebag.FireTime% 100);
+//                    if (firebag.FireTime% 100==20){
+////
+//
+//                        int lose_life = new Level(schoolGifView.level.level).backValue().hit;
+//                        enemy_bag.startONFire_hit(schoolGifView,lose_life);//被火烧
+////                       enemy_bag.life-=new Level(schoolGifView.level.level).backValue().hit;//计算伤害
+////                    schoolGifView.blastTextGif.addBag(new Level(schoolGifView.level.level).backValue().hit,firebag.rect.left+firebag.w/2,firebag.rect.top+firebag.h/2);
+//                        enemy_bag.startI(schoolGifView);//死亡经验奖励
+//                        enemy_bag.startJ(schoolGifView);//死亡移除特效/产出特效
+//                        enemy_bag.startK(enemy_obj);//移除对象或者标记死亡--Boss需要额外设置
 
-                    }
+
+//                         }
+//
+
 
 
                 }

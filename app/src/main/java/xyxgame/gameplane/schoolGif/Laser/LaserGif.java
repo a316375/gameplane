@@ -45,6 +45,15 @@ public class LaserGif extends BaseGifObj {
     }
 
 
+    private int laser_lv=0;
+
+    public int getLaser_lv() {
+        return laser_lv;
+    }
+
+    public void setLaser_lv(int laser_lv) {
+        this.laser_lv = laser_lv;
+    }
 
     @Override
     protected void add_bags_add_new_obj_list() {
@@ -120,7 +129,37 @@ public class LaserGif extends BaseGifObj {
             obj.oX=playGif.bags.get(0).x+playGif.bags.get(0).w/2-obj.oW/2;
             obj.oY=playGif.bags.get(0).y;
         }
-        bags.add(new LaserBags(obj, list));
+     if (laser_lv==0)  bags.add(new LaserBags(obj, list));
+     if (laser_lv==1) {
+            obj.oX+=50;
+            bags.add(new LaserBags(obj, list));
+            obj.oX-=100;
+            bags.add(new LaserBags(obj, list));}
+     if (laser_lv==3) {
+
+         bags.add(new LaserBags(obj, list));
+            obj.oX+=35;
+            bags.add(new LaserBags1(obj, list));
+            obj.oX-=70;
+            bags.add(new LaserBags2(obj, list));
+     }
+     if (laser_lv==5) {
+         bags.add(new LaserBags(obj, list));
+            obj.oX+=30;
+            bags.add(new LaserBags1(obj, list));
+           // bags.add(new LaserBags(obj, list));
+            obj.oX+=30;
+            bags.add(new LaserBags(obj, list));
+            obj.oX-=30*3;
+            bags.add(new LaserBags2(obj, list));
+           // bags.add(new LaserBags(obj, list));
+            obj.oX-=30;
+            bags.add(new LaserBags(obj, list));
+
+        }
+
+
+
     }
 
     @Override

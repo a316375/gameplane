@@ -152,7 +152,7 @@ public abstract class BaseGifObj extends View {
         Iterator<BaseGifBag> remove = bags.iterator();
         while (remove.hasNext()) {
             BaseGifBag next = remove.next();
-            if (next.list.size() == 0) return;
+            if (next.list==null||next.list.size()==0) return;
             if (next.x < -obj.oW || next.y < -obj.oH || next.x > obj.maXx || next.y > obj.maXy) {
                 next.list = null;
                 bags.remove(next);
@@ -172,7 +172,7 @@ public abstract class BaseGifObj extends View {
         Iterator<BaseGifBag> iterator = bags.iterator();
         while (iterator.hasNext()) {
             BaseGifBag next = iterator.next();
-            if (next.list.size() == 0) return;
+            if (next.list==null||next.list.size()==0) return;
             next.i = next.i % next.list.size();
             next.setRect(next.x, next.y, next.x + next.w, next.y + next.h);
 
@@ -182,11 +182,12 @@ public abstract class BaseGifObj extends View {
             next.matrix.setRotate(next.matrix_degress, obj.oW / 2, obj.oH /2);//围绕中点
             next.matrix.postTranslate(next.x,next.y);
             canvas.drawBitmap(next.list.get(next.i), next.matrix,null);//优化旋转代码
-//            if (next.obj.showRect)
+            if (next.obj.showRect)
                 canvas.drawRect(next.rect, paint);
             if (next.path != null) next.path.drawpath();////这个是分离代码
 
 
+            //next.showtime++;
             if (next.shuiEffect != null) next.shuiEffect.draw(canvas);
 
 //            next.startA();//A阶段

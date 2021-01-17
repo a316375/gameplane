@@ -2,7 +2,6 @@ package xyxgame.gameplane.schoolGif.Teacher;
 
 import java.util.Iterator;
 
-import xyxgame.gameplane.Base.PK;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifObj;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
@@ -38,7 +37,7 @@ public class DieShuiTeacher extends Teacher{
         PK(schoolGifView.gk02.shuiGif);
         PK(schoolGifView.gk02.upXiongGif);
         PK(schoolGifView.gk02.shuiGif2);
-        PK(schoolGifView.gk02.shuiGifBoss);
+        PK(schoolGifView.gk02.upxiongGifBoss);
     }
     private void PK(BaseGifObj obj) {
 

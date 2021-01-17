@@ -20,10 +20,12 @@ import xyxgame.gameplane.schoolGif.Effect.LeiEffect;
 
 import xyxgame.gameplane.schoolGif.Button.Button2Gif;
 import xyxgame.gameplane.schoolGif.Button.ButtonGif;
+import xyxgame.gameplane.schoolGif.Effect.die.DieEnemyGif;
 import xyxgame.gameplane.schoolGif.Effect.die_shui.DieShui;
 import xyxgame.gameplane.schoolGif.Enemy.gk01.XiongBoss;
 import xyxgame.gameplane.schoolGif.GKa.Gk01;
 import xyxgame.gameplane.schoolGif.GKa.Gk02;
+import xyxgame.gameplane.schoolGif.Laser.LaserRewardGif;
 import xyxgame.gameplane.schoolGif.Model.Exp;
 import xyxgame.gameplane.schoolGif.Model.Level;
 import xyxgame.gameplane.schoolGif.Model.Level_share;
@@ -33,6 +35,7 @@ import xyxgame.gameplane.schoolGif.ShowList.ADList;
 import xyxgame.gameplane.schoolGif.ShowList.UIList;
 import xyxgame.gameplane.schoolGif.Teacher.DieShuiTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.FireTeacher;
+import xyxgame.gameplane.schoolGif.Teacher.LaserRewardTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.LaserTeacher;
 import xyxgame.gameplane.schoolGif.Teacher.TouchTeacher;
 import xyxgame.gameplane.schoolGif.Model.Money;
@@ -87,8 +90,9 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
     public DieShui dieShui;
     private final DieShuiTeacher dieShuiTeacher;
     public   BillingView billingView;
-
-
+    public   LaserRewardGif laserRewardGif;
+    private final LaserRewardTeacher laserRewardTeacher;
+    public DieEnemyGif dieEnemyGif;
 
 
     public SchoolGifView(BaseActivity mBaseActivity) {
@@ -211,6 +215,11 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
         adList = new ADList(mBaseActivity,this);
 
+
+        laserRewardGif = new LaserRewardGif(new GifObj(5,x,y).withSize(150,150),allBitmaps);
+        laserRewardTeacher = new LaserRewardTeacher(this);
+        dieEnemyGif = new DieEnemyGif(new GifObj(60,x,y).withSize(150,150),allBitmaps);
+
         gk01 = new Gk01(this);
         gk02 = new Gk02(this);
 
@@ -228,6 +237,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
         gifBG.drawCanvas(canvas);
 
+        dieEnemyGif.drawCanvas(canvas);
 
         fireEffect.drawCanvas(canvas);
 
@@ -265,6 +275,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
 
         laserGif.drawCanvas(canvas);
         blastTextGif.draws(canvas);//绘制爆炸
+        laserRewardGif.drawCanvas(canvas);
         gifPlay.drawCanvas(canvas);
         fps.draw(canvas);
 
@@ -296,11 +307,12 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
         laserTeacher.PKResult();//处理碰撞
         fireTeacher.PKResult();//火技能的燃烧
         dieShuiTeacher.PKResult();//水属性敌方死亡后产物碰撞
+        laserRewardTeacher.PKResult();
 
 
 
         removeDie(gk01.xiongBoss);//移除Boss死亡
-        removeDie(gk02.shuiGifBoss);//移除Boss死亡
+        removeDie(gk02.upxiongGifBoss);//移除Boss死亡
 
 
     }
@@ -334,6 +346,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
             resethuihe(laserGif);}
         if (frame_Time%25==0){
 
+            resethuihe(dieEnemyGif);
 
             resethuihe(gk01.xiongGifs1);
             resethuihe(gk01.xiongGifs2);
@@ -348,7 +361,7 @@ public class SchoolGifView extends BaseSurfaceVIEW  {
             resethuihe( gk02.xiongGifs2);
             resethuihe( gk02.upXiongGif);
             resethuihe( gk02.shuiGif2);
-            resethuihe( gk02.shuiGifBoss);
+            resethuihe( gk02.upxiongGifBoss);
 
 
         }

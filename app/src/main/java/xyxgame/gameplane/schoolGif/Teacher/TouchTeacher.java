@@ -27,7 +27,7 @@ public class TouchTeacher extends View {
     private float pointX, pointY;//飞机的位置
     private int pointXFix, pointYFix;//最终飞机的位置
 
-    public static int jin_waitA = 20, jin_waitB = 8;
+    public static int jin_waitA = 20, jin_waitB = 88;
     private int mu_waitA = 20, mu_waitB = 15;
     private int shui_waitA = 20, shui_waitB = 10;
     private int huo_waitA = 20, huo_waitB = 10;

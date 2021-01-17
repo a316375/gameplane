@@ -5,8 +5,11 @@ import android.graphics.Path;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
 import xyxgame.gameplane.schoolGif.Enemy.gk02.GK2_XiongBags2;
+import xyxgame.gameplane.schoolGif.SchoolGifView;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 public class ShuiBag extends GK2_XiongBags2 {
     public ShuiBag(GifObj obj, CopyOnWriteArrayList<Bitmap> list) {

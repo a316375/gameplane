@@ -6,7 +6,10 @@ import android.graphics.Path;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import xyxgame.gameplane.schoolGif.BaseGIf.BaseGifBag;
 import xyxgame.gameplane.schoolGif.BaseGIf.GifObj;
+import xyxgame.gameplane.schoolGif.SchoolGifView;
+import xyxgame.gameplane.schoolGif.Tool.ShuXin;
 
 public class ShuiBag2 extends ShuiBag{
     int i;
@@ -19,6 +22,10 @@ public class ShuiBag2 extends ShuiBag{
 
 
     }
+
+
+
+
 
     private void intPath(GifObj obj,int i) {
         if (i%2==0){

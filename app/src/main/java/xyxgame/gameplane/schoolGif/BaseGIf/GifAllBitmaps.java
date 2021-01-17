@@ -34,11 +34,26 @@ public class GifAllBitmaps {
         return getbitmaps(width, height, activity, R.drawable.fire_effect);
     }
 
+    public CopyOnWriteArrayList<Bitmap> getlaser_lv1(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser_lv1);
+    }
+    public CopyOnWriteArrayList<Bitmap> getlaser_lv3(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser_lv3);
+    }
+    public CopyOnWriteArrayList<Bitmap> getdie_enemy(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.die_enemy);
+    }
+    public CopyOnWriteArrayList<Bitmap> getlaser_lv5(int width, int height) {
+
+        return getbitmaps(width, height, activity, R.drawable.laser_lv5);
+    }
     public CopyOnWriteArrayList<Bitmap> getxiong_boss_bg(int width, int height) {
 
         return getbitmaps(width, height, activity, R.drawable.xiong_bossbg);
     }
-
     public CopyOnWriteArrayList<Bitmap> getdie_shui_enemy(int width, int height) {
 
         return getbitmaps(width, height, activity, R.drawable.die_shui_enemy);

@@ -42,7 +42,7 @@ public class LaserTeacher {
         PK(schoolGifView.gk02.shuiGif);
         PK(schoolGifView.gk02.upXiongGif);
         PK(schoolGifView.gk02.shuiGif2);
-        PK(schoolGifView.gk02.shuiGifBoss);
+        PK(schoolGifView.gk02.upxiongGifBoss);
 
     }
 

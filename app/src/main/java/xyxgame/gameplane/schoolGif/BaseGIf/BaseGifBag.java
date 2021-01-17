@@ -2,11 +2,8 @@ package xyxgame.gameplane.schoolGif.BaseGIf;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.graphics.Path;
 import android.graphics.Rect;
-import android.util.Log;
 
-import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -77,7 +74,8 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         this.hit=obj.hit;
 //       if (list.size()>0)i=new Random().nextInt(500)%list.size();
         i=0;
-        rect=new Rect(x,y,x+w,y+h);
+//        rect=new Rect(x,y,x+w,y+h);//原始rect
+        rect=new Rect(obj.maXx,0,obj.maXx,0);//原始rect
 
         showMaxtime=ShuXin.Speed*50+new Random().nextInt(50);
 
@@ -102,6 +100,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         if (x>MaxX+20-w)x=MaxX+20-w;
         if (y>MaxY-20)y=MaxY-20;
     }
+
 
     public BaseGifBag moveToXY(int point_x, int point_y) {
         x=point_x;
@@ -204,11 +203,14 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         }
     };
 
-    /**绘制火攻特效**/
+    /**绘制火攻+雷特效**/
     public void startH(SchoolGifView schoolGifView, BaseGifBag laser_bag){{
         if (laser_bag.shuxin== ShuXin.Huo){
             schoolGifView.fireEffect.add(laser_bag,schoolGifView.level.level);
         }
+
+        if (schoolGifView.leiEffect.open==true){
+            schoolGifView.leiEffect.add_leiBag(this,schoolGifView.gifPlay.obj.level);}
     }};
 
     /**死亡奖励经验**/
@@ -239,6 +241,10 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
 
 
+            schoolGifView.laserRewardGif.add(this.x+this.rect.right/2-this.rect.left/2,this.y+this.rect.bottom/2-this.rect.top/2);
+            schoolGifView.dieEnemyGif.add(this.x+this.rect.right/2-this.rect.left/2,this.y+this.rect.bottom/2-this.rect.top/2);
+
+
 
 
         }
@@ -258,6 +264,11 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         return schoolGifView.level.level >= schoolGifView.level.Max_Level_day(schoolGifView.getContext());
     }
 
+//    /**被火烧**/
+//    public   void startONFire_hit(SchoolGifView schoolGifView,int lose_life){
+//        life-=lose_life;//扣血
+//        startE(schoolGifView,lose_life);//绘制扣血动画
+//    };
 
 
 
