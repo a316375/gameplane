@@ -14,7 +14,7 @@ import xyxgame.gameplane.schoolGif.Enemy.gk01.xiongState;
 public class UpxiongGifBoss extends XiongBoss {
     public UpxiongGifBoss(GifObj obj, GifAllBitmaps allBitmaps) {
         super(obj, allBitmaps);
-        Time_wait=50;
+        Time_wait=300;
 
 
     }

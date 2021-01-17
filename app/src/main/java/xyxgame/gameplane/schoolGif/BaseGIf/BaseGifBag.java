@@ -127,7 +127,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         laser_bags.remove(laser_bag);
     };
     /**增加经验**/
-    public void startB(final SchoolGifView schoolGifView){
+    public void startB(final SchoolGifView schoolGifView, BaseGifBag laser_bag){
         if (isMaxLevel_Boolean(schoolGifView)){
             if (!schoolGifView.uiList.exp.equals( tomorrow))schoolGifView.uiList.exp=today;
             if (schoolGifView.uiList.exp.equals( today))  UiThead.runInUIThread(new Runnable() {
@@ -154,7 +154,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
 
     };
     /**扣除金币**/
-    public void startC(SchoolGifView schoolGifView){
+    public void startC(SchoolGifView schoolGifView, BaseGifBag laser_bag){
         schoolGifView.money.all-=1;
     };
     /**计算伤害**/
@@ -165,7 +165,7 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
         return lose;
     };
     /**绘制扣血动画**/
-    public void startE(SchoolGifView schoolGifView, int lose_life ){
+    public void startE(SchoolGifView schoolGifView, int lose_life ,BaseGifBag laser_bag){
           schoolGifView.blastTextGif.addBag( lose_life, rect.left+ w/2, rect.top+ h/2);
     };
 
@@ -263,6 +263,11 @@ public abstract class BaseGifBag   implements BaseGifBagPath{
     private boolean isMaxLevel_Boolean(final SchoolGifView schoolGifView) {
         return schoolGifView.level.level >= schoolGifView.level.Max_Level_day(schoolGifView.getContext());
     }
+
+    public   void startONFire_hit(SchoolGifView schoolGifView, int lose_life){
+        life-=lose_life;
+        schoolGifView.blastTextGif.addBag( lose_life, rect.left+ w/2, rect.top+ h/2);
+    };
 
 //    /**被火烧**/
 //    public   void startONFire_hit(SchoolGifView schoolGifView,int lose_life){

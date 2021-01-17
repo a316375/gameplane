@@ -72,10 +72,10 @@ public class LaserTeacher {
     private void startPK(BaseGifObj enemy_obj, BaseGifBag laser_bag, BaseGifBag enemy_bag) {
 
         enemy_bag.startA(laserGif.bags,laser_bag);//移除子弹
-        enemy_bag.startB(schoolGifView);//添加经验
-        enemy_bag.startC(schoolGifView);//扣除金币
+        enemy_bag.startB(schoolGifView,laser_bag);//添加经验
+        enemy_bag.startC(schoolGifView,laser_bag);//扣除金币
         int lose_life = enemy_bag.startD(laser_bag);//计算伤害
-        enemy_bag.startE(schoolGifView,lose_life);//绘制扣血动画
+        enemy_bag.startE(schoolGifView,lose_life,laser_bag);//绘制扣血动画
         enemy_bag.startF(schoolGifView,laser_bag);//绘制木路径
         enemy_bag.startG(schoolGifView,laser_bag);//绘制水攻特效
         enemy_bag.startH(schoolGifView,laser_bag);//绘制火攻特效
@@ -177,9 +177,9 @@ public class LaserTeacher {
         }
     }
 
-    private void drawHit_Text(BaseGifBag laser_bag, int add_hit) {
-        if (laser_bag.shuxin!= ShuXin.Huo)     schoolGifView.blastTextGif.addBag( add_hit,laser_bag.rect.left,laser_bag.rect.top);
-    }
+//    private void drawHit_Text(BaseGifBag laser_bag, int add_hit) {
+//        if (laser_bag.shuxin!= ShuXin.Huo)     schoolGifView.blastTextGif.addBag( add_hit,laser_bag.rect.left,laser_bag.rect.top);
+//    }
 
     private int addlei_hit(BaseGifBag laser_bag, BaseGifBag enemy_bag, int lei) {
         if (schoolGifView.leiEffect.open==true&&laser_bag.shuxin!= ShuXin.Huo){
