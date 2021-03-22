@@ -1,10 +1,12 @@
 package xyxgame.gameplane.DB;
 
-import com.google.firebase.database.IgnoreExtraProperties;
+
+
+import androidx.annotation.Keep;
 
 import java.io.Serializable;
 
-
+@Keep
 public class Info implements Serializable   {
     public String id;
     public   int level=-1;
